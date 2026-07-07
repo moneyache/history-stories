@@ -175,6 +175,15 @@ a{color:inherit;text-decoration:none;}
 .map-svg svg{width:100%; height:auto; display:block;}
 .map-text{flex:1 1 300px; font-size:1.05rem; line-height:1.9; color:#34495E;}
 
+/* 真实地理地图（全宽） */
+.map-wide{width:100%; border-radius:18px; overflow:hidden; box-shadow:var(--card-shadow); border:1px solid rgba(0,0,0,0.06);}
+.map-wide svg{width:100%; height:auto; display:block;}
+
+/* 人物卡片可跳转 */
+.person-link{text-decoration:none; color:inherit; display:block;}
+.person .pstory{margin-top:10px; font-size:.85rem; font-weight:700; color:var(--secondary); opacity:0; transform:translateY(4px); transition:all .25s;}
+.person-link:hover .pstory{opacity:1; transform:translateY(0);}
+
 /* 战役 */
 .battle-box{background:linear-gradient(160deg,#1b2433,#2c3a52); border-radius:20px; padding:20px; color:#fff; text-align:center;}
 .battle-title{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.6rem; color:#FFD54F; margin-bottom:4px;}
@@ -248,43 +257,46 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
   
     <div class="section" id="territory">
       <div class="sec-head"><div class="sec-badge">🗺️</div>
-        <div class="sec-title">疆域范围<small>这个朝代有多大</small></div></div>
-      <div class="map-card">
-        <div class="map-svg">
-<svg viewBox="0 0 600 420" role="img" aria-label="疆域示意">
-  <defs>
-    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#dff1fb"/><stop offset="1" stop-color="#cfe8f7"/>
-    </linearGradient>
-    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
-      <stop offset="0" stop-color="#F1C40F" stop-opacity="0.55"/><stop offset="1" stop-color="#F1C40F" stop-opacity="0"/>
-    </radialGradient>
-  </defs>
-  <rect x="0" y="0" width="600" height="420" rx="16" fill="url(#sea)"/>
-  <ellipse cx="300" cy="210" rx="130" ry="95" fill="#F1C40F" opacity="0.4"/>
-  <path d="M70,150 C60,90 130,55 210,60 C250,40 330,30 400,55 C470,40 540,70 560,130 C585,180 560,250 520,300 C540,350 480,400 400,395 C330,420 240,415 180,390 C110,400 60,350 70,280 C40,240 50,190 70,150 Z" fill="#8E44AD" opacity="0.82" stroke="#fff" stroke-width="3"/>
-  <path d="M70,150 C60,90 130,55 210,60 C250,40 330,30 400,55 C470,40 540,70 560,130 C585,180 560,250 520,300 C540,350 480,400 400,395 C330,420 240,415 180,390 C110,400 60,350 70,280 C40,240 50,190 70,150 Z" fill="url(#glow)" opacity="0.6"/>
-  <g stroke="#ffffff" stroke-opacity="0.35" stroke-width="1">
-    <line x1="40" y1="105" x2="560" y2="105"/><line x1="40" y1="210" x2="560" y2="210"/><line x1="40" y1="315" x2="560" y2="315"/>
-    <line x1="160" y1="40" x2="160" y2="400"/><line x1="320" y1="40" x2="320" y2="400"/><line x1="460" y1="40" x2="460" y2="400"/>
-  </g>
-  <!-- 图钉 -->
-  <g transform="translate(300,200)">
-    <circle cx="0" cy="0" r="40" fill="url(#glow)"/>
-    <path d="M0,28 C-16,8 -16,-14 0,-14 C16,-14 16,8 0,28 Z" fill="#E67E22" stroke="#fff" stroke-width="2"/>
-    <circle cx="0" cy="-2" r="7" fill="#fff"/>
-  </g>
-  <text x="300" y="246" text-anchor="middle" font-family="ZCOOL KuaiLe,sans-serif" font-size="22" fill="#8E44AD" font-weight="bold">三皇五帝</text>
-  <!-- 指南针 -->
-  <g transform="translate(540,60)" stroke="#8E44AD" fill="#8E44AD">
-    <circle r="20" fill="none" stroke-width="2" opacity="0.6"/>
-    <path d="M0,-16 L5,4 L0,-1 L-5,4 Z" fill="#F1C40F"/>
-    <text x="0" y="-24" text-anchor="middle" font-size="12" stroke="none">北</text>
-  </g>
-  <text x="20" y="405" font-size="12" fill="#7f9aa8" font-family="Noto Sans SC">※ 约略示意图，非精确疆界</text>
+        <div class="sec-title">疆域范围<small>这张地图是按真实地理位置画的</small></div></div>
+      <div class="map-wide"><svg viewBox="0 0 720 560" role="img" aria-label="三皇五帝 · 主要活动区域" font-family="Noto Sans SC,sans-serif">
+<defs><linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eaf4f8"/><stop offset="1" stop-color="#dcebf2"/></linearGradient><radialGradient id="coreglow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#F1C40F" stop-opacity="0.45"/><stop offset="1" stop-color="#F1C40F" stop-opacity="0"/></radialGradient><filter id="paper"><feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" result="n"/><feColorMatrix in="n" type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="0.06"/></feComponentTransfer><feComposite operator="over" in2="SourceGraphic"/></filter></defs>
+<rect x="0" y="0" width="720" height="560" rx="16" fill="url(#sea)"/>
+<path d="M61.1,30.0 C74.7,41.1 101.8,85.6 142.5,96.7 C183.3,107.8 255.6,99.4 305.4,96.7 C355.1,93.9 395.8,80.0 441.1,80.0 C486.3,80.0 540.6,88.3 576.7,96.7 C612.9,105.0 649.1,107.8 658.2,130.0 C667.2,152.2 640.1,202.2 631.0,230.0 C622.0,257.8 608.4,263.3 603.9,296.7 C599.4,330.0 612.9,391.1 603.9,430.0 C594.8,468.9 572.2,507.8 549.6,530.0 C527.0,552.2 499.9,563.3 468.2,563.3 C436.5,563.3 391.3,546.7 359.6,530.0 C328.0,513.3 305.4,480.0 278.2,463.3 C251.1,446.7 224.0,446.7 196.8,430.0 C169.7,413.3 138.0,385.6 115.4,363.3 C92.8,341.1 74.7,324.4 61.1,296.7 C47.6,268.9 34.0,241.1 34.0,196.7 C34.0,152.2 56.6,57.8 61.1,30.0 C65.7,2.2 47.6,18.9 61.1,30.0 Z" fill="#efe2c2" stroke="#c9b483" stroke-width="2" filter="url(#paper)"/>
+<ellipse cx="386.8" cy="255.0" rx="192.8" ry="205.0" fill="url(#coreglow)"/>
+<text x="386.8" y="66.0" text-anchor="middle" font-size="13" font-family="ZCOOL KuaiLe,sans-serif" fill="#b8860b" opacity="0.85">★ 核心活动区</text>
+<path d="M-74.5,330.0 C-61.0,324.4 -11.2,313.3 6.9,296.7 C25.0,280.0 15.9,246.7 34.0,230.0 C52.1,213.3 97.3,196.7 115.4,196.7 C133.5,196.7 129.0,235.6 142.5,230.0 C156.1,224.4 178.7,185.6 196.8,163.3 C214.9,141.1 228.5,107.8 251.1,96.7 C273.7,85.6 314.4,93.9 332.5,96.7 C350.6,99.4 350.6,96.7 359.6,113.3 C368.7,130.0 391.3,166.1 386.8,196.7 C382.3,227.2 337.0,274.4 332.5,296.7 C328.0,318.9 346.1,330.0 359.6,330.0 C373.2,330.0 395.8,307.8 413.9,296.7 C432.0,285.6 450.1,274.4 468.2,263.3 C486.3,252.2 508.9,243.9 522.5,230.0 C536.0,216.1 545.1,188.3 549.6,180.0" fill="none" stroke="#c8923a" stroke-width="3.2" stroke-linecap="round" opacity="0.92"/>
+<text x="359.6" y="105.3" text-anchor="middle" font-size="12" font-family="ZCOOL KuaiLe,sans-serif" fill="#c8923a" opacity="0.9">黄河</text>
+<path d="M34.0,396.7 C52.1,402.2 110.9,418.9 142.5,430.0 C174.2,441.1 201.3,457.8 224.0,463.3 C246.6,468.9 260.1,463.3 278.2,463.3 C296.3,463.3 309.9,463.3 332.5,463.3 C355.1,463.3 391.3,457.8 413.9,463.3 C436.5,468.9 450.1,496.7 468.2,496.7 C486.3,496.7 504.4,477.2 522.5,463.3 C540.6,449.4 560.9,421.7 576.7,413.3 C592.6,405.0 610.7,413.3 617.4,413.3" fill="none" stroke="#3a78b5" stroke-width="3.2" stroke-linecap="round" opacity="0.92"/>
+<text x="413.9" y="455.3" text-anchor="middle" font-size="12" font-family="ZCOOL KuaiLe,sans-serif" fill="#3a78b5" opacity="0.9">长江</text>
+<path d="M241.0,353.7 L246.0,339.7 L251.0,353.7 Z" fill="#9c7b46" stroke="#6e521f" stroke-width="0.8"/><path d="M270.7,353.7 L275.7,339.7 L280.7,353.7 Z" fill="#9c7b46" stroke="#6e521f" stroke-width="0.8"/><path d="M300.4,353.7 L305.4,339.7 L310.4,353.7 Z" fill="#9c7b46" stroke="#6e521f" stroke-width="0.8"/><path d="M330.1,353.7 L335.1,339.7 L340.1,353.7 Z" fill="#9c7b46" stroke="#6e521f" stroke-width="0.8"/><path d="M359.8,353.7 L364.8,339.7 L369.8,353.7 Z" fill="#9c7b46" stroke="#6e521f" stroke-width="0.8"/><text x="305.4" y="334.7" text-anchor="middle" font-size="12" font-family="ZCOOL KuaiLe,sans-serif" fill="#6e521f">秦岭</text>
+<path d="M414.3,155.5 L419.3,141.5 L424.3,155.5 Z" fill="#9c7b46" stroke="#6e521f" stroke-width="0.8"/><path d="M414.3,187.9 L419.3,173.9 L424.3,187.9 Z" fill="#9c7b46" stroke="#6e521f" stroke-width="0.8"/><path d="M414.3,220.3 L419.3,206.3 L424.3,220.3 Z" fill="#9c7b46" stroke="#6e521f" stroke-width="0.8"/><path d="M414.3,252.7 L419.3,238.7 L424.3,252.7 Z" fill="#9c7b46" stroke="#6e521f" stroke-width="0.8"/><path d="M414.3,285.1 L419.3,271.1 L424.3,285.1 Z" fill="#9c7b46" stroke="#6e521f" stroke-width="0.8"/><text x="419.3" y="235.3" text-anchor="middle" font-size="12" font-family="ZCOOL KuaiLe,sans-serif" fill="#6e521f">太行山</text>
+<path d="M460.7,117.0 L465.7,103.0 L470.7,117.0 Z" fill="#9c7b46" stroke="#6e521f" stroke-width="0.8"/><path d="M489.5,117.0 L494.5,103.0 L499.5,117.0 Z" fill="#9c7b46" stroke="#6e521f" stroke-width="0.8"/><path d="M518.3,117.0 L523.3,103.0 L528.3,117.0 Z" fill="#9c7b46" stroke="#6e521f" stroke-width="0.8"/><path d="M547.1,117.0 L552.1,103.0 L557.1,117.0 Z" fill="#9c7b46" stroke="#6e521f" stroke-width="0.8"/><text x="508.9" y="98.0" text-anchor="middle" font-size="12" font-family="ZCOOL KuaiLe,sans-serif" fill="#6e521f">燕山</text>
+<path d="M0,-9 L2.6,-2.8 L9,-2.8 L4,1.8 L5.6,8.6 L0,4.4 L-5.6,8.6 L-4,1.8 L-9,-2.8 L-2.6,-2.8 Z" transform="translate(411.2,313.3) scale(0.95)" fill="#E67E22" stroke="#fff" stroke-width="1"/><text x="423.2" y="299.3" text-anchor="start" font-size="13" font-weight="700" font-family="Noto Sans SC,sans-serif" fill="#2C3E50">黄帝·有熊</text><text x="423.2" y="313.3" text-anchor="start" font-size="10.5" font-family="Noto Sans SC,sans-serif" fill="#7F8C8D">今河南新郑</text>
+<path d="M0,-9 L2.6,-2.8 L9,-2.8 L4,1.8 L5.6,8.6 L0,4.4 L-5.6,8.6 L-4,1.8 L-9,-2.8 L-2.6,-2.8 Z" transform="translate(346.1,333.3) scale(0.95)" fill="#E67E22" stroke="#fff" stroke-width="1"/><text x="346.1" y="359.3" text-anchor="middle" font-size="13" font-weight="700" font-family="Noto Sans SC,sans-serif" fill="#2C3E50">炎帝·神农</text><text x="346.1" y="373.3" text-anchor="middle" font-size="10.5" font-family="Noto Sans SC,sans-serif" fill="#7F8C8D">今河南淮阳</text>
+<path d="M0,-9 L2.6,-2.8 L9,-2.8 L4,1.8 L5.6,8.6 L0,4.4 L-5.6,8.6 L-4,1.8 L-9,-2.8 L-2.6,-2.8 Z" transform="translate(375.9,320.0) scale(0.95)" fill="#E67E22" stroke="#fff" stroke-width="1"/><text x="361.9" y="324.0" text-anchor="end" font-size="13" font-weight="700" font-family="Noto Sans SC,sans-serif" fill="#2C3E50">禹·阳城</text><text x="361.9" y="338.0" text-anchor="end" font-size="10.5" font-family="Noto Sans SC,sans-serif" fill="#7F8C8D">今河南登封</text>
+<path d="M0,-9 L2.6,-2.8 L9,-2.8 L4,1.8 L5.6,8.6 L0,4.4 L-5.6,8.6 L-4,1.8 L-9,-2.8 L-2.6,-2.8 Z" transform="translate(346.1,268.3) scale(0.95)" fill="#E67E22" stroke="#fff" stroke-width="1"/><text x="346.1" y="252.3" text-anchor="middle" font-size="13" font-weight="700" font-family="Noto Sans SC,sans-serif" fill="#2C3E50">尧都·陶寺</text><text x="346.1" y="266.3" text-anchor="middle" font-size="10.5" font-family="Noto Sans SC,sans-serif" fill="#7F8C8D">今山西襄汾</text>
+<path d="M0,-9 L2.6,-2.8 L9,-2.8 L4,1.8 L5.6,8.6 L0,4.4 L-5.6,8.6 L-4,1.8 L-9,-2.8 L-2.6,-2.8 Z" transform="translate(316.2,303.3) scale(0.95)" fill="#E67E22" stroke="#fff" stroke-width="1"/><text x="302.2" y="325.3" text-anchor="end" font-size="13" font-weight="700" font-family="Noto Sans SC,sans-serif" fill="#2C3E50">舜·蒲坂</text><text x="302.2" y="339.3" text-anchor="end" font-size="10.5" font-family="Noto Sans SC,sans-serif" fill="#7F8C8D">今山西永济</text>
+<rect x="275.7" y="268.7" width="16" height="16" rx="2" fill="#7F8C8D" stroke="#fff" stroke-width="1.5"/><text x="269.7" y="262.7" text-anchor="end" font-size="13" font-weight="700" font-family="Noto Sans SC,sans-serif" fill="#2C3E50">黄帝陵</text><text x="269.7" y="276.7" text-anchor="end" font-size="10.5" font-family="Noto Sans SC,sans-serif" fill="#7F8C8D">今陕西黄陵</text>
+<circle cx="441.1" cy="116.7" r="9" fill="#E74C3C" stroke="#fff" stroke-width="2"/><text x="441.1" y="121.7" text-anchor="middle" font-size="12" fill="#fff">⚔</text><text x="453.1" y="106.7" text-anchor="start" font-size="13" font-weight="700" font-family="Noto Sans SC,sans-serif" fill="#2C3E50">涿鹿</text><text x="453.1" y="120.7" text-anchor="start" font-size="10.5" font-family="Noto Sans SC,sans-serif" fill="#7F8C8D">今河北涿鹿·涿鹿之战</text>
+<circle cx="430.2" cy="133.3" r="9" fill="#E74C3C" stroke="#fff" stroke-width="2"/><text x="430.2" y="138.3" text-anchor="middle" font-size="12" fill="#fff">⚔</text><text x="416.2" y="137.3" text-anchor="end" font-size="13" font-weight="700" font-family="Noto Sans SC,sans-serif" fill="#2C3E50">阪泉</text><text x="416.2" y="151.3" text-anchor="end" font-size="10.5" font-family="Noto Sans SC,sans-serif" fill="#7F8C8D">今河北涿鹿·黄帝战炎帝</text>
+<circle cx="536.0" cy="256.7" r="7" fill="#3498DB" stroke="#fff" stroke-width="2"/><text x="548.0" y="260.7" text-anchor="start" font-size="13" font-weight="700" font-family="Noto Sans SC,sans-serif" fill="#2C3E50">蚩尤·东夷</text><text x="548.0" y="274.7" text-anchor="start" font-size="10.5" font-family="Noto Sans SC,sans-serif" fill="#7F8C8D">今山东一带</text>
+<rect x="576.9" y="442.0" width="16" height="16" rx="3" transform="rotate(45 584.9 450.0)" fill="#27AE60" stroke="#fff" stroke-width="1.5"/><text x="584.9" y="454.0" text-anchor="middle" font-size="10" fill="#fff">稻</text><text x="596.9" y="454.0" text-anchor="start" font-size="13" font-weight="700" font-family="Noto Sans SC,sans-serif" fill="#2C3E50">良渚</text><text x="596.9" y="468.0" text-anchor="start" font-size="10.5" font-family="Noto Sans SC,sans-serif" fill="#7F8C8D">今浙江杭州·长江下游古国</text>
+<rect x="346.2" y="295.3" width="16" height="16" rx="3" transform="rotate(45 354.2 303.3)" fill="#27AE60" stroke="#fff" stroke-width="1.5"/><text x="354.2" y="307.3" text-anchor="middle" font-size="10" fill="#fff">稻</text><text x="354.2" y="287.3" text-anchor="middle" font-size="13" font-weight="700" font-family="Noto Sans SC,sans-serif" fill="#2C3E50">仰韶</text><text x="354.2" y="301.3" text-anchor="middle" font-size="10.5" font-family="Noto Sans SC,sans-serif" fill="#7F8C8D">今河南渑池·黄河中游文化</text>
+<g transform="translate(20,18)"><rect x="0" y="0" width="230" height="40" rx="9" fill="#fbf3df" stroke="#b89b5e" stroke-width="1.5"/><text x="14" y="26" font-size="16" font-family="ZCOOL KuaiLe,sans-serif" fill="#7a5c2e">三皇五帝 · 主要活动区域</text></g>
+<g transform="translate(656,64)"><circle r="34" fill="#fbf3df" stroke="#b89b5e" stroke-width="1.5" opacity="0.95"/><circle r="28" fill="none" stroke="#d9c08a" stroke-width="1"/><path d="M0,-30 L6,0 L0,30 L-6,0 Z" fill="#E74C3C"/><path d="M-30,0 L0,6 L30,0 L0,-6 Z" fill="#7a5c2e" opacity="0.85"/><text x="0" y="-22" text-anchor="middle" font-size="12" font-weight="700" fill="#7a5c2e">北</text><text x="0" y="28" text-anchor="middle" font-size="10" fill="#7a5c2e">南</text><text x="28" y="4" text-anchor="middle" font-size="10" fill="#7a5c2e">东</text><text x="-28" y="4" text-anchor="middle" font-size="10" fill="#7a5c2e">西</text></g>
+<g transform="translate(28,530)"><rect x="0" y="0" width="175.4" height="7" fill="#8a6d3b"/><rect x="0" y="0" width="87.7" height="7" fill="#efe2c2" stroke="#8a6d3b" stroke-width="0.8"/><text x="0" y="-6" font-size="11" fill="#6e521f" font-family="Noto Sans SC,sans-serif">约 500 公里</text></g>
+<g transform="translate(570,468)"><rect x="0" y="0" width="140" height="102" rx="9" fill="#fbf3df" stroke="#b89b5e" stroke-width="1.5" opacity="0.96"/><text x="14" y="20" font-size="14" fill="#E67E22" font-weight="700">★</text><text x="34" y="20" font-size="12" fill="#5b4a2a" font-family="Noto Sans SC,sans-serif">重要聚落 / 都城</text><text x="14" y="42" font-size="14" fill="#E74C3C" font-weight="700">⚔</text><text x="34" y="42" font-size="12" fill="#5b4a2a" font-family="Noto Sans SC,sans-serif">古战场</text><text x="14" y="64" font-size="14" fill="#27AE60" font-weight="700">◆</text><text x="34" y="64" font-size="12" fill="#5b4a2a" font-family="Noto Sans SC,sans-serif">文化遗址</text><text x="14" y="86" font-size="14" fill="#3498DB" font-weight="700">●</text><text x="34" y="86" font-size="12" fill="#5b4a2a" font-family="Noto Sans SC,sans-serif">其他地点</text></g>
+<g transform="translate(552,92) scale(1.0)">
+      <rect x="-6" y="-6" width="162" height="124" rx="10" fill="#fbf3df" stroke="#b89b5e" stroke-width="1.5"/>
+      <text x="75" y="14" text-anchor="middle" font-size="11" font-family="ZCOOL KuaiLe,sans-serif" fill="#7a5c2e">中原在这里</text>
+      <polygon points="11.0,44.8 14.1,42.0 24.5,38.5 29.6,30.9 34.8,25.8 41.0,21.7 47.2,25.8 55.5,33.4 58.6,37.2 66.9,37.2 74.1,39.0 82.4,38.5 88.6,34.4 96.9,33.4 105.1,28.3 109.3,20.7 115.5,18.2 120.7,11.6 124.8,9.5 128.9,9.8 136.2,22.7 134.1,29.6 130.0,31.9 128.3,37.0 124.2,38.5 120.0,40.5 115.9,43.6 111.8,45.6 109.7,49.7 112.6,51.2 106.8,56.3 108.5,61.4 110.5,65.9 109.3,72.5 106.4,80.2 101.4,85.2 94.0,89.3 86.9,91.8 82.8,90.3 82.4,96.9 78.7,90.3 71.2,89.3 67.9,90.3 63.8,87.8 60.9,84.2 61.7,80.2 59.6,72.5 54.7,72.5 47.2,75.1 41.0,75.1 34.8,72.5 26.5,69.0 21.6,63.9 16.2,56.3 13.3,51.2 11.0,44.8" fill="#e9d6a8" stroke="#a07d3e" stroke-width="1"/>
+      <polygon points="85.5,94.9 87.8,95.4 88.2,97.9 86.1,98.4 84.9,96.2" fill="#e9d6a8" stroke="#a07d3e" stroke-width="0.8"/>
+      <polygon points="109.3,81.7 111.1,84.2 109.1,88.0 107.6,89.3 108.5,85.2" fill="#e9d6a8" stroke="#a07d3e" stroke-width="0.8"/>
+      <circle cx="90.7" cy="56.3" r="5" fill="#E74C3C" stroke="#fff" stroke-width="1.5"/>
+      <circle cx="90.7" cy="56.3" r="10" fill="none" stroke="#E74C3C" stroke-width="1" opacity="0.5"/>
+    </g>
 </svg></div>
-        <div class="map-text">这时候还没有“朝代”和“国家”的概念。人们生活在黄河流域和长江流域的部落里，一个大部落由一位了不起的“首领”带领。活动范围主要在今天的中原一带（河南、陕西、山西附近）。</div>
-      </div>
+      <div class="map-text" style="margin-top:14px">这时候还没有“朝代”和“国家”的概念。人们生活在黄河流域和长江流域的部落里，一个大部落由一位了不起的“首领”带领。活动范围主要在今天的中原一带（河南、陕西、山西附近），也就是地图上黄色高亮的“核心活动区”。点击下面的小人，可以跳去看每位大人物自己的故事哦！</div>
     </div>
   
     <div class="section" id="process">
@@ -326,23 +338,44 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
   
     <div class="section" id="people">
       <div class="sec-head"><div class="sec-badge">👥</div>
-        <div class="sec-title">重要人物<small>这个朝代的明星</small></div></div>
+        <div class="sec-title">重要人物<small>点一点，跳进去看大人物自己的故事</small></div></div>
       <div class="people-grid">
-      <div class="person">
+      <a class="person person-link" href="figures/huangdi.html">
         <div class="pname">黄帝</div>
         <div class="prole">人文初祖</div>
         <div class="pdesc">统一部落、传说中发明文字车船的领袖，被尊为中华民族始祖。</div>
-      </div>
-      <div class="person">
+        <div class="pstory">📖 看他的故事 →</div>
+      </a>
+      <a class="person person-link" href="figures/yan_di.html">
         <div class="pname">炎帝（神农）</div>
         <div class="prole">农皇</div>
         <div class="pdesc">尝百草、教农耕，让人们不再饿肚子。</div>
-      </div>
-      <div class="person">
-        <div class="pname">尧 · 舜 · 禹</div>
+        <div class="pstory">📖 看他的故事 →</div>
+      </a>
+      <a class="person person-link" href="figures/chiyou.html">
+        <div class="pname">蚩尤</div>
+        <div class="prole">九黎首领</div>
+        <div class="pdesc">勇猛的东夷首领，在涿鹿之战中与黄帝大战。</div>
+        <div class="pstory">📖 看他的故事 →</div>
+      </a>
+      <a class="person person-link" href="figures/yao.html">
+        <div class="pname">尧</div>
         <div class="prole">贤明首领</div>
-        <div class="pdesc">尧舜“禅让”传贤；大禹治水“三过家门而不入”。</div>
-      </div></div>
+        <div class="pdesc">把首领之位禅让给舜，是受人爱戴的好领袖。</div>
+        <div class="pstory">📖 看他的故事 →</div>
+      </a>
+      <a class="person person-link" href="figures/shun.html">
+        <div class="pname">舜</div>
+        <div class="prole">贤明首领</div>
+        <div class="pdesc">孝顺又贤能，接过尧的位子，把天下治理得很好。</div>
+        <div class="pstory">📖 看他的故事 →</div>
+      </a>
+      <a class="person person-link" href="figures/yu.html">
+        <div class="pname">大禹</div>
+        <div class="prole">治水英雄</div>
+        <div class="pdesc">治水十三年、三过家门而不入，后来成为夏朝的奠基者。</div>
+        <div class="pstory">📖 看他的故事 →</div>
+      </a></div>
     </div>
   
     <div class="section" id="politics">
