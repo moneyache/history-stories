@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>人物故事 — 上下五千年</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=ZCOOL+XiaoWei&family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;700&display=swap');
+
+  :root {
+    --bg-deep: #0d0a06;
+    --bg-panel: #1a1510;
+    --gold: #c8a45c;
+    --gold-light: #e8d5a3;
+    --red: #8b2500;
+    --red-bright: #c0392b;
+    --ink: #2c2416;
+    --ink-light: #4a3f2f;
+    --parchment: #f5e6c8;
+    --text-primary: #e8dcc8;
+    --text-dim: #a09888;
+    --border: #3a3020;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'Noto Serif SC', 'SimSun', 'STSong', serif;
+    background: var(--bg-deep);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  /* ===== Animated background particles ===== */
+  .bg-particles {
+    position: fixed; top:0; left:0; z-index:0;
+    width: 100%; height: 100%;
+    pointer-events: none; opacity: 0.4;
+  }
+
+  /* ===== Hero Section ===== */
+  .hero {
+    position: relative; z-index: 1;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 2rem;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(200,164,92,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 50% 100%, rgba(139,37,0,0.06) 0%, transparent 60%),
+      linear-gradient(180deg, var(--bg-deep) 0%, #110e08 50%, var(--bg-deep) 100%);
+  }
+
+  /* Chinese pattern border top & bottom */
+  .hero::before {
+    content: '';
+    position: absolute; top:0; left:0;
+    width: 100%; height: 4px;
+    background: linear-gradient(90deg,
+      transparent 0%, var(--gold) 20%, var(--gold-light) 50%, var(--gold) 80%, transparent 100%);
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom:0; left:0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg,
+      transparent 0%, rgba(200,164,92,0.3) 30%, rgba(200,164,92,0.1) 50%, rgba(200,164,92,0.3) 70%, transparent 100%);
+  }
+
+  /* Year marks */
+  .timeline-years {
+    display: flex; gap: 1.5rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap; justify-content: center;
+    opacity: 0;
+    animation: fadeSlideUp 1.2s ease 0.3s forwards;
+  }
+  .timeline-year {
+    font-family: 'Ma Shan Zheng', 'KaiTi', cursive;
+    font-size: 1.6rem;
+    color: var(--text-dim);
+    position: relative;
+    padding: 0 0.5rem;
+  }
+  .timeline-year::after {
+    content: '';
+    position: absolute; bottom: -4px; left: 20%;
+    width: 60%; height: 1px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.5s;
+  }
+  .timeline-year:hover::after {
+    transform: scaleX(1);
+  }
+  .timeline-year.active {
+    color: var(--gold-light);
+  }
+
+  /* Main title */
+  .main-title {
+    text-align: center; margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeSlideUp 1s ease 0.5s forwards;
+  }
+  .main-title .sub {
+    font-family: 'Ma Shan Zheng', 'KaiTi', cursive;
+    font-size: 1.8rem;
+    color: var(--gold);
+    letter-spacing: 0.5em;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 30px rgba(200,164,92,0.3);
+  }
+  .main-title h1 {
+    font-family: 'Noto Serif SC', 'SimSun', serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 900;
+    color: var(--parchment);
+    letter-spacing: 0.15em;
+    line-height: 1.3;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.5), 0 0 60px rgba(200,164,92,0.15);
+    background: linear-gradient(180deg, #fff 0%, var(--parchment) 50%, var(--gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .main-title .subtitle {
+    font-size: 1.1rem;
+    color: var(--text-dim);
+    letter-spacing: 0.3em;
+    margin-top: 1.5rem;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-weight: 300;
+  }
+
+  /* Decorative separator */
+  .separator {
+    display: flex; align-items: center; gap: 1rem;
+    margin: 2rem 0;
+    opacity: 0;
+    animation: fadeSlideUp 1s ease 0.7s forwards;
+    width: clamp(280px, 50vw, 500px);
+  }
+  .separator .line {
+    flex: 1; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .separator .diamond {
+    width: 10px; height: 10px;
+    background: var(--gold);
+    transform: rotate(45deg);
+    box-shadow: 0 0 15px rgba(200,164,92,0.5);
+  }
+
+  /* Quote */
+  .quote {
+    text-align: center;
+    opacity: 0;
+    animation: fadeSlideUp 1s ease 0.9s forwards;
+    margin-bottom: 4rem;
+  }
+  .quote p {
+    font-family: 'Ma Shan Zheng', 'KaiTi', cursive;
+    font-size: 1.5rem;
+    color: var(--text-dim);
+    line-height: 2;
+    font-style: italic;
+    letter-spacing: 0.1em;
+  }
+
+  /* ===== Card Selection ===== */
+  .card-section {
+    position: relative; z-index: 1;
+    display: flex; gap: 2rem;
+    padding: 0 2rem 4rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeSlideUp 1s ease 1.1s forwards;
+  }
+
+  .story-card {
+    position: relative;
+    width: clamp(320px, 40vw, 480px);
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .story-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--gold);
+    box-shadow:
+      0 20px 60px rgba(0,0,0,0.5),
+      0 0 40px rgba(200,164,92,0.15),
+      0 0 80px rgba(200,164,92,0.05);
+  }
+
+  .story-card::before {
+    content: '';
+    position: absolute; top:0; left:0;
+    width: 100%; height: 100%;
+    background: radial-gradient(ellipse at 50% 0%, rgba(200,164,92,0.06), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .story-card:hover::before { opacity: 1; }
+
+  /* Card top border accent */
+  .card-accent {
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    transition: all 0.4s;
+  }
+  .story-card:hover .card-accent {
+    background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+    height: 4px;
+  }
+
+  .card-body {
+    padding: 2rem 2rem 2.5rem;
+    text-align: center;
+  }
+
+  .card-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    filter: grayscale(0.3);
+    transition: transform 0.4s;
+  }
+  .story-card:hover .card-icon { transform: scale(1.1); }
+
+  .card-dynasty {
+    font-family: 'Ma Shan Zheng', 'KaiTi', cursive;
+    font-size: 1.3rem;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    margin-bottom: 0.5rem;
+  }
+
+  .card-name {
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: var(--parchment);
+    margin-bottom: 0.8rem;
+    letter-spacing: 0.15em;
+    font-family: 'ZCOOL XiaoWei', 'Noto Serif SC', serif;
+  }
+
+  .card-tags {
+    display: flex; gap: 0.6rem;
+    justify-content: center; flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+  .card-tag {
+    font-size: 0.8rem;
+    padding: 0.2rem 0.8rem;
+    background: rgba(200,164,92,0.1);
+    border: 1px solid rgba(200,164,92,0.3);
+    border-radius: 20px;
+    color: var(--gold-light);
+    font-family: 'Noto Sans SC', sans-serif;
+  }
+
+  .card-desc {
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    line-height: 1.8;
+    text-align: center;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-weight: 300;
+  }
+
+  .card-btn {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.6rem 2rem;
+    border: 1px solid var(--gold);
+    border-radius: 4px;
+    color: var(--gold);
+    font-size: 1rem;
+    transition: all 0.3s;
+    letter-spacing: 0.2em;
+    font-family: 'Noto Serif SC', serif;
+  }
+  .story-card:hover .card-btn {
+    background: var(--gold);
+    color: var(--bg-deep);
+  }
+
+  /* ===== Footer ===== */
+  .site-footer {
+    position: relative; z-index: 1;
+    text-align: center;
+    padding: 3rem 2rem 2rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    font-family: 'Noto Sans SC', sans-serif;
+    letter-spacing: 0.1em;
+    font-weight: 300;
+  }
+  .site-footer .poem {
+    font-family: 'Ma Shan Zheng', 'KaiTi', cursive;
+    font-size: 1.2rem;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    opacity: 0.6;
+  }
+
+  /* ===== Scroll indicator ===== */
+  .scroll-indicator {
+    position: fixed; bottom: 2rem; left:50%; transform: translateX(-50%); z-index: 2;
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    opacity: 0;
+    animation: fadeSlideUp 1s ease 1.5s forwards, float 2s ease-in-out 2.5s infinite;
+  }
+  .scroll-indicator span {
+    font-size: 0.75rem; color: var(--text-dim); letter-spacing: 0.3em;
+    font-family: 'Noto Sans SC', sans-serif;
+  }
+  .scroll-indicator .arrow {
+    width: 24px; height: 24px;
+    border-right: 1px solid var(--gold);
+    border-bottom: 1px solid var(--gold);
+    transform: rotate(45deg);
+    opacity: 0.5;
+  }
+
+  /* ===== Animations ===== */
+  @keyframes fadeSlideUp {
+    from { opacity:0; transform: translateY(30px); }
+    to { opacity:1; transform: translateY(0); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-8px); }
+  }
+  @keyframes inkDrop {
+    from { clip-path: circle(0% at 50% 50%); opacity: 0; }
+    to { clip-path: circle(100% at 50% 50%); opacity: 1; }
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 768px) {
+    .hero { min-height: auto; padding-top: 4rem; padding-bottom: 2rem; }
+    .timeline-years { gap: 1rem; }
+    .timeline-year { font-size: 1.2rem; }
+    .main-title h1 { font-size: 2.5rem; }
+    .main-title .sub { font-size: 1.3rem; }
+    .quote p { font-size: 1.2rem; }
+    .card-section { padding: 0 1rem 3rem; gap: 1.5rem; }
+    .story-card { width: 100%; }
+    .card-name { font-size: 2.2rem; }
+    .scroll-indicator { display: none; }
+  }
+
+  @media (max-width: 480px) {
+    .main-title h1 { font-size: 2rem; letter-spacing: 0.1em; }
+    .card-body { padding: 1.5rem; }
+    .card-icon { font-size: 3rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Background canvas for subtle ink effects -->
+<canvas class="bg-particles" id="bgCanvas"></canvas>
+
+<!-- ========== HERO ========== -->
+<section class="hero" id="hero">
+  <!-- Dynasty timeline -->
+  <div class="timeline-years">
+    <span class="timeline-year">夏商</span>
+    <span class="timeline-year">西周</span>
+    <span class="timeline-year">春秋</span>
+    <span class="timeline-year">战国</span>
+    <span class="timeline-year">秦汉</span>
+    <span class="timeline-year active">三国</span>
+    <span class="timeline-year">晋</span>
+    <span class="timeline-year">南北朝</span>
+    <span class="timeline-year">隋唐</span>
+    <span class="timeline-year">五代</span>
+    <span class="timeline-year">宋</span>
+    <span class="timeline-year active">元明</span>
+    <span class="timeline-year">清</span>
+  </div>
+
+  <!-- Main title -->
+  <div class="main-title">
+    <div class="sub">人 物 故 事</div>
+    <h1>上下五千年</h1>
+    <p class="subtitle">读史使人明智 · 以人为镜可知得失</p>
+  </div>
+
+  <!-- Separator -->
+  <div class="separator">
+    <span class="line"></span>
+    <span class="diamond"></span>
+    <span class="line"></span>
+  </div>
+
+  <!-- Quote -->
+  <div class="quote">
+    <p>
+      滚滚长江东逝水，浪花淘尽英雄。<br>
+      是非成败转头空，青山依旧在，几度夕阳红。
+    </p>
+  </div>
+
+  <!-- Story cards -->
+  <div class="card-section">
+    <!-- Cao Cao -->
+    <a href="caocao.html" class="story-card" id="card-caocao">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-icon">⚔️</div>
+        <div class="card-dynasty">东 汉 · 三 国</div>
+        <div class="card-name">曹 操</div>
+        <div class="card-tags">
+          <span class="card-tag">乱世奸雄</span>
+          <span class="card-tag">挟天子令诸侯</span>
+          <span class="card-tag">官渡之战</span>
+          <span class="card-tag">建安风骨</span>
+        </div>
+        <p class="card-desc">
+          治世之能臣，乱世之奸雄。<br>
+          统一北方、推行屯田、唯才是举，<br>
+          开创魏国基业的一代枭雄。
+        </p>
+        <span class="card-btn">阅读故事 →</span>
+      </div>
+    </a>
+
+    <!-- Zhu Yuanzhang -->
+    <a href="zhuyuanzhang.html" class="story-card" id="card-zhuyuanzhang">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-icon">👑</div>
+        <div class="card-dynasty">元 末 · 明 初</div>
+        <div class="card-name">朱元璋</div>
+        <div class="card-tags">
+          <span class="card-tag">乞丐皇帝</span>
+          <span class="card-tag">驱逐鞑虏</span>
+          <span class="card-tag">洪武之治</span>
+          <span class="card-tag">布衣天子</span>
+        </div>
+        <p class="card-desc">
+          出身贫寒，做过乞丐和尚。<br>
+          从最底层一路杀到天子之位，<br>
+          建立大明王朝的传奇一生。
+        </p>
+        <span class="card-btn">阅读故事 →</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <p class="poem">古今多少事，都付笑谈中。</p>
+  <p>— 人物故事 · 上下五千年 —</p>
+  <p style="margin-top:0.5rem;opacity:0.4;">一部中国史，半部英雄谱</p>
+</footer>
+
+<!-- Scroll indicator -->
+<div class="scroll-indicator" id="scrollHint">
+  <span>向下浏览</span>
+  <div class="arrow"></div>
+</div>
+
+<script>
+// ===== Background ink particles =====
+const canvas = document.getElementById('bgCanvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+class Particle {
+  constructor() {
+    this.reset();
+  }
+  reset() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.size = Math.random() * 2 + 0.5;
+    this.speedX = (Math.random() - 0.5) * 0.3;
+    this.speedY = -Math.random() * 0.5 - 0.1;
+    this.opacity = Math.random() * 0.4 + 0.1;
+    this.life = 1;
+    this.decay = Math.random() * 0.003 + 0.001;
+  }
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    this.life -= this.decay;
+    if (this.life <= 0 || this.y < -10) this.reset();
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(200,164,92,${this.opacity * this.life})`;
+    ctx.fill();
+  }
+}
+
+// Create particles
+for (let i = 0; i < 80; i++) {
+  const p = new Particle();
+  p.y = Math.random() * canvas.height; // spread them out
+  p.life = Math.random();
+  particles.push(p);
+}
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(p => { p.update(); p.draw(); });
+  requestAnimationFrame(animate);
+}
+animate();
+
+// ===== Scroll hint fade out =====
+const scrollHint = document.getElementById('scrollHint');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 100) {
+    scrollHint.style.opacity = '0';
+    scrollHint.style.transition = 'opacity 0.5s';
+  } else {
+    scrollHint.style.opacity = '1';
+  }
+});
+
+// ===== Parallax effect on cards =====
+document.querySelectorAll('.story-card').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = (y - centerY) / centerY * -5;
+    const rotateY = (x - centerX) / centerX * 5;
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+  });
+});
+</script>
+</body>
+</html>
