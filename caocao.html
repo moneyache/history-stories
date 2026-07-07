@@ -1,0 +1,1567 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>曹操的故事 - 乱世英雄的传奇一生</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;600;700;900&family=ZCOOL+KuaiLe&family=Ma+Shan+Zheng&display=swap');
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --gold: #D4A017;
+  --red: #C0392B;
+  --dark-red: #8B0000;
+  --green: #27AE60;
+  --blue: #2E86C1;
+  --deep-blue: #1B4F72;
+  --purple: #7D3C98;
+  --orange: #E67E22;
+  --dark: #1a1a2e;
+  --light: #FFFDF5;
+  --card-shadow: 0 10px 40px rgba(0,0,0,0.15);
+}
+
+body {
+  font-family: 'Noto Sans SC', sans-serif;
+  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 5%, #0f3460 10%, #2d3436 20%, #636e72 50%, #b2bec3 80%, #dfe6e9 100%);
+  background-attachment: fixed;
+  color: #2C3E50;
+  overflow-x: hidden;
+}
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(ellipse at center, #1a1a2e 0%, #0a0a15 100%);
+}
+
+.stars { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+.star { position: absolute; background: white; border-radius: 50%; animation: twinkle 3s ease-in-out infinite; }
+.star:nth-child(1) { width: 3px; height: 3px; top: 10%; left: 15%; animation-delay: 0s; }
+.star:nth-child(2) { width: 2px; height: 2px; top: 20%; left: 35%; animation-delay: 0.5s; }
+.star:nth-child(3) { width: 3px; height: 3px; top: 8%; left: 55%; animation-delay: 1s; }
+.star:nth-child(4) { width: 2px; height: 2px; top: 15%; left: 75%; animation-delay: 1.5s; }
+.star:nth-child(5) { width: 4px; height: 4px; top: 25%; left: 85%; animation-delay: 0.3s; }
+.star:nth-child(6) { width: 3px; height: 3px; top: 5%; left: 25%; animation-delay: 1.8s; }
+.star:nth-child(7) { width: 2px; height: 2px; top: 18%; left: 65%; animation-delay: 0.7s; }
+.star:nth-child(8) { width: 3px; height: 3px; top: 12%; left: 45%; animation-delay: 2.1s; }
+.star:nth-child(9) { width: 2px; height: 2px; top: 30%; left: 10%; animation-delay: 1.2s; }
+.star:nth-child(10) { width: 3px; height: 3px; top: 22%; left: 90%; animation-delay: 0.9s; }
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.hero-title {
+  font-family: 'Ma Shan Zheng', 'ZCOOL KuaiLe', cursive;
+  font-size: clamp(3rem, 10vw, 6rem);
+  color: #D4A017;
+  text-shadow: 0 0 20px rgba(212,160,23,0.5), 3px 3px 0 rgba(0,0,0,0.5);
+  animation: titleGlow 2s ease-out;
+  margin-bottom: 10px;
+  z-index: 2;
+}
+
+@keyframes titleGlow {
+  0% { opacity: 0; transform: scale(0.5); letter-spacing: 30px; }
+  50% { letter-spacing: normal; }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 3vw, 1.6rem);
+  color: #b2bec3;
+  margin-bottom: 15px;
+  z-index: 2;
+  animation: fadeIn 2s ease-out;
+  letter-spacing: 4px;
+}
+
+.hero-poem {
+  font-family: 'Ma Shan Zheng', cursive;
+  font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+  color: #D4A017;
+  opacity: 0.8;
+  line-height: 2;
+  margin-bottom: 30px;
+  z-index: 2;
+  animation: fadeIn 2.5s ease-out;
+}
+
+.hero-sword {
+  width: clamp(100px, 20vw, 150px);
+  height: clamp(100px, 20vw, 150px);
+  z-index: 2;
+  animation: swordFloat 4s ease-in-out infinite;
+}
+
+@keyframes swordFloat {
+  0%, 100% { transform: translateY(0) rotate(-5deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.9rem;
+  color: #636e72;
+  animation: bounce 2s infinite;
+  z-index: 2;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(12px); }
+}
+
+/* ===== NAV ===== */
+.timeline-nav {
+  position: sticky;
+  top: 0;
+  background: rgba(22,33,62,0.97);
+  backdrop-filter: blur(15px);
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px 10px;
+  z-index: 100;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  flex-wrap: wrap;
+  border-bottom: 2px solid #D4A017;
+}
+
+.timeline-dot {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #b2bec3;
+  border: 2px solid transparent;
+  white-space: nowrap;
+}
+
+.timeline-dot:hover { background: rgba(212,160,23,0.2); transform: scale(1.05); color: #D4A017; }
+.timeline-dot.active { color: #D4A017; border-color: #D4A017; background: rgba(212,160,23,0.15); }
+.timeline-dot .dot-icon { font-size: 1.1rem; }
+
+/* ===== STORY SECTION ===== */
+.story-section {
+  max-width: 860px;
+  margin: 50px auto;
+  padding: 30px 24px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.7s ease-out;
+}
+
+.story-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 22px;
+  border-radius: 25px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 15px;
+  animation: badgePulse 2s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 rgba(212,160,23,0); }
+  50% { transform: scale(1.04); box-shadow: 0 0 20px rgba(212,160,23,0.3); }
+}
+
+.section-title {
+  font-family: 'Ma Shan Zheng', 'ZCOOL KuaiLe', cursive;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  margin-bottom: 20px;
+  line-height: 1.4;
+  color: #1a1a2e;
+}
+
+.story-card {
+  background: rgba(255,255,255,0.95);
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: var(--card-shadow);
+  margin-bottom: 22px;
+  border-left: 7px solid var(--accent, #D4A017);
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.story-card::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 80px; height: 80px;
+  background: var(--accent, #D4A017);
+  opacity: 0.04;
+  border-radius: 0 0 0 80px;
+}
+
+.story-card:hover { transform: translateX(6px); box-shadow: 0 15px 45px rgba(0,0,0,0.2); }
+
+.story-card p {
+  font-size: 1.08rem;
+  line-height: 2;
+  margin-bottom: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+.story-card p:last-child { margin-bottom: 0; }
+
+.highlight {
+  background: linear-gradient(120deg, transparent 0%, #F39C12 50%, transparent 100%);
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-weight: 700;
+  color: white;
+}
+
+.highlight-red {
+  background: linear-gradient(120deg, transparent 0%, #E74C3C 50%, transparent 100%);
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-weight: 700;
+  color: white;
+}
+
+.story-illustration {
+  text-align: center;
+  margin: 25px 0;
+}
+
+.story-illustration svg {
+  max-width: 100%;
+  height: auto;
+  filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
+}
+
+.fun-fact {
+  background: linear-gradient(135deg, #FDEBD0, #FADBD8);
+  border-radius: 16px;
+  padding: 18px 22px;
+  margin: 18px 0;
+  border: 2px dashed #E67E22;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.fun-fact .icon {
+  font-size: 2.2rem;
+  flex-shrink: 0;
+  animation: wiggle 2s ease-in-out infinite;
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-6deg); }
+  50% { transform: rotate(6deg); }
+}
+
+.fun-fact .text { font-size: 0.95rem; line-height: 1.8; }
+.fun-fact .text strong { color: #D35400; }
+
+/* ===== BATTLE CARDS ===== */
+.battle-scene {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 15px;
+  align-items: center;
+  margin: 20px 0;
+  background: rgba(255,255,255,0.9);
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: var(--card-shadow);
+}
+
+.battle-side {
+  text-align: center;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.battle-side.winner { background: linear-gradient(135deg, #D5F5E3, #ABEBC6); }
+.battle-side.loser { background: linear-gradient(135deg, #FADBD8, #F5B7B1); }
+
+.battle-side h3 { font-size: 1.2rem; margin-bottom: 8px; }
+.battle-side .stat { font-size: 0.9rem; color: #555; }
+
+.battle-vs {
+  font-family: 'ZCOOL KuaiLe', cursive;
+  font-size: 2.5rem;
+  color: #E74C3C;
+  text-align: center;
+  animation: vsPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes vsPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+/* ===== INTERACTIVE TIMELINE ===== */
+.interactive-timeline {
+  position: relative;
+  padding: 40px 0;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background: linear-gradient(to bottom, #E74C3C, #F39C12, #2ECC71, #3498DB, #9B59B6, #E74C3C);
+  border-radius: 3px;
+  transform: translateX(-50%);
+}
+
+.timeline-event {
+  display: flex;
+  align-items: center;
+  margin-bottom: 35px;
+  position: relative;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.6s ease-out;
+}
+
+.timeline-event.visible { opacity: 1; transform: translateY(0); }
+.timeline-event:nth-child(even) { flex-direction: row-reverse; }
+
+.timeline-event .event-year {
+  flex: 0 0 45%;
+  padding: 15px;
+}
+
+.timeline-event .event-year .year {
+  font-family: 'ZCOOL KuaiLe', sans-serif;
+  font-size: 1.4rem;
+  color: #D4A017;
+  margin-bottom: 5px;
+}
+
+.timeline-event .event-year .desc {
+  font-size: 0.9rem;
+  color: #636e72;
+  line-height: 1.5;
+}
+
+.timeline-event .event-dot {
+  flex: 0 0 20px;
+  height: 20px;
+  background: #D4A017;
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 0 0 10px rgba(212,160,23,0.5);
+  z-index: 2;
+}
+
+/* ===== QUOTE CARD ===== */
+.quote-card {
+  background: linear-gradient(135deg, #2C3E50, #1a1a2e);
+  color: #D4A017;
+  border-radius: 20px;
+  padding: 30px;
+  margin: 22px 0;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.quote-card::before {
+  content: '「';
+  position: absolute;
+  top: -20px;
+  left: 20px;
+  font-size: 5rem;
+  color: rgba(212,160,23,0.2);
+  font-family: serif;
+}
+
+.quote-card .quote-text {
+  font-family: 'Ma Shan Zheng', cursive;
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  line-height: 2;
+  position: relative;
+  z-index: 1;
+}
+
+.quote-card .quote-author {
+  margin-top: 15px;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+/* ===== SKILL CARD GRID ===== */
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.skill-card {
+  background: white;
+  border-radius: 16px;
+  padding: 22px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+.skill-card.selected {
+  border-color: #D4A017;
+  background: #FFFDE7;
+}
+
+.skill-card .skill-icon {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  transition: transform 0.3s;
+}
+
+.skill-card:hover .skill-icon { transform: scale(1.2); }
+
+.skill-card h3 { font-size: 1.05rem; margin-bottom: 6px; color: #1a1a2e; }
+.skill-card .skill-detail { display: none; font-size: 0.85rem; color: #636e72; line-height: 1.6; margin-top: 8px; }
+.skill-card.selected .skill-detail { display: block; }
+
+/* ===== QUIZ ===== */
+.quiz-section {
+  max-width: 860px;
+  margin: 60px auto;
+  padding: 30px 24px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.7s ease-out;
+}
+
+.quiz-section.visible { opacity: 1; transform: translateY(0); }
+
+.quiz-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.quiz-header h2 {
+  font-family: 'Ma Shan Zheng', cursive;
+  font-size: 2.5rem;
+  color: #1a1a2e;
+  margin-bottom: 10px;
+}
+
+.quiz-card {
+  background: white;
+  border-radius: 20px;
+  padding: 28px;
+  margin-bottom: 20px;
+  box-shadow: var(--card-shadow);
+  transition: all 0.3s;
+}
+
+.quiz-card .q-number {
+  font-size: 0.85rem;
+  color: #D4A017;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.quiz-card .q-text {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+.quiz-option {
+  display: block;
+  width: 100%;
+  padding: 14px 18px;
+  margin-bottom: 10px;
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1rem;
+  text-align: left;
+  transition: all 0.3s;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.quiz-option:hover { background: #FFF3CD; border-color: #F39C12; }
+
+.quiz-option.correct {
+  background: #D5F5E3;
+  border-color: #27AE60;
+  color: #1E8449;
+  font-weight: 700;
+  animation: correctPulse 0.5s ease-out;
+}
+
+.quiz-option.wrong {
+  background: #FADBD8;
+  border-color: #E74C3C;
+  color: #C0392B;
+  animation: shake 0.5s ease-out;
+}
+
+@keyframes correctPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  75% { transform: translateX(8px); }
+}
+
+.quiz-feedback {
+  display: none;
+  margin-top: 12px;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.quiz-feedback.show { display: block; }
+.quiz-feedback.correct { background: #D5F5E3; border: 1px solid #27AE60; }
+.quiz-feedback.wrong { background: #FADBD8; border: 1px solid #E74C3C; }
+
+.quiz-result {
+  text-align: center;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #1a1a2e, #2C3E50);
+  border-radius: 20px;
+  color: white;
+  display: none;
+  margin-top: 30px;
+}
+
+.quiz-result.show { display: block; }
+
+.quiz-result .score {
+  font-family: 'ZCOOL KuaiLe', cursive;
+  font-size: 3rem;
+  color: #D4A017;
+  margin: 15px 0;
+}
+
+.quiz-result .message {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.quiz-retry {
+  display: inline-block;
+  padding: 12px 30px;
+  background: #D4A017;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.quiz-retry:hover { background: #B8860B; transform: scale(1.05); }
+
+/* ===== FOOTER ===== */
+.footer {
+  text-align: center;
+  padding: 50px 20px;
+  color: #b2bec3;
+  background: #1a1a2e;
+  font-size: 0.9rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .battle-scene { grid-template-columns: 1fr; }
+  .battle-vs { transform: rotate(90deg); }
+  .timeline-event { flex-direction: column !important; }
+  .timeline-line { display: none; }
+  .timeline-event .event-year { text-align: center !important; flex: auto; }
+  .timeline-dot { padding: 5px 10px; font-size: 0.72rem; gap: 3px; }
+  .skill-grid { grid-template-columns: 1fr; }
+  .story-card { padding: 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="stars">
+    <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+    <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+  </div>
+  
+  <div class="hero-sword">
+    <svg viewBox="0 0 200 200" width="200" height="200">
+      <defs>
+        <linearGradient id="swordGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#D4A017"/>
+          <stop offset="100%" stop-color="#8B6914"/>
+        </linearGradient>
+      </defs>
+      <!-- blade -->
+      <polygon points="100,20 105,20 103,80 97,80" fill="url(#swordGrad)"/>
+      <polygon points="103,80 97,80 100,140" fill="#8B6914"/>
+      <!-- guard -->
+      <rect x="70" y="75" width="60" height="8" rx="4" fill="#D4A017"/>
+      <!-- hilt -->
+      <rect x="92" y="80" width="16" height="50" rx="3" fill="#654321"/>
+      <!-- pommel -->
+      <circle cx="100" cy="135" r="8" fill="#D4A017"/>
+      <!-- shine -->
+      <line x1="101" y1="30" x2="101" y2="70" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+    </svg>
+  </div>
+
+  <h1 class="hero-title">曹操</h1>
+  <p class="hero-subtitle">公元155年 — 公元220年</p>
+  <p class="hero-poem">
+    老骥伏枥，志在千里<br>
+    烈士暮年，壮心不已
+  </p>
+  <div class="scroll-hint">⬇ 向下滚动，走进曹操的世界</div>
+</div>
+
+<!-- ============ NAV ============ -->
+<nav class="timeline-nav" id="mainNav">
+  <div class="timeline-dot" data-section="s1"><span class="dot-icon">🧒</span> 少年</div>
+  <div class="timeline-dot" data-section="s2"><span class="dot-icon">⚖️</span> 锋芒</div>
+  <div class="timeline-dot" data-section="s3"><span class="dot-icon">🔥</span> 讨董</div>
+  <div class="timeline-dot" data-section="s4"><span class="dot-icon">👑</span> 挟天子</div>
+  <div class="timeline-dot" data-section="s5"><span class="dot-icon">⚔️</span> 官渡</div>
+  <div class="timeline-dot" data-section="s6"><span class="dot-icon">🏛️</span> 统一</div>
+  <div class="timeline-dot" data-section="s7"><span class="dot-icon">🔥</span> 赤壁</div>
+  <div class="timeline-dot" data-section="s8"><span class="dot-icon">📜</span> 求贤</div>
+  <div class="timeline-dot" data-section="s9"><span class="dot-icon">👴</span> 晚年</div>
+  <div class="timeline-dot" data-section="s10"><span class="dot-icon">⚖️</span> 评价</div>
+  <div class="timeline-dot" data-section="quiz"><span class="dot-icon">❓</span> 问答</div>
+</nav>
+
+<!-- ============ CHAPTER 1: 少年曹操 ============ -->
+<section class="story-section" id="s1" data-nav="s1">
+  <div class="section-badge" style="background:linear-gradient(135deg,#E67E22,#D35400)">🧒 第一章</div>
+  <h2 class="section-title">放荡不羁的少年</h2>
+
+  <div class="story-illustration">
+    <svg viewBox="0 0 680 300" width="680" height="300">
+      <defs>
+        <linearGradient id="sky1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#87CEEB"/><stop offset="100%" stop-color="#E8F5E9"/></linearGradient>
+        <linearGradient id="tree1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2E7D32"/><stop offset="100%" stop-color="#5D4037"/></linearGradient>
+      </defs>
+      <rect width="680" height="300" fill="url(#sky1)"/>
+      <!-- Sun -->
+      <circle cx="580" cy="60" r="40" fill="#FDB813" opacity="0.9"/>
+      <circle cx="580" cy="60" r="50" fill="#FDB813" opacity="0.2"/>
+      <!-- Grass -->
+      <ellipse cx="340" cy="290" rx="400" ry="60" fill="#4CAF50"/>
+      <rect x="0" y="270" width="680" height="40" fill="#388E3C"/>
+      <!-- Tree left -->
+      <rect x="60" y="180" width="18" height="100" fill="#5D4037" rx="4"/>
+      <circle cx="69" cy="160" r="45" fill="#2E7D32"/>
+      <!-- Tree right -->
+      <rect x="560" y="190" width="14" height="90" fill="#5D4037" rx="3"/>
+      <circle cx="567" cy="175" r="35" fill="#388E3C"/>
+      <!-- Young Cao Cao -->
+      <text x="310" y="290" font-size="12" fill="#333" text-anchor="middle">点击下面的卡片了解更多→</text>
+      <!-- Birds -->
+      <text x="120" y="80" font-size="20">🐦</text>
+      <text x="350" y="50" font-size="16">🐦</text>
+    </svg>
+  </div>
+
+  <div class="story-card" style="--accent:#E67E22;">
+    <p>公元155年，在今天的安徽省亳州市，一个小男孩出生了。他叫<span class="highlight">曹操</span>，字孟德。</p>
+    <p>爷爷曹腾是个宦官——就是皇宫里专门伺候皇帝的人，虽然不能有亲生孩子，但收养了曹操的爸爸曹嵩。</p>
+    <p>这样的家庭背景让曹操从小就被一些"名门正派"看不起——人家觉得他是<span class="highlight-red">宦官后代</span>，身份不够高贵。</p>
+  </div>
+
+  <div class="story-card" style="--accent:#D35400;">
+    <p>但曹操根本不在乎别人的眼光！他从小就不爱读死板的书，最喜欢<span class="highlight">骑马打猎、舞枪弄棒</span>，像个小游侠一样到处跑。</p>
+    <p>一个叔叔看他太调皮，就去跟曹嵩告状："你儿子整天游手好闲，这样下去要废啊！"结果曹操想了个办法——下次见到叔叔时，假装嘴歪眼斜、口吐白沫。叔叔赶紧去告诉曹嵩，曹嵩跑来一看，曹操好端端的。从此曹嵩再也不信叔叔的话了——这小孩，从小就<span class="highlight">聪明又狡黠</span>！</p>
+  </div>
+
+  <div class="fun-fact">
+    <span class="icon">💡</span>
+    <span class="text"><strong>有趣的小知识：</strong>虽然曹操爱玩，但他其实很用功。他偷偷读了大量的兵书和史书，最爱看《孙子兵法》。后来他还给《孙子兵法》做了详细注释——这是流传至今最早的《孙子兵法》注解之一！一个"不爱读书"的孩子，最后成了大学问家。</span>
+  </div>
+</section>
+
+<!-- ============ CHAPTER 2: 初露锋芒 ============ -->
+<section class="story-section" id="s2" data-nav="s2">
+  <div class="section-badge" style="background:linear-gradient(135deg,#2E86C1,#1B4F72)">⚖️ 第二章</div>
+  <h2 class="story-title">初露锋芒——洛阳北部尉</h2>
+
+  <div class="story-illustration">
+    <svg viewBox="0 0 680 280" width="680" height="280">
+      <rect width="680" height="280" fill="#FFF8E1"/>
+      <!-- City gate -->
+      <rect x="250" y="60" width="180" height="200" fill="#8D6E63" rx="5"/>
+      <rect x="260" y="70" width="160" height="180" fill="#A1887F"/>
+      <rect x="310" y="100" width="60" height="140" fill="#5D4037" rx="30"/>
+      <!-- Gate top -->
+      <rect x="230" y="40" width="220" height="30" fill="#6D4C41" rx="5"/>
+      <polygon points="240,40 340,0 440,40" fill="#6D4C41"/>
+      <!-- Signs -->
+      <rect x="420" y="80" width="80" height="18" fill="#C0392B" rx="3"/>
+      <text x="460" y="93" font-size="10" fill="white" text-anchor="middle" font-weight="700">洛阳北门</text>
+      <!-- Lanterns -->
+      <circle cx="270" cy="70" r="10" fill="#F39C12" opacity="0.8"/>
+      <circle cx="410" cy="70" r="10" fill="#F39C12" opacity="0.8"/>
+      <!-- Ground -->
+      <rect x="0" y="250" width="680" height="30" fill="#D7CCC8"/>
+      <!-- Five-colored sticks -->
+      <rect x="450" y="200" width="6" height="60" fill="#E74C3C" transform="rotate(-15,453,200)"/>
+      <rect x="465" y="200" width="6" height="60" fill="#3498DB" transform="rotate(-5,468,200)"/>
+      <rect x="480" y="200" width="6" height="60" fill="#F1C40F" transform="rotate(5,483,200)"/>
+      <rect x="495" y="200" width="6" height="60" fill="#2ECC71" transform="rotate(15,498,200)"/>
+      <rect x="510" y="200" width="6" height="60" fill="#9B59B6"/>
+      <text x="480" y="275" font-size="11" fill="#333" text-anchor="middle">五色棒（违法必罚！）</text>
+      <!-- Arrow to sticks -->
+      <line x1="340" y1="230" x2="445" y2="220" stroke="#333" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <text x="380" y="225" font-size="10" fill="#333">悬五色棒于城门</text>
+    </svg>
+  </div>
+
+  <div class="story-card" style="--accent:#2E86C1;">
+    <p>曹操二十岁的时候，被推荐当了"孝廉"（汉代选拔官员的制度），做了<span class="highlight">洛阳北部尉</span>——相当于首都洛阳北城区的治安官。</p>
+    <p>这个位置的上一任官员都是混混日子、不敢得罪权贵。曹操可不这样想。他上任第一天就让人造了十几根<span class="highlight">五色棒</span>挂在城门两边，宣布："谁敢违法，不管是谁，用这棒子打！"</p>
+  </div>
+
+  <div class="story-card" style="--accent:#1B4F72;">
+    <p>机会很快来了。大宦官蹇硕的叔叔，仗着侄子在皇帝身边得宠，晚上还在街上乱逛——这在当时是违反宵禁的！</p>
+    <p>曹操二话不说，<span class="highlight-red">直接把蹇硕的叔叔抓起来用五色棒打死了</span>。消息传开，整个洛阳城都震惊了——一个二十来岁的年轻人，敢打杀皇帝身边大红人的亲戚！</p>
+    <p>从此洛阳城里的坏人都怕了曹操，一听"曹北部"来了就躲。但也得罪了很多人，后来他被明升暗降，调离了洛阳。不过曹操不在乎，他的人生才刚刚开始。</p>
+  </div>
+
+  <div class="fun-fact">
+    <span class="icon">💡</span>
+    <span class="text"><strong>思考一下：</strong>曹操为什么要杀蹇硕的叔叔？仅仅是为了立威吗？更深层的原因可能是——他要用实际行动告诉所有人：宦官势力不能为所欲为。他的爷爷曹腾也是宦官，但他选择了和宦官集团划清界限，这是非常有勇气的。</span>
+  </div>
+</section>
+
+<!-- ============ CHAPTER 3: 讨伐董卓 ============ -->
+<section class="story-section" id="s3" data-nav="s3">
+  <div class="section-badge" style="background:linear-gradient(135deg,#C0392B,#8B0000)">🔥 第三章</div>
+  <h2 class="section-title">散尽家财，起兵讨董</h2>
+
+  <div class="story-illustration">
+    <svg viewBox="0 0 680 300" width="680" height="300">
+      <rect width="680" height="300" fill="#2C3E50"/>
+      <!-- Flames -->
+      <ellipse cx="200" cy="200" rx="30" ry="50" fill="#E74C3C" opacity="0.6"/>
+      <ellipse cx="200" cy="180" rx="20" ry="35" fill="#F39C12" opacity="0.7"/>
+      <ellipse cx="480" cy="210" rx="35" ry="45" fill="#E74C3C" opacity="0.5"/>
+      <ellipse cx="480" cy="195" rx="22" ry="30" fill="#F39C12" opacity="0.6"/>
+      <ellipse cx="340" cy="190" rx="25" ry="40" fill="#E74C3C" opacity="0.4"/>
+      <!-- Burning palace -->
+      <rect x="280" y="120" width="120" height="100" fill="#7B241C"/>
+      <polygon points="280,120 340,60 400,120" fill="#922B21"/>
+      <rect x="310" y="140" width="60" height="60" fill="#1a1a2e"/>
+      <!-- Army gathering -->
+      <text x="130" y="240" font-size="40">⚔️</text>
+      <text x="130" y="260" font-size="11" fill="#BDC3C7" text-anchor="middle">曹操散尽家财</text>
+      <text x="530" y="240" font-size="40">🐎</text>
+      <text x="530" y="260" font-size="11" fill="#BDC3C7" text-anchor="middle">招募义兵</text>
+      <!-- Title -->
+      <text x="340" y="40" font-size="18" fill="#F39C12" text-anchor="middle" font-weight="700">天下大乱，英雄出世</text>
+    </svg>
+  </div>
+
+  <div class="story-card" style="--accent:#C0392B;">
+    <p>公元189年，天下大乱。大将军何进被杀，凉州军阀<span class="highlight">董卓</span>带兵进入洛阳，废了皇帝，自己把持朝政。董卓坏透了——烧杀抢掠，无恶不作，连死人的坟墓都挖。</p>
+    <p>曹操一看：不行，这样的人必须消灭！他<span class="highlight-red">把家里的钱财全部拿出来</span>，招募了五千义兵，第一个站出来公开反对董卓。</p>
+  </div>
+
+  <div class="story-card" style="--accent:#8B0000;">
+    <p>各路诸侯纷纷响应，组成了一支庞大的"讨伐联军"，推举袁绍当盟主。但让曹操失望的是——这些诸侯<span class="highlight">各怀鬼胎</span>，天天喝酒开宴会，谁也不肯真打。</p>
+    <p>曹操气得拍桌子："你们还是不是男人？董卓祸国殃民，你们居然在这里喝大酒！"他带着自己的五千兵单独出击，结果兵力太悬殊，被董卓的大将徐荣打得大败，自己也中了箭，差点送命。</p>
+    <p>回到联军大营，诸侯们还在喝酒。曹操彻底心寒了——<span class="highlight">靠这帮人？天下永远太平不了。</span>他暗下决心：老子自己干！</p>
+  </div>
+</section>
+
+<!-- ============ CHAPTER 4: 挟天子令诸侯 ============ -->
+<section class="story-section" id="s4" data-nav="s4">
+  <div class="section-badge" style="background:linear-gradient(135deg,#D4A017,#8B6914)">👑 第四章</div>
+  <h2 class="section-title">挟天子以令诸侯</h2>
+
+  <div class="story-illustration">
+    <svg viewBox="0 0 680 300" width="680" height="300">
+      <rect width="680" height="300" fill="#FFF8E1"/>
+      <!-- Throne -->
+      <rect x="260" y="140" width="160" height="10" fill="#8B6914" rx="3"/>
+      <rect x="270" y="80" width="140" height="65" fill="#D4A017" rx="8"/>
+      <rect x="285" y="95" width="110" height="40" fill="#8B6914" rx="4"/>
+      <!-- Emperor figure (small) -->
+      <circle cx="340" cy="60" r="18" fill="#FFCC80"/>
+      <rect x="335" y="8" width="10" height="18" fill="#D4A017" rx="3"/>
+      <rect x="328" y="78" width="24" height="40" fill="#F39C12" rx="5"/>
+      <!-- Cao Cao standing beside -->
+      <circle cx="430" cy="120" r="20" fill="#FFAB91"/>
+      <rect x="420" y="50" width="20" height="35" fill="#2C3E50" rx="4"/>
+      <rect x="417" y="140" width="26" height="60" fill="#34495E" rx="6"/>
+      <text x="430" y="210" font-size="11" fill="#333" text-anchor="middle" font-weight="700">曹操</text>
+      <text x="340" y="220" font-size="11" fill="#333" text-anchor="middle">汉献帝</text>
+      <!-- Connection lines -->
+      <line x1="358" y1="100" x2="420" y2="115" stroke="#D4A017" stroke-width="1.5" stroke-dasharray="5,3"/>
+      <!-- Title -->
+      <text x="340" y="260" font-size="14" fill="#8B6914" text-anchor="middle" font-weight="700">"挟天子" = 把皇帝带在自己身边，用皇帝的名义发号施令</text>
+      <!-- Arrows from emperor to map -->
+      <text x="200" y="150" font-size="24">📜</text>
+      <text x="500" y="150" font-size="24">📜</text>
+      <text x="200" y="180" font-size="10" fill="#8B6914" text-anchor="middle">皇帝的诏书</text>
+      <text x="500" y="180" font-size="10" fill="#8B6914" text-anchor="middle">代表"天意"</text>
+    </svg>
+  </div>
+
+  <div class="story-card" style="--accent:#D4A017;">
+    <p>公元196年，曹操做出了他一生中最重要的决定之一。当时的汉献帝刘协流落在洛阳废墟中，没有吃的穿的，各路诸侯都不理他——一个没用的皇帝，谁在乎？</p>
+    <p>曹操的眼光不一样。他看出了关键：皇帝虽然没兵没权，但他的<span class="highlight">名义</span>就是最大的武器。他亲自带兵去洛阳，把汉献帝接到了<span class="highlight">许昌</span>（今天的河南许昌），好好安顿下来。</p>
+  </div>
+
+  <div class="story-card" style="--accent:#8B6914;">
+    <p>从此，曹操手里多了一张王牌：<span class="highlight">"挟天子以令诸侯"</span>。</p>
+    <p>这个策略聪明在哪里？任何人如果不听曹操的话，曹操就可以用皇帝的名义发诏书——"这是皇上的命令，你不听就是谋反！"这样一来，曹操每次打仗就占了"大义"的名分。他让刘备打吕布、让孙策打袁术，都是打着皇帝的旗号。</p>
+    <p>当然，这件事也让曹操背上了"奸臣"的名声——有人说他软禁皇帝、独揽大权。但不可否认，如果没有曹操，汉献帝可能早就饿死荒野了。</p>
+  </div>
+</section>
+
+<!-- ============ CHAPTER 5: 官渡之战 ============ -->
+<section class="story-section" id="s5" data-nav="s5">
+  <div class="section-badge" style="background:linear-gradient(135deg,#E74C3C,#C0392B)">⚔️ 第五章</div>
+  <h2 class="section-title">官渡之战——以少胜多的经典</h2>
+
+  <div class="story-illustration">
+    <svg viewBox="0 0 680 340" width="680" height="340">
+      <rect width="680" height="340" fill="#FDEBD0"/>
+      <!-- Ground -->
+      <rect x="0" y="290" width="680" height="50" fill="#A1887F"/>
+      <!-- Camp Cao -->
+      <rect x="30" y="200" width="150" height="90" fill="#2C3E50" rx="8" opacity="0.8"/>
+      <rect x="40" y="160" width="130" height="8" fill="#2C3E50"/>
+      <text x="105" y="255" font-size="12" fill="#D4A017" text-anchor="middle" font-weight="700">曹操大营</text>
+      <text x="105" y="275" font-size="10" fill="#BDC3C7" text-anchor="middle">~2万兵力</text>
+      <!-- Camp Yuan -->
+      <rect x="500" y="180" width="170" height="110" fill="#E74C3C" rx="8" opacity="0.7"/>
+      <rect x="480" y="140" width="210" height="8" fill="#E74C3C"/>
+      <text x="585" y="250" font-size="12" fill="white" text-anchor="middle" font-weight="700">袁绍大营</text>
+      <text x="585" y="270" font-size="10" fill="#F5B7B1" text-anchor="middle">~10万兵力</text>
+      <!-- River between -->
+      <path d="M180,260 Q340,230 500,260" stroke="#3498DB" stroke-width="8" fill="none" opacity="0.6"/>
+      <path d="M180,268 Q340,238 500,268" stroke="#3498DB" stroke-width="5" fill="none" opacity="0.4"/>
+      <text x="340" y="250" font-size="11" fill="#2980B9" text-anchor="middle" font-weight="700">官渡河</text>
+      <!-- Fire arrow to supply depot -->
+      <line x1="200" y1="170" x2="550" y2="50" stroke="#F39C12" stroke-width="3" stroke-dasharray="8,4"/>
+      <ellipse cx="570" cy="40" rx="30" ry="30" fill="#E74C3C" opacity="0.6"/>
+      <ellipse cx="570" cy="35" rx="20" ry="18" fill="#F39C12" opacity="0.8"/>
+      <text x="570" y="80" font-size="10" fill="#E74C3C" text-anchor="middle" font-weight="700">乌巢粮仓🔥</text>
+      <!-- Troop icons -->
+      <text x="80" y="200" font-size="24">🛡️</text>
+      <text x="550" y="200" font-size="30">🐎</text>
+      <text x="600" y="180" font-size="24">🐎</text>
+      <text x="520" y="220" font-size="24">🐎</text>
+    </svg>
+  </div>
+
+  <div class="battle-scene">
+    <div class="battle-side loser">
+      <h3>⚔️ 袁绍</h3>
+      <p class="stat">兵力：约 <strong>100,000</strong> 人</p>
+      <p class="stat">粮食充足</p>
+      <p class="stat">河北四州之地</p>
+      <p class="stat" style="color:#E74C3C;margin-top:8px;">自大轻敌</p>
+    </div>
+    <div class="battle-vs">VS</div>
+    <div class="battle-side winner">
+      <h3>🏆 曹操</h3>
+      <p class="stat">兵力：约 <strong>20,000</strong> 人</p>
+      <p class="stat">粮食快要吃光</p>
+      <p class="stat">兖/豫二州</p>
+      <p class="stat" style="color:#27AE60;margin-top:8px;">奇谋妙计</p>
+    </div>
+  </div>
+
+  <div class="story-card" style="--accent:#E74C3C;">
+    <p>公元200年，决定北方命运的大战爆发了。袁绍统领十万大军南下，曹操只有两万人——<span class="highlight">五比一的悬殊兵力</span>。</p>
+    <p>打了几个月，曹操快撑不住了，粮食眼看就要吃光。他甚至动了撤退的念头，写信给后方的荀彧问怎么办。荀彧回信只有一句话："<span class="highlight">此用奇之时，不可失也</span>"——现在正是用奇招的时候，千万不能退！</p>
+  </div>
+
+  <div class="story-card" style="--accent:#C0392B;">
+    <p>转机来了。袁绍的谋士许攸叛逃到了曹操这边，告诉曹操一个天大的秘密：<span class="highlight-red">袁绍的粮草都储存在乌巢</span>（一个叫淳于琼的将军守着），而且守备很松懈！</p>
+    <p>曹操当机立断——亲自带着五千精兵，穿上袁军的衣服，连夜奔袭乌巢。一把<span class="highlight">火烧了袁绍的全部粮草</span>！袁绍军中大乱，十万大军瞬间崩溃。</p>
+  </div>
+
+  <div class="fun-fact">
+    <span class="icon">💡</span>
+    <span class="text"><strong>两个小细节：</strong>①曹操在官渡之战中粮草快要吃完时，连写了好多封催粮的信，有几封被袁绍截获了。袁绍看了哈哈大笑："曹操撑不住了！"但袁绍没有趁机猛攻，反而优哉游哉。②乌巢之战当晚，袁绍手下有人看出曹操可能偷袭，建议派兵增援。袁绍不听——"曹操就那么点人，能翻什么天？"正是这轻敌的思想，葬送了他的十万大军。</span>
+  </div>
+
+  <div class="quote-card">
+    <p class="quote-text">公以至弱，当至强，若不能制，必为所乘，是天下之大机也。</p>
+    <p class="quote-author">—— 荀彧致曹操的信</p>
+  </div>
+</section>
+
+<!-- ============ CHAPTER 6: 统一北方 ============ -->
+<section class="story-section" id="s6" data-nav="s6">
+  <div class="section-badge" style="background:linear-gradient(135deg,#27AE60,#1E8449)">🏛️ 第六章</div>
+  <h2 class="section-title">统一北方——扫平河北</h2>
+
+  <div class="story-illustration">
+    <svg viewBox="0 0 680 300" width="680" height="300">
+      <rect width="680" height="300" fill="#E8F5E9"/>
+      <!-- Map of northern China simplified -->
+      <rect x="80" y="40" width="520" height="220" fill="#C8E6C9" rx="10" stroke="#2E7D32" stroke-width="2"/>
+      <!-- Yellow River -->
+      <path d="M100,160 Q250,120 400,170 Q500,140 590,155" stroke="#FDD835" stroke-width="6" fill="none" opacity="0.7"/>
+      <text x="350" y="178" font-size="10" fill="#F57F17" text-anchor="middle">黄  河</text>
+      <!-- Conquered territories -->
+      <rect x="120" y="50" width="100" height="70" fill="#27AE60" opacity="0.5" rx="5"/>
+      <text x="170" y="88" font-size="10" fill="#1a1a2e" text-anchor="middle">兖州</text>
+      <rect x="240" y="50" width="80" height="60" fill="#27AE60" opacity="0.5" rx="5"/>
+      <text x="280" y="84" font-size="10" fill="#1a1a2e" text-anchor="middle">豫州</text>
+      <rect x="90" y="130" width="120" height="70" fill="#2ECC71" opacity="0.7" rx="5"/>
+      <text x="150" y="170" font-size="10" fill="#1a1a2e" text-anchor="middle">冀州</text>
+      <rect x="350" y="50" width="100" height="65" fill="#2ECC71" opacity="0.7" rx="5"/>
+      <text x="400" y="86" font-size="10" fill="#1a1a2e" text-anchor="middle">幽州</text>
+      <rect x="220" y="130" width="80" height="65" fill="#2ECC71" opacity="0.7" rx="5"/>
+      <text x="260" y="167" font-size="10" fill="#1a1a2e" text-anchor="middle">并州</text>
+      <rect x="470" y="50" width="90" height="60" fill="#2ECC71" opacity="0.7" rx="5"/>
+      <text x="515" y="84" font-size="10" fill="#1a1a2e" text-anchor="middle">青州</text>
+      <!-- Xuchang -->
+      <circle cx="285" cy="105" r="12" fill="#D4A017"/>
+      <text x="285" y="110" font-size="8" fill="white" text-anchor="middle">许</text>
+      <text x="285" y="125" font-size="9" fill="#333" text-anchor="middle">许昌</text>
+      <!-- Arrow showing expansion -->
+      <path d="M285,105 C200,50 100,40 100,80" stroke="#D4A017" stroke-width="2" stroke-dasharray="5,3" fill="none"/>
+      <path d="M285,105 C450,50 550,40 530,80" stroke="#D4A017" stroke-width="2" stroke-dasharray="5,3" fill="none"/>
+      <!-- Key -->
+      <rect x="130" y="260" width="15" height="15" fill="#27AE60" opacity="0.5" rx="2"/>
+      <text x="152" y="273" font-size="10" fill="#333">原有领土</text>
+      <rect x="240" y="260" width="15" height="15" fill="#2ECC71" opacity="0.7" rx="2"/>
+      <text x="262" y="273" font-size="10" fill="#333">新征服领土（袁绍旧地）</text>
+    </svg>
+  </div>
+
+  <div class="story-card" style="--accent:#27AE60;">
+    <p>官渡之战后，袁绍气死了。但袁绍还有三个儿子，他们占据了河北四州（相当于今天河北、山西、北京、天津一带），地盘不小。</p>
+    <p>曹操没有急着打，反而撤军回许昌了。手下人奇怪："袁绍刚死，为什么不趁机打？"曹操笑了笑：<span class="highlight">"让他们兄弟先自己打起来。"</span></p>
+  </div>
+
+  <div class="story-card" style="--accent:#1E8449;">
+    <p>果然！袁绍的三个儿子——袁谭、袁熙、袁尚——为了争当继承人，互相打起来了。曹操坐收渔翁之利，一个个收拾掉。不到七年时间，整个河北都归了曹操。</p>
+    <p>更重要的是，曹操攻占河北后没有大开杀戒，反而安抚百姓、减免赋税。他亲自到袁绍墓前大哭一场，还收养了袁绍的遗孤。手下人不解："袁绍是敌人啊！"曹操说：<span class="highlight">"我跟他年轻时就认识，如今人已经死了，恩怨也该了了。"</span></p>
+  </div>
+
+  <div class="fun-fact">
+    <span class="icon">💡</span>
+    <span class="text"><strong>曹操的大格局：</strong>打袁绍的墓葬这个故事，最能说明曹操的格局。换了别人，恨不得把敌人的坟都刨了。曹操不但不刨，还亲自去哭祭。他明白一个简单的道理：打完仗就是自己人了，仇越记越多，人心越散。这个人，恨起来比谁都狠，宽起来比谁都大度——这才是他厉害的地方。</span>
+  </div>
+</section>
+
+<!-- ============ CHAPTER 7: 赤壁之战 ============ -->
+<section class="story-section" id="s7" data-nav="s7">
+  <div class="section-badge" style="background:linear-gradient(135deg,#E74C3C,#C0392B)">🔥 第七章</div>
+  <h2 class="section-title">赤壁之战——最大的失败</h2>
+
+  <div class="story-illustration">
+    <svg viewBox="0 0 680 360" width="680" height="360">
+      <rect width="680" height="360" fill="#0D1B2A"/>
+      <!-- Water -->
+      <rect x="0" y="200" width="680" height="160" fill="#1B3A5C"/>
+      <path d="M0,210 Q100,200 200,215 Q300,230 400,210 Q500,195 600,215 Q680,225 680,210" stroke="#2E86C1" stroke-width="3" fill="none" opacity="0.5"/>
+      <!-- Fire on ships -->
+      <ellipse cx="150" cy="180" rx="30" ry="40" fill="#E74C3C" opacity="0.7"/>
+      <ellipse cx="150" cy="170" rx="18" ry="25" fill="#F39C12" opacity="0.8"/>
+      <ellipse cx="280" cy="190" rx="25" ry="35" fill="#E74C3C" opacity="0.6"/>
+      <ellipse cx="280" cy="180" rx="15" ry="20" fill="#F39C12" opacity="0.7"/>
+      <ellipse cx="400" cy="175" rx="28" ry="38" fill="#E74C3C" opacity="0.65"/>
+      <ellipse cx="400" cy="165" rx="16" ry="22" fill="#F39C12" opacity="0.75"/>
+      <ellipse cx="520" cy="185" rx="22" ry="30" fill="#E74C3C" opacity="0.55"/>
+      <ellipse cx="520" cy="178" rx="12" ry="18" fill="#F39C12" opacity="0.7"/>
+      <!-- Ships -->
+      <polygon points="120,190 180,190 195,220 105,220" fill="#5D4037" opacity="0.8"/>
+      <polygon points="250,195 310,195 325,225 235,225" fill="#5D4037" opacity="0.8"/>
+      <polygon points="370,185 430,185 445,215 355,215" fill="#5D4037" opacity="0.8"/>
+      <!-- Wind arrows -->
+      <text x="550" y="100" font-size="30">💨</text>
+      <text x="580" y="70" font-size="20">💨</text>
+      <text x="530" y="140" font-size="18">⛵</text>
+      <text x="570" y="160" font-size="15" fill="#BDC3C7">东南风</text>
+      <!-- Moon -->
+      <circle cx="620" cy="50" r="28" fill="#F1C40F" opacity="0.8"/>
+      <circle cx="625" cy="45" r="24" fill="#0D1B2A" opacity="0.6"/>
+      <!-- Title -->
+      <text x="340" y="35" font-size="18" fill="#F39C12" text-anchor="middle" font-weight="700">东风不与周郎便，铜雀春深锁二乔</text>
+      <!-- Cao Cao small figure retreating -->
+      <text x="60" y="150" font-size="40">🏃</text>
+      <text x="60" y="170" font-size="9" fill="#BDC3C7" text-anchor="middle">曹操败走</text>
+    </svg>
+  </div>
+
+  <div class="battle-scene">
+    <div class="battle-side loser">
+      <h3>🔥 曹操（北方）</h3>
+      <p class="stat">兵力：约 <strong>200,000</strong> 人</p>
+      <p class="stat">号称"83万大军"</p>
+      <p class="stat">北方人不熟水性</p>
+      <p class="stat" style="color:#E74C3C;margin-top:8px;">骄傲轻敌</p>
+    </div>
+    <div class="battle-vs">VS</div>
+    <div class="battle-side winner">
+      <h3>🏆 孙刘联军（南方）</h3>
+      <p class="stat">兵力：约 <strong>50,000</strong> 人</p>
+      <p class="stat">孙权 + 刘备</p>
+      <p class="stat">擅长水战</p>
+      <p class="stat" style="color:#27AE60;margin-top:8px;">火攻妙计</p>
+    </div>
+  </div>
+
+  <div class="story-card" style="--accent:#E74C3C;">
+    <p>公元208年，统一北方之后的曹操，志得意满，挥师南下。他给孙权写了一封霸气十足的信：<span class="highlight">"带着八十万大军，想跟您一起打猎去"</span>——意思就是：你们要么投降，要么被我灭掉。</p>
+    <p>曹操的兵力确实碾压——但有一个致命弱点：<span class="highlight">北方士兵不熟悉水战</span>，在船上晕得站不稳。曹操想了个"聪明"的办法：把所有的船用铁索连在一起，这样就不晃了。</p>
+  </div>
+
+  <div class="story-card" style="--accent:#C0392B;">
+    <p>周瑜和诸葛亮看出了破绽：<span class="highlight-red">船连在一起，只要有一艘着火，全部完蛋！</span></p>
+    <p>接下来发生的事，就是中国历史上最著名的战役之一：黄盖假意投降，开着装满柴草和油脂的小船冲向曹操水寨。那天正好刮起了<span class="highlight">罕见的东南风</span>（冬天一般吹北风）！大火借着风势，把曹操的船队烧得一干二净。二十万大军土崩瓦解，曹操带着残兵败将，狼狈地逃回了北方。</p>
+  </div>
+
+  <div class="quote-card">
+    <p class="quote-text">对酒当歌，人生几何！<br>譬如朝露，去日苦多。</p>
+    <p class="quote-author">—— 曹操《短歌行》（赤壁大战前所作）</p>
+  </div>
+</section>
+
+<!-- ============ CHAPTER 8: 唯才是举 ============ -->
+<section class="story-section" id="s8" data-nav="s8">
+  <div class="section-badge" style="background:linear-gradient(135deg,#9B59B6,#7D3C98)">📜 第八章</div>
+  <h2 class="section-title">唯才是举——不以出身论英雄</h2>
+
+  <div class="story-illustration">
+    <svg viewBox="0 0 680 300" width="680" height="300">
+      <rect width="680" height="300" fill="#F3E5F5"/>
+      <!-- Podium -->
+      <rect x="200" y="180" width="280" height="15" fill="#7D3C98" rx="3"/>
+      <rect x="240" y="120" width="200" height="65" fill="#9B59B6" rx="10"/>
+      <!-- Scroll -->
+      <rect x="260" y="130" width="160" height="45" fill="#FFF9C4" rx="4"/>
+      <text x="340" y="148" font-size="12" fill="#333" text-anchor="middle" font-weight="700">求 贤 令</text>
+      <text x="340" y="165" font-size="9" fill="#555" text-anchor="middle">唯才是举，吾得而用之</text>
+      <!-- Diverse people approaching -->
+      <text x="100" y="170" font-size="35">🧑‍🌾</text>
+      <text x="160" y="155" font-size="28">👨‍🎓</text>
+      <text x="480" y="165" font-size="30">🧑‍🔧</text>
+      <text x="540" y="150" font-size="35">👨‍💼</text>
+      <text x="130" y="200" font-size="9" fill="#555" text-anchor="middle">农民</text>
+      <text x="170" y="185" font-size="9" fill="#555" text-anchor="middle">书生</text>
+      <text x="510" y="195" font-size="9" fill="#555" text-anchor="middle">工匠</text>
+      <text x="575" y="180" font-size="9" fill="#555" text-anchor="middle">商人</text>
+      <!-- Labels -->
+      <text x="340" y="230" font-size="12" fill="#6A1B9A" text-anchor="middle" font-weight="700">不管出身，只要有才就能当官！</text>
+      <!-- Arrows -->
+      <text x="340" y="110" font-size="20">👑</text>
+    </svg>
+  </div>
+
+  <div class="story-card" style="--accent:#9B59B6;">
+    <p>曹操最了不起的政策之一，就是<span class="highlight">"唯才是举"</span>——只凭才能选拔人才，不看家世背景。</p>
+    <p>在他之前，当官基本靠"拼爹"——你爹当大官你才能当官。曹操连续三次发布<span class="highlight">《求贤令》</span>，公开宣布：哪怕你品行有瑕疵、出身低微，只要真有本事，我就用你！</p>
+  </div>
+
+  <div class="story-card" style="--accent:#7D3C98;">
+    <p>这招太厉害了。曹操手下聚集了一大批"不是名门却超级能干"的人才：</p>
+  </div>
+
+  <div class="skill-grid">
+    <div class="skill-card" onclick="this.classList.toggle('selected')">
+      <div class="skill-icon">🧠</div>
+      <h3>荀彧</h3>
+      <div class="skill-detail">曹操的"张良"，首席谋士。官渡之战最关键时，他劝曹操不要撤退——"这正是用奇招的时候！"</div>
+    </div>
+    <div class="skill-card" onclick="this.classList.toggle('selected')">
+      <div class="skill-icon">🗡️</div>
+      <h3>郭嘉</h3>
+      <div class="skill-detail">天才军师，料事如神。预测孙策会被刺客所杀，果然应验。38岁英年早逝，曹操哭得很伤心。</div>
+    </div>
+    <div class="skill-card" onclick="this.classList.toggle('selected')">
+      <div class="skill-icon">⚔️</div>
+      <h3>张辽</h3>
+      <div class="skill-detail">原吕布部将，投降后成为曹操最信任的大将。逍遥津八百人破孙权十万，威震天下。</div>
+    </div>
+    <div class="skill-card" onclick="this.classList.toggle('selected')">
+      <div class="skill-icon">✍️</div>
+      <h3>贾诩</h3>
+      <div class="skill-detail">"毒士"，计谋极其精准。帮曹操在渭南打败马超。善于明哲保身，活到了77岁。</div>
+    </div>
+    <div class="skill-card" onclick="this.classList.toggle('selected')">
+      <div class="skill-icon">🏹</div>
+      <h3>夏侯惇</h3>
+      <div class="skill-detail">曹操的本家兄弟，独眼将军。中箭后拔箭吞了自己的眼珠继续打仗——"父精母血，不可弃也！"</div>
+    </div>
+    <div class="skill-card" onclick="this.classList.toggle('selected')">
+      <div class="skill-icon">🌾</div>
+      <h3>枣祗</h3>
+      <div class="skill-detail">"屯田制"创始人。让士兵打仗的时候打仗、不打仗的时候种地，解决了军队缺粮的大难题。</div>
+    </div>
+  </div>
+
+  <div class="fun-fact">
+    <span class="icon">💡</span>
+    <span class="text"><strong>曹操的用人之道：</strong>他曾公开说——"像苏秦那样不守信用的人，我用；像陈平那样有绯闻的人，我也用。只要你有本事帮我打天下，过去的事一概不追究。"在那个讲究门第出身的年代，这简直石破天惊。正因为如此，曹操阵营人才济济，远远超过了刘备和孙权。</span>
+  </div>
+</section>
+
+<!-- ============ CHAPTER 9: 晚年曹操 ============ -->
+<section class="story-section" id="s9" data-nav="s9">
+  <div class="section-badge" style="background:linear-gradient(135deg,#546E7A,#37474F)">👴 第九章</div>
+  <h2 class="section-title">魏王晚年——称王不称帝</h2>
+
+  <div class="story-illustration">
+    <svg viewBox="0 0 680 300" width="680" height="300">
+      <rect width="680" height="300" fill="#ECEFF1"/>
+      <!-- Throne room -->
+      <rect x="240" y="100" width="200" height="150" fill="#78909C" rx="10"/>
+      <rect x="260" y="60" width="160" height="50" fill="#546E7A" rx="6"/>
+      <!-- Cao Cao on throne -->
+      <rect x="290" y="130" width="100" height="70" fill="#5D4037" rx="10"/>
+      <circle cx="340" cy="80" r="22" fill="#FFAB91"/>
+      <rect x="330" y="50" width="20" height="25" fill="#455A64" rx="4"/>
+      <text x="340" y="115" font-size="10" fill="white" text-anchor="middle">魏王曹操</text>
+      <!-- Crown -->
+      <rect x="320" y="43" width="40" height="8" fill="#D4A017" rx="2"/>
+      <polygon points="325,43 340,20 355,43" fill="#D4A017"/>
+      <!-- Thought bubble -->
+      <circle cx="440" cy="50" r="5" fill="white" opacity="0.5"/>
+      <circle cx="455" cy="38" r="8" fill="white" opacity="0.6"/>
+      <ellipse cx="490" cy="20" rx="50" ry="25" fill="white" opacity="0.7"/>
+      <text x="490" y="18" font-size="10" fill="#333" text-anchor="middle">周文王三分</text>
+      <text x="490" y="30" font-size="10" fill="#333" text-anchor="middle">天下有其二</text>
+      <!-- Subjects -->
+      <text x="180" y="220" font-size="25">🙇</text>
+      <text x="250" y="230" font-size="25">🙇</text>
+      <text x="430" y="225" font-size="25">🙇</text>
+      <text x="510" y="218" font-size="25">🙇</text>
+      <!-- Message -->
+      <text x="340" y="275" font-size="13" fill="#455A64" text-anchor="middle" font-weight="700">"若天命在吾，吾为周文王矣"</text>
+    </svg>
+  </div>
+
+  <div class="story-card" style="--accent:#546E7A;">
+    <p>晚年的曹操已经成了"魏王"，掌握了当时中国三分之二的土地和人口。手下很多人劝他废掉汉献帝，自己当皇帝。</p>
+    <p>孙权甚至从东吴写信来劝："您就当皇帝吧！"曹操笑了笑，把信给大家看：<span class="highlight">"孙权这小子，是想把我放在炉火上烤啊！"</span></p>
+  </div>
+
+  <div class="story-card" style="--accent:#37474F;">
+    <p>曹操最终<span class="highlight">没有称帝</span>。他说了一句流传千古的话：<span class="highlight">"若天命在吾，吾为周文王矣"</span>——如果上天真的要把天下给我，那我就做周文王吧。（周文王没有自己推翻商朝，而是让儿子周武王去做的。）</p>
+    <p>公元220年正月，曹操在洛阳病逝，终年六十六岁。临死前他的遗令非常朴素：葬礼从简，不要陪葬金银珠宝，让妻妾们住在一起互相照顾。跟历史上那些大修陵墓的皇帝比起来，曹操的"薄葬"让人感慨。</p>
+  </div>
+
+  <div class="quote-card">
+    <p class="quote-text">神龟虽寿，犹有竟时。<br>腾蛇乘雾，终为土灰。<br>老骥伏枥，志在千里。<br>烈士暮年，壮心不已。</p>
+    <p class="quote-author">—— 曹操《龟虽寿》</p>
+  </div>
+</section>
+
+<!-- ============ CHAPTER 10: 后世评价 ============ -->
+<section class="story-section" id="s10" data-nav="s10">
+  <div class="section-badge" style="background:linear-gradient(135deg,#1a1a2e,#2C3E50)">⚖️ 第十章</div>
+  <h2 class="section-title">后世评价——奸雄还是英雄？</h2>
+
+  <div class="story-illustration">
+    <svg viewBox="0 0 680 320" width="680" height="320">
+      <rect width="680" height="320" fill="#F5F5F5"/>
+      <!-- Balance scale -->
+      <line x1="340" y1="30" x2="340" y2="120" stroke="#333" stroke-width="4"/>
+      <line x1="240" y1="120" x2="440" y2="120" stroke="#333" stroke-width="4"/>
+      <!-- Left pan (negative) -->
+      <path d="M190,120 Q240,170 290,120" stroke="#E74C3C" stroke-width="3" fill="none"/>
+      <text x="240" y="145" font-size="12" fill="#E74C3C" text-anchor="middle" font-weight="700">🔴 奸雄</text>
+      <text x="240" y="165" font-size="9" fill="#555" text-anchor="middle">挟天子以令诸侯</text>
+      <text x="240" y="182" font-size="9" fill="#555" text-anchor="middle">多疑杀人（吕伯奢）</text>
+      <text x="240" y="199" font-size="9" fill="#555" text-anchor="middle">屠徐州百姓</text>
+      <text x="240" y="216" font-size="9" fill="#555" text-anchor="middle">逼死荀彧</text>
+      <!-- Right pan (positive) -->
+      <path d="M390,120 Q440,170 490,120" stroke="#27AE60" stroke-width="3" fill="none"/>
+      <text x="440" y="145" font-size="12" fill="#27AE60" text-anchor="middle" font-weight="700">🟢 英雄</text>
+      <text x="440" y="165" font-size="9" fill="#555" text-anchor="middle">统一北方结束战乱</text>
+      <text x="440" y="182" font-size="9" fill="#555" text-anchor="middle">屯田制恢复生产</text>
+      <text x="440" y="199" font-size="9" fill="#555" text-anchor="middle">唯才是举打破门阀</text>
+      <text x="440" y="216" font-size="9" fill="#555" text-anchor="middle">伟大诗人</text>
+      <!-- Bottom text -->
+      <text x="340" y="260" font-size="14" fill="#333" text-anchor="middle" font-weight="700">⚖️ 历史上最复杂的评价——没有之一</text>
+      <text x="340" y="285" font-size="11" fill="#636e72" text-anchor="middle">《三国志》："非常之人，超世之杰"  |  《三国演义》："名为汉相，实为汉贼"</text>
+    </svg>
+  </div>
+
+  <div class="story-card" style="--accent:#1a1a2e;">
+    <p>在《三国演义》里，曹操被描画成一个<span class="highlight-red">白脸奸臣</span>——阴险、多疑、残忍。最出名的桥段是他逃亡时错杀吕伯奢一家，还说了一句："宁教我负天下人，休教天下人负我"。</p>
+    <p>但真实历史中的曹操远比小说复杂。他既不是完人也不是恶魔，而是一个<span class="highlight">在那个混乱时代拼命想做成点事情的人</span>。</p>
+  </div>
+
+  <div class="interactive-timeline">
+    <div class="timeline-line"></div>
+    <div class="timeline-event">
+      <div class="event-year"><div class="year">军事家</div><div class="desc">官渡之战以少胜多；灭吕布、袁术、袁绍、马超、张鲁</div></div>
+      <div class="event-dot"></div>
+      <div style="flex:0 0 45%"></div>
+    </div>
+    <div class="timeline-event">
+      <div style="flex:0 0 45%"></div>
+      <div class="event-dot"></div>
+      <div class="event-year"><div class="year">政治家</div><div class="desc">屯田制、求贤令、恢复北方经济</div></div>
+    </div>
+    <div class="timeline-event">
+      <div class="event-year"><div class="year">文学家</div><div class="desc">建安文学开创者、《观沧海》《短歌行》传世</div></div>
+      <div class="event-dot"></div>
+      <div style="flex:0 0 45%"></div>
+    </div>
+    <div class="timeline-event">
+      <div style="flex:0 0 45%"></div>
+      <div class="event-dot"></div>
+      <div class="event-year"><div class="year">书法家</div><div class="desc">章草大家，书法被唐代评为"妙品"</div></div>
+    </div>
+  </div>
+
+  <div class="fun-fact">
+    <span class="icon">💡</span>
+    <span class="text"><strong>最有名的评价：</strong>东汉名士许劭评价曹操："治世之能臣，乱世之奸雄。"曹操听了哈哈大笑，非常高兴。也许曹操心里很清楚——在太平盛世，他会是个好官；但在乱世，想做成事就必须用"奸"的手段。这个评价到今天已经两千年了，依然是最准确的判词。</span>
+  </div>
+</section>
+
+<!-- ============ QUIZ ============ -->
+<section class="quiz-section" id="quiz" data-nav="quiz">
+  <div class="quiz-header">
+    <h2>🧠 考考你，看懂了吗？</h2>
+    <p style="color:#636e72;">读完曹操的故事，来回答这几个问题吧！</p>
+  </div>
+
+  <div class="quiz-card" id="q1">
+    <div class="q-number">第 1 / 10 题</div>
+    <div class="q-text">曹操年轻时在洛阳当北部尉，做了一件震惊全国的事——是什么？</div>
+    <button class="quiz-option" onclick="checkAnswer('q1','A',this)">A. 写了一首很有名的诗</button>
+    <button class="quiz-option" onclick="checkAnswer('q1','B',this)">B. 用五色棒打死了大宦官蹇硕的叔叔</button>
+    <button class="quiz-option" onclick="checkAnswer('q1','C',this)">C. 直接挑战皇帝要皇位</button>
+    <button class="quiz-option" onclick="checkAnswer('q1','D',this)">D. 烧了皇宫逃走</button>
+    <div class="quiz-feedback" id="fb-q1"></div>
+  </div>
+
+  <div class="quiz-card" id="q2">
+    <div class="q-number">第 2 / 10 题</div>
+    <div class="q-text">"挟天子以令诸侯"是什么意思？</div>
+    <button class="quiz-option" onclick="checkAnswer('q2','A',this)">A. 保护天子不被坏人欺负</button>
+    <button class="quiz-option" onclick="checkAnswer('q2','B',this)">B. 把天子杀掉自己当皇帝</button>
+    <button class="quiz-option" onclick="checkAnswer('q2','C',this)">C. 把皇帝留在身边，用皇帝的名义发号施令</button>
+    <button class="quiz-option" onclick="checkAnswer('q2','D',this)">D. 跟天子结拜兄弟</button>
+    <div class="quiz-feedback" id="fb-q2"></div>
+  </div>
+
+  <div class="quiz-card" id="q3">
+    <div class="q-number">第 3 / 10 题</div>
+    <div class="q-text">官渡之战中，曹操用多少人打败了袁绍的十万大军？</div>
+    <button class="quiz-option" onclick="checkAnswer('q3','A',this)">A. 十万</button>
+    <button class="quiz-option" onclick="checkAnswer('q3','B',this)">B. 五万</button>
+    <button class="quiz-option" onclick="checkAnswer('q3','C',this)">C. 约两万</button>
+    <button class="quiz-option" onclick="checkAnswer('q3','D',this)">D. 五千</button>
+    <div class="quiz-feedback" id="fb-q3"></div>
+  </div>
+
+  <div class="quiz-card" id="q4">
+    <div class="q-number">第 4 / 10 题</div>
+    <div class="q-text">官渡之战中，曹操用什么方法打败了袁绍？</div>
+    <button class="quiz-option" onclick="checkAnswer('q4','A',this)">A. 用更多的兵力正面进攻</button>
+    <button class="quiz-option" onclick="checkAnswer('q4','B',this)">B. 派间谍散布谣言</button>
+    <button class="quiz-option" onclick="checkAnswer('q4','C',this)">C. 偷袭乌巢，烧了袁绍的粮草</button>
+    <button class="quiz-option" onclick="checkAnswer('q4','D',this)">D. 用大水淹没袁绍军营</button>
+    <div class="quiz-feedback" id="fb-q4"></div>
+  </div>
+
+  <div class="quiz-card" id="q5">
+    <div class="q-number">第 5 / 10 题</div>
+    <div class="q-text">赤壁之战中，曹操为什么大败？</div>
+    <button class="quiz-option" onclick="checkAnswer('q5','A',this)">A. 他的兵太少</button>
+    <button class="quiz-option" onclick="checkAnswer('q5','B',this)">B. 他的船被大火烧了（火攻+铁索连船）</button>
+    <button class="quiz-option" onclick="checkAnswer('q5','C',this)">C. 手下叛变</button>
+    <button class="quiz-option" onclick="checkAnswer('q5','D',this)">D. 粮食不够</button>
+    <div class="quiz-feedback" id="fb-q5"></div>
+  </div>
+
+  <div class="quiz-card" id="q6">
+    <div class="q-number">第 6 / 10 题</div>
+    <div class="q-text">曹操死后，有没有自己当皇帝？</div>
+    <button class="quiz-option" onclick="checkAnswer('q6','A',this)">A. 当了，建立了魏国</button>
+    <button class="quiz-option" onclick="checkAnswer('q6','B',this)">B. 没有，终其一生都是汉朝的臣子</button>
+    <button class="quiz-option" onclick="checkAnswer('q6','C',this)">C. 被废掉了</button>
+    <button class="quiz-option" onclick="checkAnswer('q6','D',this)">D. 当了但很快又辞掉了</button>
+    <div class="quiz-feedback" id="fb-q6"></div>
+  </div>
+
+  <div class="quiz-card" id="q7">
+    <div class="q-number">第 7 / 10 题</div>
+    <div class="q-text">"唯才是举"是什么意思？</div>
+    <button class="quiz-option" onclick="checkAnswer('q7','A',this)">A. 只用亲戚朋友</button>
+    <button class="quiz-option" onclick="checkAnswer('q7','B',this)">B. 只凭才能选拔人才，不看家世背景</button>
+    <button class="quiz-option" onclick="checkAnswer('q7','C',this)">C. 只选长得帅的</button>
+    <button class="quiz-option" onclick="checkAnswer('q7','D',this)">D. 只选有钱人</button>
+    <div class="quiz-feedback" id="fb-q7"></div>
+  </div>
+
+  <div class="quiz-card" id="q8">
+    <div class="q-number">第 8 / 10 题</div>
+    <div class="q-text">曹操攻占河北之后，到袁绍墓前做了什么？</div>
+    <button class="quiz-option" onclick="checkAnswer('q8','A',this)">A. 把墓挖了</button>
+    <button class="quiz-option" onclick="checkAnswer('q8','B',this)">B. 站在上面跳舞</button>
+    <button class="quiz-option" onclick="checkAnswer('q8','C',this)">C. 大哭一场，还收养了袁绍的遗孤</button>
+    <button class="quiz-option" onclick="checkAnswer('q8','D',this)">D. 什么也没做</button>
+    <div class="quiz-feedback" id="fb-q8"></div>
+  </div>
+
+  <div class="quiz-card" id="q9">
+    <div class="q-number">第 9 / 10 题</div>
+    <div class="q-text">"老骥伏枥，志在千里"这句诗出自曹操的哪部作品？</div>
+    <button class="quiz-option" onclick="checkAnswer('q9','A',this)">A. 《短歌行》</button>
+    <button class="quiz-option" onclick="checkAnswer('q9','B',this)">B. 《龟虽寿》</button>
+    <button class="quiz-option" onclick="checkAnswer('q9','C',this)">C. 《观沧海》</button>
+    <button class="quiz-option" onclick="checkAnswer('q9','D',this)">D. 《蒿里行》</button>
+    <div class="quiz-feedback" id="fb-q9"></div>
+  </div>
+
+  <div class="quiz-card" id="q10">
+    <div class="q-number">第 10 / 10 题</div>
+    <div class="q-text">你觉得曹操是一个什么样的人？（没有标准答案，选一个你最认同的）</div>
+    <button class="quiz-option" onclick="checkAnswer('q10','A',this)">A. 大坏蛋，心狠手辣</button>
+    <button class="quiz-option" onclick="checkAnswer('q10','B',this)">B. 大英雄，统一北方功不可没</button>
+    <button class="quiz-option" onclick="checkAnswer('q10','C',this)">C. 说不好，有好的地方也有坏的地方</button>
+    <button class="quiz-option" onclick="checkAnswer('q10','D',this)">D. 是个诗人，打仗只是业余爱好</button>
+    <div class="quiz-feedback" id="fb-q10"></div>
+  </div>
+
+  <div class="quiz-result" id="quizResult">
+    <h2>🎉 测试完成！</h2>
+    <div class="score" id="quizScore">0 / 10</div>
+    <div class="message" id="quizMessage"></div>
+    <button class="quiz-retry" onclick="resetQuiz()">🔄 重做一遍</button>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<div class="footer">
+  <p>📜 曹操的故事 · 为小朋友设计的历史学习页面</p>
+  <p style="margin-top:8px;opacity:0.6;">参考资料：《三国志》《资治通鉴》《曹操集》</p>
+</div>
+
+<script>
+// ===== SCROLL ANIMATION =====
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.story-section, .quiz-section').forEach(section => {
+  observer.observe(section);
+});
+
+// Also observe timeline events
+document.querySelectorAll('.timeline-event').forEach(event => {
+  observer.observe(event);
+});
+
+// ===== NAV SCROLL TO =====
+document.querySelectorAll('.timeline-dot').forEach(dot => {
+  dot.addEventListener('click', () => {
+    const targetId = dot.getAttribute('data-section');
+    const target = document.getElementById(targetId);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// ===== NAV ACTIVE STATE =====
+const sections = document.querySelectorAll('.story-section, .quiz-section');
+const navDots = document.querySelectorAll('.timeline-dot');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    const top = section.getBoundingClientRect().top;
+    if (top < window.innerHeight / 3) {
+      current = section.getAttribute('data-nav');
+    }
+  });
+  navDots.forEach(dot => {
+    dot.classList.toggle('active', dot.getAttribute('data-section') === current);
+  });
+});
+
+// ===== QUIZ LOGIC =====
+const QUIZ_ANSWERS = {
+  q1: { answer: 'B', feedback: { correct: '✅ 对！曹操让人做了十几根五色棒挂在城门边，大宦官蹇硕的叔叔违反宵禁，曹操直接把他打死了。这一下全洛阳都知道他是认真的！', wrong: '❌ 不对哦。曹操让人做了十几根五色棒挂在城门边，大宦官蹇硕的叔叔违反宵禁，曹操直接把他打死了。全洛阳都震惊了！' }},
+  q2: { answer: 'C', feedback: { correct: '✅ 对！把汉献帝接到许昌，用皇帝的名义发号施令。谁不听就是"谋反"，这招太聪明了！', wrong: '❌ 再看看。曹操把汉献帝接到许昌，用皇帝的名义发号施令——"这是皇上说的，你不听就是谋反"！这才是挟天子以令诸侯。' }},
+  q3: { answer: 'C', feedback: { correct: '✅ 对！曹操大约两万人，袁绍大约十万人——这是五比一的悬殊兵力！但曹操赢了。', wrong: '❌ 不对哦。曹操大约只有两万人，袁绍有十万大军——五比一的差距！但最后曹操赢了。' }},
+  q4: { answer: 'C', feedback: { correct: '✅ 对！曹操亲自带兵偷袭乌巢，一把火烧了袁绍的全部粮草——袁军没了食物，十万大军瞬间崩溃！', wrong: '❌ 曹操用的关键一招是——偷袭乌巢，一把火烧了袁绍的全部粮草！袁军没有食物就全完蛋了。' }},
+  q5: { answer: 'B', feedback: { correct: '✅ 对！曹操把船用铁索连在一起（北方士兵站不稳），黄盖假投降用火船冲过来——全烧了！那天还刮了罕见的东南风（冬天一般吹北风）。', wrong: '❌ 关键原因是火攻！曹操把船用铁索连在一起防晕船，黄盖假投降，用装满柴草的船冲过去放火——因为那天刮东南风，火一下就把曹操的船队全烧了！' }},
+  q6: { answer: 'B', feedback: { correct: '✅ 对！曹操一辈子都是汉朝的臣子。他说"若天命在吾，吾为周文王矣"——让儿子去做吧，自己不干。"', wrong: '❌ 曹操没有自己当皇帝哦。他说"若天命在吾，吾为周文王矣"——意思是让儿子曹丕去当。他还是把"汉臣"这个身份保留到了最后。' }},
+  q7: { answer: 'B', feedback: { correct: '✅ 对！不管你出身多低、有没有"前科"，只要有真本事，曹操就用你！在那个"拼爹"的时代，这非常了不起。', wrong: '❌ "唯才是举"就是——只看才能，不看身世！不管是农民、商人还是有污点的人，只要有真本事就能在曹操手下当官。' }},
+  q8: { answer: 'C', feedback: { correct: '✅ 对！曹操没有记仇，反而到袁绍墓前大哭，还收养了袁绍的孤儿。这就是格局——打完仗就是自己人了。', wrong: '❌ 曹操不但没有报复，反而到袁绍墓前大哭一场，还收养了袁绍的遗孤。打完仗就是自己人——这格局，服不服？' }},
+  q9: { answer: 'B', feedback: { correct: '✅ 太厉害了！"老骥伏枥，志在千里。烈士暮年，壮心不已"出自《龟虽寿》。曹操用老马比喻自己——虽然老了，志气还在！', wrong: '❌ 出自《龟虽寿》哦。"老骥伏枥，志在千里。烈士暮年，壮心不已"——用老马比喻自己，虽然老了但志气不减！' }},
+  q10: { answer: '*', feedback: { correct: '👍 谢谢你的回答！曹操确实是一个立体的人——他残忍时可以屠城，温柔时可以写诗；刻薄时可以棒杀权贵，大度时可以祭拜敌人。正因为他这样复杂，才会让人们争论了两千年。你是怎么看他的呢？', wrong: '👍 谢谢你的回答！曹操确实是一个立体的人——他残忍时可以屠城，温柔时可以写诗；刻薄时可以棒杀权贵，大度时可以祭拜敌人。正因为他这样复杂，才会让人们争论了两千年。你是怎么看他的呢？' }}
+};
+
+let answered = {};
+let correctCount = 0;
+
+function checkAnswer(qid, choice, btn) {
+  if (answered[qid]) return;
+
+  const data = QUIZ_ANSWERS[qid];
+  const card = document.getElementById(qid);
+  const fb = document.getElementById('fb-' + qid);
+  const allBtns = card.querySelectorAll('.quiz-option');
+
+  // Disable all buttons
+  allBtns.forEach(b => b.style.pointerEvents = 'none');
+
+  if (qid === 'q10') {
+    // Free answer question
+    btn.classList.add('correct');
+    fb.className = 'quiz-feedback show correct';
+    fb.textContent = data.feedback.correct;
+    answered[qid] = true;
+    correctCount++;
+  } else if (choice === data.answer) {
+    btn.classList.add('correct');
+    fb.className = 'quiz-feedback show correct';
+    fb.textContent = data.feedback.correct;
+    answered[qid] = true;
+    correctCount++;
+  } else {
+    btn.classList.add('wrong');
+    // Highlight correct answer
+    allBtns.forEach(b => {
+      if (b.textContent.startsWith(data.answer + '.')) {
+        b.classList.add('correct');
+      }
+    });
+    fb.className = 'quiz-feedback show wrong';
+    fb.textContent = data.feedback.wrong;
+    answered[qid] = true;
+  }
+
+  // Check if all answered
+  checkComplete();
+}
+
+function checkComplete() {
+  const allQids = Object.keys(QUIZ_ANSWERS);
+  if (allQids.every(q => answered[q])) {
+    setTimeout(() => {
+      const result = document.getElementById('quizResult');
+      const score = document.getElementById('quizScore');
+      const msg = document.getElementById('quizMessage');
+      
+      score.textContent = correctCount + ' / ' + allQids.length;
+      
+      let message = '';
+      if (correctCount >= 9) {
+        message = '🏆 <strong>太厉害了！你是三国小专家！</strong><br>曹操的一生你都了解得很清楚。可以跟爸爸妈妈讲讲这个故事！';
+      } else if (correctCount >= 7) {
+        message = '👏 <strong>非常棒！</strong><br>你对曹操已经了解很多了。有几个地方可以再回头看看，巩固一下知识。';
+      } else if (correctCount >= 5) {
+        message = '👍 <strong>不错！及格了！</strong><br>再读一遍故事，你会记得更牢。曹操的故事值得多看几次。';
+      } else {
+        message = '📖 <strong>再多看几遍吧！</strong><br>曹操的故事很有趣但也比较复杂。再读一遍，你一定会记住更多。';
+      }
+      
+      msg.innerHTML = message;
+      result.classList.add('show');
+      result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 600);
+  }
+}
+
+function resetQuiz() {
+  answered = {};
+  correctCount = 0;
+  
+  Object.keys(QUIZ_ANSWERS).forEach(qid => {
+    const card = document.getElementById(qid);
+    const fb = document.getElementById('fb-' + qid);
+    const allBtns = card.querySelectorAll('.quiz-option');
+    
+    allBtns.forEach(b => {
+      b.classList.remove('correct', 'wrong');
+      b.style.pointerEvents = 'auto';
+    });
+    fb.className = 'quiz-feedback';
+    fb.textContent = '';
+  });
+  
+  document.getElementById('quizResult').classList.remove('show');
+  document.getElementById('quizResult').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  window.scrollTo({ top: document.getElementById('quiz').offsetTop - 80, behavior: 'smooth' });
+}
+
+// ===== HERO SCROLL HINT CLICK =====
+document.querySelector('.scroll-hint').addEventListener('click', () => {
+  document.getElementById('s1').scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+</script>
+
+</body>
+</html>
