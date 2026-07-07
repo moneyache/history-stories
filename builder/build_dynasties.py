@@ -8,6 +8,7 @@ import os, sys, json
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 from dynasty_data import DYNASTIES  # noqa
+import histmap  # 地理精确的历史地图引擎
 
 ROOT = os.path.dirname(HERE)  # 仓库根目录
 
@@ -182,6 +183,17 @@ a{color:inherit;text-decoration:none;}
 .map-svg{flex:1 1 320px; min-width:280px; background:color-mix(in srgb,var(--primary) 5%,white); border-radius:18px; padding:10px; border:2px dashed color-mix(in srgb,var(--primary) 30%,transparent);}
 .map-svg svg{width:100%; height:auto; display:block;}
 .map-text{flex:1 1 300px; font-size:1.05rem; line-height:1.9; color:#34495E;}
+
+/* 真实地理地图（全宽） */
+.map-wide{width:100%; border-radius:18px; overflow:hidden; box-shadow:var(--card-shadow); border:1px solid rgba(0,0,0,0.06);}
+.map-wide svg{width:100%; height:auto; display:block;}
+.battle-map-wrap{width:100%; border-radius:14px; overflow:hidden; margin-bottom:16px; box-shadow:0 4px 14px rgba(0,0,0,0.12); border:1px solid rgba(0,0,0,0.06);}
+.battle-map-wrap svg{width:100%; height:auto; display:block;}
+
+/* 人物卡片可跳转 */
+.person-link{text-decoration:none; color:inherit; display:block;}
+.person .pstory{margin-top:10px; font-size:.85rem; font-weight:700; color:var(--secondary); opacity:0; transform:translateY(4px); transition:all .25s;}
+.person-link:hover .pstory{opacity:1; transform:translateY(0);}
 
 /* 战役 */
 .battle-box{background:linear-gradient(160deg,#1b2433,#2c3a52); border-radius:20px; padding:20px; color:#fff; text-align:center;}
@@ -458,8 +470,22 @@ def render_dynasty(d, idx, total):
     nav_html = "".join(f'<a href="#{a}">{t}</a>' for a,t in nav_items)
 
     # 疆域
-    map_html = map_svg(d["region"], th, d["name"])
-    territory = f'''
+    if d.get("map_markers"):
+        map_svg_html = histmap.render_hist_map(
+            d["map_region"], d["map_markers"], d["map_rivers"],
+            d["map_mountains"], d["map_title"], core=d.get("map_core"),
+        )
+        map_html = f'<div class="map-wide">{map_svg_html}</div>'
+        territory = f'''
+    <div class="section" id="territory">
+      <div class="sec-head"><div class="sec-badge">🗺️</div>
+        <div class="sec-title">疆域范围<small>这张地图是按真实地理位置画的</small></div></div>
+      {map_html}
+      <div class="map-text" style="margin-top:14px">{hl_text(d['territory'])}</div>
+    </div>'''
+    else:
+        map_html = map_svg(d["region"], th, d["name"])
+        territory = f'''
     <div class="section" id="territory">
       <div class="sec-head"><div class="sec-badge">🗺️</div>
         <div class="sec-title">疆域范围<small>这个朝代有多大</small></div></div>
@@ -493,16 +519,28 @@ def render_dynasty(d, idx, total):
     </div>'''
 
     # 人物
-    persons = "".join(f'''
+    persons = ""
+    for p in d["people"]:
+        story = p.get("story")
+        if story:
+            persons += f'''
+      <a class="person person-link" href="{esc(story)}">
+        <div class="pname">{esc(p['name'])}</div>
+        <div class="prole">{esc(p['role'])}</div>
+        <div class="pdesc">{hl_text(p['desc'])}</div>
+        <div class="pstory">📖 看他的故事 →</div>
+      </a>'''
+        else:
+            persons += f'''
       <div class="person">
         <div class="pname">{esc(p['name'])}</div>
         <div class="prole">{esc(p['role'])}</div>
         <div class="pdesc">{hl_text(p['desc'])}</div>
-      </div>''' for p in d["people"])
+      </div>'''
     people = f'''
     <div class="section" id="people">
       <div class="sec-head"><div class="sec-badge">👥</div>
-        <div class="sec-title">重要人物<small>这个朝代的明星</small></div></div>
+        <div class="sec-title">重要人物<small>点一点，跳进去看大人物自己的故事</small></div></div>
       <div class="people-grid">{persons}</div>
     </div>'''
 
@@ -518,7 +556,7 @@ def render_dynasty(d, idx, total):
       </div>
     </div>'''
 
-    # 战役
+    # 战役（地图帝风格静态战役图 + Canvas 动画）
     battle_html = ""
     battle_js_calls = ""
     if d["battles"]:
@@ -526,10 +564,31 @@ def render_dynasty(d, idx, total):
         for i,b in enumerate(d["battles"]):
             cid = f"bcanvas{i}"; bid=f"bbtn{i}"; nid=f"bnarr{i}"; rid=f"bres{i}"
             lc = th["secondary"]; rc = "#E74C3C"
+
+            # ---- 战役地图（如果数据里有 battle_map 配置）----
+            bmap_html = ""
+            if b.get("battle_map"):
+                bm = b["battle_map"]
+                bmap_svg = histmap.render_battle_map(
+                    region=bm.get("region", d.get("map_region", (110, 42, 14, 12))),
+                    title=esc(b['name']),
+                    subtitle=bm.get("subtitle", ""),
+                    armies=bm.get("armies", []),
+                    arrows=bm.get("arrows", []),
+                    key_places=bm.get("key_places", []),
+                    phases=bm.get("phases", []),
+                    width=780, height=520,
+                )
+                bmap_html = f'''
+        <div class="battle-map-wrap">
+          {bmap_svg}
+        </div>'''
+
             boxes += f'''
       <div class="battle-box">
         <div class="battle-title">⚔️ {esc(b['name'])}</div>
         <div class="battle-sub">{esc(b['left'])} &nbsp;VS&nbsp; {esc(b['right'])}</div>
+        {bmap_html}
         <canvas class="battle-canvas" id="{cid}" width="680" height="300"></canvas>
         <button class="battle-btn" id="{bid}">⚔️ 开战！</button>
         <div class="battle-narrate" id="{nid}">点击「开战！」看看这场大战是怎么打的～</div>
@@ -730,18 +789,35 @@ footer{{text-align:center;padding:20px;color:#95A5A6;font-size:.85rem;}}
 
 # ====================== 主流程 ======================
 def main():
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--only", help="只生成指定朝代 id（逗号分隔），如 --only sanhuang")
+    ap.add_argument("--no-hub", action="store_true", help="不重新生成总览页")
+    args = ap.parse_args()
+
     total = len(DYNASTIES)
-    for i, d in enumerate(DYNASTIES):
+    if args.only:
+        want = set(args.only.split(","))
+        items = [(i, d) for i, d in enumerate(DYNASTIES) if d["id"] in want]
+        if not items:
+            print("未找到指定 id：", args.only)
+            return
+    else:
+        items = list(enumerate(DYNASTIES))
+
+    for i, d in items:
         html = render_dynasty(d, i, total)
         out = os.path.join(ROOT, d["id"] + ".html")
         with open(out, "w", encoding="utf-8") as f:
             f.write(html)
         print("✓", d["id"] + ".html")
-    hub = render_hub()
-    with open(os.path.join(ROOT, "dynasties.html"), "w", encoding="utf-8") as f:
-        f.write(hub)
-    print("✓ dynasties.html")
-    print(f"共生成 {total} 个朝代页面 + 1 个总览页")
+
+    if not args.no_hub:
+        hub = render_hub()
+        with open(os.path.join(ROOT, "dynasties.html"), "w", encoding="utf-8") as f:
+            f.write(hub)
+        print("✓ dynasties.html")
+    print(f"本次共生成 {len(items)} 个朝代页面")
 
 if __name__ == "__main__":
     main()

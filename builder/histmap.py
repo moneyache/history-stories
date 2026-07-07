@@ -1,33 +1,36 @@
 # -*- coding: utf-8 -*-
 """
-地理精确的历史地图 SVG 引擎
---------------------------------
-按真实经纬度等距投影（带纬度余弦校正），画出：
-  - 可识别的中国轮廓 / 海岸线
-  - 黄河、长江等真实走向的水系
-  - 主要山脉（秦岭 / 太行 / 燕山 等）
-  - 按经纬度准确摆放的聚落、战场、文化遗址标注
-  - 罗盘、比例尺、图例、核心活动区高亮、中国定位小图
-先支持「区域视图」（聚焦某一片），后续朝代可复用。
+历史地图 SVG 引擎 —— 「地图帝」风格
+====================================
+参考谭其骧《中国历史地图集》与「地图帝」公众号的视觉风格：
+  - 地形底色分层渲染（海洋蓝 / 平原米黄 / 山地绿褐 / 高原棕）
+  - 粗线蓝色水系（黄河 / 长江 / 淮河 / 海河）
+  - 可识别的中国海岸线轮廓
+  - 中文大字地名标注（主名 + 今地小字）
+  - 左侧 / 左下角 图例框（带符号说明）
+  - 右上角罗盘 + 比例尺
+  - 战役模式额外支持：渐变箭头路线、编号阶段圈、日期文字
+
+输出为自包含 <svg> 字符串，可直接嵌入 HTML。
 """
 
 import math
 
-# ----------------------------------------------------------------------
-# 投影
-# ----------------------------------------------------------------------
+# ================================================================
+# 投影：等距圆柱投影（带纬度余弦校正）
+# ================================================================
 def make_proj(lon0, lat_top, span_lon, span_lat, W, H, mx=30, my=30):
-    """返回一个 proj(lon,lat)->(x,y) 与一些尺寸信息。"""
+    """返回 proj(lon,lat)->(x,y) 函数和尺寸字典。"""
     sy = (H - 2 * my) / span_lat
-    sx = sy * math.cos(math.radians(35.5))   # 东向压缩，保持真实比例
+    sx = sy * math.cos(math.radians(35.5))
     def proj(lon, lat):
         return (mx + (lon - lon0) * sx, my + (lat_top - lat) * sy)
     return proj, dict(mx=mx, my=my, sx=sx, sy=sy, W=W, H=H)
 
 
-# ----------------------------------------------------------------------
-# 平滑路径（Catmull-Rom -> 三次贝塞尔）
-# ----------------------------------------------------------------------
+# ================================================================
+# 平滑路径
+# ================================================================
 def smooth_path(pts, closed=True, tension=1.0):
     if len(pts) < 3:
         d = "M%.1f,%.1f" % pts[0]
@@ -54,37 +57,417 @@ def smooth_path(pts, closed=True, tension=1.0):
     return d
 
 
-# ----------------------------------------------------------------------
-# 中国轮廓锚点 (lon, lat) —— 顺时针，约 50 个控制点，形状可识别
-# ----------------------------------------------------------------------
-CHINA_OUTLINE = [
-    (73.5, 39.5), (75.0, 40.6), (80.0, 42.0), (82.5, 45.0), (85.0, 47.0),
-    (88.0, 48.6), (91.0, 47.0), (95.0, 44.0), (96.5, 42.5), (100.5, 42.5),
-    (104.0, 41.8), (108.0, 42.0), (111.0, 43.6), (115.0, 44.0), (119.0, 46.0),
-    (121.0, 49.0), (124.0, 50.0), (126.5, 52.6), (128.5, 53.4), (130.5, 53.3),
-    (134.0, 48.2), (133.0, 45.5), (131.0, 44.6), (130.2, 42.6), (128.2, 42.0),
-    (126.2, 41.2), (124.2, 40.0), (122.2, 39.2), (121.2, 37.6), (122.6, 37.0),
-    (119.8, 35.0), (120.6, 33.0), (121.6, 31.2), (121.0, 28.6), (119.6, 25.6),
-    (117.2, 23.6), (113.6, 22.0), (110.2, 21.0), (108.2, 21.6), (108.0, 19.0),
-    (106.2, 21.6), (102.6, 22.0), (101.0, 21.6), (99.0, 22.6), (97.6, 24.0),
-    (98.0, 25.6), (97.0, 28.6), (94.6, 28.6), (91.0, 27.6), (88.0, 27.6),
-    (85.0, 28.6), (81.0, 30.0), (78.6, 32.0), (76.0, 35.0), (74.6, 37.0),
-    (73.5, 39.5),
+# ================================================================
+# 中国海岸线锚点（简化但可识别）
+# ================================================================
+CHINA_COAST = [
+    (135.5, 49), (133, 47.5), (130, 45.5), (127, 42), (125, 40),
+    (123, 39), (122, 37.5), (121, 36), (120.5, 34.5), (121, 33),
+    (121.5, 31.5), (121, 30), (120, 28.5), (118.5, 27), (117, 25.5),
+    (115.5, 23.5), (113.5, 22.5), (111.8, 21.5), (110.3, 21),
+    (108.5, 21.2), (107.8, 19.5), (106.5, 18.5), (109.5, 18.4),
+    (110.7, 17.3), (110, 16.5), (108, 15),
 ]
-# 海南 / 台湾（独立小形状）
-HAINAN = [(109.5, 19.8), (110.6, 19.6), (110.8, 18.6), (109.8, 18.4), (109.2, 19.3)]
-TAIWAN = [(121.0, 25.0), (121.9, 24.0), (120.9, 22.5), (120.2, 22.0), (120.6, 23.6)]
+
+HAINAN_POLY = [(109.5, 20.2), (110.6, 20), (111, 19), (110.3, 18.2), (109.2, 18.8), (108.8, 19.6)]
+
+TAIWAN_POLY = [(121.5, 25.2), (122, 24), (121.5, 22.8), (120.8, 22.2), (120.5, 23.5)]
 
 
-# ----------------------------------------------------------------------
-# 中国定位小图（左上角「你在这里」）
-# ----------------------------------------------------------------------
+# ================================================================
+# 地形区域定义（用于底色分层）
+# ================================================================
+TERRAIN_REGIONS = {
+    # 各区域的 (lon,lat) 多边形，按绘制顺序（先画大的/后面的覆盖小的）
+    "sea": None,  # 特殊处理：整个背景就是海
+    "plateau": [  # 蒙古高原 / 西北（棕色）
+        (99, 43), (105, 44), (112, 44.5), (119, 46), (124, 48),
+        (126, 44), (120, 41), (114, 41), (108, 40.5), (103, 41), (99, 43),
+    ],
+    "mountain_west": [  # 西部山区（深绿）
+        (100, 38), (104, 40), (108, 40.5), (110, 38), (108, 35),
+        (104, 33), (101, 35), (100, 38),
+    ],
+    "qinling": [  # 秦岭山脉区（绿色条带）
+        (104, 34.5), (108, 34.5), (110, 33), (108, 31.5), (105, 32), (104, 34.5),
+    ],
+    "taihang": [  # 太行山区（绿色条带）
+        (112, 37), (113.5, 39), (115, 40), (116, 38.5), (115, 36.5), (113, 35.5), (112, 37),
+    ],
+    "yanshan": [  # 燕山区（绿色条带）
+        (115, 40), (118, 41), (120, 40.5), (119, 39), (116, 38.5), (115, 40),
+    ],
+    "plain_central": [  # 中原平原（浅米黄——最核心的活动区）
+        (108, 35.5), (112, 36), (114, 37), (116, 36.5), (117, 35.5),
+        (116, 34), (114, 33.5), (111, 33.8), (109, 34.5), (108, 35.5),
+    ],
+    "plain_east": [  # 华东平原（稍深米黄）
+        (116, 36.5), (119, 37), (121, 36.5), (122, 35), (121, 33),
+        (118, 32.5), (116, 33.5), (116, 36.5),
+    ],
+    "plain_north": [  # 华北平原北部
+        (114, 38.5), (118, 39.5), (120, 39), (119, 37), (116, 36.5), (114, 38.5),
+    ],
+}
+
+TERRAIN_COLORS = {
+    "plateau":   "#c9b896",   # 浅棕——高原/西北
+    "mountain_west": "#a8c4a2",  # 深绿——西部山
+    "qinling":   "#b8d4a8",   # 中绿——秦岭
+    "taihang":   "#b8d4a8",   # 太行
+    "yanshan":   "#b8d4a8",   # 燕山
+    "plain_central": "#f5e6c8",  # 浅米黄——中原核心
+    "plain_east": "#eddab0",   # 米黄——华东
+    "plain_north": "#eddab0",  # 华北北
+}
+LAND_BASE = "#e8dba0"  # 默认陆地底色
+
+
+# ================================================================
+# 水系数据（完整版，可按需裁剪）
+# ================================================================
+RIVER_SYSTEMS = {
+    "yellow": {  # 黄河（几字形）
+        "color": "#4A90D9",
+        "width": 3.5,
+        "pts": [
+            (96, 34.5), (98.5, 36), (100, 37.2), (102, 38.5), (104, 38),
+            (106, 39.5), (108, 40.8), (110, 40.5), (112, 40),
+            (113.5, 38.5), (113, 36.5), (111.5, 35), (112, 34.5),
+            (114, 35), (116, 36), (118, 37.2), (119, 38), (119.5, 38.5),
+        ],
+    },
+    "yangtze": {  # 长江
+        "color": "#4A90D9",
+        "width": 3.5,
+        "pts": [
+            (97, 33), (100, 32), (103, 31.5), (106, 30.5), (108, 30.2),
+            (110, 29.8), (112, 30), (114, 29.8), (116, 29.5),
+            (118, 29.8), (120, 30.5), (121.5, 31.5),
+        ],
+    },
+    "huai": {  # 淮河
+        "color": "#6BAED6",
+        "width": 2.2,
+        "pts": [
+            (113, 33.5), (115, 33), (116.5, 32.5), (118, 32.3),
+        ],
+    },
+    "hai": {  # 海河
+        "color": "#6BAED6",
+        "width": 2,
+        "pts": [
+            (114, 38), (115.5, 38.5), (116.5, 39), (117.5, 39.2),
+        ],
+    },
+    "wei": {  # 渭河（黄河支流）
+        "color": "#7BB8D9",
+        "width": 1.8,
+        "pts": [
+            (106, 34.5), (108, 34.8), (110, 35.5),
+        ],
+    },
+    "fen": {  # 汾河
+        "color": "#7BB8D9",
+        "width": 1.8,
+        "pts": [
+            (111.5, 36.5), (111.8, 37.5), (112.5, 38.5),
+        ],
+    },
+}
+
+
+# ================================================================
+# 标注图标
+# ================================================================
+STAR_PATH = "M0,-11 L3,-3.5 L10.5,-3.5 L4.5,1.5 L6.5,9 L0,4.5 L-6.5,9 L-4.5,1.5 L-10.5,-3.5 L-3,-3.5 Z"
+
+def _make_marker(proj, m):
+    """单个地点标注：图标 + 主标签 + 副标签(今地)。"""
+    x, y = proj(m["lon"], m["lat"])
+    kind = m.get("kind", "other")
+    col = {
+        "capital": "#D35400",   # 橙红——都城/重要聚落
+        "battle":  "#C0392B",   # 暗红——战场
+        "culture": "#27AE60",  # 绿——文化遗址
+        "tomb":    "#7F8C8D",  # 灰——陵墓
+        "other":   "#2980B9",  # 蓝——其他
+    }.get(kind, "#2980B9")
+
+    icon_html = ""
+    if kind == "capital":
+        icon_html = (
+            f'<g transform="translate({x:.1f},{y:.1f})">'
+            f'<path d="{STAR_PATH}" fill="{col}" stroke="#fff" stroke-width="1.2"/>'
+            f'</g>')
+    elif kind == "battle":
+        icon_html = (
+            f'<circle cx="{x:.1f}" cy="{y:.1f}" r="10" fill="{col}" stroke="#fff" stroke-width="2"/>'
+            f'<text x="{x:.1f}" y="{y+4:.1f}" text-anchor="middle" font-size="13" fill="#fff">⚔</text>')
+    elif kind == "culture":
+        icon_html = (
+            f'<rect x="{x-8:.1f}" y="{y-8:.1f}" width="16" height="16" rx="3" '
+            f'transform="rotate(45 {x:.1f} {y:.1f})" fill="{col}" stroke="#fff" stroke-width="1.5"/>'
+            f'<text x="{x:.1f}" y="{y+4:.1f}" text-anchor="middle" font-size="10" fill="#fff">文</text>')
+    elif kind == "tomb":
+        icon_html = (
+            f'<rect x="{x-9:.1f}" y="{y-9:.1f}" width="18" height="18" rx="3" '
+            f'fill="{col}" stroke="#fff" stroke-width="1.5"/>'
+            f'<text x="{x:.1f}" y="{y+5:.1f}" text-anchor="middle" font-size="11" fill="#fff">陵</text>')
+    else:
+        icon_html = (
+            f'<circle cx="{x:.1f}" cy="{y:.1f}" r="7" fill="{col}" stroke="#fff" stroke-width="2"/>')
+
+    lx = x + m.get("dx", 14)
+    ly = y + m.get("dy", -16)
+    anchor = m.get("anchor", "start")
+    label_html = (
+        f'<text x="{lx:.1f}" y="{ly:.1f}" text-anchor="{anchor}" '
+        f'font-size="15" font-weight="700" '
+        f'font-family="\'Noto Sans SC\',\'SimHei\',sans-serif" fill="#2C3E50">{m["label"]}</text>')
+
+    sub_html = ""
+    if m.get("modern"):
+        sub_html = (
+            f'<text x="{lx:.1f}" y="{ly+16:.1f}" text-anchor="{anchor}" '
+            f'font-size="11" font-family="\'Noto Sans SC\',sans-serif" fill="#666">{m["modern"]}</text>')
+
+    return icon_html + label_html + sub_html
+
+
+# ================================================================
+# 地形渲染（多层叠色）
+# ================================================================
+def _render_terrain(proj, region):
+    """按 TERRAIN_REGIONS 渲染地形底色层。返回 SVG path 列表。"""
+    parts = []
+    for name, poly in TERRAIN_REGIONS.items():
+        if name == "sea":
+            continue
+        if not poly:
+            continue
+        # 只画落在视窗内的部分（简单判断：至少有一个点在范围内即可）
+        pts = [proj(a, b) for a, b in poly]
+        d = smooth_path(pts, closed=True)
+        color = TERRAIN_COLORS.get(name, LAND_BASE)
+        parts.append(f'<path d="{d}" fill="{color}" opacity="0.85"/>')
+    return parts
+
+
+# ================================================================
+# 海岸线 & 陆地基底
+# ================================================================
+def _render_land_base(proj, region):
+    """渲染陆地基底多边形 + 海岸线描边。"""
+    coast_pts = [proj(a, b) for a, b in CHINA_COAST]
+    hai_pts = [proj(a, b) for a, b in HAINAN_POLY]
+    tai_pts = [proj(a, b) for a, b in TAIWAN_POLY]
+    parts = []
+
+    # 陆地基底（一个大致的多边形覆盖视窗内陆地）
+    land_poly = _land_block(proj, region)
+    lp = [proj(a, b) for a, b in land_poly]
+    d = smooth_path(lp, closed=True)
+    parts.append(f'<path d="{d}" fill="{LAND_BASE}" stroke="none"/>')
+
+    # 海岸线描边
+    cd = smooth_path(coast_pts, closed=False)
+    parts.append(f'<path d="{cd}" fill="none" stroke="#8B7355" stroke-width="2" stroke-linecap="round"/>')
+    # 海南
+    hd = smooth_path(hai_pts, closed=True)
+    parts.append(f'<path d="{hd}" fill="{LAND_BASE}" stroke="#8B7355" stroke-width="1.2"/>')
+    # 台湾
+    td = smooth_path(tai_pts, closed=True)
+    parts.append(f'<path d="{td}" fill="{LAND_BASE}" stroke="#8B7355" stroke-width="1.2"/>')
+
+    return parts
+
+
+def _land_block(proj, region):
+    """视窗内的陆地范围多边形（真实经纬度）。"""
+    block = [
+        (100, 42.5), (103, 41), (108, 41.5), (112, 42), (116, 42.2),
+        (120, 41.5), (122, 40), (122, 37), (121.5, 35), (121, 33),
+        (120, 31), (118.5, 29.5), (116, 28.5), (113, 28.5),
+        (110, 29.5), (107, 30.5), (104, 32), (102, 34), (100, 37),
+        (99, 40), (100, 42.5),
+    ]
+    return block
+
+
+# ================================================================
+# 河流渲染
+# ================================================================
+def _render_rivers(proj, rivers_override=None):
+    """渲染河流系统。rivers_override 可为 dict / list（旧格式） / None（用默认全量）。"""
+    parts = []
+    if rivers_override is None:
+        rivers = RIVER_SYSTEMS
+    elif isinstance(rivers_override, dict):
+        rivers = rivers_override
+    elif isinstance(rivers_override, list):
+        rivers = {}
+        for idx, r in enumerate(rivers_override):
+            name = r.get("name", f"river_{idx}")
+            rivers[name] = {"color": r.get("color", "#4A90D9"), "width": r.get("width", 3), "pts": r["pts"]}
+    else:
+        rivers = {}
+    for name, rinfo in rivers.items():
+        pts = [proj(a, b) for a, b in rinfo["pts"]]
+        d = smooth_path(pts, closed=False)
+        color = rinfo["color"]
+        width = rinfo["width"]
+        # 双层：底层白色高亮 + 上层彩色
+        parts.append(f'<path d="{d}" fill="none" stroke="#fff" stroke-width="{width+1.5}" '
+                     f'stroke-linecap="round" opacity="0.6"/>')
+        parts.append(f'<path d="{d}" fill="none" stroke="{color}" stroke-width="{width}" '
+                     f'stroke-linecap="round" opacity="0.92"/>')
+        # 河流名称（在河流中段标出）
+        mx_pt = pts[len(pts) // 2]
+        parts.append(
+            f'<text x="{mx_pt[0]:.1f}" y="{mx_pt[1]-8:.1f}" text-anchor="middle" '
+            f'font-size="12" font-weight="600" '
+            f'font-family="\'ZCOOL KuaiLe\',\'KaiTi\',sans-serif" fill="{color}">'
+            f'{name}</text>')
+    return parts
+
+
+# ================================================================
+# 山脉符号（小三角群 + 名称）
+# ================================================================
+def _render_mountains(proj, mountains_list):
+    parts = []
+    for mo in mountains_list:
+        cx, cy = proj(mo["lon"], mo["lat"])
+        half = mo.get("half", 1.0) * 22
+        count = mo.get("count", 4)
+        vert = mo.get("vert", False)
+        tris = ""
+        for i in range(count):
+            if vert:
+                yy = cy - half + (2 * half) * i / max(count - 1, 1)
+                xx = cx
+            else:
+                xx = cx - half + (2 * half) * i / max(count - 1, 1)
+                yy = cy
+            tris += (f'<path d="M{xx-5:.1f},{yy+8:.1f} L{xx:.1f},{yy-8:.1f} '
+                    f'L{xx+5:.1f},{yy+8:.1f}Z" fill="#6B8E5A" stroke="#4a6b3a" '
+                    f'stroke-width="0.8"/>')
+        ly_offset = cy - 16 if not vert else cy + 26
+        tris += (f'<text x="{cx:.1f}" y="{ly_offset:.1f}" text-anchor="middle" '
+                 f'font-size="13" font-weight="600" '
+                 f'font-family="\'ZCOOL KuaiLe\',sans-serif" fill="#4a6b3a">{mo["label"]}</text>')
+        parts.append(tris)
+    return parts
+
+
+# ================================================================
+# 图例框（左侧或左下角，地图帝风格）
+# ================================================================
+def _legend_box(x, y, items, title="图 例"):
+    """
+    items: [(symbol_svg_snippet, text), ...]
+    返回 SVG group。
+    """
+    row_h = 24
+    h = 24 + row_h * len(items) + 12
+    w = 155
+    parts = [
+        f'<g transform="translate({x},{y})">',
+        f'  <rect x="0" y="0" width="{w}" height="{h}" rx="8" '
+        f'fill="#FFFDF5" stroke="#B8956E" stroke-width="1.5"/>',
+        f'  <rect x="0" y="0" width="{w}" height="26" rx="8" '
+        f'fill="#F5ECD7"/>',
+        f'  <rect x="0" y="18" width="{w}" height="8" fill="#F5ECD7"/>',
+        f'  <text x="{w/2:.0f}" y="18" text-anchor="middle" font-size="13" font-weight="700" '
+        f'font-family="\'ZCOOL KuaiLe\',\'SimHei\',sans-serif" fill="#5C4A1F">{title}</text>',
+    ]
+    for i, (sym, txt) in enumerate(items):
+        yy = 36 + i * row_h
+        parts.append(f'  <text x="14" y="{yy}" font-size="14">{sym}</text>')
+        parts.append(f'  <text x="34" y="{yy-1}" font-size="12" '
+                     f'font-family="\'Noto Sans SC\',sans-serif" fill="#3D3224">{txt}</text>')
+    parts.append('</g>')
+    return "\n".join(parts)
+
+
+def _default_legend_items():
+    return [
+        ('<path d="' + STAR_PATH + '" transform="scale(0.7)" fill="#D35400"/>', '都城 / 重要聚落'),
+        ('<circle r="6" fill="#C0392B"/><text y="4" text-anchor="middle" font-size="10" fill="#fff">⚔</text>', '古战场'),
+        ('<rect x="-5" y="-5" width="10" height="10" rx="2" transform="rotate(45)" fill="#27AE60"/>', '文化遗址'),
+        ('<rect x="-5" y="-5" width="10" height="10" rx="2" fill="#7F8C8D"/><text y="4" text-anchor="middle" font-size="8" fill="#fff">陵</text>', '陵墓'),
+        ('<circle r="5" fill="#2980B9"/>', '其他地点'),
+    ]
+
+
+# ================================================================
+# 罗盘（右上角）
+# ================================================================
+def _compass_rose(cx, cy, r=32):
+    return (
+        f'<g transform="translate({cx},{cy})">'
+        f'  <circle r="{r}" fill="#FFFDF5" stroke="#B8956E" stroke-width="1.3" opacity="0.94"/>'
+        f'  <circle r="{r-5}" fill="none" stroke="#D4BC8E" stroke-width="0.8"/>'
+        f'  <path d="M0,{-r+5} L7,0 L0,{r-5} L-7,0 Z" fill="#C0392B"/>'
+        f'  <path d="M{-r+5},0 L0,7 L{r-5},0 L0,-7 Z" fill="#8B7355" opacity="0.8"/>'
+        f'  <text x="0" y="{-r+13}" text-anchor="middle" font-size="12" font-weight="700" '
+        f'fill="#C0392B">北</text>'
+        f'  <text x="0" y="{r-7}" text-anchor="middle" font-size="10" fill="#8B7355">南</text>'
+        f'  <text x="{r-8}" y="4" text-anchor="middle" font-size="10" fill="#8B7355">东</text>'
+        f'  <text x="{-r+8}" y="4" text-anchor="middle" font-size="10" fill="#8B7355">西</text>'
+        f'</g>')
+
+
+# ================================================================
+# 比例尺
+# ================================================================
+def _scale_bar(x, y, km=300, dim=None):
+    """km 公里对应的像素宽度。"""
+    deg_km = km / 95.0  # 约 95km/度
+    if dim:
+        px = deg_km * dim["sy"]
+    else:
+        px = km * 1.2  # fallback
+    return (
+        f'<g transform="translate({x},{y})">'
+        f'  <rect x="0" y="0" width="{px:.1f}" height="8" fill="#8B7355"/>'
+        f'  <rect x="0" y="0" width="{px/2:.1f}" height="8" fill="#FFFDF5" stroke="#8B7355" stroke-width="0.8"/>'
+        f'  <text x="0" y="-5" font-size="11" fill="#5C4A1F" '
+        f'font-family="\'Noto Sans SC\',sans-serif">{km} 公里</text>'
+        f'</g>')
+
+
+# ================================================================
+# 标题框（左上角，仿古卷轴风格）
+# ================================================================
+def _title_cartouche(title, subtitle="", x=16, y=14):
+    w = 240
+    h = 44 if subtitle else 36
+    svg = (
+        f'<g transform="translate({x},{y})">'
+        f'  <rect x="0" y="0" width="{w}" height="{h}" rx="8" '
+        f'fill="#FFFDF5" stroke="#B8956E" stroke-width="1.8"/>'
+        f'  <rect x="0" y="0" width="{w}" height="{h-2}" rx="8" fill="#FBF5E6" opacity="0.6"/>'
+        f'  <text x="16" y="{24 if subtitle else 23}" font-size="17" font-weight="700" '
+        f'font-family="\'ZCOOL KuaiLe\',\'SimHei\',sans-serif" fill="#5C4A1F">{title}</text>')
+    if subtitle:
+        svg += (
+            f'  <text x="16" y="{h-4}" font-size="11" '
+            f'font-family="\'Noto Sans SC\',sans-serif" fill="#8B7355">{subtitle}</text>')
+    svg += '</g>'
+    return svg
+
+
+# ================================================================
+# 中国定位小图
+# ================================================================
 def china_locator(dot_lon, dot_lat, x=0, y=0, scale=1.0):
-    proj, _ = make_proj(73, 54, 62, 37, 150, 110, mx=10, my=8)
-    outline = " ".join("%.1f,%.1f" % proj(a, b) for a, b in CHINA_OUTLINE)
-    hai = " ".join("%.1f,%.1f" % proj(a, b) for a, b in HAINAN)
-    tai = " ".join("%.1f,%.1f" % proj(a, b) for a, b in TAIWAN)
-    dx, dy = proj(dot_lon, dot_lat)
+    proj_l, _ = make_proj(73, 54, 62, 37, 150, 110, mx=10, my=8)
+    outline = " ".join("%.1f,%.1f" % proj_l(a, b) for a, b in CHINA_COAST)
+    hai = " ".join("%.1f,%.1f" % proj_l(a, b) for a, b in HAINAN_POLY)
+    tai = " ".join("%.1f,%.1f" % proj_l(a, b) for a, b in TAIWAN_POLY)
+    dx, dy = proj_l(dot_lon, dot_lat)
     s = scale
     return f'''<g transform="translate({x},{y}) scale({s})">
       <rect x="-6" y="-6" width="162" height="124" rx="10" fill="#fbf3df" stroke="#b89b5e" stroke-width="1.5"/>
@@ -97,207 +480,332 @@ def china_locator(dot_lon, dot_lat, x=0, y=0, scale=1.0):
     </g>'''
 
 
-# ----------------------------------------------------------------------
-# 山脉（一排小三角 + 标签）
-# ----------------------------------------------------------------------
-def mountain_range(proj, lon, lat, label, half=0.9, count=4, vert=False):
-    cx, cy = proj(lon, lat)
-    span = half * 27.0  # 约 half 个经度宽
-    tris = []
-    for i in range(count):
-        if vert:
-            yy = cy - span + (2 * span) * i / (count - 1)
-            xx = cx
-            tris.append(f'<path d="M{xx-5:.1f},{yy+7:.1f} L{xx:.1f},{yy-7:.1f} L{xx+5:.1f},{yy+7:.1f} Z" fill="#9c7b46" stroke="#6e521f" stroke-width="0.8"/>')
-        else:
-            xx = cx - span + (2 * span) * i / (count - 1)
-            yy = cy
-            tris.append(f'<path d="M{xx-5:.1f},{yy+7:.1f} L{xx:.1f},{yy-7:.1f} L{xx+5:.1f},{yy+7:.1f} Z" fill="#9c7b46" stroke="#6e521f" stroke-width="0.8"/>')
-    lab = f'<text x="{cx:.1f}" y="{cy-12 if not vert else cy+22:.1f}" text-anchor="middle" font-size="12" font-family="ZCOOL KuaiLe,sans-serif" fill="#6e521f">{label}</text>'
-    return "".join(tris) + lab
-
-
-# ----------------------------------------------------------------------
-# 标注（聚落 / 战场 / 文化 / 陵墓）
-# ----------------------------------------------------------------------
-STAR = "M0,-9 L2.6,-2.8 L9,-2.8 L4,1.8 L5.6,8.6 L0,4.4 L-5.6,8.6 L-4,1.8 L-9,-2.8 L-2.6,-2.8 Z"
-
-def marker(proj, m):
-    x, y = proj(m["lon"], m["lat"])
-    kind = m.get("kind", "other")
-    col = {"capital": "#E67E22", "battle": "#E74C3C", "culture": "#27AE60",
-           "tomb": "#7F8C8D", "other": "#3498DB"}.get(kind, "#3498DB")
-    # 图标
-    if kind == "capital":
-        icon = f'<path d="{STAR}" transform="translate({x:.1f},{y:.1f}) scale(0.95)" fill="{col}" stroke="#fff" stroke-width="1"/>'
-    elif kind == "battle":
-        icon = (f'<circle cx="{x:.1f}" cy="{y:.1f}" r="9" fill="{col}" stroke="#fff" stroke-width="2"/>'
-                f'<text x="{x:.1f}" y="{y+5:.1f}" text-anchor="middle" font-size="12" fill="#fff">⚔</text>')
-    elif kind == "culture":
-        icon = (f'<rect x="{x-8:.1f}" y="{y-8:.1f}" width="16" height="16" rx="3" transform="rotate(45 {x:.1f} {y:.1f})" fill="{col}" stroke="#fff" stroke-width="1.5"/>'
-                f'<text x="{x:.1f}" y="{y+4:.1f}" text-anchor="middle" font-size="10" fill="#fff">稻</text>')
-    elif kind == "tomb":
-        icon = f'<rect x="{x-8:.1f}" y="{y-8:.1f}" width="16" height="16" rx="2" fill="{col}" stroke="#fff" stroke-width="1.5"/>'
-    else:
-        icon = f'<circle cx="{x:.1f}" cy="{y:.1f}" r="7" fill="{col}" stroke="#fff" stroke-width="2"/>'
-    # 标签
-    lx = x + m.get("dx", 12)
-    ly = y + m.get("dy", -14)
-    anchor = m.get("anchor", "start")
-    label = (f'<text x="{lx:.1f}" y="{ly:.1f}" text-anchor="{anchor}" font-size="13" font-weight="700" '
-             f'font-family="Noto Sans SC,sans-serif" fill="#2C3E50">{m["label"]}</text>')
-    sub = ""
-    if m.get("modern"):
-        sub = (f'<text x="{lx:.1f}" y="{ly+14:.1f}" text-anchor="{anchor}" font-size="10.5" '
-               f'font-family="Noto Sans SC,sans-serif" fill="#7F8C8D">{m["modern"]}</text>')
-    return icon + label + sub
-
-
-# ----------------------------------------------------------------------
-# 主图：区域视图
-# ----------------------------------------------------------------------
-def render_hist_map(region, markers, rivers, mountains, title, core=None, theme=None,
-                    locator=(112, 35), width=720, height=560):
+# ================================================================
+# ====== 主函数：渲染「地图帝」风格疆域地图 ======
+# ================================================================
+def render_hist_map(region, markers, rivers=None, mountains=None, title="",
+                    core=None, locator=(112, 35),
+                    width=780, height=600, legend_items=None):
     """
-    region: (lon0, lat_top, span_lon, span_lat)
-    rivers: [{"name":..,"color":..,"pts":[(lon,lat)...]}, ...]
-    mountains: [{"lon","lat","label","half","vert"}]
-    core: (lon,lat,lon,lat) 核心高亮框（可选）
+    参数：
+      region:     (lon0, lat_top, span_lon, span_lat)
+      markers:    [{"lon","lat","label","modern","kind","dx","dy","anchor"}, ...]
+      rivers:     自定义河流列表（None 则用默认全量 RIVER_SYSTEMS）
+      mountains:  [{"lon","lat","label","half","count","vert"}, ...]
+      title:      左上角标题文字
+      core:       (w_lon,s_lat,e_lon,e_lat) 核心高亮区域（可选）
+      locator:    定位小图中心点坐标
+      legend_items: 自定义图例列表（None 用默认）
+    返回：<svg>...</svg> 字符串。
     """
     lon0, lat_top, span_lon, span_lat = region
-    proj, dim = make_proj(lon0, lat_top, span_lon, span_lat, width, height, mx=34, my=30)
+    proj, dim = make_proj(lon0, lat_top, span_lon, span_lat, width, height, mx=30, my=30)
     W, H = dim["W"], dim["H"]
 
-    # 背景海
-    parts = [f'<svg viewBox="0 0 {W} {H}" role="img" aria-label="{title}" font-family="Noto Sans SC,sans-serif">']
-    parts.append(f'<defs>'
-                 f'<linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">'
-                 f'<stop offset="0" stop-color="#eaf4f8"/><stop offset="1" stop-color="#dcebf2"/></linearGradient>'
-                 f'<radialGradient id="coreglow" cx="50%" cy="50%" r="50%">'
-                 f'<stop offset="0" stop-color="#F1C40F" stop-opacity="0.45"/><stop offset="1" stop-color="#F1C40F" stop-opacity="0"/></radialGradient>'
-                 f'<filter id="paper"><feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" result="n"/>'
-                 f'<feColorMatrix in="n" type="saturate" values="0"/>'
-                 f'<feComponentTransfer><feFuncA type="linear" slope="0.06"/></feComponentTransfer>'
-                 f'<feComposite operator="over" in2="SourceGraphic"/></filter>'
-                 f'</defs>')
-    parts.append(f'<rect x="0" y="0" width="{W}" height="{H}" rx="16" fill="url(#sea)"/>')
+    parts = [f'<svg viewBox="0 0 {W} {H}" role="img" aria-label="{title}" '
+             f'font-family="\'Noto Sans SC\',\'SimHei\',sans-serif" xmlns="http://www.w3.org/2000/svg">']
 
-    # 陆地（用全中国轮廓在区域投影下裁剪显示，只显示落在框内的部分）
-    # —— 为简洁与真实感，这里用一段「陆地底色」多边形覆盖框内主要陆地，
-    #    再在上面叠真实河流/山脉/标注；陆地边界用浅色块示意。
-    land_poly = _land_block(proj, region)
-    parts.append(f'<path d="{land_poly}" fill="#efe2c2" stroke="#c9b483" stroke-width="2" filter="url(#paper)"/>')
+    # ---- defs ----
+    parts.append('''<defs>
+    <!-- 海洋渐变 -->
+    <linearGradient id="ocean_bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#D4E8F2"/>
+      <stop offset="100%" stop-color="#B8D4E8"/>
+    </linearGradient>
+    <!-- 核心区发光 -->
+    <radialGradient id="core_glow" cx="50%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#F4D03F" stop-opacity="0.40"/>
+      <stop offset="100%" stop-color="#F4D03F" stop-opacity="0"/>
+    </radialGradient>
+    <!-- 战役箭头渐变 -->
+    <linearGradient id="arrow_red" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#E74C3C" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#C0392B" stop-opacity="0.95"/>
+    </linearGradient>
+    <linearGradient id="arrow_blue" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3498DB" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#2980B9" stop-opacity="0.95"/>
+    </linearGradient>
+    <!-- 箭头 marker -->
+    <marker id="head_red" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#C0392B"/>
+    </marker>
+    <marker id="head_blue" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2980B9"/>
+    </marker>
+    <!-- 阴影 -->
+    <filter id="shadow" x="-3%" y="-3%" width="106%" height="108%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.15"/>
+    </filter>
+    </defs>''')
 
-    # 核心高亮
+    # ---- 背景（海洋）----
+    parts.append(f'<rect x="0" y="0" width="{W}" height="{H}" rx="12" fill="url(#ocean_bg)"/>')
+
+    # ---- 陆地基底 ----
+    parts.extend(_render_land_base(proj, region))
+
+    # ---- 地形分层着色 ----
+    parts.extend(_render_terrain(proj, region))
+
+    # ---- 核心活动区高亮 ----
     if core:
-        cx0, cy0 = proj(core[0], core[1])
-        cx1, cy1 = proj(core[2], core[3])
-        gx, gy = (cx0 + cx1) / 2, (cy0 + cy1) / 2
-        gw = abs(cx1 - cx0) + 60
-        gh = abs(cy1 - cy0) + 60
-        parts.append(f'<ellipse cx="{gx:.1f}" cy="{gy:.1f}" rx="{gw/2:.1f}" ry="{gh/2:.1f}" fill="url(#coreglow)"/>')
-        parts.append(f'<text x="{gx:.1f}" y="{gy - gh/2 + 16:.1f}" text-anchor="middle" font-size="13" '
-                     f'font-family="ZCOOL KuaiLe,sans-serif" fill="#b8860b" opacity="0.85">★ 核心活动区</text>')
+        c_x0, c_y0 = proj(core[0], core[1])
+        c_x1, c_y1 = proj(core[2], core[3])
+        gx, gy = (c_x0 + c_x1) / 2, (c_y0 + c_y1) / 2
+        gw = abs(c_x1 - c_x0) + 50
+        gh = abs(c_y1 - c_y0) + 50
+        parts.append(f'<ellipse cx="{gx:.1f}" cy="{gy:.1f}" rx="{gw/2:.1f}" ry="{gh/2:.1f}" '
+                     f'fill="url(#core_glow)" filter="url(#shadow)"/>')
+        parts.append(f'<text x="{gx:.1f}" y="{gy - gh/2 + 18:.1f}" text-anchor="middle" '
+                     f'font-size="14" font-weight="700" '
+                     f'font-family="\'ZCOOL KuaiLe\',sans-serif" fill="#B7950B"'
+                     f' filter="url(#shadow)">★ 核心活动区</text>')
 
-    # 河流
-    for r in rivers:
-        pts = [proj(a, b) for a, b in r["pts"]]
-        d = smooth_path(pts, closed=False)
-        parts.append(f'<path d="{d}" fill="none" stroke="{r["color"]}" stroke-width="3.2" '
-                     f'stroke-linecap="round" opacity="0.92"/>')
-        # 河流名
-        mxr, myr = pts[len(pts) // 2]
-        parts.append(f'<text x="{mxr:.1f}" y="{myr-8:.1f}" text-anchor="middle" font-size="12" '
-                     f'font-family="ZCOOL KuaiLe,sans-serif" fill="{r["color"]}" opacity="0.9">{r["name"]}</text>')
+    # ---- 河流 ----
+    parts.extend(_render_rivers(proj, rivers))
 
-    # 山脉
-    for mo in mountains:
-        parts.append(mountain_range(proj, mo["lon"], mo["lat"], mo["label"],
-                                    half=mo.get("half", 0.9), count=mo.get("count", 4),
-                                    vert=mo.get("vert", False)))
+    # ---- 山脉 ----
+    if mountains:
+        parts.extend(_render_mountains(proj, mountains))
 
-    # 标注
+    # ---- 标注点 ----
     for m in markers:
-        parts.append(marker(proj, m))
+        parts.append(_make_marker(proj, m))
 
-    # 标题 cartouche
-    parts.append(f'<g transform="translate(20,18)">'
-                 f'<rect x="0" y="0" width="230" height="40" rx="9" fill="#fbf3df" stroke="#b89b5e" stroke-width="1.5"/>'
-                 f'<text x="14" y="26" font-size="16" font-family="ZCOOL KuaiLe,sans-serif" fill="#7a5c2e">{title}</text></g>')
+    # ---- 标题 ----
+    parts.append(_title_cartouche(title))
 
-    # 罗盘
-    parts.append(_compass(W - 64, 64, 34))
+    # ---- 罗盘（右上）----
+    parts.append(_compass_rose(W - 56, 56, 30))
 
-    # 比例尺（约 500 公里）
-    km = 500
-    deg = km / 95.0  # 1°纬≈111km, 此处用约95km/°(中原纬度) 估算
-    px = deg * dim["sy"]
-    parts.append(f'<g transform="translate(28,{H-30})">'
-                 f'<rect x="0" y="0" width="{px:.1f}" height="7" fill="#8a6d3b"/>'
-                 f'<rect x="0" y="0" width="{px/2:.1f}" height="7" fill="#efe2c2" stroke="#8a6d3b" stroke-width="0.8"/>'
-                 f'<text x="0" y="-6" font-size="11" fill="#6e521f" font-family="Noto Sans SC,sans-serif">约 {km} 公里</text></g>')
+    # ---- 比例尺（右下偏上）----
+    parts.append(_scale_bar(W - 200, H - 28, km=300, dim=dim))
 
-    # 图例
-    parts.append(_legend(W - 150, H - 92))
+    # ---- 图例框（左下）----
+    leg_items = legend_items or _default_legend_items()
+    parts.append(_legend_box(16, H - (24 + 24 * len(leg_items) + 20), leg_items))
 
-    # 定位小图
-    parts.append(china_locator(locator[0], locator[1], x=W - 168, y=92, scale=1.0))
+    # ---- 中国定位小图 ----
+    parts.append(china_locator(locator[0], locator[1], x=W - 160, y=88, scale=0.95))
 
     parts.append('</svg>')
     return "\n".join(parts)
 
 
-def _land_block(proj, region):
-    """用一组覆盖框内主要陆地的粗多边形（在真实经纬度下定义，再投影）。"""
-    # 大致覆盖 中原+华北+华东+华中的陆地轮廓（真实坐标，简化）
-    block = [
-        (101, 43), (104, 41), (110, 41), (115, 41.5), (120, 41), (123, 40),
-        (122, 37), (121, 35), (121, 31), (119, 28), (116, 27), (112, 28),
-        (109, 30), (106, 31), (103, 33), (101, 35), (100, 38), (101, 43),
+# ================================================================
+# ====== 战役地图专用（地图帝风格：箭头+编号圈+日期）======
+# ================================================================
+def render_battle_map(region, title, subtitle="",
+                      armies=[],          # [{"name","color","origin_pos","label"},...]
+                      arrows=[],          # [{"from","to","color","label","num"},...]
+                      key_places=[],     # [{"lon","lat","label","kind"},...]
+                      phases=[],         # [{"num","lon","lat","desc"},...] 编号阶段圈
+                      width=780, height=600):
+    """
+    渲染战役地图（带箭头路线 + 编号阶段圈 + 两军位置）。
+
+    armies: 军队信息 [{name, color, origin_pos=(lon,lat), label}]
+    arrows: 箭头路线 [{from:(lon,lat), to:(lon,lat), color('red'|'blue'), label, num}]
+    key_places: 关键地点 [{lon,lat,label,kind}]
+    phases: 战役阶段 [{num, lon, lat, desc}]  编号圆圈+描述
+    """
+    lon0, lat_top, span_lon, span_lat = region
+    proj, dim = make_proj(lon0, lat_top, span_lon, span_lat, width, height, mx=30, my=30)
+    W, H = dim["W"], dim["H"]
+
+    parts = [f'<svg viewBox="0 0 {W} {H}" role="img" aria-label="{title}" '
+             f'font-family="\'Noto Sans SC\',\'SimHei\',sans-serif" xmlns="http://www.w3.org/2000/svg">']
+
+    # defs（同上，复用箭头等）
+    parts.append('''<defs>
+    <linearGradient id="b_ocean" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#D4E8F2"/><stop offset="100%" stop-color="#B8D4E8"/>
+    </linearGradient>
+    <marker id="bh_red" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#C0392B"/></marker>
+    <marker id="bh_blue" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2980B9"/></marker>
+    <filter id="bsh"><feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.15"/></filter>
+    </defs>''')
+
+    # 海洋背景
+    parts.append(f'<rect x="0" y="0" width="{W}" height="{H}" rx="12" fill="url(#b_ocean)"/>')
+    # 陆地
+    parts.extend(_render_land_base(proj, region))
+    parts.extend(_render_terrain(proj, region))
+    # 河流
+    parts.extend(_render_rivers(proj))
+
+    # ---- 军队位置（大圆 + 名字）----
+    for army in armies:
+        ax, ay = proj(*army["origin_pos"])
+        acolor = army.get("color", "#E74C3C")
+        alabel = army.get("label", army.get("name", ""))
+        # 大圆表示军队
+        parts.append(
+            f'<circle cx="{ax:.1f}" cy="{ay:.1f}" r="22" fill="{acolor}" '
+            f'opacity="0.25" stroke="{acolor}" stroke-width="2" stroke-dasharray="6,3"/>')
+        parts.append(
+            f'<circle cx="{ax:.1f}" cy="{ay:.1f}" r="14" fill="{acolor}" stroke="#fff" stroke-width="2.5"/>')
+        parts.append(
+            f'<text x="{ax:.1f}" y="{ay+5:.1f}" text-anchor="middle" font-size="14" '
+            f'font-weight="700" fill="#fff">{alabel[:2]}</text>')
+        # 旁边名字
+        parts.append(
+            f'<text x="{ax+28:.1f}" y="{ay-10:.1f}" font-size="16" font-weight="700" '
+            f'fill="{acolor}">{army["name"]}</text>')
+
+    # ---- 箭头路线 ----
+    for arr in arrows:
+        fx, fy = proj(*arr["from"])
+        tx, ty = proj(*arr["to"])
+        color_key = arr.get("color", "red")
+        grad_id = "arrow_red" if color_key == "red" else "arrow_blue"
+        marker_id = "bh_red" if color_key == "red" else "bh_blue"
+        line_color = "#C0392B" if color_key == "red" else "#2980B9"
+
+        # 曲线箭头（稍微弯曲更有动感）
+        mx_pt = ((fx + tx) / 2, min(fy, ty) - 25)
+
+        # 箭头主线
+        parts.append(
+            f'<path d="M{fx:.1f},{fy:.1f} Q{mx_pt[0]:.1f},{mx_pt[1]:.1f} {tx:.1f},{ty:.1f}" '
+            f'fill="none" stroke="{line_color}" stroke-width="4" stroke-linecap="round" '
+            f'marker-end="url(#{marker_id})" opacity="0.88"/>')
+
+        # 箭头上方的文字（如果有）
+        if arr.get("label"):
+            lx = (fx + tx) / 2 + (10 if tx > fx else -20)
+            ly = mx_pt[1] - 8
+            parts.append(
+                f'<text x="{lx:.1f}" y="{ly:.1f}" text-anchor="middle" font-size="12" '
+                f'font-weight="600" fill="{line_color}" filter="url(#bsh)">'
+                f'{arr["label"]}</text>')
+
+        # 编号圈（如果有）
+        if arr.get("num") is not None:
+            nx = (fx + tx * 2) / 3
+            ny = mx_pt[1] + 6
+            parts.append(
+                f'<circle cx="{nx:.1f}" cy="{ny:.1f}" r="13" fill="#fff" '
+                f'stroke="{line_color}" stroke-width="2"/>')
+            parts.append(
+                f'<text x="{nx:.1f}" y="{ny+5:.1f}" text-anchor="middle" font-size="13" '
+                f'font-weight="700" fill="{line_color}">{arr["num"]}</text>')
+
+    # ---- 关键地点 ----
+    for kp in key_places:
+        kx, ky = proj(kp["lon"], kp["lat"])
+        kcol = {"city": "#D35400", "battle": "#C0392B", "other": "#2980B9"}.get(kp.get("kind", "other"), "#2980B9")
+        parts.append(
+            f'<circle cx="{kx:.1f}" cy="{ky:.1f}" r="6" fill="{kcol}" stroke="#fff" stroke-width="1.5"/>')
+        parts.append(
+            f'<text x="{kx+10:.1f}" y="{ky-4:.1f}" font-size="13" font-weight="600" '
+            f'fill="#2C3E50">{kp["label"]}</text>')
+
+    # ---- 阶段编号圈（独立于箭头的）----
+    for ph in phases:
+        px, py = proj(ph["lon"], ph["lat"])
+        parts.append(
+            f'<circle cx="{px:.1f}" cy="{py:.1f}" r="16" fill="#F4D03F" '
+            f'stroke="#B7950B" stroke-width="2.5" filter="url(#bsh)"/>')
+        parts.append(
+            f'<text x="{px:.1f}" y="{py+6:.1f}" text-anchor="middle" font-size="14" '
+            f'font-weight="700" fill="#7D6608">{ph["num"]}</text>')
+        if ph.get("desc"):
+            parts.append(
+                f'<text x="{px:.1f}" y="{py+30:.1f}" text-anchor="middle" font-size="11" '
+                f'fill="#5C4A1F">{ph["desc"]}</text>')
+
+    # ---- 标题（居中大标题）----
+    parts.append(
+        f'<g transform="translate({W/2-140}, 12)">'
+        f'  <rect x="0" y="0" width="280" height="46" rx="10" '
+        f'fill="#FFFDF5" stroke="#C0392B" stroke-width="2.2" filter="url(#bsh)"/>'
+        f'  <text x="140" y="22" text-anchor="middle" font-size="19" font-weight="700" '
+        f'fill="#C0392B">{title}</text>')
+    if subtitle:
+        parts.append(
+            f'  <text x="140" y="38" text-anchor="middle" font-size="11" fill="#8B7355">{subtitle}</text>')
+    parts.append('</g>')
+
+    # ---- 图例（战役专用）----
+    battle_legend = [
+        ('<circle r="7" fill="#E74C3C" opacity="0.5" stroke="#C0392B" stroke-dasharray="4,2"/>', '黄帝部落'),
+        ('<circle r="7" fill="#2980B9" opacity="0.5" stroke="#2980B9" stroke-dasharray="4,2"/>', '蚩尤部落'),
+        ('<line x1="-10" y1="0" x2="10" y2="0" stroke="#C0392B" stroke-width="3" marker-end="url(#bh_red)"/>', '进攻方向'),
+        ('<circle r="8" fill="#F4D03F" stroke="#B7950B" stroke-width="2"/><text y="4" text-anchor="middle" font-size="10" font-weight="700" fill="#7D6608">①</text>', '战役阶段'),
     ]
-    pts = [proj(a, b) for a, b in block]
-    return smooth_path(pts, closed=True)
+    parts.append(_legend_box(16, H - (24 + 24 * len(battle_legend) + 20), battle_legend, "战役图例"))
+
+    # ---- 比例尺 ----
+    parts.append(_scale_bar(W - 180, H - 28, km=150, dim=dim))
+
+    parts.append('</svg>')
+    return "\n".join(parts)
 
 
-def _compass(cx, cy, r):
-    return (f'<g transform="translate({cx},{cy})">'
-            f'<circle r="{r}" fill="#fbf3df" stroke="#b89b5e" stroke-width="1.5" opacity="0.95"/>'
-            f'<circle r="{r-6}" fill="none" stroke="#d9c08a" stroke-width="1"/>'
-            f'<path d="M0,{-r+4} L6,0 L0,{r-4} L-6,0 Z" fill="#E74C3C"/>'
-            f'<path d="M{-r+4},0 L0,6 L{r-4},0 L0,-6 Z" fill="#7a5c2e" opacity="0.85"/>'
-            f'<text x="0" y="{-r+12}" text-anchor="middle" font-size="12" font-weight="700" fill="#7a5c2e">北</text>'
-            f'<text x="0" y="{r-6}" text-anchor="middle" font-size="10" fill="#7a5c2e">南</text>'
-            f'<text x="{r-6}" y="4" text-anchor="middle" font-size="10" fill="#7a5c2e">东</text>'
-            f'<text x="{-r+6}" y="4" text-anchor="middle" font-size="10" fill="#7a5c2e">西</text>'
-            f'</g>')
-
-
-def _legend(x, y):
-    items = [
-        ("#E67E22", "★", "重要聚落 / 都城"),
-        ("#E74C3C", "⚔", "古战场"),
-        ("#27AE60", "◆", "文化遗址"),
-        ("#3498DB", "●", "其他地点"),
-    ]
-    h = 22 * len(items) + 14
-    s = [f'<g transform="translate({x},{y})">'
-         f'<rect x="0" y="0" width="140" height="{h}" rx="9" fill="#fbf3df" stroke="#b89b5e" stroke-width="1.5" opacity="0.96"/>']
-    for i, (c, sym, txt) in enumerate(items):
-        yy = 20 + i * 22
-        s.append(f'<text x="14" y="{yy}" font-size="14" fill="{c}" font-weight="700">{sym}</text>')
-        s.append(f'<text x="34" y="{yy}" font-size="12" fill="#5b4a2a" font-family="Noto Sans SC,sans-serif">{txt}</text>')
-    s.append('</g>')
-    return "".join(s)
-
-
+# ================================================================
+# 自测
+# ================================================================
 if __name__ == "__main__":
-    # 自测：生成一个三皇五帝示例地图并写文件，校验 XML 合法性
     import xml.dom.minidom as M
+
+    # --- 测试疆域地图 ---
     mk = [
-        {"lon": 113.7, "lat": 34.4, "label": "黄帝·有熊", "modern": "今河南新郑", "kind": "capital", "dx": 12, "dy": -14, "anchor": "start"},
-        {"lon": 115.0, "lat": 40.4, "label": "涿鹿", "modern": "今河北涿鹿", "kind": "battle", "dx": 12, "dy": -10, "anchor": "start"},
+        {"lon": 113.7, "lat": 34.4, "label": "黄帝·有熊", "modern": "今河南新郑", "kind": "capital"},
+        {"lon": 115.0, "lat": 40.4, "label": "涿鹿", "modern": "今河北涿鹿", "kind": "battle"},
+        {"lon": 111.5, "lat": 33.9, "label": "炎帝·神农", "modern": "今河南淮阳", "kind": "capital"},
+        {"lon": 120.3, "lat": 30.4, "label": "良渚", "modern": "今浙江杭州", "kind": "culture"},
     ]
-    rv = [{"name": "黄河", "color": "#c8923a", "pts": [(96, 34), (100, 37), (104, 38), (108, 41), (111, 41), (113, 38), (112, 35), (114, 35), (118, 38), (119, 38.5)]}]
-    svg = render_hist_map((100, 43, 23, 15), mk, rv, [{"lon": 112, "lat": 34, "label": "秦岭"}], "三皇五帝·活动范围", core=(108, 41, 118, 32))
-    M.parseString(svg)
-    print("SVG OK, length=", len(svg))
+    mts = [
+        {"lon": 110, "lat": 33.5, "label": "秦岭", "half": 2.2, "count": 5},
+        {"lon": 114.2, "lat": 37.5, "label": "太行山", "half": 2.4, "count": 5, "vert": True},
+        {"lon": 117.5, "lat": 40.6, "label": "燕山", "half": 1.6, "count": 4},
+    ]
+
+    svg1 = render_hist_map(
+        region=(100, 43, 23, 15),
+        markers=mk,
+        mountains=mts,
+        title="三皇五帝 · 主要活动区域",
+        core=(107, 41.5, 119, 31),
+        width=780, height=600,
+    )
+    try:
+        M.parseString(svg1)
+        print("✓ 疆域地图 SVG 合法,", len(svg1), "bytes")
+    except Exception as e:
+        print("✗ 疆域地图 SVG 错误:", e)
+
+    # --- 测试战役地图 ---
+    svg2 = render_battle_map(
+        region=(111, 42, 12, 10),
+        title="涿鹿之战",
+        subtitle="黄帝 vs 蚩尤 · 约公元前 2600 年",
+        armies=[
+            {"name": "黄帝部落", "color": "#E74C3C", "origin_pos": (113.5, 36), "label": "黄"},
+            {"name": "蚩尤部落", "color": "#2980B9", "origin_pos": (117.5, 38.5), "label": "蚩"},
+        ],
+        arrows=[
+            {"from": (113.5, 36), "to": (115.5, 39.5), "color": "red", "label": "北上迎战", "num": "①"},
+            {"from": (117.5, 38.5), "to": (115.5, 39.5), "color": "blue", "label": "西进", "num": "②"},
+            {"from": (115.5, 39.5), "to": (115.0, 40.4), "color": "red", "label": "追击", "num": "③"},
+        ],
+        key_places=[
+            {"lon": 115.0, "lat": 40.4, "label": "涿鹿之野", "kind": "battle"},
+            {"lon": 114.6, "lat": 39.9, "label": "阪泉", "kind": "city"},
+        ],
+        phases=[
+            {"num": "①", "lon": 114, "lat": 37.5, "desc": "两军对峙"},
+            {"num": "②", "lon": 115.5, "lat": 39.5, "desc": "激战涿鹿"},
+            {"num": "③", "lon": 115.0, "lat": 40.4, "desc": "擒获蚩尤"},
+        ],
+        width=780, height=550,
+    )
+    try:
+        M.parseString(svg2)
+        print("✓ 战役地图 SVG 合法,", len(svg2), "bytes")
+    except Exception as e:
+        print("✗ 战役地图 SVG 错误:", e)
