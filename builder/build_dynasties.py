@@ -9,6 +9,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 from dynasty_data import DYNASTIES  # noqa
 import histmap  # 地理精确的历史地图引擎
+from battle_maps import BATTLE_MAPS  # 各关键战役的地图帝风格战役地图配置
 
 ROOT = os.path.dirname(HERE)  # 仓库根目录
 
@@ -565,10 +566,10 @@ def render_dynasty(d, idx, total):
             cid = f"bcanvas{i}"; bid=f"bbtn{i}"; nid=f"bnarr{i}"; rid=f"bres{i}"
             lc = th["secondary"]; rc = "#E74C3C"
 
-            # ---- 战役地图（如果数据里有 battle_map 配置）----
+            # ---- 战役地图（优先用数据里的 battle_map，否则用 battle_maps.py 统一配置）----
             bmap_html = ""
-            if b.get("battle_map"):
-                bm = b["battle_map"]
+            bm = b.get("battle_map") or BATTLE_MAPS.get(b["name"])
+            if bm:
                 bmap_svg = histmap.render_battle_map(
                     region=bm.get("region", d.get("map_region", (110, 42, 14, 12))),
                     title=esc(b['name']),
@@ -577,6 +578,8 @@ def render_dynasty(d, idx, total):
                     arrows=bm.get("arrows", []),
                     key_places=bm.get("key_places", []),
                     phases=bm.get("phases", []),
+                    water=bm.get("water"),
+                    rivers=bm.get("rivers"),
                     width=780, height=520,
                 )
                 bmap_html = f'''

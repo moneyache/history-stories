@@ -601,6 +601,8 @@ def render_battle_map(region, title, subtitle="",
                       arrows=[],          # [{"from","to","color","label","num"},...]
                       key_places=[],     # [{"lon","lat","label","kind"},...]
                       phases=[],         # [{"num","lon","lat","desc"},...] 编号阶段圈
+                      water=None,        # 水域多边形 [[(lon,lat),...],...]（湖泊/海）
+                      rivers=None,       # 自定义河流列表（None 则不画）
                       width=780, height=600):
     """
     渲染战役地图（带箭头路线 + 编号阶段圈 + 两军位置）。
@@ -629,13 +631,24 @@ def render_battle_map(region, title, subtitle="",
     <filter id="bsh"><feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.15"/></filter>
     </defs>''')
 
-    # 海洋背景
-    parts.append(f'<rect x="0" y="0" width="{W}" height="{H}" rx="12" fill="url(#b_ocean)"/>')
-    # 陆地
-    parts.extend(_render_land_base(proj, region))
+    # 背景（浅陆地色，铺满视窗，保证远处战役也落在陆地上）
+    parts.append(f'<rect x="0" y="0" width="{W}" height="{H}" rx="12" fill="#EFE6C8"/>')
+    lb = [(lon0 - 2, lat_top + 2), (lon0 + span_lon + 2, lat_top + 2),
+          (lon0 + span_lon + 2, lat_top - span_lat - 2), (lon0 - 2, lat_top - span_lat - 2)]
+    lpts = [proj(a, b) for a, b in lb]
+    parts.append(f'<path d="{smooth_path(lpts, closed=True)}" fill="{LAND_BASE}" '
+                 f'stroke="#8B7355" stroke-width="1.5"/>')
+    # 水域（湖泊 / 海）—— 画在陆地上方
+    if water:
+        for poly in water:
+            wpts = [proj(a, b) for a, b in poly]
+            parts.append(f'<path d="{smooth_path(wpts, closed=True)}" fill="#B8D4E8" '
+                         f'stroke="#8fb8d0" stroke-width="1.5"/>')
+    # 地形分层（远处多数落在视窗外，无害）
     parts.extend(_render_terrain(proj, region))
-    # 河流
-    parts.extend(_render_rivers(proj))
+    # 河流（仅当显式提供，避免远处出现无关河流）
+    if rivers:
+        parts.extend(_render_rivers(proj, rivers))
 
     # ---- 军队位置（大圆 + 名字）----
     for army in armies:
@@ -730,10 +743,12 @@ def render_battle_map(region, title, subtitle="",
             f'  <text x="140" y="38" text-anchor="middle" font-size="11" fill="#8B7355">{subtitle}</text>')
     parts.append('</g>')
 
-    # ---- 图例（战役专用）----
+    # ---- 图例（按实际两军命名）----
+    red_name = armies[0]["name"] if armies else "红方"
+    blue_name = armies[1]["name"] if len(armies) > 1 else "蓝方"
     battle_legend = [
-        ('<circle r="7" fill="#E74C3C" opacity="0.5" stroke="#C0392B" stroke-dasharray="4,2"/>', '黄帝部落'),
-        ('<circle r="7" fill="#2980B9" opacity="0.5" stroke="#2980B9" stroke-dasharray="4,2"/>', '蚩尤部落'),
+        ('<circle r="7" fill="#E74C3C" opacity="0.5" stroke="#C0392B" stroke-dasharray="4,2"/>', red_name),
+        ('<circle r="7" fill="#2980B9" opacity="0.5" stroke="#2980B9" stroke-dasharray="4,2"/>', blue_name),
         ('<line x1="-10" y1="0" x2="10" y2="0" stroke="#C0392B" stroke-width="3" marker-end="url(#bh_red)"/>', '进攻方向'),
         ('<circle r="8" fill="#F4D03F" stroke="#B7950B" stroke-width="2"/><text y="4" text-anchor="middle" font-size="10" font-weight="700" fill="#7D6608">①</text>', '战役阶段'),
     ]

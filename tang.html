@@ -175,6 +175,17 @@ a{color:inherit;text-decoration:none;}
 .map-svg svg{width:100%; height:auto; display:block;}
 .map-text{flex:1 1 300px; font-size:1.05rem; line-height:1.9; color:#34495E;}
 
+/* 真实地理地图（全宽） */
+.map-wide{width:100%; border-radius:18px; overflow:hidden; box-shadow:var(--card-shadow); border:1px solid rgba(0,0,0,0.06);}
+.map-wide svg{width:100%; height:auto; display:block;}
+.battle-map-wrap{width:100%; border-radius:14px; overflow:hidden; margin-bottom:16px; box-shadow:0 4px 14px rgba(0,0,0,0.12); border:1px solid rgba(0,0,0,0.06);}
+.battle-map-wrap svg{width:100%; height:auto; display:block;}
+
+/* 人物卡片可跳转 */
+.person-link{text-decoration:none; color:inherit; display:block;}
+.person .pstory{margin-top:10px; font-size:.85rem; font-weight:700; color:var(--secondary); opacity:0; transform:translateY(4px); transition:all .25s;}
+.person-link:hover .pstory{opacity:1; transform:translateY(0);}
+
 /* 战役 */
 .battle-box{background:linear-gradient(160deg,#1b2433,#2c3a52); border-radius:20px; padding:20px; color:#fff; text-align:center;}
 .battle-title{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.6rem; color:#FFD54F; margin-bottom:4px;}
@@ -326,7 +337,7 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
   
     <div class="section" id="people">
       <div class="sec-head"><div class="sec-badge">👥</div>
-        <div class="sec-title">重要人物<small>这个朝代的明星</small></div></div>
+        <div class="sec-title">重要人物<small>点一点，跳进去看大人物自己的故事</small></div></div>
       <div class="people-grid">
       <div class="person">
         <div class="pname">唐太宗李世民</div>
@@ -367,6 +378,77 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
       <div class="battle-box">
         <div class="battle-title">⚔️ 怛罗斯之战</div>
         <div class="battle-sub">唐军（高仙芝） &nbsp;VS&nbsp; 大食（阿拉伯）</div>
+        
+        <div class="battle-map-wrap">
+          <svg viewBox="0 0 780 520" role="img" aria-label="怛罗斯之战" font-family="'Noto Sans SC','SimHei',sans-serif" xmlns="http://www.w3.org/2000/svg">
+<defs>
+    <linearGradient id="b_ocean" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#D4E8F2"/><stop offset="100%" stop-color="#B8D4E8"/>
+    </linearGradient>
+    <marker id="bh_red" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#C0392B"/></marker>
+    <marker id="bh_blue" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2980B9"/></marker>
+    <filter id="bsh"><feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.15"/></filter>
+    </defs>
+<rect x="0" y="0" width="780" height="520" rx="12" fill="#EFE6C8"/>
+<path d="M-23.5,-35.7 C119.2,-134.3 689.8,-134.3 832.5,-35.7 C975.1,62.9 975.1,457.1 832.5,555.7 C689.8,654.3 119.2,654.3 -23.5,555.7 C-166.2,457.1 -166.2,62.9 -23.5,-35.7 Z" fill="#e8dba0" stroke="#8B7355" stroke-width="1.5"/>
+<path d="M1073.2,161.4 C1100.0,156.0 1175.8,136.8 1233.7,128.6 C1291.7,120.4 1358.6,123.1 1421.0,112.1 C1483.4,101.2 1554.7,82.0 1608.2,62.9 C1661.7,43.7 1710.8,-13.8 1742.0,-2.9 C1773.2,8.1 1813.3,90.2 1795.5,128.6 C1777.6,166.9 1688.5,210.7 1635.0,227.1 C1581.5,243.6 1528.0,224.4 1474.5,227.1 C1421.0,229.9 1363.0,243.6 1314.0,243.6 C1264.9,243.6 1220.4,240.8 1180.2,227.1 C1140.1,213.5 1091.1,172.4 1073.2,161.4 C1055.4,150.5 1046.5,166.9 1073.2,161.4 Z" fill="#c9b896" opacity="0.85"/>
+<path d="M1100.0,325.7 C1117.8,314.8 1171.3,273.7 1207.0,260.0 C1242.6,246.3 1287.2,232.6 1314.0,243.6 C1340.7,254.5 1367.5,295.6 1367.5,325.7 C1367.5,355.8 1340.7,396.9 1314.0,424.3 C1287.2,451.7 1238.2,490.0 1207.0,490.0 C1175.8,490.0 1144.6,451.7 1126.7,424.3 C1108.9,396.9 1104.4,342.1 1100.0,325.7 C1095.5,309.3 1082.1,336.7 1100.0,325.7 Z" fill="#a8c4a2" opacity="0.85"/>
+<path d="M1207.0,440.7 C1224.8,440.7 1287.2,432.5 1314.0,440.7 C1340.7,448.9 1367.5,473.6 1367.5,490.0 C1367.5,506.4 1336.3,533.8 1314.0,539.3 C1291.7,544.8 1251.6,539.3 1233.7,522.9 C1215.9,506.4 1211.4,454.4 1207.0,440.7 C1202.5,427.0 1189.1,440.7 1207.0,440.7 Z" fill="#b8d4a8" opacity="0.85"/>
+<path d="M1421.0,358.6 C1427.7,347.6 1447.7,309.3 1461.1,292.9 C1474.5,276.4 1490.1,257.3 1501.2,260.0 C1512.4,262.7 1528.0,290.1 1528.0,309.3 C1528.0,328.5 1514.6,358.6 1501.2,375.0 C1487.8,391.4 1461.1,410.6 1447.7,407.9 C1434.3,405.1 1425.4,366.8 1421.0,358.6 C1416.5,350.4 1414.3,369.5 1421.0,358.6 Z" fill="#b8d4a8" opacity="0.85"/>
+<path d="M1501.2,260.0 C1514.6,254.5 1559.2,229.9 1581.5,227.1 C1603.8,224.4 1630.5,232.6 1635.0,243.6 C1639.4,254.5 1626.1,281.9 1608.2,292.9 C1590.4,303.8 1545.8,314.8 1528.0,309.3 C1510.1,303.8 1505.7,268.2 1501.2,260.0 C1496.8,251.8 1487.8,265.5 1501.2,260.0 Z" fill="#b8d4a8" opacity="0.85"/>
+<path d="M1314.0,407.9 C1331.8,405.1 1394.2,399.6 1421.0,391.4 C1447.7,383.2 1456.6,361.3 1474.5,358.6 C1492.3,355.8 1514.6,366.8 1528.0,375.0 C1541.3,383.2 1554.7,394.2 1554.7,407.9 C1554.7,421.5 1541.3,446.2 1528.0,457.1 C1514.6,468.1 1496.8,472.5 1474.5,473.6 C1452.2,474.7 1416.5,469.2 1394.2,463.7 C1371.9,458.2 1354.1,450.0 1340.7,440.7 C1327.4,431.4 1318.4,413.3 1314.0,407.9 C1309.5,402.4 1296.1,410.6 1314.0,407.9 Z" fill="#f5e6c8" opacity="0.85"/>
+<path d="M1528.0,375.0 C1541.3,372.3 1585.9,358.6 1608.2,358.6 C1630.5,358.6 1648.3,364.0 1661.7,375.0 C1675.1,386.0 1688.5,405.1 1688.5,424.3 C1688.5,443.5 1679.6,476.3 1661.7,490.0 C1643.9,503.7 1603.8,509.2 1581.5,506.4 C1559.2,503.7 1536.9,495.5 1528.0,473.6 C1519.1,451.7 1528.0,391.4 1528.0,375.0 C1528.0,358.6 1514.6,377.7 1528.0,375.0 Z" fill="#eddab0" opacity="0.85"/>
+<path d="M1474.5,309.3 C1492.3,303.8 1554.7,279.2 1581.5,276.4 C1608.2,273.7 1630.5,279.2 1635.0,292.9 C1639.4,306.5 1626.1,344.9 1608.2,358.6 C1590.4,372.3 1550.3,383.2 1528.0,375.0 C1505.7,366.8 1483.4,320.2 1474.5,309.3 C1465.6,298.3 1456.6,314.8 1474.5,309.3 Z" fill="#eddab0" opacity="0.85"/>
+<circle cx="618.5" cy="210.7" r="22" fill="#E74C3C" opacity="0.25" stroke="#E74C3C" stroke-width="2" stroke-dasharray="6,3"/>
+<circle cx="618.5" cy="210.7" r="14" fill="#E74C3C" stroke="#fff" stroke-width="2.5"/>
+<text x="618.5" y="215.7" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">唐</text>
+<text x="646.5" y="200.7" font-size="16" font-weight="700" fill="#E74C3C">唐军（高仙芝）</text>
+<circle cx="83.5" cy="161.4" r="22" fill="#2980B9" opacity="0.25" stroke="#2980B9" stroke-width="2" stroke-dasharray="6,3"/>
+<circle cx="83.5" cy="161.4" r="14" fill="#2980B9" stroke="#fff" stroke-width="2.5"/>
+<text x="83.5" y="166.4" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">大食</text>
+<text x="111.5" y="151.4" font-size="16" font-weight="700" fill="#2980B9">大食（阿拉伯）</text>
+<path d="M618.5,210.7 Q476.7,152.9 334.9,177.9" fill="none" stroke="#C0392B" stroke-width="4" stroke-linecap="round" marker-end="url(#bh_red)" opacity="0.88"/>
+<text x="456.7" y="144.9" text-anchor="middle" font-size="12" font-weight="600" fill="#C0392B" filter="url(#bsh)">唐军西征</text>
+<circle cx="429.5" cy="158.9" r="13" fill="#fff" stroke="#C0392B" stroke-width="2"/>
+<text x="429.5" y="163.9" text-anchor="middle" font-size="13" font-weight="700" fill="#C0392B">①</text>
+<path d="M83.5,161.4 Q209.2,136.4 334.9,177.9" fill="none" stroke="#2980B9" stroke-width="4" stroke-linecap="round" marker-end="url(#bh_blue)" opacity="0.88"/>
+<text x="219.2" y="128.4" text-anchor="middle" font-size="12" font-weight="600" fill="#2980B9" filter="url(#bsh)">大食东进</text>
+<circle cx="251.1" cy="142.4" r="13" fill="#fff" stroke="#2980B9" stroke-width="2"/>
+<text x="251.1" y="147.4" text-anchor="middle" font-size="13" font-weight="700" fill="#2980B9">②</text>
+<circle cx="334.9" cy="177.9" r="6" fill="#C0392B" stroke="#fff" stroke-width="1.5"/>
+<text x="344.9" y="173.9" font-size="13" font-weight="600" fill="#2C3E50">怛罗斯</text>
+<circle cx="618.5" cy="210.7" r="6" fill="#D35400" stroke="#fff" stroke-width="1.5"/>
+<text x="628.5" y="206.7" font-size="13" font-weight="600" fill="#2C3E50">安西·龟兹</text>
+<circle cx="458.0" cy="177.9" r="6" fill="#2980B9" stroke="#fff" stroke-width="1.5"/>
+<text x="468.0" y="173.9" font-size="13" font-weight="600" fill="#2C3E50">碎叶</text>
+<circle cx="618.5" cy="210.7" r="16" fill="#F4D03F" stroke="#B7950B" stroke-width="2.5" filter="url(#bsh)"/>
+<text x="618.5" y="216.7" text-anchor="middle" font-size="14" font-weight="700" fill="#7D6608">①</text>
+<text x="618.5" y="240.7" text-anchor="middle" font-size="11" fill="#5C4A1F">唐军西征</text>
+<circle cx="334.9" cy="177.9" r="16" fill="#F4D03F" stroke="#B7950B" stroke-width="2.5" filter="url(#bsh)"/>
+<text x="334.9" y="183.9" text-anchor="middle" font-size="14" font-weight="700" fill="#7D6608">②</text>
+<text x="334.9" y="207.9" text-anchor="middle" font-size="11" fill="#5C4A1F">怛罗斯决战</text>
+<g transform="translate(250.0, 12)">  <rect x="0" y="0" width="280" height="46" rx="10" fill="#FFFDF5" stroke="#C0392B" stroke-width="2.2" filter="url(#bsh)"/>  <text x="140" y="22" text-anchor="middle" font-size="19" font-weight="700" fill="#C0392B">怛罗斯之战</text>
+  <text x="140" y="38" text-anchor="middle" font-size="11" fill="#8B7355">唐军（高仙芝） vs 大食 · 公元 751 年</text>
+</g>
+<g transform="translate(16,380)">
+  <rect x="0" y="0" width="155" height="132" rx="8" fill="#FFFDF5" stroke="#B8956E" stroke-width="1.5"/>
+  <rect x="0" y="0" width="155" height="26" rx="8" fill="#F5ECD7"/>
+  <rect x="0" y="18" width="155" height="8" fill="#F5ECD7"/>
+  <text x="78" y="18" text-anchor="middle" font-size="13" font-weight="700" font-family="'ZCOOL KuaiLe','SimHei',sans-serif" fill="#5C4A1F">战役图例</text>
+  <text x="14" y="36" font-size="14"><circle r="7" fill="#E74C3C" opacity="0.5" stroke="#C0392B" stroke-dasharray="4,2"/></text>
+  <text x="34" y="35" font-size="12" font-family="'Noto Sans SC',sans-serif" fill="#3D3224">唐军（高仙芝）</text>
+  <text x="14" y="60" font-size="14"><circle r="7" fill="#2980B9" opacity="0.5" stroke="#2980B9" stroke-dasharray="4,2"/></text>
+  <text x="34" y="59" font-size="12" font-family="'Noto Sans SC',sans-serif" fill="#3D3224">大食（阿拉伯）</text>
+  <text x="14" y="84" font-size="14"><line x1="-10" y1="0" x2="10" y2="0" stroke="#C0392B" stroke-width="3" marker-end="url(#bh_red)"/></text>
+  <text x="34" y="83" font-size="12" font-family="'Noto Sans SC',sans-serif" fill="#3D3224">进攻方向</text>
+  <text x="14" y="108" font-size="14"><circle r="8" fill="#F4D03F" stroke="#B7950B" stroke-width="2"/><text y="4" text-anchor="middle" font-size="10" font-weight="700" fill="#7D6608">①</text></text>
+  <text x="34" y="107" font-size="12" font-family="'Noto Sans SC',sans-serif" fill="#3D3224">战役阶段</text>
+</g>
+<g transform="translate(600,492)">  <rect x="0" y="0" width="51.9" height="8" fill="#8B7355"/>  <rect x="0" y="0" width="25.9" height="8" fill="#FFFDF5" stroke="#8B7355" stroke-width="0.8"/>  <text x="0" y="-5" font-size="11" fill="#5C4A1F" font-family="'Noto Sans SC',sans-serif">150 公里</text></g>
+</svg>
+        </div>
         <canvas class="battle-canvas" id="bcanvas0" width="680" height="300"></canvas>
         <button class="battle-btn" id="bbtn0">⚔️ 开战！</button>
         <div class="battle-narrate" id="bnarr0">点击「开战！」看看这场大战是怎么打的～</div>
