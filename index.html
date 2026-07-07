@@ -76,26 +76,61 @@
     opacity: 0;
     animation: fadeSlideUp 1.2s ease 0.3s forwards;
   }
+  /* ===== 可点击朝代导航（更大、可跳转） ===== */
+  .timeline-years {
+    gap: 0.6rem 0.4rem;
+    margin-bottom: 2.2rem;
+  }
   .timeline-year {
     font-family: 'Ma Shan Zheng', 'KaiTi', cursive;
-    font-size: 1.6rem;
+    font-size: 1.45rem;
     color: var(--text-dim);
     position: relative;
-    padding: 0 0.5rem;
+    padding: 0.35rem 0.85rem;
+    border: 1px solid rgba(200,164,92,0.25);
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.3s;
+    cursor: pointer;
+    white-space: nowrap;
   }
-  .timeline-year::after {
-    content: '';
-    position: absolute; bottom: -4px; left: 20%;
-    width: 60%; height: 1px;
+  .timeline-year:hover {
+    color: var(--bg-deep);
     background: var(--gold);
-    transform: scaleX(0);
-    transition: transform 0.5s;
-  }
-  .timeline-year:hover::after {
-    transform: scaleX(1);
+    border-color: var(--gold);
+    transform: translateY(-3px) scale(1.06);
+    box-shadow: 0 8px 22px rgba(200,164,92,0.45);
   }
   .timeline-year.active {
     color: var(--gold-light);
+    border-color: var(--gold);
+  }
+
+  /* 朝代历史总入口按钮 */
+  .dyn-entry {
+    display: inline-block;
+    margin: 0 auto 3rem;
+    padding: 0.9rem 2.4rem;
+    font-family: 'ZCOOL XiaoWei', 'Noto Serif SC', serif;
+    font-size: 1.25rem;
+    letter-spacing: 0.08em;
+    color: var(--parchment);
+    background: linear-gradient(135deg, var(--red), var(--red-bright));
+    border: 1px solid var(--gold);
+    border-radius: 40px;
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgba(192,57,43,0.35);
+    transition: all 0.3s;
+    animation: floatEntry 2.6s ease-in-out infinite;
+  }
+  .dyn-entry:hover {
+    transform: translateY(-4px) scale(1.04);
+    box-shadow: 0 16px 40px rgba(192,57,43,0.5);
+    color: #fff;
+  }
+  @keyframes floatEntry {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
   }
 
   /* Main title */
@@ -376,21 +411,24 @@
 
 <!-- ========== HERO ========== -->
 <section class="hero" id="hero">
-  <!-- Dynasty timeline -->
+  <!-- Dynasty timeline (clickable) -->
   <div class="timeline-years">
-    <span class="timeline-year">夏商</span>
-    <span class="timeline-year">西周</span>
-    <span class="timeline-year">春秋</span>
-    <span class="timeline-year">战国</span>
-    <span class="timeline-year">秦汉</span>
-    <span class="timeline-year active">三国</span>
-    <span class="timeline-year">晋</span>
-    <span class="timeline-year">南北朝</span>
-    <span class="timeline-year">隋唐</span>
-    <span class="timeline-year">五代</span>
-    <span class="timeline-year">宋</span>
-    <span class="timeline-year active">元明</span>
-    <span class="timeline-year">清</span>
+    <a class="timeline-year" href="sanhuang.html">三皇五帝</a>
+    <a class="timeline-year" href="xia.html">夏</a>
+    <a class="timeline-year" href="shang.html">商</a>
+    <a class="timeline-year" href="zhou.html">周</a>
+    <a class="timeline-year" href="qin.html">秦</a>
+    <a class="timeline-year" href="han.html">汉</a>
+    <a class="timeline-year" href="sanguo.html">三国</a>
+    <a class="timeline-year" href="jin.html">晋</a>
+    <a class="timeline-year" href="nanbei.html">南北朝</a>
+    <a class="timeline-year" href="sui.html">隋</a>
+    <a class="timeline-year" href="tang.html">唐</a>
+    <a class="timeline-year" href="wudai.html">五代</a>
+    <a class="timeline-year" href="song.html">宋</a>
+    <a class="timeline-year" href="yuan.html">元</a>
+    <a class="timeline-year" href="ming.html">明</a>
+    <a class="timeline-year" href="qing.html">清</a>
   </div>
 
   <!-- Main title -->
@@ -414,6 +452,9 @@
       是非成败转头空，青山依旧在，几度夕阳红。
     </p>
   </div>
+
+  <!-- 朝代历史总入口 -->
+  <a class="dyn-entry" href="dynasties.html">📜 朝代历史大全 · 从三皇五帝到清朝，点我穿越五千年 →</a>
 
   <!-- Story cards -->
   <div class="card-section">

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>朝代历史总览 · 上下五千年</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@400;700;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Noto Sans SC',sans-serif;color:#2C3E50;
+  background:linear-gradient(160deg,#FFFDF7,#FFF1E6 50%,#FDE7F0);min-height:100vh;}
+a{text-decoration:none;color:inherit;}
+.topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:12px;padding:12px 18px;
+  background:rgba(255,253,247,0.92);backdrop-filter:blur(10px);box-shadow:0 2px 16px rgba(0,0,0,0.08);}
+.home-btn{font-family:'ZCOOL KuaiLe',sans-serif;background:#C0392B;color:#fff;padding:6px 16px;border-radius:20px;font-size:1rem;}
+.hero{text-align:center;padding:50px 20px 20px;}
+.hero h1{font-family:'ZCOOL KuaiLe',sans-serif;font-size:clamp(2.4rem,8vw,4.5rem);color:#C0392B;
+  text-shadow:3px 3px 0 #fff;}
+.hero p{font-size:1.1rem;color:#7F8C8D;margin-top:10px;}
+.grid{max-width:1100px;margin:30px auto;padding:0 20px 60px;display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:18px;}
+.hub-card{background:#fff;border-radius:22px;padding:22px 16px;text-align:center;
+  box-shadow:0 8px 22px rgba(0,0,0,0.1);border-top:6px solid var(--pc);
+  transition:transform .25s, box-shadow .25s;}
+.hub-card:hover{transform:translateY(-8px) scale(1.03);box-shadow:0 16px 34px rgba(0,0,0,0.16);
+  border-top-color:var(--sc);}
+.hub-emoji{font-size:3rem;animation:bob 3s ease-in-out infinite;}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.hub-name{font-family:'ZCOOL KuaiLe',sans-serif;font-size:1.5rem;color:var(--pc);margin:6px 0;}
+.hub-era{font-size:.8rem;color:#95A5A6;min-height:34px;}
+.hub-go{margin-top:8px;font-weight:700;color:var(--sc);font-size:.95rem;}
+footer{text-align:center;padding:20px;color:#95A5A6;font-size:.85rem;}
+</style>
+</head>
+<body>
+<div class="topbar"><a class="home-btn" href="index.html">🏠 主页</a>
+  <span style="font-weight:700;">朝代历史 · 总览</span></div>
+<header class="hero">
+  <h1>朝代历史大观</h1>
+  <p>从三皇五帝到清朝 · 点一点，穿越五千年 👇</p>
+</header>
+<main class="grid">
+      <a class="hub-card" href="sanhuang.html" style="--pc:#8E44AD;--sc:#E67E22;--ac:#F1C40F">
+        <div class="hub-emoji">🌟</div>
+        <div class="hub-name">三皇五帝</div>
+        <div class="hub-era">约公元前 2700 年之前</div>
+        <div class="hub-go">去看看 →</div>
+      </a>
+      <a class="hub-card" href="xia.html" style="--pc:#A0522D;--sc:#CD853F;--ac:#DAA520">
+        <div class="hub-emoji">🏺</div>
+        <div class="hub-name">夏朝</div>
+        <div class="hub-era">约公元前 2070 — 前 1600 年</div>
+        <div class="hub-go">去看看 →</div>
+      </a>
+      <a class="hub-card" href="shang.html" style="--pc:#7B3F00;--sc:#B5651D;--ac:#E8C547">
+        <div class="hub-emoji">🔮</div>
+        <div class="hub-name">商朝</div>
+        <div class="hub-era">约公元前 1600 — 前 1046 年</div>
+        <div class="hub-go">去看看 →</div>
+      </a>
+      <a class="hub-card" href="zhou.html" style="--pc:#2C3E90;--sc:#3B6FB0;--ac:#E0B048">
+        <div class="hub-emoji">🏯</div>
+        <div class="hub-name">周朝</div>
+        <div class="hub-era">公元前 1046 — 前 256 年</div>
+        <div class="hub-go">去看看 →</div>
+      </a>
+      <a class="hub-card" href="qin.html" style="--pc:#1A1A1A;--sc:#4A4A4A;--ac:#D4AF37">
+        <div class="hub-emoji">⚡</div>
+        <div class="hub-name">秦朝</div>
+        <div class="hub-era">公元前 221 — 前 207 年</div>
+        <div class="hub-go">去看看 →</div>
+      </a>
+      <a class="hub-card" href="han.html" style="--pc:#C0392B;--sc:#E74C3C;--ac:#F1C40F">
+        <div class="hub-emoji">🐉</div>
+        <div class="hub-name">汉朝</div>
+        <div class="hub-era">公元前 202 — 公元 220 年</div>
+        <div class="hub-go">去看看 →</div>
+      </a>
+      <a class="hub-card" href="sanguo.html" style="--pc:#27AE60;--sc:#2980B9;--ac:#C0392B">
+        <div class="hub-emoji">🗡️</div>
+        <div class="hub-name">三国</div>
+        <div class="hub-era">公元 220 — 280 年</div>
+        <div class="hub-go">去看看 →</div>
+      </a>
+      <a class="hub-card" href="jin.html" style="--pc:#16A085;--sc:#1ABC9C;--ac:#E0B048">
+        <div class="hub-emoji">🏮</div>
+        <div class="hub-name">晋朝</div>
+        <div class="hub-era">265 — 420 年</div>
+        <div class="hub-go">去看看 →</div>
+      </a>
+      <a class="hub-card" href="nanbei.html" style="--pc:#D35400;--sc:#16A085;--ac:#E67E22">
+        <div class="hub-emoji">🛕</div>
+        <div class="hub-name">南北朝</div>
+        <div class="hub-era">420 — 589 年</div>
+        <div class="hub-go">去看看 →</div>
+      </a>
+      <a class="hub-card" href="sui.html" style="--pc:#27AE60;--sc:#2ECC71;--ac:#E0B048">
+        <div class="hub-emoji">🌉</div>
+        <div class="hub-name">隋朝</div>
+        <div class="hub-era">581 — 618 年</div>
+        <div class="hub-go">去看看 →</div>
+      </a>
+      <a class="hub-card" href="tang.html" style="--pc:#E91E63;--sc:#F06292;--ac:#FFD54F">
+        <div class="hub-emoji">🌸</div>
+        <div class="hub-name">唐朝</div>
+        <div class="hub-era">618 — 907 年</div>
+        <div class="hub-go">去看看 →</div>
+      </a>
+      <a class="hub-card" href="wudai.html" style="--pc:#616A6B;--sc:#85929E;--ac:#E74C3C">
+        <div class="hub-emoji">🔥</div>
+        <div class="hub-name">五代十国</div>
+        <div class="hub-era">907 — 960 年</div>
+        <div class="hub-go">去看看 →</div>
+      </a>
+      <a class="hub-card" href="song.html" style="--pc:#2980B9;--sc:#5DADE2;--ac:#7FB3A0">
+        <div class="hub-emoji">🍵</div>
+        <div class="hub-name">宋朝</div>
+        <div class="hub-era">960 — 1279 年</div>
+        <div class="hub-go">去看看 →</div>
+      </a>
+      <a class="hub-card" href="yuan.html" style="--pc:#2471A3;--sc:#5499C7;--ac:#E8C547">
+        <div class="hub-emoji">🐺</div>
+        <div class="hub-name">元朝</div>
+        <div class="hub-era">1271 — 1368 年</div>
+        <div class="hub-go">去看看 →</div>
+      </a>
+      <a class="hub-card" href="ming.html" style="--pc:#C0392B;--sc:#E74C3C;--ac:#F1C40F">
+        <div class="hub-emoji">🏰</div>
+        <div class="hub-name">明朝</div>
+        <div class="hub-era">1368 — 1644 年</div>
+        <div class="hub-go">去看看 →</div>
+      </a>
+      <a class="hub-card" href="qing.html" style="--pc:#B7950B;--sc:#D4AC0D;--ac:#C0392B">
+        <div class="hub-emoji">🐉👑</div>
+        <div class="hub-name">清朝</div>
+        <div class="hub-era">1644 — 1912 年</div>
+        <div class="hub-go">去看看 →</div>
+      </a></main>
+<footer>— 上下五千年 · 给小朋友看的历史 —</footer>
+</body>
+</html>
