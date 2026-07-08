@@ -453,6 +453,18 @@ def hl_text(s):
     import re
     return re.sub(r"【(.+?)】", r'<span class="hl">\1</span>', esc(s))
 
+
+# ===== 人物名 / 别名 → figures/<id>.html 自动映射 =====
+# 让朝代页的重要人物卡片，只要名字能匹配到 figures_data 里的某位人物，
+# 就自动加上「看他的故事」跳转链接，无需在 dynasty_data 里逐个手写 story。
+from figures_data import FIGURES  # noqa: E402
+FIG_MATCH = {}
+for _f in FIGURES:
+    FIG_MATCH[_f["file"]] = _f["file"]
+    for _n in [_f["name"]] + _f.get("match_names", []):
+        FIG_MATCH[_n] = _f["file"]
+
+
 def render_dynasty(d, idx, total):
     th = d["theme"]
     css = (PAGE_CSS
@@ -522,7 +534,7 @@ def render_dynasty(d, idx, total):
     # 人物
     persons = ""
     for p in d["people"]:
-        story = p.get("story")
+        story = p.get("story") or FIG_MATCH.get(p["name"])
         if story:
             persons += f'''
       <a class="person person-link" href="{esc(story)}">

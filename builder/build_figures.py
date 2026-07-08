@@ -25,6 +25,10 @@ def css(theme):
 def render(f, idx, total):
     th = f["theme"]
     c = css(th)
+    # 动态来源朝代（不再写死"三皇五帝"）
+    dyn_id = f.get("dynasty_id", "sanhuang")
+    dyn_name = f.get("dynasty_name", "三皇五帝")
+    back_href = "../%s.html" % dyn_id
 
     nav_items = [
         ("who", "👤 他是谁"), ("story", "📖 他的故事"),
@@ -123,7 +127,7 @@ def render(f, idx, total):
     # 翻页（回到朝代页 / 总览 / 主页，注意在子目录要用 ../）
     pager = f'''
     <div class="pager">
-      <a href="../sanhuang.html"><span class="label">← 回到三皇五帝</span><span class="pname">三皇五帝</span></a>
+      <a href="{back_href}"><span class="label">← 回到{dyn_name}</span><span class="pname">{dyn_name}</span></a>
       <a href="../dynasties.html"><span class="label">↑ 朝代总览</span><span class="pname">全部朝代</span></a>
       <a href="../index.html"><span class="label">🏠 主页</span><span class="pname">上下五千年</span></a>
     </div>'''
@@ -133,13 +137,13 @@ def render(f, idx, total):
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{esc(f['name'])}的故事 · 三皇五帝</title>
+<title>{esc(f['name'])}的故事 · {dyn_name}</title>
 <style>{c}</style>
 </head>
 <body>
 <div class="topbar">
   <a class="home-btn" href="../index.html">🏠 主页</a>
-  <span class="crumb">三皇五帝 / <b>{esc(f['name'])}</b></span>
+  <span class="crumb">{dyn_name} / <b>{esc(f['name'])}</b></span>
 </div>
 <nav class="section-nav">{nav_html}</nav>
 
@@ -164,7 +168,7 @@ def render(f, idx, total):
 
 <footer>
   <p class="poem">读史明志 · 以史为镜</p>
-  <p>— 三皇五帝 · 大人物小故事 · 给小朋友看的历史 —</p>
+  <p>— {dyn_name} · 大人物小故事 · 给小朋友看的历史 —</p>
 </footer>
 
 <script>

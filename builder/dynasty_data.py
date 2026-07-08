@@ -104,6 +104,19 @@ DYNASTIES = [
 
 {
     "id": "xia",
+
+    # ===== 真实地理地图配置（按经纬度投影）=====
+    "map_region": (102, 41, 17, 13),
+    "map_title": "夏朝 · 主要活动区域",
+    "map_core": (108, 39, 116, 32),
+    "map_rivers": None,
+    "map_mountains": None,
+    "map_markers": [
+        {"lon": 113.0, "lat": 34.4, "label": "阳城", "modern": "今河南登封·禹都", "kind": "capital", "dx": 12, "dy": -14, "anchor": "start"},
+        {"lon": 112.6, "lat": 34.7, "label": "二里头", "modern": "今河南偃师·夏都邑", "kind": "capital", "dx": -14, "dy": 4, "anchor": "end"},
+        {"lon": 111.3, "lat": 35.1, "label": "安邑", "modern": "今山西夏县·夏都", "kind": "capital", "dx": -14, "dy": -14, "anchor": "end"},
+        {"lon": 111.0, "lat": 35.0, "label": "鸣条", "modern": "今山西运城·鸣条之战", "kind": "battle", "dx": 12, "dy": 4, "anchor": "start"},
+    ],
     "name": "夏朝",
     "era": "约公元前 2070 — 前 1600 年",
     "subtitle": "中国第一个王朝 · “家天下”的开始",
@@ -143,6 +156,19 @@ DYNASTIES = [
 
 {
     "id": "shang",
+
+    # ===== 真实地理地图配置（按经纬度投影）=====
+    "map_region": (102, 41, 17, 13),
+    "map_title": "商朝 · 主要活动区域",
+    "map_core": (108, 39, 116, 32),
+    "map_rivers": None,
+    "map_mountains": None,
+    "map_markers": [
+        {"lon": 115.6, "lat": 34.4, "label": "亳", "modern": "今河南商丘·商汤都城", "kind": "capital", "dx": 12, "dy": -14, "anchor": "start"},
+        {"lon": 114.4, "lat": 36.1, "label": "殷·殷墟", "modern": "今河南安阳·商后期都城", "kind": "capital", "dx": -14, "dy": -12, "anchor": "end"},
+        {"lon": 114.2, "lat": 35.7, "label": "朝歌", "modern": "今河南淇县·纣王都城", "kind": "capital", "dx": 12, "dy": 4, "anchor": "start"},
+        {"lon": 114.0, "lat": 35.6, "label": "牧野", "modern": "今河南淇县·牧野之战", "kind": "battle", "dx": -14, "dy": 18, "anchor": "end"},
+    ],
     "name": "商朝",
     "era": "约公元前 1600 — 前 1046 年",
     "subtitle": "甲骨文与青铜的辉煌",
@@ -183,6 +209,20 @@ DYNASTIES = [
 
 {
     "id": "zhou",
+
+    # ===== 真实地理地图配置（按经纬度投影）=====
+    "map_region": (100, 43, 24, 16),
+    "map_title": "周朝 · 主要活动区域",
+    "map_core": (108, 40, 120, 32),
+    "map_rivers": None,
+    "map_mountains": None,
+    "map_markers": [
+        {"lon": 108.9, "lat": 34.3, "label": "镐京", "modern": "今陕西西安·西周都城", "kind": "capital", "dx": -14, "dy": -12, "anchor": "end"},
+        {"lon": 112.4, "lat": 34.6, "label": "洛邑", "modern": "今河南洛阳·东周都城", "kind": "capital", "dx": 12, "dy": -14, "anchor": "start"},
+        {"lon": 117.0, "lat": 35.6, "label": "曲阜", "modern": "今山东曲阜·孔子故里", "kind": "culture", "dx": 12, "dy": 4, "anchor": "start"},
+        {"lon": 114.0, "lat": 35.6, "label": "牧野", "modern": "今河南·武王伐纣", "kind": "battle", "dx": -14, "dy": 18, "anchor": "end"},
+        {"lon": 109.2, "lat": 34.4, "label": "骊山", "modern": "今陕西临潼·烽火戏诸侯", "kind": "battle", "dx": 12, "dy": 4, "anchor": "start"},
+    ],
     "name": "周朝",
     "era": "公元前 1046 — 前 256 年（西周 + 东周·春秋战国）",
     "subtitle": "分封天下 · 百家争鸣",
@@ -226,6 +266,20 @@ DYNASTIES = [
 
 {
     "id": "qin",
+
+    # ===== 真实地理地图配置（按经纬度投影）=====
+    "map_region": (97, 45, 30, 21),
+    "map_title": "秦朝 · 疆域范围",
+    "map_core": (106, 40, 120, 30),
+    "map_rivers": None,
+    "map_mountains": None,
+    "map_markers": [
+        {"lon": 108.7, "lat": 34.3, "label": "咸阳", "modern": "今陕西咸阳·秦都", "kind": "capital", "dx": -14, "dy": -12, "anchor": "end"},
+        {"lon": 103.8, "lat": 35.4, "label": "临洮", "modern": "今甘肃·长城西端", "kind": "other", "dx": -14, "dy": 4, "anchor": "end"},
+        {"lon": 119.5, "lat": 40.0, "label": "辽东", "modern": "今辽宁·长城东端", "kind": "other", "dx": 12, "dy": -10, "anchor": "start"},
+        {"lon": 111.0, "lat": 34.7, "label": "函谷关", "modern": "今河南灵宝·函谷关", "kind": "other", "dx": -14, "dy": 18, "anchor": "end"},
+        {"lon": 115.0, "lat": 37.2, "label": "巨鹿", "modern": "今河北·巨鹿之战", "kind": "battle", "dx": 12, "dy": 4, "anchor": "start"},
+    ],
     "name": "秦朝",
     "era": "公元前 221 — 前 207 年",
     "subtitle": "中国第一个统一的中央集权王朝",
@@ -268,6 +322,19 @@ DYNASTIES = [
 
 {
     "id": "han",
+
+    # ===== 真实地理地图配置（按经纬度投影）=====
+    "map_region": (97, 45, 30, 21),
+    "map_title": "汉朝 · 疆域范围",
+    "map_core": (105, 41, 120, 30),
+    "map_rivers": None,
+    "map_mountains": None,
+    "map_markers": [
+        {"lon": 108.9, "lat": 34.3, "label": "长安", "modern": "今陕西西安·西汉都城", "kind": "capital", "dx": -14, "dy": -12, "anchor": "end"},
+        {"lon": 112.4, "lat": 34.6, "label": "洛阳", "modern": "今河南洛阳·东汉都城", "kind": "capital", "dx": 12, "dy": -14, "anchor": "start"},
+        {"lon": 116.4, "lat": 39.9, "label": "蓟·幽州", "modern": "今北京", "kind": "other", "dx": 12, "dy": -10, "anchor": "start"},
+        {"lon": 100.4, "lat": 38.9, "label": "张掖", "modern": "今甘肃·河西走廊", "kind": "other", "dx": -14, "dy": 4, "anchor": "end"},
+    ],
     "name": "汉朝",
     "era": "公元前 202 — 公元 220 年（西汉 + 东汉）",
     "subtitle": "“汉”成为我们名字的朝代",
@@ -311,6 +378,20 @@ DYNASTIES = [
 
 {
     "id": "sanguo",
+
+    # ===== 真实地理地图配置（按经纬度投影）=====
+    "map_region": (97, 45, 30, 21),
+    "map_title": "三国 · 三国鼎立",
+    "map_core": (104, 40, 122, 26),
+    "map_rivers": None,
+    "map_mountains": None,
+    "map_markers": [
+        {"lon": 113.9, "lat": 34.0, "label": "许昌", "modern": "今河南许昌·曹魏", "kind": "capital", "dx": -14, "dy": -12, "anchor": "end"},
+        {"lon": 104.1, "lat": 30.7, "label": "成都", "modern": "今四川·蜀汉", "kind": "capital", "dx": -14, "dy": 4, "anchor": "end"},
+        {"lon": 118.8, "lat": 32.0, "label": "建业", "modern": "今江苏南京·东吴", "kind": "capital", "dx": 12, "dy": -12, "anchor": "start"},
+        {"lon": 113.9, "lat": 29.7, "label": "赤壁", "modern": "今湖北·赤壁之战", "kind": "battle", "dx": 12, "dy": 4, "anchor": "start"},
+        {"lon": 113.9, "lat": 34.7, "label": "官渡", "modern": "今河南中牟·官渡之战", "kind": "battle", "dx": -14, "dy": 18, "anchor": "end"},
+    ],
     "name": "三国",
     "era": "公元 220 — 280 年",
     "subtitle": "魏 · 蜀 · 吴 三足鼎立",
@@ -353,6 +434,19 @@ DYNASTIES = [
 
 {
     "id": "jin",
+
+    # ===== 真实地理地图配置（按经纬度投影）=====
+    "map_region": (97, 45, 30, 21),
+    "map_title": "晋朝 · 疆域范围",
+    "map_core": (105, 42, 120, 30),
+    "map_rivers": None,
+    "map_mountains": None,
+    "map_markers": [
+        {"lon": 112.4, "lat": 34.6, "label": "洛阳", "modern": "今河南洛阳·西晋", "kind": "capital", "dx": -14, "dy": -12, "anchor": "end"},
+        {"lon": 118.8, "lat": 32.0, "label": "建康", "modern": "今江苏南京·东晋", "kind": "capital", "dx": 12, "dy": -12, "anchor": "start"},
+        {"lon": 117.0, "lat": 32.5, "label": "淝水", "modern": "今安徽淮南·淝水之战", "kind": "battle", "dx": 12, "dy": 4, "anchor": "start"},
+        {"lon": 113.3, "lat": 40.1, "label": "平城", "modern": "今山西大同", "kind": "other", "dx": -14, "dy": 4, "anchor": "end"},
+    ],
     "name": "晋朝",
     "era": "265 — 420 年（西晋 + 东晋）",
     "subtitle": "短暂统一 · 偏安江南",
@@ -395,6 +489,20 @@ DYNASTIES = [
 
 {
     "id": "nanbei",
+
+    # ===== 真实地理地图配置（按经纬度投影）=====
+    "map_region": (97, 45, 30, 21),
+    "map_title": "南北朝 · 南北对峙",
+    "map_core": (104, 42, 120, 30),
+    "map_rivers": None,
+    "map_mountains": None,
+    "map_markers": [
+        {"lon": 118.8, "lat": 32.0, "label": "建康", "modern": "今江苏南京·南朝", "kind": "capital", "dx": 12, "dy": -12, "anchor": "start"},
+        {"lon": 113.3, "lat": 40.1, "label": "平城", "modern": "今山西大同·北魏前期都", "kind": "capital", "dx": -14, "dy": -10, "anchor": "end"},
+        {"lon": 112.4, "lat": 34.6, "label": "洛阳", "modern": "今河南洛阳·北魏迁都后", "kind": "capital", "dx": 12, "dy": -14, "anchor": "start"},
+        {"lon": 112.2, "lat": 30.3, "label": "江陵", "modern": "今湖北荆州", "kind": "other", "dx": -14, "dy": 4, "anchor": "end"},
+        {"lon": 117.5, "lat": 32.5, "label": "钟离", "modern": "今安徽凤阳·钟离之战", "kind": "battle", "dx": 12, "dy": 4, "anchor": "start"},
+    ],
     "name": "南北朝",
     "era": "420 — 589 年",
     "subtitle": "大分裂 · 大融合",
@@ -437,6 +545,19 @@ DYNASTIES = [
 
 {
     "id": "sui",
+
+    # ===== 真实地理地图配置（按经纬度投影）=====
+    "map_region": (97, 45, 30, 21),
+    "map_title": "隋朝 · 疆域范围",
+    "map_core": (105, 41, 120, 30),
+    "map_rivers": None,
+    "map_mountains": None,
+    "map_markers": [
+        {"lon": 108.9, "lat": 34.3, "label": "大兴城", "modern": "今陕西西安·隋都", "kind": "capital", "dx": -14, "dy": -12, "anchor": "end"},
+        {"lon": 112.4, "lat": 34.6, "label": "东都洛阳", "modern": "今河南洛阳", "kind": "capital", "dx": 12, "dy": -14, "anchor": "start"},
+        {"lon": 119.4, "lat": 32.4, "label": "江都", "modern": "今江苏扬州·炀帝被弑处", "kind": "other", "dx": 12, "dy": 4, "anchor": "start"},
+        {"lon": 116.4, "lat": 39.9, "label": "涿郡", "modern": "今北京·运河北端", "kind": "other", "dx": 12, "dy": -10, "anchor": "start"},
+    ],
     "name": "隋朝",
     "era": "581 — 618 年",
     "subtitle": "结束大分裂 · 重归一统",
@@ -474,6 +595,19 @@ DYNASTIES = [
 
 {
     "id": "tang",
+
+    # ===== 真实地理地图配置（按经纬度投影）=====
+    "map_region": (97, 45, 30, 21),
+    "map_title": "唐朝 · 疆域范围",
+    "map_core": (100, 42, 122, 28),
+    "map_rivers": None,
+    "map_mountains": None,
+    "map_markers": [
+        {"lon": 108.9, "lat": 34.3, "label": "长安", "modern": "今陕西西安·唐都·世界中心", "kind": "capital", "dx": -14, "dy": -12, "anchor": "end"},
+        {"lon": 112.4, "lat": 34.6, "label": "洛阳", "modern": "今河南洛阳·东都", "kind": "capital", "dx": 12, "dy": -14, "anchor": "start"},
+        {"lon": 116.4, "lat": 39.9, "label": "范阳", "modern": "今北京·安史之乱起兵处", "kind": "battle", "dx": 12, "dy": -10, "anchor": "start"},
+        {"lon": 108.3, "lat": 34.3, "label": "马嵬驿", "modern": "今陕西兴平·杨贵妃殒命", "kind": "battle", "dx": -14, "dy": 18, "anchor": "end"},
+    ],
     "name": "唐朝",
     "era": "618 — 907 年",
     "subtitle": "最开放 · 最自信 · 最繁荣",
@@ -516,6 +650,20 @@ DYNASTIES = [
 
 {
     "id": "wudai",
+
+    # ===== 真实地理地图配置（按经纬度投影）=====
+    "map_region": (97, 45, 30, 21),
+    "map_title": "五代十国 · 疆域范围",
+    "map_core": (104, 41, 120, 30),
+    "map_rivers": None,
+    "map_mountains": None,
+    "map_markers": [
+        {"lon": 114.3, "lat": 34.8, "label": "汴梁", "modern": "今河南开封·五代都城", "kind": "capital", "dx": 12, "dy": -14, "anchor": "start"},
+        {"lon": 112.4, "lat": 34.6, "label": "洛阳", "modern": "今河南洛阳·后唐", "kind": "capital", "dx": -14, "dy": -12, "anchor": "end"},
+        {"lon": 118.8, "lat": 32.0, "label": "金陵", "modern": "今江苏南京·南唐", "kind": "capital", "dx": 12, "dy": -12, "anchor": "start"},
+        {"lon": 112.5, "lat": 37.9, "label": "晋阳", "modern": "今山西太原·北汉", "kind": "other", "dx": -14, "dy": 4, "anchor": "end"},
+        {"lon": 116.4, "lat": 39.9, "label": "燕云十六州", "modern": "今北京一带·石敬瑭割让", "kind": "other", "dx": 12, "dy": -10, "anchor": "start"},
+    ],
     "name": "五代十国",
     "era": "907 — 960 年",
     "subtitle": "政权走马灯 · 南方渐繁荣",
@@ -555,6 +703,19 @@ DYNASTIES = [
 
 {
     "id": "song",
+
+    # ===== 真实地理地图配置（按经纬度投影）=====
+    "map_region": (97, 46, 30, 22),
+    "map_title": "宋朝 · 疆域范围",
+    "map_core": (104, 41, 121, 28),
+    "map_rivers": None,
+    "map_mountains": None,
+    "map_markers": [
+        {"lon": 114.3, "lat": 34.8, "label": "开封", "modern": "今河南开封·北宋都城", "kind": "capital", "dx": 12, "dy": -14, "anchor": "start"},
+        {"lon": 120.2, "lat": 30.3, "label": "临安", "modern": "今浙江杭州·南宋都城", "kind": "capital", "dx": 12, "dy": -12, "anchor": "start"},
+        {"lon": 112.2, "lat": 32.0, "label": "襄阳", "modern": "今湖北·兵家必争", "kind": "other", "dx": -14, "dy": 4, "anchor": "end"},
+        {"lon": 114.0, "lat": 33.6, "label": "郾城", "modern": "今河南漯河·岳飞大捷", "kind": "battle", "dx": 12, "dy": 4, "anchor": "start"},
+    ],
     "name": "宋朝",
     "era": "960 — 1279 年（北宋 + 南宋）",
     "subtitle": "经济文化巅峰 · 军事偏弱",
@@ -598,6 +759,19 @@ DYNASTIES = [
 
 {
     "id": "yuan",
+
+    # ===== 真实地理地图配置（按经纬度投影）=====
+    "map_region": (95, 47, 32, 23),
+    "map_title": "元朝 · 疆域范围（空前辽阔）",
+    "map_core": (100, 45, 122, 30),
+    "map_rivers": None,
+    "map_mountains": None,
+    "map_markers": [
+        {"lon": 116.4, "lat": 39.9, "label": "大都", "modern": "今北京·元都", "kind": "capital", "dx": 12, "dy": -12, "anchor": "start"},
+        {"lon": 116.2, "lat": 42.2, "label": "上都", "modern": "今内蒙古正蓝旗", "kind": "capital", "dx": -14, "dy": -10, "anchor": "end"},
+        {"lon": 120.2, "lat": 30.3, "label": "临安", "modern": "今浙江杭州·南宋旧都", "kind": "other", "dx": 12, "dy": 4, "anchor": "start"},
+        {"lon": 112.2, "lat": 32.0, "label": "襄樊", "modern": "今湖北·襄樊之战", "kind": "battle", "dx": -14, "dy": 18, "anchor": "end"},
+    ],
     "name": "元朝",
     "era": "1271 — 1368 年",
     "subtitle": "疆域最大 · 第一个少数民族大一统",
@@ -640,6 +814,19 @@ DYNASTIES = [
 
 {
     "id": "ming",
+
+    # ===== 真实地理地图配置（按经纬度投影）=====
+    "map_region": (97, 47, 30, 23),
+    "map_title": "明朝 · 疆域范围",
+    "map_core": (104, 44, 121, 28),
+    "map_rivers": None,
+    "map_mountains": None,
+    "map_markers": [
+        {"lon": 118.8, "lat": 32.0, "label": "南京", "modern": "今江苏南京·明初都", "kind": "capital", "dx": 12, "dy": -12, "anchor": "start"},
+        {"lon": 116.4, "lat": 39.9, "label": "北京", "modern": "今北京·迁都后都城", "kind": "capital", "dx": 12, "dy": -10, "anchor": "start"},
+        {"lon": 116.3, "lat": 29.5, "label": "鄱阳湖", "modern": "今江西·鄱阳湖之战", "kind": "battle", "dx": 12, "dy": 4, "anchor": "start"},
+        {"lon": 115.0, "lat": 40.4, "label": "土木堡", "modern": "今河北怀来·土木堡之变", "kind": "battle", "dx": -14, "dy": 4, "anchor": "end"},
+    ],
     "name": "明朝",
     "era": "1368 — 1644 年",
     "subtitle": "汉族重建 · 君主集权顶峰",
@@ -683,6 +870,19 @@ DYNASTIES = [
 
 {
     "id": "qing",
+
+    # ===== 真实地理地图配置（按经纬度投影）=====
+    "map_region": (97, 47, 32, 23),
+    "map_title": "清朝 · 疆域范围（奠定现代版图）",
+    "map_core": (102, 45, 124, 28),
+    "map_rivers": None,
+    "map_mountains": None,
+    "map_markers": [
+        {"lon": 116.4, "lat": 39.9, "label": "北京", "modern": "今北京·清都", "kind": "capital", "dx": 12, "dy": -10, "anchor": "start"},
+        {"lon": 123.4, "lat": 41.8, "label": "盛京", "modern": "今辽宁沈阳·入关前都", "kind": "capital", "dx": 12, "dy": -10, "anchor": "start"},
+        {"lon": 118.8, "lat": 32.0, "label": "江宁", "modern": "今江苏南京", "kind": "other", "dx": 12, "dy": 4, "anchor": "start"},
+        {"lon": 117.9, "lat": 40.9, "label": "承德", "modern": "今河北承德·避暑山庄", "kind": "other", "dx": -14, "dy": 4, "anchor": "end"},
+    ],
     "name": "清朝",
     "era": "1644 — 1912 年（后金1616 · 清1636 · 入关1644）",
     "subtitle": "最后一个封建王朝",

@@ -259,43 +259,107 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
   
     <div class="section" id="territory">
       <div class="sec-head"><div class="sec-badge">🗺️</div>
-        <div class="sec-title">疆域范围<small>这个朝代有多大</small></div></div>
-      <div class="map-card">
-        <div class="map-svg">
-<svg viewBox="0 0 600 420" role="img" aria-label="疆域示意">
-  <defs>
-    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#dff1fb"/><stop offset="1" stop-color="#cfe8f7"/>
+        <div class="sec-title">疆域范围<small>这张地图是按真实地理位置画的</small></div></div>
+      <div class="map-wide"><svg viewBox="0 0 780 600" role="img" aria-label="宋朝 · 疆域范围" font-family="'Noto Sans SC','SimHei',sans-serif" xmlns="http://www.w3.org/2000/svg">
+<defs>
+    <!-- 海洋渐变 -->
+    <linearGradient id="ocean_bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#D4E8F2"/>
+      <stop offset="100%" stop-color="#B8D4E8"/>
     </linearGradient>
-    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
-      <stop offset="0" stop-color="#7FB3A0" stop-opacity="0.55"/><stop offset="1" stop-color="#7FB3A0" stop-opacity="0"/>
+    <!-- 核心区发光 -->
+    <radialGradient id="core_glow" cx="50%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#F4D03F" stop-opacity="0.40"/>
+      <stop offset="100%" stop-color="#F4D03F" stop-opacity="0"/>
     </radialGradient>
-  </defs>
-  <rect x="0" y="0" width="600" height="420" rx="16" fill="url(#sea)"/>
-  <ellipse cx="320" cy="225" rx="210" ry="150" fill="#7FB3A0" opacity="0.35"/>
-  <path d="M70,150 C60,90 130,55 210,60 C250,40 330,30 400,55 C470,40 540,70 560,130 C585,180 560,250 520,300 C540,350 480,400 400,395 C330,420 240,415 180,390 C110,400 60,350 70,280 C40,240 50,190 70,150 Z" fill="#2980B9" opacity="0.82" stroke="#fff" stroke-width="3"/>
-  <path d="M70,150 C60,90 130,55 210,60 C250,40 330,30 400,55 C470,40 540,70 560,130 C585,180 560,250 520,300 C540,350 480,400 400,395 C330,420 240,415 180,390 C110,400 60,350 70,280 C40,240 50,190 70,150 Z" fill="url(#glow)" opacity="0.6"/>
-  <g stroke="#ffffff" stroke-opacity="0.35" stroke-width="1">
-    <line x1="40" y1="105" x2="560" y2="105"/><line x1="40" y1="210" x2="560" y2="210"/><line x1="40" y1="315" x2="560" y2="315"/>
-    <line x1="160" y1="40" x2="160" y2="400"/><line x1="320" y1="40" x2="320" y2="400"/><line x1="460" y1="40" x2="460" y2="400"/>
-  </g>
-  <!-- 图钉 -->
-  <g transform="translate(300,200)">
-    <circle cx="0" cy="0" r="40" fill="url(#glow)"/>
-    <path d="M0,28 C-16,8 -16,-14 0,-14 C16,-14 16,8 0,28 Z" fill="#5DADE2" stroke="#fff" stroke-width="2"/>
-    <circle cx="0" cy="-2" r="7" fill="#fff"/>
-  </g>
-  <text x="300" y="246" text-anchor="middle" font-family="ZCOOL KuaiLe,sans-serif" font-size="22" fill="#2980B9" font-weight="bold">宋朝</text>
-  <!-- 指南针 -->
-  <g transform="translate(540,60)" stroke="#2980B9" fill="#2980B9">
-    <circle r="20" fill="none" stroke-width="2" opacity="0.6"/>
-    <path d="M0,-16 L5,4 L0,-1 L-5,4 Z" fill="#7FB3A0"/>
-    <text x="0" y="-24" text-anchor="middle" font-size="12" stroke="none">北</text>
-  </g>
-  <text x="20" y="405" font-size="12" fill="#7f9aa8" font-family="Noto Sans SC">※ 约略示意图，非精确疆界</text>
+    <!-- 战役箭头渐变 -->
+    <linearGradient id="arrow_red" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#E74C3C" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#C0392B" stop-opacity="0.95"/>
+    </linearGradient>
+    <linearGradient id="arrow_blue" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3498DB" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#2980B9" stop-opacity="0.95"/>
+    </linearGradient>
+    <!-- 箭头 marker -->
+    <marker id="head_red" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#C0392B"/>
+    </marker>
+    <marker id="head_blue" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2980B9"/>
+    </marker>
+    <!-- 阴影 -->
+    <filter id="shadow" x="-3%" y="-3%" width="106%" height="108%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.15"/>
+    </filter>
+    </defs>
+<rect x="0" y="0" width="780" height="600" rx="12" fill="url(#ocean_bg)"/>
+<path d="M89.9,115.9 C99.9,122.0 123.3,148.6 149.9,152.7 C176.5,156.8 219.8,144.5 249.8,140.5 C279.8,136.4 303.1,131.0 329.7,128.2 C356.4,125.3 383.0,121.2 409.7,123.3 C436.3,125.3 469.6,131.5 489.6,140.5 C509.6,149.5 522.9,158.9 529.6,177.3 C536.2,195.7 531.2,230.5 529.6,250.9 C527.9,271.4 522.9,283.6 519.6,300.0 C516.2,316.4 514.6,332.7 509.6,349.1 C504.6,365.5 497.9,383.9 489.6,398.2 C481.3,412.5 473.0,424.8 459.6,435.0 C446.3,445.2 428.0,455.5 409.7,459.5 C391.4,463.6 369.7,463.6 349.7,459.5 C329.7,455.5 309.8,443.2 289.8,435.0 C269.8,426.8 249.8,420.7 229.8,410.5 C209.8,400.2 186.5,388.0 169.9,373.6 C153.2,359.3 143.2,345.0 129.9,324.5 C116.6,304.1 99.9,275.5 89.9,250.9 C80.0,226.4 70.0,199.8 70.0,177.3 C70.0,154.8 86.6,126.1 89.9,115.9 C93.3,105.7 80.0,109.8 89.9,115.9 Z" fill="#e8dba0" stroke="none"/>
+<path d="M799.3,-43.6 C791.0,-37.5 767.7,-21.1 749.4,-6.8 C731.1,7.5 709.4,19.8 689.4,42.3 C669.5,64.8 646.1,105.7 629.5,128.2 C612.8,150.7 602.8,165.0 589.5,177.3 C576.2,189.5 559.5,191.6 549.6,201.8 C539.6,212.0 536.2,226.4 529.6,238.6 C522.9,250.9 514.6,263.2 509.6,275.5 C504.6,287.7 499.6,300.0 499.6,312.3 C499.6,324.5 506.3,336.8 509.6,349.1 C512.9,361.4 519.6,373.6 519.6,385.9 C519.6,398.2 514.6,410.5 509.6,422.7 C504.6,435.0 497.9,447.3 489.6,459.5 C481.3,471.8 469.6,484.1 459.6,496.4 C449.6,508.6 439.6,518.9 429.7,533.2 C419.7,547.5 411.3,570.0 399.7,582.3 C388.0,594.5 372.0,598.6 359.7,606.8 C347.4,615.0 336.4,625.2 325.7,631.4 C315.1,637.5 306.8,642.4 295.8,643.6 C284.8,644.9 268.1,632.6 259.8,638.7 C251.5,644.9 252.5,669.4 245.8,680.5 C239.2,691.5 214.2,700.5 219.8,705.0 C225.5,709.5 265.8,702.5 279.8,707.5 C293.8,712.4 302.1,726.7 303.8,734.5 C305.4,742.2 298.8,744.7 289.8,754.1 C280.8,763.5 256.5,784.8 249.8,790.9" fill="none" stroke="#8B7355" stroke-width="2" stroke-linecap="round"/>
+<path d="M279.8,663.3 C285.8,661.6 296.8,663.3 301.8,668.2 C306.8,673.1 310.8,685.4 309.8,692.7 C308.8,700.1 301.8,711.5 295.8,712.4 C289.8,713.2 278.8,703.4 273.8,697.6 C268.8,691.9 264.8,683.7 265.8,678.0 C266.8,672.3 273.8,664.9 279.8,663.3 Z" fill="#e8dba0" stroke="#8B7355" stroke-width="1.2"/>
+<path d="M519.6,540.5 C524.6,538.5 529.6,560.2 529.6,570.0 C529.6,579.8 523.6,592.1 519.6,599.5 C515.6,606.8 508.9,617.0 505.6,614.2 C502.3,611.3 497.3,594.5 499.6,582.3 C501.9,570.0 514.6,542.6 519.6,540.5 Z" fill="#e8dba0" stroke="#8B7355" stroke-width="1.2"/>
+<path d="M70.0,103.6 C89.9,99.5 146.6,85.2 189.9,79.1 C233.2,73.0 283.1,75.0 329.7,66.8 C376.4,58.6 429.7,44.3 469.6,30.0 C509.6,15.7 546.2,-27.3 569.5,-19.1 C592.8,-10.9 622.8,50.5 609.5,79.1 C596.2,107.7 529.6,140.5 489.6,152.7 C449.6,165.0 409.7,150.7 369.7,152.7 C329.7,154.8 286.4,165.0 249.8,165.0 C213.2,165.0 179.9,163.0 149.9,152.7 C119.9,142.5 83.3,111.8 70.0,103.6 C56.6,95.5 50.0,107.7 70.0,103.6 Z" fill="#c9b896" opacity="0.85"/>
+<path d="M89.9,226.4 C103.3,218.2 143.2,187.5 169.9,177.3 C196.5,167.0 229.8,156.8 249.8,165.0 C269.8,173.2 289.8,203.9 289.8,226.4 C289.8,248.9 269.8,279.5 249.8,300.0 C229.8,320.5 193.2,349.1 169.9,349.1 C146.6,349.1 123.3,320.5 109.9,300.0 C96.6,279.5 93.3,238.6 89.9,226.4 C86.6,214.1 76.6,234.5 89.9,226.4 Z" fill="#a8c4a2" opacity="0.85"/>
+<path d="M169.9,312.3 C183.2,312.3 229.8,306.1 249.8,312.3 C269.8,318.4 289.8,336.8 289.8,349.1 C289.8,361.4 266.5,381.8 249.8,385.9 C233.2,390.0 203.2,385.9 189.9,373.6 C176.5,361.4 173.2,322.5 169.9,312.3 C166.5,302.0 156.6,312.3 169.9,312.3 Z" fill="#b8d4a8" opacity="0.85"/>
+<path d="M329.7,250.9 C334.7,242.7 349.7,214.1 359.7,201.8 C369.7,189.5 381.4,175.2 389.7,177.3 C398.0,179.3 409.7,199.8 409.7,214.1 C409.7,228.4 399.7,250.9 389.7,263.2 C379.7,275.5 359.7,289.8 349.7,287.7 C339.7,285.7 333.1,257.0 329.7,250.9 C326.4,244.8 324.7,259.1 329.7,250.9 Z" fill="#b8d4a8" opacity="0.85"/>
+<path d="M389.7,177.3 C399.7,173.2 433.0,154.8 449.6,152.7 C466.3,150.7 486.3,156.8 489.6,165.0 C492.9,173.2 482.9,193.6 469.6,201.8 C456.3,210.0 423.0,218.2 409.7,214.1 C396.4,210.0 393.0,183.4 389.7,177.3 C386.4,171.1 379.7,181.4 389.7,177.3 Z" fill="#b8d4a8" opacity="0.85"/>
+<path d="M249.8,287.7 C263.1,285.7 309.8,281.6 329.7,275.5 C349.7,269.3 356.4,253.0 369.7,250.9 C383.0,248.9 399.7,257.0 409.7,263.2 C419.7,269.3 429.7,277.5 429.7,287.7 C429.7,298.0 419.7,316.4 409.7,324.5 C399.7,332.7 386.4,336.0 369.7,336.8 C353.1,337.6 326.4,333.5 309.8,329.5 C293.1,325.4 279.8,319.2 269.8,312.3 C259.8,305.3 253.1,291.8 249.8,287.7 C246.5,283.6 236.5,289.8 249.8,287.7 Z" fill="#f5e6c8" opacity="0.85"/>
+<path d="M409.7,263.2 C419.7,261.1 453.0,250.9 469.6,250.9 C486.3,250.9 499.6,255.0 509.6,263.2 C519.6,271.4 529.6,285.7 529.6,300.0 C529.6,314.3 522.9,338.9 509.6,349.1 C496.3,359.3 466.3,363.4 449.6,361.4 C433.0,359.3 416.3,353.2 409.7,336.8 C403.0,320.5 409.7,275.5 409.7,263.2 C409.7,250.9 399.7,265.2 409.7,263.2 Z" fill="#eddab0" opacity="0.85"/>
+<path d="M369.7,214.1 C383.0,210.0 429.7,191.6 449.6,189.5 C469.6,187.5 486.3,191.6 489.6,201.8 C492.9,212.0 482.9,240.7 469.6,250.9 C456.3,261.1 426.3,269.3 409.7,263.2 C393.0,257.0 376.4,222.3 369.7,214.1 C363.0,205.9 356.4,218.2 369.7,214.1 Z" fill="#eddab0" opacity="0.85"/>
+<ellipse cx="339.7" cy="312.3" rx="194.9" ry="184.5" fill="url(#core_glow)" filter="url(#shadow)"/>
+<text x="339.7" y="145.7" text-anchor="middle" font-size="14" font-weight="700" font-family="'ZCOOL KuaiLe',sans-serif" fill="#B7950B" filter="url(#shadow)">★ 核心活动区</text>
+<path d="M10.0,312.3 C18.3,306.1 46.7,286.5 60.0,275.5 C73.3,264.4 78.3,256.2 89.9,246.0 C101.6,235.8 116.6,217.4 129.9,214.1 C143.2,210.8 156.6,230.5 169.9,226.4 C183.2,222.3 196.5,201.0 209.8,189.5 C223.2,178.1 236.5,161.7 249.8,157.6 C263.1,153.5 276.5,161.7 289.8,165.0 C303.1,168.3 318.1,169.1 329.7,177.3 C341.4,185.5 356.4,199.8 359.7,214.1 C363.0,228.4 356.4,248.9 349.7,263.2 C343.1,277.5 323.1,291.8 319.8,300.0 C316.4,308.2 321.4,312.3 329.7,312.3 C338.1,312.3 356.4,306.1 369.7,300.0 C383.0,293.9 396.4,284.5 409.7,275.5 C423.0,266.5 439.6,254.2 449.6,246.0 C459.6,237.8 464.6,231.7 469.6,226.4 C474.6,221.0 477.9,216.1 479.6,214.1" fill="none" stroke="#fff" stroke-width="5.0" stroke-linecap="round" opacity="0.6"/>
+<path d="M10.0,312.3 C18.3,306.1 46.7,286.5 60.0,275.5 C73.3,264.4 78.3,256.2 89.9,246.0 C101.6,235.8 116.6,217.4 129.9,214.1 C143.2,210.8 156.6,230.5 169.9,226.4 C183.2,222.3 196.5,201.0 209.8,189.5 C223.2,178.1 236.5,161.7 249.8,157.6 C263.1,153.5 276.5,161.7 289.8,165.0 C303.1,168.3 318.1,169.1 329.7,177.3 C341.4,185.5 356.4,199.8 359.7,214.1 C363.0,228.4 356.4,248.9 349.7,263.2 C343.1,277.5 323.1,291.8 319.8,300.0 C316.4,308.2 321.4,312.3 329.7,312.3 C338.1,312.3 356.4,306.1 369.7,300.0 C383.0,293.9 396.4,284.5 409.7,275.5 C423.0,266.5 439.6,254.2 449.6,246.0 C459.6,237.8 464.6,231.7 469.6,226.4 C474.6,221.0 477.9,216.1 479.6,214.1" fill="none" stroke="#4A90D9" stroke-width="3.5" stroke-linecap="round" opacity="0.92"/>
+<text x="359.7" y="206.1" text-anchor="middle" font-size="12" font-weight="600" font-family="'ZCOOL KuaiLe','KaiTi',sans-serif" fill="#4A90D9">yellow</text>
+<path d="M30.0,349.1 C40.0,353.2 70.0,367.5 89.9,373.6 C109.9,379.8 129.9,379.8 149.9,385.9 C169.9,392.0 193.2,405.1 209.8,410.5 C226.5,415.8 236.5,415.0 249.8,417.8 C263.1,420.7 276.5,426.8 289.8,427.6 C303.1,428.5 316.4,422.7 329.7,422.7 C343.1,422.7 356.4,425.6 369.7,427.6 C383.0,429.7 396.4,435.0 409.7,435.0 C423.0,435.0 436.3,431.7 449.6,427.6 C463.0,423.5 477.9,417.4 489.6,410.5 C501.3,403.5 514.6,390.0 519.6,385.9" fill="none" stroke="#fff" stroke-width="5.0" stroke-linecap="round" opacity="0.6"/>
+<path d="M30.0,349.1 C40.0,353.2 70.0,367.5 89.9,373.6 C109.9,379.8 129.9,379.8 149.9,385.9 C169.9,392.0 193.2,405.1 209.8,410.5 C226.5,415.8 236.5,415.0 249.8,417.8 C263.1,420.7 276.5,426.8 289.8,427.6 C303.1,428.5 316.4,422.7 329.7,422.7 C343.1,422.7 356.4,425.6 369.7,427.6 C383.0,429.7 396.4,435.0 409.7,435.0 C423.0,435.0 436.3,431.7 449.6,427.6 C463.0,423.5 477.9,417.4 489.6,410.5 C501.3,403.5 514.6,390.0 519.6,385.9" fill="none" stroke="#4A90D9" stroke-width="3.5" stroke-linecap="round" opacity="0.92"/>
+<text x="329.7" y="414.7" text-anchor="middle" font-size="12" font-weight="600" font-family="'ZCOOL KuaiLe','KaiTi',sans-serif" fill="#4A90D9">yangtze</text>
+<path d="M349.7,336.8 C356.4,338.9 378.0,345.0 389.7,349.1 C401.3,353.2 409.7,358.5 419.7,361.4 C429.7,364.2 444.6,365.5 449.6,366.3" fill="none" stroke="#fff" stroke-width="3.7" stroke-linecap="round" opacity="0.6"/>
+<path d="M349.7,336.8 C356.4,338.9 378.0,345.0 389.7,349.1 C401.3,353.2 409.7,358.5 419.7,361.4 C429.7,364.2 444.6,365.5 449.6,366.3" fill="none" stroke="#6BAED6" stroke-width="2.2" stroke-linecap="round" opacity="0.92"/>
+<text x="419.7" y="353.4" text-anchor="middle" font-size="12" font-weight="600" font-family="'ZCOOL KuaiLe','KaiTi',sans-serif" fill="#6BAED6">huai</text>
+<path d="M369.7,226.4 C374.7,224.3 391.4,218.2 399.7,214.1 C408.0,210.0 413.0,204.7 419.7,201.8 C426.3,199.0 436.3,197.7 439.6,196.9" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" opacity="0.6"/>
+<path d="M369.7,226.4 C374.7,224.3 391.4,218.2 399.7,214.1 C408.0,210.0 413.0,204.7 419.7,201.8 C426.3,199.0 436.3,197.7 439.6,196.9" fill="none" stroke="#6BAED6" stroke-width="2" stroke-linecap="round" opacity="0.92"/>
+<text x="419.7" y="193.8" text-anchor="middle" font-size="12" font-weight="600" font-family="'ZCOOL KuaiLe','KaiTi',sans-serif" fill="#6BAED6">hai</text>
+<path d="M209.8,312.3 C216.5,311.0 236.5,309.0 249.8,304.9 C263.1,300.8 283.1,290.6 289.8,287.7" fill="none" stroke="#fff" stroke-width="3.3" stroke-linecap="round" opacity="0.6"/>
+<path d="M209.8,312.3 C216.5,311.0 236.5,309.0 249.8,304.9 C263.1,300.8 283.1,290.6 289.8,287.7" fill="none" stroke="#7BB8D9" stroke-width="1.8" stroke-linecap="round" opacity="0.92"/>
+<text x="249.8" y="296.9" text-anchor="middle" font-size="12" font-weight="600" font-family="'ZCOOL KuaiLe','KaiTi',sans-serif" fill="#7BB8D9">wei</text>
+<path d="M319.8,263.2 C320.8,259.1 322.4,246.8 325.7,238.6 C329.1,230.5 337.4,218.2 339.7,214.1" fill="none" stroke="#fff" stroke-width="3.3" stroke-linecap="round" opacity="0.6"/>
+<path d="M319.8,263.2 C320.8,259.1 322.4,246.8 325.7,238.6 C329.1,230.5 337.4,218.2 339.7,214.1" fill="none" stroke="#7BB8D9" stroke-width="1.8" stroke-linecap="round" opacity="0.92"/>
+<text x="325.7" y="230.6" text-anchor="middle" font-size="12" font-weight="600" font-family="'ZCOOL KuaiLe','KaiTi',sans-serif" fill="#7BB8D9">fen</text>
+<g transform="translate(375.7,304.9)"><path d="M0,-11 L3,-3.5 L10.5,-3.5 L4.5,1.5 L6.5,9 L0,4.5 L-6.5,9 L-4.5,1.5 L-10.5,-3.5 L-3,-3.5 Z" fill="#D35400" stroke="#fff" stroke-width="1.2"/></g><text x="387.7" y="290.9" text-anchor="start" font-size="15" font-weight="700" font-family="'Noto Sans SC','SimHei',sans-serif" fill="#2C3E50">开封</text><text x="387.7" y="306.9" text-anchor="start" font-size="11" font-family="'Noto Sans SC',sans-serif" fill="#666">今河南开封·北宋都城</text>
+<g transform="translate(493.6,415.4)"><path d="M0,-11 L3,-3.5 L10.5,-3.5 L4.5,1.5 L6.5,9 L0,4.5 L-6.5,9 L-4.5,1.5 L-10.5,-3.5 L-3,-3.5 Z" fill="#D35400" stroke="#fff" stroke-width="1.2"/></g><text x="505.6" y="403.4" text-anchor="start" font-size="15" font-weight="700" font-family="'Noto Sans SC','SimHei',sans-serif" fill="#2C3E50">临安</text><text x="505.6" y="419.4" text-anchor="start" font-size="11" font-family="'Noto Sans SC',sans-serif" fill="#666">今浙江杭州·南宋都城</text>
+<circle cx="333.7" cy="373.6" r="7" fill="#2980B9" stroke="#fff" stroke-width="2"/><text x="319.7" y="377.6" text-anchor="end" font-size="15" font-weight="700" font-family="'Noto Sans SC','SimHei',sans-serif" fill="#2C3E50">襄阳</text><text x="319.7" y="393.6" text-anchor="end" font-size="11" font-family="'Noto Sans SC',sans-serif" fill="#666">今湖北·兵家必争</text>
+<circle cx="369.7" cy="334.4" r="10" fill="#C0392B" stroke="#fff" stroke-width="2"/><text x="369.7" y="338.4" text-anchor="middle" font-size="13" fill="#fff">⚔</text><text x="381.7" y="338.4" text-anchor="start" font-size="15" font-weight="700" font-family="'Noto Sans SC','SimHei',sans-serif" fill="#2C3E50">郾城</text><text x="381.7" y="354.4" text-anchor="start" font-size="11" font-family="'Noto Sans SC',sans-serif" fill="#666">今河南漯河·岳飞大捷</text>
+<g transform="translate(16,14)">  <rect x="0" y="0" width="240" height="36" rx="8" fill="#FFFDF5" stroke="#B8956E" stroke-width="1.8"/>  <rect x="0" y="0" width="240" height="34" rx="8" fill="#FBF5E6" opacity="0.6"/>  <text x="16" y="23" font-size="17" font-weight="700" font-family="'ZCOOL KuaiLe','SimHei',sans-serif" fill="#5C4A1F">宋朝 · 疆域范围</text></g>
+<g transform="translate(724,56)">  <circle r="30" fill="#FFFDF5" stroke="#B8956E" stroke-width="1.3" opacity="0.94"/>  <circle r="25" fill="none" stroke="#D4BC8E" stroke-width="0.8"/>  <path d="M0,-25 L7,0 L0,25 L-7,0 Z" fill="#C0392B"/>  <path d="M-25,0 L0,7 L25,0 L0,-7 Z" fill="#8B7355" opacity="0.8"/>  <text x="0" y="-17" text-anchor="middle" font-size="12" font-weight="700" fill="#C0392B">北</text>  <text x="0" y="23" text-anchor="middle" font-size="10" fill="#8B7355">南</text>  <text x="22" y="4" text-anchor="middle" font-size="10" fill="#8B7355">东</text>  <text x="-22" y="4" text-anchor="middle" font-size="10" fill="#8B7355">西</text></g>
+<g transform="translate(580,572)">  <rect x="0" y="0" width="77.5" height="8" fill="#8B7355"/>  <rect x="0" y="0" width="38.8" height="8" fill="#FFFDF5" stroke="#8B7355" stroke-width="0.8"/>  <text x="0" y="-5" font-size="11" fill="#5C4A1F" font-family="'Noto Sans SC',sans-serif">300 公里</text></g>
+<g transform="translate(16,436)">
+  <rect x="0" y="0" width="155" height="156" rx="8" fill="#FFFDF5" stroke="#B8956E" stroke-width="1.5"/>
+  <rect x="0" y="0" width="155" height="26" rx="8" fill="#F5ECD7"/>
+  <rect x="0" y="18" width="155" height="8" fill="#F5ECD7"/>
+  <text x="78" y="18" text-anchor="middle" font-size="13" font-weight="700" font-family="'ZCOOL KuaiLe','SimHei',sans-serif" fill="#5C4A1F">图 例</text>
+  <text x="14" y="36" font-size="14"><path d="M0,-11 L3,-3.5 L10.5,-3.5 L4.5,1.5 L6.5,9 L0,4.5 L-6.5,9 L-4.5,1.5 L-10.5,-3.5 L-3,-3.5 Z" transform="scale(0.7)" fill="#D35400"/></text>
+  <text x="34" y="35" font-size="12" font-family="'Noto Sans SC',sans-serif" fill="#3D3224">都城 / 重要聚落</text>
+  <text x="14" y="60" font-size="14"><circle r="6" fill="#C0392B"/><text y="4" text-anchor="middle" font-size="10" fill="#fff">⚔</text></text>
+  <text x="34" y="59" font-size="12" font-family="'Noto Sans SC',sans-serif" fill="#3D3224">古战场</text>
+  <text x="14" y="84" font-size="14"><rect x="-5" y="-5" width="10" height="10" rx="2" transform="rotate(45)" fill="#27AE60"/></text>
+  <text x="34" y="83" font-size="12" font-family="'Noto Sans SC',sans-serif" fill="#3D3224">文化遗址</text>
+  <text x="14" y="108" font-size="14"><rect x="-5" y="-5" width="10" height="10" rx="2" fill="#7F8C8D"/><text y="4" text-anchor="middle" font-size="8" fill="#fff">陵</text></text>
+  <text x="34" y="107" font-size="12" font-family="'Noto Sans SC',sans-serif" fill="#3D3224">陵墓</text>
+  <text x="14" y="132" font-size="14"><circle r="5" fill="#2980B9"/></text>
+  <text x="34" y="131" font-size="12" font-family="'Noto Sans SC',sans-serif" fill="#3D3224">其他地点</text>
+</g>
+<g transform="translate(620,88) scale(0.95)">
+      <rect x="-6" y="-6" width="162" height="124" rx="10" fill="#fbf3df" stroke="#b89b5e" stroke-width="1.5"/>
+      <text x="75" y="14" text-anchor="middle" font-size="11" font-family="ZCOOL KuaiLe,sans-serif" fill="#7a5c2e">中原在这里</text>
+      <polygon points="139.3,20.7 134.1,24.5 127.9,29.6 121.7,38.5 117.6,43.6 113.4,46.1 111.3,49.9 109.3,53.7 108.2,57.5 109.3,61.4 110.3,65.2 109.3,69.0 107.2,72.8 104.1,76.6 101.0,80.4 97.9,85.5 93.8,88.0 90.2,90.6 87.1,91.8 83.4,91.3 82.0,95.6 79.3,98.2 85.5,98.4 88.0,101.2 86.5,103.3 82.4,107.1" fill="#e9d6a8" stroke="#a07d3e" stroke-width="1"/>
+      <polygon points="85.5,93.9 87.8,94.4 88.6,96.9 87.1,99.0 84.9,97.4 84.0,95.4" fill="#e9d6a8" stroke="#a07d3e" stroke-width="0.8"/>
+      <polygon points="110.3,81.2 111.3,84.2 110.3,87.3 108.9,88.8 108.2,85.5" fill="#e9d6a8" stroke="#a07d3e" stroke-width="0.8"/>
+      <circle cx="90.7" cy="56.3" r="5" fill="#E74C3C" stroke="#fff" stroke-width="1.5"/>
+      <circle cx="90.7" cy="56.3" r="10" fill="none" stroke="#E74C3C" stroke-width="1" opacity="0.5"/>
+    </g>
 </svg></div>
-        <div class="map-text">北宋未复汉唐旧疆（缺燕云、河西）；南宋偏安秦岭—淮河以南，与金、蒙古对峙。</div>
-      </div>
+      <div class="map-text" style="margin-top:14px">北宋未复汉唐旧疆（缺燕云、河西）；南宋偏安秦岭—淮河以南，与金、蒙古对峙。</div>
     </div>
   
     <div class="section" id="process">
@@ -339,31 +403,36 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
       <div class="sec-head"><div class="sec-badge">👥</div>
         <div class="sec-title">重要人物<small>点一点，跳进去看大人物自己的故事</small></div></div>
       <div class="people-grid">
-      <div class="person">
+      <a class="person person-link" href="figures/zhaokuangyin.html">
         <div class="pname">赵匡胤</div>
         <div class="prole">宋太祖</div>
         <div class="pdesc">重文抑武，奠定宋基。</div>
-      </div>
-      <div class="person">
+        <div class="pstory">📖 看他的故事 →</div>
+      </a>
+      <a class="person person-link" href="figures/wanganshi.html">
         <div class="pname">王安石</div>
         <div class="prole">变法改革家</div>
         <div class="pdesc">推行新法图强。</div>
-      </div>
-      <div class="person">
+        <div class="pstory">📖 看他的故事 →</div>
+      </a>
+      <a class="person person-link" href="figures/yuefei.html">
         <div class="pname">岳飞</div>
         <div class="prole">抗金名将</div>
         <div class="pdesc">精忠报国，千古忠烈。</div>
-      </div>
-      <div class="person">
+        <div class="pstory">📖 看他的故事 →</div>
+      </a>
+      <a class="person person-link" href="figures/sushi.html">
         <div class="pname">苏轼</div>
         <div class="prole">全才文豪</div>
         <div class="pdesc">诗词文书画俱佳。</div>
-      </div>
-      <div class="person">
+        <div class="pstory">📖 看他的故事 →</div>
+      </a>
+      <a class="person person-link" href="figures/shenkuo.html">
         <div class="pname">沈括</div>
         <div class="prole">科学大家</div>
         <div class="pdesc">著《梦溪笔谈》。</div>
-      </div></div>
+        <div class="pstory">📖 看他的故事 →</div>
+      </a></div>
     </div>
   
     <div class="section" id="politics">

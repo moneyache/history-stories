@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>慈禧的故事 · 清朝</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@400;700;900&display=swap');
+* { margin:0; padding:0; box-sizing:border-box; }
+:root{
+  --primary:#B7950B;
+  --secondary:#D4AC0D;
+  --accent:#C0392B;
+  --ink:#2C3E50;
+  --paper:#FFFDF7;
+  --card-shadow:0 10px 30px rgba(0,0,0,0.12);
+}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Noto Sans SC',sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 15% 10%, color-mix(in srgb, var(--primary) 14%, white) 0%, transparent 45%),
+    radial-gradient(circle at 85% 20%, color-mix(in srgb, var(--secondary) 14%, white) 0%, transparent 45%),
+    linear-gradient(160deg,#FFFDF7 0%, #FFF6EC 50%, #FDEFF4 100%);
+  background-attachment:fixed;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none;}
+
+/* ===== 顶部返回 ===== */
+.topbar{
+  position:sticky; top:0; z-index:200;
+  display:flex; align-items:center; gap:12px;
+  padding:10px 18px;
+  background:rgba(255,253,247,0.92);
+  backdrop-filter:blur(10px);
+  box-shadow:0 2px 16px rgba(0,0,0,0.08);
+}
+.topbar .home-btn{
+  font-family:'ZCOOL KuaiLe',sans-serif;
+  background:var(--primary); color:#fff;
+  padding:6px 16px; border-radius:20px; font-size:1rem;
+  transition:transform .2s, box-shadow .2s;
+  box-shadow:0 4px 12px color-mix(in srgb, var(--primary) 40%, transparent);
+}
+.topbar .home-btn:hover{transform:translateY(-2px) scale(1.04);}
+.topbar .crumb{font-size:.9rem;color:#7F8C8D;}
+.topbar .crumb b{color:var(--primary);}
+
+/* ===== 章节快捷导航 ===== */
+.section-nav{
+  position:sticky; top:52px; z-index:150;
+  display:flex; flex-wrap:wrap; justify-content:center; gap:8px;
+  padding:8px 12px;
+  background:rgba(255,253,247,0.85);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(0,0,0,0.06);
+}
+.section-nav a{
+  font-size:.82rem; font-weight:700; color:#7F8C8D;
+  padding:5px 13px; border-radius:18px; border:2px solid transparent;
+  transition:all .25s; white-space:nowrap;
+}
+.section-nav a:hover{background:color-mix(in srgb,var(--accent) 30%,white); color:var(--ink); transform:scale(1.05);}
+.section-nav a.active{color:var(--primary); border-color:var(--primary); background:#fff;}
+
+/* ===== HERO ===== */
+.hero{
+  min-height:78vh; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; text-align:center;
+  padding:50px 20px 30px; position:relative; overflow:hidden;
+}
+.hero .blob{
+  position:absolute; border-radius:50%; filter:blur(60px); opacity:.5; z-index:0;
+  width:380px; height:380px;
+  background:radial-gradient(circle,var(--secondary),transparent 70%);
+  animation:floatBlob 9s ease-in-out infinite;
+}
+.hero .blob.b2{background:radial-gradient(circle,var(--accent),transparent 70%); right:-80px; top:10%; animation-delay:2s;}
+@keyframes floatBlob{0%,100%{transform:translateY(0)}50%{transform:translateY(-30px)}}
+.hero-emoji{
+  font-size:clamp(4rem,14vw,7rem); z-index:1;
+  animation:bob 3s ease-in-out infinite;
+  filter:drop-shadow(0 8px 18px rgba(0,0,0,0.18));
+}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-14px) rotate(3deg)}}
+.hero-title{
+  font-family:'ZCOOL KuaiLe',sans-serif;
+  font-size:clamp(3rem,11vw,6rem);
+  color:var(--primary);
+  text-shadow:3px 3px 0 #fff, 6px 6px 0 color-mix(in srgb,var(--primary) 25%,transparent);
+  margin:8px 0; z-index:1; letter-spacing:.05em;
+}
+.hero-era{
+  font-size:clamp(1rem,2.5vw,1.4rem); color:var(--secondary);
+  font-weight:700; z-index:1; margin-bottom:6px;
+}
+.hero-sub{
+  font-size:clamp(.95rem,2vw,1.15rem); color:#5D6D7E; z-index:1;
+  max-width:620px; margin:6px auto 0; line-height:1.7;
+}
+.scroll-hint{
+  position:absolute; bottom:18px; left:50%; transform:translateX(-50%);
+  font-size:.85rem; color:#95A5A6; animation:bounce 2s infinite; z-index:1;
+}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+
+/* ===== 内容区块 ===== */
+.wrap{max-width:920px; margin:0 auto; padding:10px 18px 40px;}
+.section{
+  background:#fff; border-radius:24px; padding:28px 26px; margin:26px 0;
+  box-shadow:var(--card-shadow); border-top:6px solid var(--primary);
+  opacity:0; transform:translateY(40px); transition:all .7s cubic-bezier(.2,.7,.3,1);
+}
+.section.visible{opacity:1; transform:translateY(0);}
+.sec-head{display:flex; align-items:center; gap:12px; margin-bottom:18px;}
+.sec-badge{
+  font-size:1.6rem; width:54px; height:54px; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  background:color-mix(in srgb,var(--primary) 14%,white);
+  border-radius:16px; box-shadow:0 4px 10px rgba(0,0,0,0.08);
+}
+.sec-title{
+  font-family:'ZCOOL KuaiLe',sans-serif;
+  font-size:clamp(1.6rem,4.5vw,2.3rem); color:var(--ink); line-height:1.2;
+}
+.sec-title small{display:block; font-family:'Noto Sans SC'; font-weight:400; font-size:.8rem; color:#95A5A6; letter-spacing:.1em; margin-top:2px;}
+.sec-body p{font-size:1.05rem; line-height:1.9; margin-bottom:12px; color:#34495E;}
+.sec-body p:last-child{margin-bottom:0;}
+
+/* 高亮关键词 */
+.hl{background:linear-gradient(120deg,transparent 0%, color-mix(in srgb,var(--accent) 55%,transparent) 50%, transparent 100%); padding:1px 5px; border-radius:5px; font-weight:700; color:var(--ink);}
+
+/* 特点列表 */
+.feat-list{list-style:none; display:grid; gap:12px;}
+.feat-list li{
+  display:flex; gap:12px; align-items:flex-start;
+  background:color-mix(in srgb,var(--secondary) 8%,white);
+  padding:14px 16px; border-radius:14px; font-size:1.02rem; line-height:1.7;
+  border-left:5px solid var(--secondary);
+}
+.feat-list li .dot{font-size:1.3rem; flex-shrink:0;}
+
+/* 历史进程时间轴 */
+.timeline{position:relative; padding-left:30px;}
+.timeline::before{content:''; position:absolute; left:9px; top:6px; bottom:6px; width:4px; border-radius:4px; background:linear-gradient(var(--primary),var(--secondary));}
+.tl-item{position:relative; margin-bottom:22px;}
+.tl-item::before{content:''; position:absolute; left:-26px; top:4px; width:18px; height:18px; border-radius:50%; background:var(--accent); border:3px solid #fff; box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 40%,transparent);}
+.tl-year{font-family:'ZCOOL KuaiLe',sans-serif; color:var(--primary); font-size:1.15rem;}
+.tl-title{font-weight:700; font-size:1.1rem; margin:2px 0 4px;}
+.tl-text{font-size:1rem; line-height:1.8; color:#455A64;}
+
+/* 人物卡片 */
+.people-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
+.person{
+  background:linear-gradient(160deg, color-mix(in srgb,var(--primary) 8%,white), #fff);
+  border-radius:18px; padding:18px; border:1px solid rgba(0,0,0,0.05);
+  transition:transform .25s, box-shadow .25s;
+}
+.person:hover{transform:translateY(-6px); box-shadow:0 14px 28px rgba(0,0,0,0.12);}
+.person .pname{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.4rem; color:var(--primary);}
+.person .prole{font-size:.82rem; color:var(--secondary); font-weight:700; margin:2px 0 8px;}
+.person .pdesc{font-size:.95rem; line-height:1.65; color:#455A64;}
+
+/* 三栏通用卡片 */
+.mini-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px;}
+.mini{background:#fff; border-radius:18px; padding:18px 20px; border-top:5px solid var(--accent); box-shadow:0 6px 18px rgba(0,0,0,0.07);}
+.mini h4{font-family:'ZCOOL KuaiLe',sans-serif; color:var(--secondary); font-size:1.25rem; margin-bottom:10px;}
+.mini p{font-size:.98rem; line-height:1.8; color:#455A64;}
+
+/* 疆域地图 */
+.map-card{display:flex; flex-wrap:wrap; gap:20px; align-items:center;}
+.map-svg{flex:1 1 320px; min-width:280px; background:color-mix(in srgb,var(--primary) 5%,white); border-radius:18px; padding:10px; border:2px dashed color-mix(in srgb,var(--primary) 30%,transparent);}
+.map-svg svg{width:100%; height:auto; display:block;}
+.map-text{flex:1 1 300px; font-size:1.05rem; line-height:1.9; color:#34495E;}
+
+/* 真实地理地图（全宽） */
+.map-wide{width:100%; border-radius:18px; overflow:hidden; box-shadow:var(--card-shadow); border:1px solid rgba(0,0,0,0.06);}
+.map-wide svg{width:100%; height:auto; display:block;}
+.battle-map-wrap{width:100%; border-radius:14px; overflow:hidden; margin-bottom:16px; box-shadow:0 4px 14px rgba(0,0,0,0.12); border:1px solid rgba(0,0,0,0.06);}
+.battle-map-wrap svg{width:100%; height:auto; display:block;}
+
+/* 人物卡片可跳转 */
+.person-link{text-decoration:none; color:inherit; display:block;}
+.person .pstory{margin-top:10px; font-size:.85rem; font-weight:700; color:var(--secondary); opacity:0; transform:translateY(4px); transition:all .25s;}
+.person-link:hover .pstory{opacity:1; transform:translateY(0);}
+
+/* 战役 */
+.battle-box{background:linear-gradient(160deg,#1b2433,#2c3a52); border-radius:20px; padding:20px; color:#fff; text-align:center;}
+.battle-title{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.6rem; color:#FFD54F; margin-bottom:4px;}
+.battle-sub{font-size:.9rem; color:#bcd; margin-bottom:12px;}
+.battle-canvas{width:100%; max-width:680px; border-radius:14px; background:#0e1622; display:block; margin:0 auto; box-shadow:0 8px 24px rgba(0,0,0,0.4);}
+.battle-btn{
+  margin-top:14px; font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.15rem;
+  background:linear-gradient(135deg,#FF5252,#FF8A65); color:#fff; border:none;
+  padding:10px 34px; border-radius:30px; cursor:pointer; transition:transform .2s, box-shadow .2s;
+  box-shadow:0 6px 18px rgba(255,82,82,0.4);
+}
+.battle-btn:hover{transform:scale(1.06);}
+.battle-btn:disabled{opacity:.6; cursor:default; transform:none;}
+.battle-narrate{margin-top:14px; min-height:48px; font-size:1rem; line-height:1.7; color:#e8eef5; max-width:620px; margin-left:auto; margin-right:auto;}
+.battle-result{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.5rem; margin-top:6px;}
+
+/* 小测验 */
+.quiz-q{background:#fff; border-radius:18px; padding:20px 22px; margin-bottom:18px; box-shadow:0 6px 16px rgba(0,0,0,0.07); border-left:6px solid var(--secondary);}
+.quiz-q .q-text{font-size:1.15rem; font-weight:700; margin-bottom:14px;}
+.opt{
+  display:block; width:100%; text-align:left; cursor:pointer;
+  background:#f4f7fa; border:2px solid transparent; border-radius:12px;
+  padding:12px 16px; margin-bottom:10px; font-size:1.02rem; transition:all .2s; font-family:inherit;
+}
+.opt:hover{background:color-mix(in srgb,var(--accent) 22%,white);}
+.opt.correct{background:#d5f5e3; border-color:#27AE60; color:#145a32; font-weight:700;}
+.opt.wrong{background:#fdecea; border-color:#E74C3C; color:#922b21; font-weight:700;}
+.opt.disabled{pointer-events:none;}
+.quiz-explain{font-size:.95rem; line-height:1.7; color:#5D6D7E; margin-top:6px; padding:10px 14px; background:#fbf6e9; border-radius:10px; border-left:4px solid var(--accent); display:none;}
+.quiz-explain.show{display:block;}
+.quiz-score{text-align:center; font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.4rem; color:var(--primary); margin:10px 0 24px;}
+.quiz-score b{color:var(--secondary); font-size:1.8rem;}
+
+/* 底部翻页 */
+.pager{display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; margin:30px 0 10px;}
+.pager a{
+  flex:1 1 200px; text-align:center; padding:14px; border-radius:16px;
+  background:#fff; box-shadow:var(--card-shadow); font-weight:700; color:var(--ink);
+  transition:transform .2s; border:2px solid transparent;
+}
+.pager a:hover{transform:translateY(-4px); border-color:var(--primary); color:var(--primary);}
+.pager .label{font-size:.78rem; color:#95A5A6; display:block; font-weight:400;}
+.pager .pname{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem;}
+
+footer{text-align:center; padding:30px 20px 50px; color:#95A5A6; font-size:.85rem;}
+footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(--primary); opacity:.7; margin-bottom:8px;}
+
+@media(max-width:600px){
+  .section{padding:22px 16px;}
+  .hero-title{font-size:2.6rem;}
+}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="home-btn" href="../index.html">🏠 主页</a>
+  <span class="crumb">清朝 / <b>慈禧</b></span>
+</div>
+<nav class="section-nav"><a href="#who">👤 他是谁</a><a href="#story">📖 他的故事</a><a href="#achv">🏆 他的成就</a><a href="#fun">💡 趣闻</a><a href="#quiz">📝 小测验</a></nav>
+
+<header class="hero">
+  <div class="blob"></div><div class="blob b2"></div>
+  <div class="hero-emoji">👑</div>
+  <h1 class="hero-title">慈禧</h1>
+  <div class="hero-era">🕰️ 公元 1835 — 1908 年</div>
+  <div class="hero-sub">晚清实际统治者</div>
+  <div class="scroll-hint">向下滚动，听他的故事 ↓</div>
+</header>
+
+<main class="wrap">
+  
+    <div class="section" id="who">
+      <div class="sec-head"><div class="sec-badge">👤</div>
+        <div class="sec-title">他是谁<small>先认识一下这位大人物</small></div></div>
+      <div class="sec-body"><p>慈禧是晚清实际掌权者近半个世纪（同治、光绪两朝）。她发动政变夺权，镇压变法，奢侈专权，对外软弱妥协，使清朝在屈辱中走向末路，是极具争议的人物。</p></div>
+    </div>
+  
+    <div class="section" id="story">
+      <div class="sec-head"><div class="sec-badge">📖</div>
+        <div class="sec-title">他的故事<small>一生中发生的大事</small></div></div>
+      <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-year">入宫</div>
+        <div class="tl-title">懿贵妃</div>
+        <div class="tl-text">她以秀女入宫，生下皇子（咸丰独子）而地位上升。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">夺权</div>
+        <div class="tl-title">辛酉政变</div>
+        <div class="tl-text">她联合恭亲王发动政变，开始「垂帘听政」。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">保守</div>
+        <div class="tl-title">镇压变法</div>
+        <div class="tl-text">她扼杀戊戌变法，囚光绪、杀六君子。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">落幕</div>
+        <div class="tl-title">清末危局</div>
+        <div class="tl-text">她死后三年，清朝灭亡。</div>
+      </div></div>
+    </div>
+  
+    <div class="section" id="achv">
+      <div class="sec-head"><div class="sec-badge">🏆</div>
+        <div class="sec-title">他的成就<small>他给后人留下了什么</small></div></div>
+      <ul class="feat-list"><li><span class="dot">🏆</span><span>实际统治晚清近半世纪</span></li><li><span class="dot">🏆</span><span>镇压戊戌变法</span></li><li><span class="dot">🏆</span><span>奢靡专权、加速清亡</span></li></ul>
+    </div>
+  
+    <div class="section" id="fun">
+      <div class="sec-head"><div class="sec-badge">💡</div>
+        <div class="sec-title">趣闻小故事<small>一个好玩的小插曲</small></div></div>
+      <div class="sec-body"><p>慈禧为了过寿，把海军军费拿去修颐和园，结果甲午战争北洋水师惨败。当时有人写对联讽刺：「台湾省已割地，颐和园又搭天棚。」国家都快保不住了，她还忙着享乐——历史的教训够深刻。</p></div>
+    </div>
+  
+  
+    <div class="section" id="quiz">
+      <div class="sec-head"><div class="sec-badge">📝</div>
+        <div class="sec-title">小测验<small>考考你记住了没</small></div></div>
+      <div class="quiz-score">得分：<b id="score">0</b> / 3</div>
+      
+      <div class="quiz-q" id="q0">
+        <div class="q-text">❓ 晚清实际统治近半个世纪、发动政变的是？</div>
+        <button class="opt" data-i="0" data-o="0"><b>A.</b> 慈禧</button><button class="opt" data-i="0" data-o="1"><b>B.</b> 慈安</button><button class="opt" data-i="0" data-o="2"><b>C.</b> 隆裕</button><button class="opt" data-i="0" data-o="3"><b>D.</b> 珍妃</button>
+        <div class="quiz-explain" id="exp0">💡 慈禧是晚清实际统治者。</div>
+      </div>
+      <div class="quiz-q" id="q1">
+        <div class="q-text">❓ 慈禧镇压了哪次变法运动？</div>
+        <button class="opt" data-i="1" data-o="0"><b>A.</b> 戊戌变法</button><button class="opt" data-i="1" data-o="1"><b>B.</b> 洋务运动</button><button class="opt" data-i="1" data-o="2"><b>C.</b> 辛亥革命</button><button class="opt" data-i="1" data-o="3"><b>D.</b> 维新运动</button>
+        <div class="quiz-explain" id="exp1">💡 慈禧镇压戊戌变法。</div>
+      </div>
+      <div class="quiz-q" id="q2">
+        <div class="q-text">❓ 传说慈禧挪用哪笔钱修颐和园、影响海军？</div>
+        <button class="opt" data-i="2" data-o="0"><b>A.</b> 海军军费</button><button class="opt" data-i="2" data-o="1"><b>B.</b> 科举经费</button><button class="opt" data-i="2" data-o="2"><b>C.</b> 黄河治理款</button><button class="opt" data-i="2" data-o="3"><b>D.</b> 铁路款</button>
+        <div class="quiz-explain" id="exp2">💡 慈禧挪用海军军费修颐和园。</div>
+      </div>
+    </div>
+  
+    <div class="pager">
+      <a href="../qing.html"><span class="label">← 回到清朝</span><span class="pname">清朝</span></a>
+      <a href="../dynasties.html"><span class="label">↑ 朝代总览</span><span class="pname">全部朝代</span></a>
+      <a href="../index.html"><span class="label">🏠 主页</span><span class="pname">上下五千年</span></a>
+    </div>
+</main>
+
+<footer>
+  <p class="poem">读史明志 · 以史为镜</p>
+  <p>— 清朝 · 大人物小故事 · 给小朋友看的历史 —</p>
+</footer>
+
+<script>
+
+function initBattle(cfg){
+  var canvas=document.getElementById(cfg.canvas);
+  if(!canvas) return;
+  var ctx=canvas.getContext('2d');
+  var W=680,H=300;
+  function resize(){ var r=canvas.getBoundingClientRect(); canvas.width=W; canvas.height=H; }
+  resize();
+  var leftColor=cfg.leftColor, rightColor=cfg.rightColor;
+  var winner=cfg.winner; // 'left' or 'right'
+  var type=cfg.type; // 'land' or 'water'
+  var running=false, t=0, finished=false;
+  var arrows=[], ships=[], parts=[];
+  // 士兵
+  function makeArmy(side){
+    var arr=[], n=18;
+    for(var i=0;i<n;i++){
+      var row=Math.floor(i/6), col=i%6;
+      arr.push({side:side, x: side==='left'? 40+col*26 : W-40-col*26,
+                y: 70+row*55 + (Math.random()*8-4), baseY:70+row*55});
+    }
+    return arr;
+  }
+  var armyL=makeArmy('left'), armyR=makeArmy('right');
+  if(type==='water'){
+    ships=[{x:90,y:H/2-12,side:'left'},{x:W-90,y:H/2-12,side:'right'}];
+  }
+  function drawSoldier(s){
+    ctx.save();
+    ctx.fillStyle = s.side==='left'? leftColor : rightColor;
+    var x=s.x,y=s.y;
+    // 身体
+    ctx.beginPath(); ctx.arc(x,y,7,0,Math.PI*2); ctx.fill();
+    // 枪/矛
+    ctx.strokeStyle='#eee'; ctx.lineWidth=2;
+    ctx.beginPath(); ctx.moveTo(x,y-7); ctx.lineTo(x+(s.side==='left'?10:-10),y-18); ctx.stroke();
+    ctx.restore();
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    // 背景
+    var g=ctx.createLinearGradient(0,0,0,H);
+    if(type==='water'){ g.addColorStop(0,'#16384f'); g.addColorStop(1,'#0e2433'); }
+    else { g.addColorStop(0,'#3a2c22'); g.addColorStop(1,'#241a14'); }
+    ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
+    // 中线
+    ctx.strokeStyle='rgba(255,255,255,0.12)'; ctx.setLineDash([6,8]);
+    ctx.beginPath(); ctx.moveTo(W/2,20); ctx.lineTo(W/2,H-20); ctx.stroke(); ctx.setLineDash([]);
+    // 旗帜标签
+    ctx.font='bold 15px sans-serif'; ctx.textAlign='center';
+    ctx.fillStyle=leftColor; ctx.fillText(cfg.leftName, W*0.18, 30);
+    ctx.fillStyle=rightColor; ctx.fillText(cfg.rightName, W*0.82, 30);
+    // 船（水战）
+    if(type==='water'){
+      ships.forEach(function(sh){
+        ctx.fillStyle = sh.side==='left'?leftColor:rightColor;
+        ctx.fillRect(sh.x-34, sh.y, 68, 22);
+        ctx.beginPath(); ctx.moveTo(sh.x-34,sh.y); ctx.lineTo(sh.x-46,sh.y+22); ctx.lineTo(sh.x-34,sh.y+22); ctx.fill();
+        ctx.beginPath(); ctx.moveTo(sh.x+34,sh.y); ctx.lineTo(sh.x+46,sh.y+22); ctx.lineTo(sh.x+34,sh.y+22); ctx.fill();
+      });
+    }
+    // 士兵
+    armyL.concat(armyR).forEach(drawSoldier);
+    // 箭
+    arrows.forEach(function(a){
+      ctx.strokeStyle=a.fire?'#ff7043':'#ffe082'; ctx.lineWidth=2;
+      ctx.beginPath(); ctx.moveTo(a.x,a.y);
+      ctx.lineTo(a.x+(a.vx>0?10:-10), a.y-4); ctx.stroke();
+    });
+    // 火花/粒子
+    parts.forEach(function(p){
+      ctx.globalAlpha=Math.max(0,p.life); ctx.fillStyle=p.c;
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill(); ctx.globalAlpha=1;
+    });
+    // 胜利横幅
+    if(finished){
+      ctx.fillStyle='rgba(0,0,0,0.35)'; ctx.fillRect(0,H/2-34,W,68);
+      ctx.font='bold 30px "ZCOOL KuaiLe",sans-serif'; ctx.textAlign='center';
+      var txt = (winner==='left'?cfg.leftName:cfg.rightName)+' 胜利！';
+      ctx.fillStyle = winner==='left'?leftColor:rightColor;
+      ctx.fillText(txt, W/2, H/2+10);
+    }
+  }
+  function step(){
+    if(!running){ draw(); return; }
+    t+=1;
+    // 阶段：0-60 进军；60-130 交锋+放箭；130+ 推进/胜利
+    var meetX=W/2;
+    armyL.forEach(function(s){ if(s.x<meetX-30) s.x+=2.2; });
+    armyR.forEach(function(s){ if(s.x>meetX+30) s.x-=2.2; });
+    if(type==='water'){ ships[0].x+=1.1; ships[1].x-=1.1; }
+    if(t>50 && t<160 && t%4===0){
+      // 放箭
+      arrows.push({x:W/2-20,y:H/2-30+(Math.random()*40-20),vx:6,fire:Math.random()<0.4});
+      arrows.push({x:W/2+20,y:H/2-30+(Math.random()*40-20),vx:-6,fire:Math.random()<0.4});
+    }
+    arrows.forEach(function(a){ a.x+=a.vx*3; });
+    arrows=arrows.filter(function(a){return a.x>10&&a.x<W-10;});
+    // 交锋火花
+    if(t>70 && t<150 && Math.random()<0.6){
+      parts.push({x:W/2+(Math.random()*40-20),y:H/2+(Math.random()*50-25),vx:(Math.random()-0.5)*4,vy:-Math.random()*3,r:Math.random()*3+1,life:1,c:Math.random()<0.5?'#ffca28':'#ff7043'});
+    }
+    parts.forEach(function(p){ p.x+=p.vx; p.y+=p.vy; p.vy+=0.15; p.life-=0.03; });
+    parts=parts.filter(function(p){return p.life>0;});
+    if(t>150){
+      // 胜利方推进
+      var win = winner==='left'?armyL:armyR;
+      win.forEach(function(s){ s.x += winner==='left'?2.4:-2.4; });
+      if(!finished && t>200){ finished=true; running=false; showResult(); }
+    }
+    draw();
+    if(running) requestAnimationFrame(step);
+  }
+  function showResult(){
+    var rb=document.getElementById(cfg.resultId);
+    if(rb) rb.innerHTML='🏆 '+(winner==='left'?cfg.leftName:cfg.rightName)+' 取得胜利！';
+    var btn=document.getElementById(cfg.btnId);
+    if(btn){ btn.disabled=false; btn.textContent='再战一次 ⚔️'; }
+    running=false;
+  }
+  draw();
+  var btn=document.getElementById(cfg.btnId);
+  var narr=document.getElementById(cfg.narrateId);
+  if(btn){
+    btn.addEventListener('click',function(){
+      if(finished){ // 重置
+        armyL=makeArmy('left'); armyR=makeArmy('right');
+        arrows=[]; parts=[]; t=0; finished=false;
+        if(narr) narr.textContent=cfg.narrate;
+      }
+      running=true; btn.disabled=true; btn.textContent='激战中…';
+      if(narr) narr.textContent=cfg.narrate;
+      step();
+    });
+  }
+}
+
+
+
+// ===== 章节导航高亮 =====
+var secNavLinks=document.querySelectorAll('.section-nav a');
+var secObserver=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      var id=e.target.id;
+      secNavLinks.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href')==='#'+id); });
+    }
+  });
+},{threshold:0.3});
+document.querySelectorAll('.section').forEach(function(s){ if(s.id) secObserver.observe(s); });
+
+// ===== 滚动入场 =====
+var revObserver=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('visible'); });
+},{threshold:0.12});
+document.querySelectorAll('.section').forEach(function(s){ revObserver.observe(s); });
+document.querySelector('.section').classList.add('visible');
+
+// ===== 小测验 =====
+var score=0, answered={};
+document.querySelectorAll('.quiz-q').forEach(function(qbox){
+  var qi=+qbox.id.replace('q','');
+  qbox.querySelectorAll('.opt').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      if(answered[qi]) return;
+      answered[qi]=true;
+      var ans=window.__ANS__[qi];
+      qbox.querySelectorAll('.opt').forEach(function(b){
+        b.classList.add('disabled');
+        if(+b.dataset.o===ans) b.classList.add('correct');
+      });
+      if(+btn.dataset.o===ans){ score++; } else { btn.classList.add('wrong'); }
+      document.getElementById('score').textContent=score;
+      document.getElementById('exp'+qi).classList.add('show');
+    });
+  });
+});
+</script>
+<script>window.__ANS__=[0, 0, 0];</script>
+</body>
+</html>
