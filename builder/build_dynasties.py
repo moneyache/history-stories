@@ -468,21 +468,24 @@ for _f in FIGURES:
 # ====================== 权威疆域地图（本地图片，来源 Wikimedia Commons）======================
 # 方案：从维基共享资源（Wikimedia Commons）取权威历史疆域地图，经 wsrv.nl 代理下载到本地 maps/，
 #       页面引用同域本地文件，部署到 GitHub Pages 后浏览器可直接加载（不受国内墙限制）。
-# 仅在 MAP_IMAGE 中的朝代生效；shang / sui / sanhuang 暂无可用的权威地图，回落到 SVG 引擎（render_hist_map）。
+# 仅在 MAP_IMAGE 中的朝代生效；sanhuang 暂无可用的权威地图，回落到 SVG 引擎（render_hist_map）。
 # 元组格式：(本地路径, 许可, 原文件名) —— 许可与原文件名用于页面来源标注。
+# 夏/商/隋/晋/清 已于 2026-07-08 替换为与周/唐同档次的权威历史疆域图（Wikimedia Commons）。
 MAP_IMAGE = {
     "han":    ("maps/han.jpg",    "CC BY-SA 3.0", "Han Civilisation.png"),
     "tang":   ("maps/tang.jpg",   "CC0（公有领域）", "Map of the Tang Empire and Central Asia Protectorates circa 660 CE.png"),
-    "xia":    ("maps/xia.jpg",    "CC BY-SA 3.0", "Region of xia.svg"),
+    "xia":    ("maps/xia.jpg",    "CC BY-SA 3.0", "Xia dynasty.svg"),
     "zhou":   ("maps/zhou.jpg",   "CC BY-SA 3.0", "China Zhou Dynasty.jpg"),
     "qin":    ("maps/qin.jpg",    "CC0（公有领域）", "Qin dynasty territory.svg"),
     "sanguo": ("maps/sanguo.jpg", "Public domain（公有领域）", "Map of China During the Period of the Three Kingdoms.jpg"),
-    "jin":    ("maps/jin.jpg",    "Public domain（公有领域）", "The Western Tsin Dynasty 265-316 AD.jpg"),
+    "jin":    ("maps/jin.jpg",    "CC BY-SA 3.0", "Western Jeun Dynasty 280 CE.png"),
     "nanbei": ("maps/nanbei.jpg", "CC BY 3.0", "Northern and Southern Dynasties 560 CE.png"),
     "song":   ("maps/song.jpg",   "CC BY-SA 4.0", "China - Song Dynasty-zh.svg"),
     "yuan":   ("maps/yuan.jpg",   "CC BY-SA 4.0", "Yuan dynasty under Kublai Khan.png"),
     "ming":   ("maps/ming.jpg",   "CC BY-SA 4.0", "Ming dynasty under Yongle Emperor.png"),
-    "qing":   ("maps/qing.jpg",   "CC0（公有领域）", "Qing Dynasty-1760.png"),
+    "qing":   ("maps/qing.jpg",   "Public domain（公有领域）", "Map of the Qing Dynasty.jpg"),
+    "shang":  ("maps/shang.jpg",  "CC BY-SA 3.0", "China Shang Dynasty.jpg"),
+    "sui":    ("maps/sui.jpg",    "CC BY-SA 4.0", "Map of the Sui Dynasty.png"),
     "wudai":  ("maps/wudai.jpg",  "CC BY 3.0", "Five Dynasties Ten Kingdoms 923 CE.png"),
 }
 IMG_TPL = """<div style="margin:6px 0 4px">
