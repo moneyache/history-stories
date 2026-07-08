@@ -465,6 +465,33 @@ for _f in FIGURES:
         FIG_MATCH[_n] = _f["file"]
 
 
+# ====================== 权威疆域地图（本地图片，来源 Wikimedia Commons）======================
+# 方案：从维基共享资源（Wikimedia Commons）取权威历史疆域地图，经 wsrv.nl 代理下载到本地 maps/，
+#       页面引用同域本地文件，部署到 GitHub Pages 后浏览器可直接加载（不受国内墙限制）。
+# 仅在 MAP_IMAGE 中的朝代生效；shang / sui / sanhuang 暂无可用的权威地图，回落到 SVG 引擎（render_hist_map）。
+# 元组格式：(本地路径, 许可, 原文件名) —— 许可与原文件名用于页面来源标注。
+MAP_IMAGE = {
+    "han":    ("maps/han.jpg",    "CC BY-SA 3.0", "Han Civilisation.png"),
+    "tang":   ("maps/tang.jpg",   "CC0（公有领域）", "Map of the Tang Empire and Central Asia Protectorates circa 660 CE.png"),
+    "xia":    ("maps/xia.jpg",    "CC BY-SA 3.0", "Region of xia.svg"),
+    "zhou":   ("maps/zhou.jpg",   "CC BY-SA 3.0", "China Zhou Dynasty.jpg"),
+    "qin":    ("maps/qin.jpg",    "CC0（公有领域）", "Qin dynasty territory.svg"),
+    "sanguo": ("maps/sanguo.jpg", "Public domain（公有领域）", "Map of China During the Period of the Three Kingdoms.jpg"),
+    "jin":    ("maps/jin.jpg",    "Public domain（公有领域）", "The Western Tsin Dynasty 265-316 AD.jpg"),
+    "nanbei": ("maps/nanbei.jpg", "CC BY 3.0", "Northern and Southern Dynasties 560 CE.png"),
+    "song":   ("maps/song.jpg",   "CC BY-SA 4.0", "China - Song Dynasty-zh.svg"),
+    "yuan":   ("maps/yuan.jpg",   "CC BY-SA 4.0", "Yuan dynasty under Kublai Khan.png"),
+    "ming":   ("maps/ming.jpg",   "CC BY-SA 4.0", "Ming dynasty under Yongle Emperor.png"),
+    "qing":   ("maps/qing.jpg",   "CC0（公有领域）", "Qing Dynasty-1760.png"),
+    "wudai":  ("maps/wudai.jpg",  "CC BY 3.0", "Five Dynasties Ten Kingdoms 923 CE.png"),
+}
+IMG_TPL = """<div style="margin:6px 0 4px">
+  <div style="border:3px solid #b8860b;border-radius:14px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.15);background:#fff">
+    <img src="__SRC__" alt="__TITLE__" loading="lazy" style="display:block;width:100%;height:auto" />
+  </div>
+  <p style="font-size:12.5px;color:#6b5b3e;margin:8px 2px 0;text-align:center">🗺️ 地图来源：Wikimedia Commons（文件 <em>__FILE__</em> ｜ 许可 __LIC__）</p>
+</div>"""
+
 def render_dynasty(d, idx, total):
     th = d["theme"]
     css = (PAGE_CSS
@@ -484,15 +511,24 @@ def render_dynasty(d, idx, total):
 
     # 疆域
     if d.get("map_markers"):
-        map_svg_html = histmap.render_hist_map(
-            d["map_region"], d["map_markers"], d["map_rivers"],
-            d["map_mountains"], d["map_title"], core=d.get("map_core"),
-        )
-        map_html = f'<div class="map-wide">{map_svg_html}</div>'
+        mi = MAP_IMAGE.get(d["id"])
+        if mi:
+            src, lic, fname = mi
+            map_html = (IMG_TPL
+                        .replace("__SRC__", src)
+                        .replace("__TITLE__", d.get("map_title", d["name"] + " · 疆域"))
+                        .replace("__FILE__", fname)
+                        .replace("__LIC__", lic))
+        else:
+            map_html = histmap.render_hist_map(
+                d["map_region"], d["map_markers"], d["map_rivers"],
+                d["map_mountains"], d["map_title"], core=d.get("map_core"),
+            )
+            map_html = f'<div class="map-wide">{map_html}</div>'
         territory = f'''
     <div class="section" id="territory">
       <div class="sec-head"><div class="sec-badge">🗺️</div>
-        <div class="sec-title">疆域范围<small>这张地图是按真实地理位置画的</small></div></div>
+        <div class="sec-title">疆域范围<small>权威历史疆域地图（来源：维基共享资源）</small></div></div>
       {map_html}
       <div class="map-text" style="margin-top:14px">{hl_text(d['territory'])}</div>
     </div>'''
