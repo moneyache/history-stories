@@ -35,6 +35,9 @@ if os.path.isdir(fig_dir):
         if fn.endswith(".html"):
             FILES.append(os.path.join("figures", fn))
 
+# 本地已删除的 stale 孤儿页：部署时显式删除（sha=null）
+DELETES = ["caocao.html", "zhuyuanzhang.html"]
+
 
 def gh(args):
     cmd = ["gh", "api"] + args
@@ -88,6 +91,11 @@ for rel in FILES:
     sha = make_blob(path)
     entries.append({"path": rel, "mode": "100644", "type": "blob", "sha": sha})
     print("   ✓", rel)
+
+# 显式删除本地已移除的孤儿页（Git DB API：sha=null 即删除，需带 mode/type）
+for d in DELETES:
+    entries.append({"path": d, "mode": "100644", "type": "blob", "sha": None})
+    print("   ✗ (delete)", d)
 
 print("④ 构造 tree（基于基树，未列出的文件自动保留）…")
 body = {"base_tree": base_tree, "tree": entries}
