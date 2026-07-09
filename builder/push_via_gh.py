@@ -28,6 +28,12 @@ if os.path.isdir(builder_dir):
     for fn in sorted(os.listdir(builder_dir)):
         if fn.endswith(".py"):
             FILES.append(os.path.join("builder", fn))
+# figures/ 下所有 .html（人物故事页）
+fig_dir = os.path.join(ROOT, "figures")
+if os.path.isdir(fig_dir):
+    for fn in sorted(os.listdir(fig_dir)):
+        if fn.endswith(".html"):
+            FILES.append(os.path.join("figures", fn))
 
 
 def gh(args):
@@ -92,7 +98,7 @@ new_tree_sha = new_tree["sha"]
 print("   新树:", new_tree_sha[:10])
 
 print("⑤ 创建提交…")
-msg = "feat: 朝代疆域地图升级为 Wikimedia 权威历史地图（13 朝代本地图）+ 清理 Leaflet 死代码"
+msg = "feat: 历史人物故事页内容深度升级（去奶化+历史影响+深度题）+ 规范人物页至 figures/ 目录"
 cbody = {"message": msg, "tree": new_tree_sha, "parents": [parent_sha]}
 with open("/tmp/commit_body.json", "w") as f:
     json.dump(cbody, f, ensure_ascii=False)
