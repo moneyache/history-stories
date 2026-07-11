@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+*.pyo
+
+# 本地项目记忆（不进仓库）
+.workbuddy/
