@@ -156,10 +156,14 @@ a{color:inherit;text-decoration:none;}
 .timeline{position:relative; padding-left:30px;}
 .timeline::before{content:''; position:absolute; left:9px; top:6px; bottom:6px; width:4px; border-radius:4px; background:linear-gradient(var(--primary),var(--secondary));}
 .tl-item{position:relative; margin-bottom:22px;}
-.tl-item::before{content:''; position:absolute; left:-26px; top:4px; width:18px; height:18px; border-radius:50%; background:var(--accent); border:3px solid #fff; box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 40%,transparent);}
+.tl-item::before{content:''; position:absolute; left:-26px; top:4px; width:18px; height:18px; border-radius:50%; background:var(--phc,var(--accent)); border:3px solid #fff; box-shadow:0 0 0 3px color-mix(in srgb,var(--phc,var(--accent)) 40%,transparent);}
 .tl-year{font-family:'ZCOOL KuaiLe',sans-serif; color:var(--primary); font-size:1.15rem;}
 .tl-title{font-weight:700; font-size:1.1rem; margin:2px 0 4px;}
 .tl-text{font-size:1rem; line-height:1.8; color:#455A64;}
+.tl-phase{display:inline-block; font-size:.72rem; font-weight:700; color:#fff; padding:1px 9px; border-radius:20px; margin-left:8px; vertical-align:middle; letter-spacing:.5px;}
+.tl-legend{display:flex; flex-wrap:wrap; gap:10px; margin:0 0 18px; padding:0;}
+.tl-legend li{list-style:none; font-size:.78rem; color:#607D8B; display:flex; align-items:center; gap:5px;}
+.tl-legend .dot{width:11px; height:11px; border-radius:50%; display:inline-block;}
 
 /* 人物卡片 */
 .people-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
@@ -547,17 +551,45 @@ def render_dynasty(d, idx, total):
       </div>
     </div>'''
 
-    # 历史进程
-    tl = "".join(f'''
-      <div class="tl-item">
-        <div class="tl-year">{esc(p['year'])}</div>
+    # 历史进程（按阶段配色：兴起→盛世→转折→中衰→灭亡）
+    PHASES = [
+        ("rise",    "兴起", "#16A085"),
+        ("peak",    "盛世", "#C9A227"),
+        ("turn",    "转折", "#E67E22"),
+        ("decline", "中衰", "#8E44AD"),
+        ("end",     "灭亡", "#C0392B"),
+    ]
+    phase_map = {k: (label, color) for k, label, color in PHASES}
+    present = []
+    tl = ""
+    for p in d["process"]:
+        ph = p.get("phase")
+        if ph and ph in phase_map:
+            label, color = phase_map[ph]
+            style = f' style="--phc:{color}"'
+            badge = f'<span class="tl-phase" style="background:{color}">{label}</span>'
+            if ph not in present:
+                present.append(ph)
+        else:
+            style = ""
+            badge = ""
+        tl += f'''
+      <div class="tl-item"{style}>
+        <div class="tl-year">{esc(p['year'])}{badge}</div>
         <div class="tl-title">{esc(p['title'])}</div>
         <div class="tl-text">{hl_text(p['text'])}</div>
-      </div>''' for p in d["process"])
+      </div>'''
+    legend = ""
+    if present:
+        items = "".join(
+            f'<li><span class="dot" style="background:{phase_map[k][1]}"></span>{phase_map[k][0]}</li>'
+            for k in present)
+        legend = f'<ul class="tl-legend">{items}</ul>'
     process = f'''
     <div class="section" id="process">
       <div class="sec-head"><div class="sec-badge">📜</div>
         <div class="sec-title">历史进程<small>从开创到落幕</small></div></div>
+      {legend}
       <div class="timeline">{tl}</div>
     </div>'''
 

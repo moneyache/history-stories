@@ -146,10 +146,14 @@ a{color:inherit;text-decoration:none;}
 .timeline{position:relative; padding-left:30px;}
 .timeline::before{content:''; position:absolute; left:9px; top:6px; bottom:6px; width:4px; border-radius:4px; background:linear-gradient(var(--primary),var(--secondary));}
 .tl-item{position:relative; margin-bottom:22px;}
-.tl-item::before{content:''; position:absolute; left:-26px; top:4px; width:18px; height:18px; border-radius:50%; background:var(--accent); border:3px solid #fff; box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 40%,transparent);}
+.tl-item::before{content:''; position:absolute; left:-26px; top:4px; width:18px; height:18px; border-radius:50%; background:var(--phc,var(--accent)); border:3px solid #fff; box-shadow:0 0 0 3px color-mix(in srgb,var(--phc,var(--accent)) 40%,transparent);}
 .tl-year{font-family:'ZCOOL KuaiLe',sans-serif; color:var(--primary); font-size:1.15rem;}
 .tl-title{font-weight:700; font-size:1.1rem; margin:2px 0 4px;}
 .tl-text{font-size:1rem; line-height:1.8; color:#455A64;}
+.tl-phase{display:inline-block; font-size:.72rem; font-weight:700; color:#fff; padding:1px 9px; border-radius:20px; margin-left:8px; vertical-align:middle; letter-spacing:.5px;}
+.tl-legend{display:flex; flex-wrap:wrap; gap:10px; margin:0 0 18px; padding:0;}
+.tl-legend li{list-style:none; font-size:.78rem; color:#607D8B; display:flex; align-items:center; gap:5px;}
+.tl-legend .dot{width:11px; height:11px; border-radius:50%; display:inline-block;}
 
 /* 人物卡片 */
 .people-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
@@ -272,31 +276,62 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
     <div class="section" id="process">
       <div class="sec-head"><div class="sec-badge">📜</div>
         <div class="sec-title">历史进程<small>从开创到落幕</small></div></div>
+      <ul class="tl-legend"><li><span class="dot" style="background:#16A085"></span>兴起</li><li><span class="dot" style="background:#C9A227"></span>盛世</li><li><span class="dot" style="background:#E67E22"></span>转折</li><li><span class="dot" style="background:#8E44AD"></span>中衰</li><li><span class="dot" style="background:#C0392B"></span>灭亡</li></ul>
       <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-year">前202</div>
-        <div class="tl-title">楚汉相争 · 刘邦建汉</div>
-        <div class="tl-text">秦末天下大乱，刘邦在楚汉之争中击败项羽，前202年称帝建立汉朝（西汉），定都长安。他吸取秦朝“严刑峻法、二世而亡”的教训，改用黄老“无为而治”与民休息——这是汉初能快速恢复的根本原因。</div>
+      <div class="tl-item" style="--phc:#16A085">
+        <div class="tl-year">前202<span class="tl-phase" style="background:#16A085">兴起</span></div>
+        <div class="tl-title">刘邦建汉</div>
+        <div class="tl-text">楚汉相争胜项羽，称帝定都长安，汉立，汲取秦亡教训行休养生息。</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">盛世</div>
-        <div class="tl-title">文景之治 · 汉武雄风</div>
-        <div class="tl-text">文景两帝轻徭薄赋、约法省刑，国库积粟如山（史称文景之治）；到汉武帝，国力充盈后才转向“有为”：北击匈奴解除百年边患、派张骞凿空西域、“独尊儒术”统一思想。从“休养”到“扩张”，是国家由弱转强的必然节奏。</div>
+      <div class="tl-item" style="--phc:#C9A227">
+        <div class="tl-year">文景时<span class="tl-phase" style="background:#C9A227">盛世</span></div>
+        <div class="tl-title">文景之治</div>
+        <div class="tl-text">轻徭薄赋、与民休息，国库积粟如山，盛世奠基。</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">中断</div>
+      <div class="tl-item" style="--phc:#C9A227">
+        <div class="tl-year">武帝时<span class="tl-phase" style="background:#C9A227">盛世</span></div>
+        <div class="tl-title">汉武雄风</div>
+        <div class="tl-text">北击匈奴、通西域、独尊儒术，汉推向鼎盛，疆域远超秦。</div>
+      </div>
+      <div class="tl-item" style="--phc:#E67E22">
+        <div class="tl-year">武帝晚<span class="tl-phase" style="background:#E67E22">转折</span></div>
+        <div class="tl-title">巫蛊之祸</div>
+        <div class="tl-text">武帝晚年巫蛊案冤杀太子、牵连数万，盛世转阴。</div>
+      </div>
+      <div class="tl-item" style="--phc:#E67E22">
+        <div class="tl-year">公元9<span class="tl-phase" style="background:#E67E22">转折</span></div>
         <div class="tl-title">王莽篡汉</div>
-        <div class="tl-text">西汉后期土地兼并、外戚坐大，王莽借机篡汉建“新”。但他的复古改制脱离现实，反而激化矛盾、引发大乱，说明“换招牌不改根基”救不了病入膏肓的王朝。</div>
+        <div class="tl-text">西汉末外戚王莽借禅让建新，复古改制脱离现实，激化矛盾。</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">25年</div>
+      <div class="tl-item" style="--phc:#8E44AD">
+        <div class="tl-year">新末<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
+        <div class="tl-title">绿林赤眉</div>
+        <div class="tl-text">新朝乱政引发大起义，天下分崩、群雄并起。</div>
+      </div>
+      <div class="tl-item" style="--phc:#16A085">
+        <div class="tl-year">25<span class="tl-phase" style="background:#16A085">兴起</span></div>
         <div class="tl-title">光武中兴</div>
-        <div class="tl-text">汉室宗亲刘秀起兵复国，25年建立东汉，史称光武中兴。他裁冗官、释奴婢、修水利，随后班超经营西域，汉的影响力再次西伸——可见制度虽有波折，“大一统”已成不可逆转的共识。</div>
+        <div class="tl-text">刘秀复汉（东汉），柔道治国、释奴婢修水利，史称中兴。</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">220</div>
+      <div class="tl-item" style="--phc:#C9A227">
+        <div class="tl-year">明章时<span class="tl-phase" style="background:#C9A227">盛世</span></div>
+        <div class="tl-title">明章之治</div>
+        <div class="tl-text">明帝章帝守成，班超经营西域，汉威再扬。</div>
+      </div>
+      <div class="tl-item" style="--phc:#8E44AD">
+        <div class="tl-year">东汉后<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
+        <div class="tl-title">外戚宦官</div>
+        <div class="tl-text">东汉后期外戚宦官轮替专权，党锢之祸清流丧，朝政朽坏。</div>
+      </div>
+      <div class="tl-item" style="--phc:#E67E22">
+        <div class="tl-year">184<span class="tl-phase" style="background:#E67E22">转折</span></div>
+        <div class="tl-title">黄巾起义</div>
+        <div class="tl-text">张角黄巾起事，中央失控、军阀割据，汉室名存实亡。</div>
+      </div>
+      <div class="tl-item" style="--phc:#C0392B">
+        <div class="tl-year">220<span class="tl-phase" style="background:#C0392B">灭亡</span></div>
         <div class="tl-title">曹丕代汉</div>
-        <div class="tl-text">东汉后期皇权旁落，黄巾起义引爆军阀割据，220年曹丕逼汉献帝“禅让”称帝，两汉四百余年终结。耐人寻味的是，汉亡仍以“禅让”之名，可见这套礼法外壳多么深入人心。</div>
+        <div class="tl-text">曹丕逼献帝禅让，两汉四百余年终，进入三国。</div>
       </div></div>
     </div>
   

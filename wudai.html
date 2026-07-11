@@ -146,10 +146,14 @@ a{color:inherit;text-decoration:none;}
 .timeline{position:relative; padding-left:30px;}
 .timeline::before{content:''; position:absolute; left:9px; top:6px; bottom:6px; width:4px; border-radius:4px; background:linear-gradient(var(--primary),var(--secondary));}
 .tl-item{position:relative; margin-bottom:22px;}
-.tl-item::before{content:''; position:absolute; left:-26px; top:4px; width:18px; height:18px; border-radius:50%; background:var(--accent); border:3px solid #fff; box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 40%,transparent);}
+.tl-item::before{content:''; position:absolute; left:-26px; top:4px; width:18px; height:18px; border-radius:50%; background:var(--phc,var(--accent)); border:3px solid #fff; box-shadow:0 0 0 3px color-mix(in srgb,var(--phc,var(--accent)) 40%,transparent);}
 .tl-year{font-family:'ZCOOL KuaiLe',sans-serif; color:var(--primary); font-size:1.15rem;}
 .tl-title{font-weight:700; font-size:1.1rem; margin:2px 0 4px;}
 .tl-text{font-size:1rem; line-height:1.8; color:#455A64;}
+.tl-phase{display:inline-block; font-size:.72rem; font-weight:700; color:#fff; padding:1px 9px; border-radius:20px; margin-left:8px; vertical-align:middle; letter-spacing:.5px;}
+.tl-legend{display:flex; flex-wrap:wrap; gap:10px; margin:0 0 18px; padding:0;}
+.tl-legend li{list-style:none; font-size:.78rem; color:#607D8B; display:flex; align-items:center; gap:5px;}
+.tl-legend .dot{width:11px; height:11px; border-radius:50%; display:inline-block;}
 
 /* 人物卡片 */
 .people-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
@@ -272,31 +276,42 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
     <div class="section" id="process">
       <div class="sec-head"><div class="sec-badge">📜</div>
         <div class="sec-title">历史进程<small>从开创到落幕</small></div></div>
+      <ul class="tl-legend"><li><span class="dot" style="background:#16A085"></span>兴起</li><li><span class="dot" style="background:#8E44AD"></span>中衰</li><li><span class="dot" style="background:#E67E22"></span>转折</li><li><span class="dot" style="background:#C9A227"></span>盛世</li><li><span class="dot" style="background:#C0392B"></span>灭亡</li></ul>
       <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-year">907</div>
-        <div class="tl-title">朱温建后梁</div>
-        <div class="tl-text">907年朱温篡唐建后梁，中原相继出现五个朝代。</div>
+      <div class="tl-item" style="--phc:#16A085">
+        <div class="tl-year">907<span class="tl-phase" style="background:#16A085">兴起</span></div>
+        <div class="tl-title">朱温建梁</div>
+        <div class="tl-text">朱温篡唐建后梁，五代十国始，中原走马灯换朝。</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">十国</div>
-        <div class="tl-title">南方割据</div>
-        <div class="tl-text">南方及山西先后立十国（如南唐、吴越、前后蜀），相对安定。</div>
+      <div class="tl-item" style="--phc:#8E44AD">
+        <div class="tl-year">梁晋间<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
+        <div class="tl-title">梁晋争雄</div>
+        <div class="tl-text">与河东李克用父子连年血战，兵祸连绵。</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">936</div>
-        <div class="tl-title">割燕云十六州</div>
-        <div class="tl-text">后晋石敬瑭割“燕云十六州”给契丹，遗患数百年。</div>
+      <div class="tl-item" style="--phc:#8E44AD">
+        <div class="tl-year">923<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
+        <div class="tl-title">庄宗宠伶</div>
+        <div class="tl-text">李存勖灭梁，旋宠伶人身死兵变，典型<span class="hl">打天下易、守天下难</span>。</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">954</div>
-        <div class="tl-title">后周世宗</div>
-        <div class="tl-text">后周世宗柴荣励精图治，为统一奠基。</div>
+      <div class="tl-item" style="--phc:#E67E22">
+        <div class="tl-year">936<span class="tl-phase" style="background:#E67E22">转折</span></div>
+        <div class="tl-title">石敬瑭割地</div>
+        <div class="tl-text">借契丹兵夺位，割<span class="hl">燕云十六州</span>称儿皇帝，遗患数百年。</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">960</div>
+      <div class="tl-item" style="--phc:#8E44AD">
+        <div class="tl-year">947后<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
+        <div class="tl-title">后汉短命</div>
+        <div class="tl-text">刘知远立四年而亡，郭威建后周，乱局待整。</div>
+      </div>
+      <div class="tl-item" style="--phc:#C9A227">
+        <div class="tl-year">954<span class="tl-phase" style="background:#C9A227">盛世</span></div>
+        <div class="tl-title">周世宗治</div>
+        <div class="tl-text">柴荣整军富国、南征北伐，为统一奠基，惜英年早逝。</div>
+      </div>
+      <div class="tl-item" style="--phc:#C0392B">
+        <div class="tl-year">960<span class="tl-phase" style="background:#C0392B">灭亡</span></div>
         <div class="tl-title">陈桥兵变</div>
-        <div class="tl-text">960年赵匡胤陈桥兵变、黄袍加身，建立宋朝。</div>
+        <div class="tl-text">赵匡胤黄袍加身建宋，五代终、一统启。</div>
       </div></div>
     </div>
   

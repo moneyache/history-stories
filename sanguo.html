@@ -146,10 +146,14 @@ a{color:inherit;text-decoration:none;}
 .timeline{position:relative; padding-left:30px;}
 .timeline::before{content:''; position:absolute; left:9px; top:6px; bottom:6px; width:4px; border-radius:4px; background:linear-gradient(var(--primary),var(--secondary));}
 .tl-item{position:relative; margin-bottom:22px;}
-.tl-item::before{content:''; position:absolute; left:-26px; top:4px; width:18px; height:18px; border-radius:50%; background:var(--accent); border:3px solid #fff; box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 40%,transparent);}
+.tl-item::before{content:''; position:absolute; left:-26px; top:4px; width:18px; height:18px; border-radius:50%; background:var(--phc,var(--accent)); border:3px solid #fff; box-shadow:0 0 0 3px color-mix(in srgb,var(--phc,var(--accent)) 40%,transparent);}
 .tl-year{font-family:'ZCOOL KuaiLe',sans-serif; color:var(--primary); font-size:1.15rem;}
 .tl-title{font-weight:700; font-size:1.1rem; margin:2px 0 4px;}
 .tl-text{font-size:1rem; line-height:1.8; color:#455A64;}
+.tl-phase{display:inline-block; font-size:.72rem; font-weight:700; color:#fff; padding:1px 9px; border-radius:20px; margin-left:8px; vertical-align:middle; letter-spacing:.5px;}
+.tl-legend{display:flex; flex-wrap:wrap; gap:10px; margin:0 0 18px; padding:0;}
+.tl-legend li{list-style:none; font-size:.78rem; color:#607D8B; display:flex; align-items:center; gap:5px;}
+.tl-legend .dot{width:11px; height:11px; border-radius:50%; display:inline-block;}
 
 /* 人物卡片 */
 .people-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
@@ -272,31 +276,52 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
     <div class="section" id="process">
       <div class="sec-head"><div class="sec-badge">📜</div>
         <div class="sec-title">历史进程<small>从开创到落幕</small></div></div>
+      <ul class="tl-legend"><li><span class="dot" style="background:#E67E22"></span>转折</li><li><span class="dot" style="background:#C9A227"></span>盛世</li><li><span class="dot" style="background:#8E44AD"></span>中衰</li><li><span class="dot" style="background:#C0392B"></span>灭亡</li></ul>
       <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-year">200</div>
+      <div class="tl-item" style="--phc:#E67E22">
+        <div class="tl-year">184<span class="tl-phase" style="background:#E67E22">转折</span></div>
+        <div class="tl-title">黄巾起义</div>
+        <div class="tl-text">乱起，群雄借平叛拥兵自立，汉室崩解之始。</div>
+      </div>
+      <div class="tl-item" style="--phc:#E67E22">
+        <div class="tl-year">189<span class="tl-phase" style="background:#E67E22">转折</span></div>
+        <div class="tl-title">董卓乱政</div>
+        <div class="tl-text">董卓入京废立、焚洛阳，关东联军讨之，天下大乱。</div>
+      </div>
+      <div class="tl-item" style="--phc:#E67E22">
+        <div class="tl-year">200<span class="tl-phase" style="background:#E67E22">转折</span></div>
         <div class="tl-title">官渡之战</div>
-        <div class="tl-text">东汉末群雄逐鹿，曹操在官渡以少胜多，统一北方。</div>
+        <div class="tl-text">曹操以少胜袁绍，统一北方，奠定霸业。</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">208</div>
+      <div class="tl-item" style="--phc:#E67E22">
+        <div class="tl-year">208<span class="tl-phase" style="background:#E67E22">转折</span></div>
         <div class="tl-title">赤壁之战</div>
-        <div class="tl-text">孙刘联军火攻大败曹操，奠定三分天下之势。</div>
+        <div class="tl-text">孙刘联兵败曹操，<span class="hl">三足鼎立</span>成，南北均势定。</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">220</div>
+      <div class="tl-item" style="--phc:#C9A227">
+        <div class="tl-year">220s<span class="tl-phase" style="background:#C9A227">盛世</span></div>
         <div class="tl-title">三国鼎立</div>
-        <div class="tl-text">220年曹丕称帝（魏），221年刘备（蜀），229年孙权（吴）——三国正式形成。</div>
+        <div class="tl-text">曹魏屯田、诸葛亮治蜀、孙权拓江南，各成气象、人才辈出。</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">234</div>
-        <div class="tl-title">诸葛亮北伐</div>
-        <div class="tl-text">诸葛亮六出祁山伐魏，鞠躬尽瘁；姜维继其遗志。</div>
+      <div class="tl-item" style="--phc:#8E44AD">
+        <div class="tl-year">219<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
+        <div class="tl-title">荆州之失</div>
+        <div class="tl-text">关羽失荆州、走麦城，刘备夷陵败，蜀汉由盛转衰。</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">280</div>
+      <div class="tl-item" style="--phc:#8E44AD">
+        <div class="tl-year">234<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
+        <div class="tl-title">诸葛病逝</div>
+        <div class="tl-text">武侯殁于五丈原，蜀弱魏强之势定，北伐无继。</div>
+      </div>
+      <div class="tl-item" style="--phc:#8E44AD">
+        <div class="tl-year">249<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
+        <div class="tl-title">高平陵之变</div>
+        <div class="tl-text">司马懿夺曹魏权，政归司马氏，为代魏铺路。</div>
+      </div>
+      <div class="tl-item" style="--phc:#C0392B">
+        <div class="tl-year">263—280<span class="tl-phase" style="background:#C0392B">灭亡</span></div>
         <div class="tl-title">三家归晋</div>
-        <div class="tl-text">263年魏灭蜀；265年司马炎代魏建晋；280年晋灭吴，三国终结。</div>
+        <div class="tl-text">263灭蜀、265司马炎代魏、280灭吴，三国一统于晋。</div>
       </div></div>
     </div>
   

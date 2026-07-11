@@ -146,10 +146,14 @@ a{color:inherit;text-decoration:none;}
 .timeline{position:relative; padding-left:30px;}
 .timeline::before{content:''; position:absolute; left:9px; top:6px; bottom:6px; width:4px; border-radius:4px; background:linear-gradient(var(--primary),var(--secondary));}
 .tl-item{position:relative; margin-bottom:22px;}
-.tl-item::before{content:''; position:absolute; left:-26px; top:4px; width:18px; height:18px; border-radius:50%; background:var(--accent); border:3px solid #fff; box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 40%,transparent);}
+.tl-item::before{content:''; position:absolute; left:-26px; top:4px; width:18px; height:18px; border-radius:50%; background:var(--phc,var(--accent)); border:3px solid #fff; box-shadow:0 0 0 3px color-mix(in srgb,var(--phc,var(--accent)) 40%,transparent);}
 .tl-year{font-family:'ZCOOL KuaiLe',sans-serif; color:var(--primary); font-size:1.15rem;}
 .tl-title{font-weight:700; font-size:1.1rem; margin:2px 0 4px;}
 .tl-text{font-size:1rem; line-height:1.8; color:#455A64;}
+.tl-phase{display:inline-block; font-size:.72rem; font-weight:700; color:#fff; padding:1px 9px; border-radius:20px; margin-left:8px; vertical-align:middle; letter-spacing:.5px;}
+.tl-legend{display:flex; flex-wrap:wrap; gap:10px; margin:0 0 18px; padding:0;}
+.tl-legend li{list-style:none; font-size:.78rem; color:#607D8B; display:flex; align-items:center; gap:5px;}
+.tl-legend .dot{width:11px; height:11px; border-radius:50%; display:inline-block;}
 
 /* 人物卡片 */
 .people-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
@@ -272,31 +276,52 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
     <div class="section" id="process">
       <div class="sec-head"><div class="sec-badge">📜</div>
         <div class="sec-title">历史进程<small>从开创到落幕</small></div></div>
+      <ul class="tl-legend"><li><span class="dot" style="background:#16A085"></span>兴起</li><li><span class="dot" style="background:#C9A227"></span>盛世</li><li><span class="dot" style="background:#8E44AD"></span>中衰</li><li><span class="dot" style="background:#E67E22"></span>转折</li><li><span class="dot" style="background:#C0392B"></span>灭亡</li></ul>
       <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-year">前221</div>
-        <div class="tl-title">嬴政统一天下</div>
-        <div class="tl-text">嬴政灭六国，称“始皇帝”，建立秦朝，是中国第一个皇帝。</div>
+      <div class="tl-item" style="--phc:#16A085">
+        <div class="tl-year">前356<span class="tl-phase" style="background:#16A085">兴起</span></div>
+        <div class="tl-title">商鞅变法</div>
+        <div class="tl-text">秦孝公用商鞅，废井田、奖军功，秦由弱转强，奠定统一根基。</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">统一</div>
-        <div class="tl-title">书同文 · 车同轨</div>
-        <div class="tl-text">废分封行郡县，统一文字（小篆）、度量衡、车轨、货币。</div>
+      <div class="tl-item" style="--phc:#16A085">
+        <div class="tl-year">前221<span class="tl-phase" style="background:#16A085">兴起</span></div>
+        <div class="tl-title">嬴政灭六国</div>
+        <div class="tl-text">前230至前221十年扫六合，称<span class="hl">始皇帝</span>，建首个中央集权帝国。</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">工程</div>
-        <div class="tl-title">修长城 · 筑陵墓</div>
-        <div class="tl-text">修万里长城、驰道，建阿房宫、骊山陵（兵马俑）。</div>
+      <div class="tl-item" style="--phc:#C9A227">
+        <div class="tl-year">统一初<span class="tl-phase" style="background:#C9A227">盛世</span></div>
+        <div class="tl-title">书同文车同轨</div>
+        <div class="tl-text">统一文字货币度量衡、行郡县，奠定两千年<span class="hl">大一统</span>骨架。</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">暴政</div>
+      <div class="tl-item" style="--phc:#8E44AD">
+        <div class="tl-year">始皇时<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
         <div class="tl-title">焚书坑儒</div>
-        <div class="tl-text">严刑峻法、焚书坑儒，百姓苦不堪言。</div>
+        <div class="tl-text">始皇焚诗书、坑术士，以法家严刑控民，思想遭重创。</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">前207</div>
-        <div class="tl-title">秦末起义</div>
-        <div class="tl-text">陈胜吴广起义，项羽刘邦响应；前207年子婴投降，秦亡，仅存15年。</div>
+      <div class="tl-item" style="--phc:#8E44AD">
+        <div class="tl-year">始皇时<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
+        <div class="tl-title">滥用民力</div>
+        <div class="tl-text">连修长城、驰道、骊山陵，民力枯竭、怨声载道。</div>
+      </div>
+      <div class="tl-item" style="--phc:#E67E22">
+        <div class="tl-year">前210<span class="tl-phase" style="background:#E67E22">转折</span></div>
+        <div class="tl-title">沙丘之变</div>
+        <div class="tl-text">始皇崩，赵高李斯矫诏立胡亥、赐死扶苏，秦室中枢生变。</div>
+      </div>
+      <div class="tl-item" style="--phc:#8E44AD">
+        <div class="tl-year">二世时<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
+        <div class="tl-title">指鹿为马</div>
+        <div class="tl-text">赵高独揽大权、铲异己，天下皆知秦必亡。</div>
+      </div>
+      <div class="tl-item" style="--phc:#C0392B">
+        <div class="tl-year">前209<span class="tl-phase" style="background:#C0392B">灭亡</span></div>
+        <div class="tl-title">大泽乡起义</div>
+        <div class="tl-text">陈胜吴广「王侯将相宁有种乎」，反秦烽火遍起。</div>
+      </div>
+      <div class="tl-item" style="--phc:#C0392B">
+        <div class="tl-year">前207<span class="tl-phase" style="background:#C0392B">灭亡</span></div>
+        <div class="tl-title">巨鹿与入关</div>
+        <div class="tl-text">项羽巨鹿破秦军主力、刘邦入咸阳，子婴降，秦亡仅十五年。</div>
       </div></div>
     </div>
   

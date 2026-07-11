@@ -146,10 +146,14 @@ a{color:inherit;text-decoration:none;}
 .timeline{position:relative; padding-left:30px;}
 .timeline::before{content:''; position:absolute; left:9px; top:6px; bottom:6px; width:4px; border-radius:4px; background:linear-gradient(var(--primary),var(--secondary));}
 .tl-item{position:relative; margin-bottom:22px;}
-.tl-item::before{content:''; position:absolute; left:-26px; top:4px; width:18px; height:18px; border-radius:50%; background:var(--accent); border:3px solid #fff; box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 40%,transparent);}
+.tl-item::before{content:''; position:absolute; left:-26px; top:4px; width:18px; height:18px; border-radius:50%; background:var(--phc,var(--accent)); border:3px solid #fff; box-shadow:0 0 0 3px color-mix(in srgb,var(--phc,var(--accent)) 40%,transparent);}
 .tl-year{font-family:'ZCOOL KuaiLe',sans-serif; color:var(--primary); font-size:1.15rem;}
 .tl-title{font-weight:700; font-size:1.1rem; margin:2px 0 4px;}
 .tl-text{font-size:1rem; line-height:1.8; color:#455A64;}
+.tl-phase{display:inline-block; font-size:.72rem; font-weight:700; color:#fff; padding:1px 9px; border-radius:20px; margin-left:8px; vertical-align:middle; letter-spacing:.5px;}
+.tl-legend{display:flex; flex-wrap:wrap; gap:10px; margin:0 0 18px; padding:0;}
+.tl-legend li{list-style:none; font-size:.78rem; color:#607D8B; display:flex; align-items:center; gap:5px;}
+.tl-legend .dot{width:11px; height:11px; border-radius:50%; display:inline-block;}
 
 /* 人物卡片 */
 .people-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
@@ -272,31 +276,57 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
     <div class="section" id="process">
       <div class="sec-head"><div class="sec-badge">📜</div>
         <div class="sec-title">历史进程<small>从开创到落幕</small></div></div>
+      <ul class="tl-legend"><li><span class="dot" style="background:#16A085"></span>兴起</li><li><span class="dot" style="background:#C9A227"></span>盛世</li><li><span class="dot" style="background:#E67E22"></span>转折</li><li><span class="dot" style="background:#8E44AD"></span>中衰</li><li><span class="dot" style="background:#C0392B"></span>灭亡</li></ul>
       <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-year">前1046</div>
-        <div class="tl-title">武王伐纣建周</div>
-        <div class="tl-text">周武王灭商，定都镐京（今西安附近），史称西周。</div>
+      <div class="tl-item" style="--phc:#16A085">
+        <div class="tl-year">前1046<span class="tl-phase" style="background:#16A085">兴起</span></div>
+        <div class="tl-title">武王克商</div>
+        <div class="tl-text">牧野之战灭商，周公东征、封建诸侯，立<span class="hl">分封制</span>与礼乐秩序。</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">西周</div>
-        <div class="tl-title">周公制礼作乐</div>
-        <div class="tl-text">周公旦制定礼乐、分封诸侯（把土地和人民分给亲戚功臣），周朝稳固。</div>
+      <div class="tl-item" style="--phc:#C9A227">
+        <div class="tl-year">成康时<span class="tl-phase" style="background:#C9A227">盛世</span></div>
+        <div class="tl-title">成康之治</div>
+        <div class="tl-text">成王康王刑措不用、天下安宁，西周迎来盛世。</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">前771</div>
-        <div class="tl-title">烽火戏诸侯</div>
-        <div class="tl-text">周幽王为博美人一笑“烽火戏诸侯”，犬戎真的打来时无人相救，西周灭亡。</div>
+      <div class="tl-item" style="--phc:#E67E22">
+        <div class="tl-year">昭王时<span class="tl-phase" style="background:#E67E22">转折</span></div>
+        <div class="tl-title">昭王南征</div>
+        <div class="tl-text">昭王南征荆楚溺汉水而亡，周室首次遭重创。</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">前770</div>
-        <div class="tl-title">平王东迁 · 春秋</div>
-        <div class="tl-text">周平王东迁洛邑，东周开始。东周分“春秋”（诸侯争霸）和“战国”（七雄兼并）。</div>
+      <div class="tl-item" style="--phc:#E67E22">
+        <div class="tl-year">前841<span class="tl-phase" style="background:#E67E22">转折</span></div>
+        <div class="tl-title">国人暴动</div>
+        <div class="tl-text">厉王专利引发国人暴动，召公共和行政，<span class="hl">共和</span>元年为信史开端。</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">前221</div>
-        <div class="tl-title">秦灭六国</div>
-        <div class="tl-text">商鞅变法让秦国变强，嬴政横扫六合，前221年统一天下，周代终结。</div>
+      <div class="tl-item" style="--phc:#E67E22">
+        <div class="tl-year">前771<span class="tl-phase" style="background:#E67E22">转折</span></div>
+        <div class="tl-title">犬戎破镐京</div>
+        <div class="tl-text">幽王烽火戏诸侯，犬戎破镐京杀幽王；平王东迁洛邑，<span class="hl">西周亡、东周始</span>。</div>
+      </div>
+      <div class="tl-item" style="--phc:#8E44AD">
+        <div class="tl-year">春秋<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
+        <div class="tl-title">春秋争霸</div>
+        <div class="tl-text">平王东迁后王室衰微，齐桓晋文等<span class="hl">春秋五霸</span>尊王攘夷，礼崩乐坏。</div>
+      </div>
+      <div class="tl-item" style="--phc:#8E44AD">
+        <div class="tl-year">春秋末<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
+        <div class="tl-title">弭兵之会</div>
+        <div class="tl-text">晋楚长期拉锯、诸侯兼并加速，周天子名存实亡。</div>
+      </div>
+      <div class="tl-item" style="--phc:#8E44AD">
+        <div class="tl-year">前403<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
+        <div class="tl-title">三家分晋</div>
+        <div class="tl-text">韩赵魏分晋、田氏代齐，战国序幕拉开，七雄兼并更烈。</div>
+      </div>
+      <div class="tl-item" style="--phc:#8E44AD">
+        <div class="tl-year">前356<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
+        <div class="tl-title">商鞅变法</div>
+        <div class="tl-text">秦用商鞅奖耕战、行县制，国力骤强，东方诸国震恐。</div>
+      </div>
+      <div class="tl-item" style="--phc:#C0392B">
+        <div class="tl-year">前256<span class="tl-phase" style="background:#C0392B">灭亡</span></div>
+        <div class="tl-title">秦灭周统</div>
+        <div class="tl-text">前256秦灭东周、前221扫六合，八百年周祚终、天下一统。</div>
       </div></div>
     </div>
   

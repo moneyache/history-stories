@@ -146,10 +146,14 @@ a{color:inherit;text-decoration:none;}
 .timeline{position:relative; padding-left:30px;}
 .timeline::before{content:''; position:absolute; left:9px; top:6px; bottom:6px; width:4px; border-radius:4px; background:linear-gradient(var(--primary),var(--secondary));}
 .tl-item{position:relative; margin-bottom:22px;}
-.tl-item::before{content:''; position:absolute; left:-26px; top:4px; width:18px; height:18px; border-radius:50%; background:var(--accent); border:3px solid #fff; box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 40%,transparent);}
+.tl-item::before{content:''; position:absolute; left:-26px; top:4px; width:18px; height:18px; border-radius:50%; background:var(--phc,var(--accent)); border:3px solid #fff; box-shadow:0 0 0 3px color-mix(in srgb,var(--phc,var(--accent)) 40%,transparent);}
 .tl-year{font-family:'ZCOOL KuaiLe',sans-serif; color:var(--primary); font-size:1.15rem;}
 .tl-title{font-weight:700; font-size:1.1rem; margin:2px 0 4px;}
 .tl-text{font-size:1rem; line-height:1.8; color:#455A64;}
+.tl-phase{display:inline-block; font-size:.72rem; font-weight:700; color:#fff; padding:1px 9px; border-radius:20px; margin-left:8px; vertical-align:middle; letter-spacing:.5px;}
+.tl-legend{display:flex; flex-wrap:wrap; gap:10px; margin:0 0 18px; padding:0;}
+.tl-legend li{list-style:none; font-size:.78rem; color:#607D8B; display:flex; align-items:center; gap:5px;}
+.tl-legend .dot{width:11px; height:11px; border-radius:50%; display:inline-block;}
 
 /* 人物卡片 */
 .people-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
@@ -363,31 +367,32 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
     <div class="section" id="process">
       <div class="sec-head"><div class="sec-badge">📜</div>
         <div class="sec-title">历史进程<small>从开创到落幕</small></div></div>
+      <ul class="tl-legend"><li><span class="dot" style="background:#16A085"></span>兴起</li><li><span class="dot" style="background:#C9A227"></span>盛世</li><li><span class="dot" style="background:#E67E22"></span>转折</li></ul>
       <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-year">开天</div>
-        <div class="tl-title">盘古 · 女娲（神话）</div>
-        <div class="tl-text">盘古开天、女娲造人，是先民对“世界从哪来、人从哪来”的想象式回答——神话不是信史，却藏着祖先理解世界的方式。</div>
+      <div class="tl-item" style="--phc:#16A085">
+        <div class="tl-year">上古<span class="tl-phase" style="background:#16A085">兴起</span></div>
+        <div class="tl-title">三皇教民</div>
+        <div class="tl-text">伏羲画八卦、神农尝百草教农耕，先民从采集渔猎走向定居农耕，文明萌芽。</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">用火</div>
-        <div class="tl-title">有巢氏 · 燧人氏</div>
-        <div class="tl-text">有巢氏构木为巢避野兽，燧人氏钻木取火。用火是人类跳出动物的根本一步：熟食让营养更易吸收、大脑得以进化，文明从此加速。</div>
+      <div class="tl-item" style="--phc:#16A085">
+        <div class="tl-year">传说<span class="tl-phase" style="background:#16A085">兴起</span></div>
+        <div class="tl-title">黄帝战蚩尤</div>
+        <div class="tl-text">涿鹿之战黄帝擒杀蚩尤，各部落拥其为共主，<span class="hl">华夏</span>族雏形初成。</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">渔猎</div>
-        <div class="tl-title">伏羲氏</div>
-        <div class="tl-text">伏羲画八卦、结网渔猎、驯养牲畜，被尊“人文始祖”。关键不在“神力”，而是人开始主动整理自然规律，而非只是被动求生。</div>
+      <div class="tl-item" style="--phc:#C9A227">
+        <div class="tl-year">传说<span class="tl-phase" style="background:#C9A227">盛世</span></div>
+        <div class="tl-title">尧舜禅让</div>
+        <div class="tl-text">尧舜选贤任能、不传子孙，治水平天下，是上古理想的<span class="hl">禅让</span>治世。</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">农耕</div>
-        <div class="tl-title">神农氏（炎帝）</div>
-        <div class="tl-text">神农尝百草、教五谷，农耕让人不再追着食物迁徙，得以定居、积累、形成聚落——这是文明能“沉淀”下来的根基。</div>
+      <div class="tl-item" style="--phc:#C9A227">
+        <div class="tl-year">传说<span class="tl-phase" style="background:#C9A227">盛世</span></div>
+        <div class="tl-title">大禹治水</div>
+        <div class="tl-text">禹三过家门不入，以疏导代堵截平定水患，威望冠于天下，受舜禅让。</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">统一</div>
-        <div class="tl-title">黄帝 · 尧舜禹</div>
-        <div class="tl-text">黄帝战蚩尤、融合中原部落，华夏族雏形由此而生；尧舜禹“禅让”看似美好，实则是小部落为生存而选贤能——当部落膨胀成国家，世袭才取而代之。</div>
+      <div class="tl-item" style="--phc:#E67E22">
+        <div class="tl-year">约前2070<span class="tl-phase" style="background:#E67E22">转折</span></div>
+        <div class="tl-title">大禹传启</div>
+        <div class="tl-text">禹死子启继位，<span class="hl">禅让终、世袭始</span>，公天下变为家天下，王朝时代开启。</div>
       </div></div>
     </div>
   

@@ -146,10 +146,14 @@ a{color:inherit;text-decoration:none;}
 .timeline{position:relative; padding-left:30px;}
 .timeline::before{content:''; position:absolute; left:9px; top:6px; bottom:6px; width:4px; border-radius:4px; background:linear-gradient(var(--primary),var(--secondary));}
 .tl-item{position:relative; margin-bottom:22px;}
-.tl-item::before{content:''; position:absolute; left:-26px; top:4px; width:18px; height:18px; border-radius:50%; background:var(--accent); border:3px solid #fff; box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 40%,transparent);}
+.tl-item::before{content:''; position:absolute; left:-26px; top:4px; width:18px; height:18px; border-radius:50%; background:var(--phc,var(--accent)); border:3px solid #fff; box-shadow:0 0 0 3px color-mix(in srgb,var(--phc,var(--accent)) 40%,transparent);}
 .tl-year{font-family:'ZCOOL KuaiLe',sans-serif; color:var(--primary); font-size:1.15rem;}
 .tl-title{font-weight:700; font-size:1.1rem; margin:2px 0 4px;}
 .tl-text{font-size:1rem; line-height:1.8; color:#455A64;}
+.tl-phase{display:inline-block; font-size:.72rem; font-weight:700; color:#fff; padding:1px 9px; border-radius:20px; margin-left:8px; vertical-align:middle; letter-spacing:.5px;}
+.tl-legend{display:flex; flex-wrap:wrap; gap:10px; margin:0 0 18px; padding:0;}
+.tl-legend li{list-style:none; font-size:.78rem; color:#607D8B; display:flex; align-items:center; gap:5px;}
+.tl-legend .dot{width:11px; height:11px; border-radius:50%; display:inline-block;}
 
 /* 人物卡片 */
 .people-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
@@ -272,31 +276,62 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
     <div class="section" id="process">
       <div class="sec-head"><div class="sec-badge">📜</div>
         <div class="sec-title">历史进程<small>从开创到落幕</small></div></div>
+      <ul class="tl-legend"><li><span class="dot" style="background:#16A085"></span>兴起</li><li><span class="dot" style="background:#E67E22"></span>转折</li><li><span class="dot" style="background:#C9A227"></span>盛世</li><li><span class="dot" style="background:#8E44AD"></span>中衰</li><li><span class="dot" style="background:#C0392B"></span>灭亡</li></ul>
       <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-year">1616</div>
-        <div class="tl-title">后金 · 清</div>
-        <div class="tl-text">1616年努尔哈赤建后金；1636年皇太极改国号“清”。</div>
+      <div class="tl-item" style="--phc:#16A085">
+        <div class="tl-year">1616<span class="tl-phase" style="background:#16A085">兴起</span></div>
+        <div class="tl-title">后金立国</div>
+        <div class="tl-text">努尔哈赤建后金，1636皇太极改国号清，整军经武。</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">1644</div>
+      <div class="tl-item" style="--phc:#E67E22">
+        <div class="tl-year">1644<span class="tl-phase" style="background:#E67E22">转折</span></div>
         <div class="tl-title">清军入关</div>
-        <div class="tl-text">1644年清军入关，平乱逐鹿，逐步统一全国。</div>
+        <div class="tl-text">入关定鼎北京，平南明、定天下，承袭明制。</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">盛世</div>
-        <div class="tl-title">康乾盛世</div>
-        <div class="tl-text">康熙、雍正、乾隆开创“康乾盛世”，疆域奠定现代中国版图。</div>
+      <div class="tl-item" style="--phc:#C9A227">
+        <div class="tl-year">康雍乾<span class="tl-phase" style="background:#C9A227">盛世</span></div>
+        <div class="tl-title">康雍乾盛</div>
+        <div class="tl-text">康熙平三藩收台、雍正整饬、乾隆极盛，疆域最广。</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">1840</div>
+      <div class="tl-item" style="--phc:#E67E22">
+        <div class="tl-year">乾隆晚<span class="tl-phase" style="background:#E67E22">转折</span></div>
+        <div class="tl-title">和珅误国</div>
+        <div class="tl-text">晚年宠和珅、奢靡贪腐，盛世转衰，吏治败坏。</div>
+      </div>
+      <div class="tl-item" style="--phc:#8E44AD">
+        <div class="tl-year">嘉庆时<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
+        <div class="tl-title">白莲教起</div>
+        <div class="tl-text">川楚教乱绵延九年，国库耗、兵力衰，隐患外露。</div>
+      </div>
+      <div class="tl-item" style="--phc:#E67E22">
+        <div class="tl-year">1840<span class="tl-phase" style="background:#E67E22">转折</span></div>
         <div class="tl-title">鸦片战争</div>
-        <div class="tl-text">1840年鸦片战争国门被破，中国开始沦为半殖民地。</div>
+        <div class="tl-text">败于英、开不平等条约，<span class="hl">近代开端</span>，天朝跌落。</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">1912</div>
-        <div class="tl-title">帝制终结</div>
-        <div class="tl-text">1911年辛亥革命，1912年宣统退位，清亡、帝制终结。</div>
+      <div class="tl-item" style="--phc:#8E44AD">
+        <div class="tl-year">咸同时<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
+        <div class="tl-title">内忧外患</div>
+        <div class="tl-text">太平天国、捻军、英法联军，清廷摇摇欲坠。</div>
+      </div>
+      <div class="tl-item" style="--phc:#8E44AD">
+        <div class="tl-year">同光时<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
+        <div class="tl-title">洋务运动</div>
+        <div class="tl-text">自强求富、建工厂练新军，然只学器物难救根本。</div>
+      </div>
+      <div class="tl-item" style="--phc:#E67E22">
+        <div class="tl-year">1895<span class="tl-phase" style="background:#E67E22">转折</span></div>
+        <div class="tl-title">甲午惨败</div>
+        <div class="tl-text">败于日、割台赔款，洋务破产，列强瓜分狂潮。</div>
+      </div>
+      <div class="tl-item" style="--phc:#8E44AD">
+        <div class="tl-year">1898—1900<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
+        <div class="tl-title">戊戌庚子</div>
+        <div class="tl-text">变法百日而终，1900庚子之祸、辛丑签约，危如累卵。</div>
+      </div>
+      <div class="tl-item" style="--phc:#C0392B">
+        <div class="tl-year">1912<span class="tl-phase" style="background:#C0392B">灭亡</span></div>
+        <div class="tl-title">辛亥革命</div>
+        <div class="tl-text">武昌起义、宣统退位，清亡、两千年帝制终。</div>
       </div></div>
     </div>
   

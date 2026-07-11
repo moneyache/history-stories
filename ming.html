@@ -146,10 +146,14 @@ a{color:inherit;text-decoration:none;}
 .timeline{position:relative; padding-left:30px;}
 .timeline::before{content:''; position:absolute; left:9px; top:6px; bottom:6px; width:4px; border-radius:4px; background:linear-gradient(var(--primary),var(--secondary));}
 .tl-item{position:relative; margin-bottom:22px;}
-.tl-item::before{content:''; position:absolute; left:-26px; top:4px; width:18px; height:18px; border-radius:50%; background:var(--accent); border:3px solid #fff; box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 40%,transparent);}
+.tl-item::before{content:''; position:absolute; left:-26px; top:4px; width:18px; height:18px; border-radius:50%; background:var(--phc,var(--accent)); border:3px solid #fff; box-shadow:0 0 0 3px color-mix(in srgb,var(--phc,var(--accent)) 40%,transparent);}
 .tl-year{font-family:'ZCOOL KuaiLe',sans-serif; color:var(--primary); font-size:1.15rem;}
 .tl-title{font-weight:700; font-size:1.1rem; margin:2px 0 4px;}
 .tl-text{font-size:1rem; line-height:1.8; color:#455A64;}
+.tl-phase{display:inline-block; font-size:.72rem; font-weight:700; color:#fff; padding:1px 9px; border-radius:20px; margin-left:8px; vertical-align:middle; letter-spacing:.5px;}
+.tl-legend{display:flex; flex-wrap:wrap; gap:10px; margin:0 0 18px; padding:0;}
+.tl-legend li{list-style:none; font-size:.78rem; color:#607D8B; display:flex; align-items:center; gap:5px;}
+.tl-legend .dot{width:11px; height:11px; border-radius:50%; display:inline-block;}
 
 /* 人物卡片 */
 .people-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
@@ -272,31 +276,52 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
     <div class="section" id="process">
       <div class="sec-head"><div class="sec-badge">📜</div>
         <div class="sec-title">历史进程<small>从开创到落幕</small></div></div>
+      <ul class="tl-legend"><li><span class="dot" style="background:#16A085"></span>兴起</li><li><span class="dot" style="background:#C9A227"></span>盛世</li><li><span class="dot" style="background:#E67E22"></span>转折</li><li><span class="dot" style="background:#8E44AD"></span>中衰</li><li><span class="dot" style="background:#C0392B"></span>灭亡</li></ul>
       <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-year">1368</div>
+      <div class="tl-item" style="--phc:#16A085">
+        <div class="tl-year">1368<span class="tl-phase" style="background:#16A085">兴起</span></div>
         <div class="tl-title">朱元璋建明</div>
-        <div class="tl-text">1368年朱元璋称帝建明，定都南京（后朱棣迁都北京）。</div>
+        <div class="tl-text">驱元定都南京，洪武之治、整顿吏治，国势振兴。</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">盛世</div>
-        <div class="tl-title">洪武 · 永乐</div>
-        <div class="tl-text">洪武之治、永乐盛世；郑和七下西洋，扬威海外。</div>
+      <div class="tl-item" style="--phc:#C9A227">
+        <div class="tl-year">永乐时<span class="tl-phase" style="background:#C9A227">盛世</span></div>
+        <div class="tl-title">永乐盛世</div>
+        <div class="tl-text">迁都北京、郑和下西洋、修《永乐大典》，国势鼎盛。</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">1449</div>
-        <div class="tl-title">土木堡之变</div>
-        <div class="tl-text">1449年土木堡之变由盛转危；张居正改革一度中兴。</div>
+      <div class="tl-item" style="--phc:#C9A227">
+        <div class="tl-year">仁宣时<span class="tl-phase" style="background:#C9A227">盛世</span></div>
+        <div class="tl-title">仁宣之治</div>
+        <div class="tl-text">守成休养、仓廪丰实，号为治平。</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">后期</div>
-        <div class="tl-title">党争与危机</div>
-        <div class="tl-text">后期党争、万历怠政、财政崩溃。</div>
+      <div class="tl-item" style="--phc:#E67E22">
+        <div class="tl-year">1449<span class="tl-phase" style="background:#E67E22">转折</span></div>
+        <div class="tl-title">土木堡变</div>
+        <div class="tl-text">英宗亲征被俘，<span class="hl">由盛转衰</span>拐点；于谦守京挽危局。</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">1644</div>
-        <div class="tl-title">明亡</div>
-        <div class="tl-text">1644年李自成破北京，崇祯自缢，明亡（南明续存）。</div>
+      <div class="tl-item" style="--phc:#8E44AD">
+        <div class="tl-year">天顺后<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
+        <div class="tl-title">景泰至嘉靖</div>
+        <div class="tl-text">英宗复辟杀于谦，武宗荒嬉、嘉靖修道，朝政渐弛。</div>
+      </div>
+      <div class="tl-item" style="--phc:#8E44AD">
+        <div class="tl-year">万历时<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
+        <div class="tl-title">万历怠政</div>
+        <div class="tl-text">神宗久不视朝、党争（东林）炽，辽东后金崛起。</div>
+      </div>
+      <div class="tl-item" style="--phc:#E67E22">
+        <div class="tl-year">1619<span class="tl-phase" style="background:#E67E22">转折</span></div>
+        <div class="tl-title">萨尔浒败</div>
+        <div class="tl-text">四路出师皆墨，满清崛起、明失战略主动。</div>
+      </div>
+      <div class="tl-item" style="--phc:#8E44AD">
+        <div class="tl-year">崇祯时<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
+        <div class="tl-title">崇祯图治</div>
+        <div class="tl-text">崇祯勤政却猜刻，内忧民变、外患清军，独木难支。</div>
+      </div>
+      <div class="tl-item" style="--phc:#C0392B">
+        <div class="tl-year">1644<span class="tl-phase" style="background:#C0392B">灭亡</span></div>
+        <div class="tl-title">闯王破京</div>
+        <div class="tl-text">李自成入京、崇祯自缢，明亡；旋清军入关。</div>
       </div></div>
     </div>
   

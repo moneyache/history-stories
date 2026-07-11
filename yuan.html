@@ -146,10 +146,14 @@ a{color:inherit;text-decoration:none;}
 .timeline{position:relative; padding-left:30px;}
 .timeline::before{content:''; position:absolute; left:9px; top:6px; bottom:6px; width:4px; border-radius:4px; background:linear-gradient(var(--primary),var(--secondary));}
 .tl-item{position:relative; margin-bottom:22px;}
-.tl-item::before{content:''; position:absolute; left:-26px; top:4px; width:18px; height:18px; border-radius:50%; background:var(--accent); border:3px solid #fff; box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 40%,transparent);}
+.tl-item::before{content:''; position:absolute; left:-26px; top:4px; width:18px; height:18px; border-radius:50%; background:var(--phc,var(--accent)); border:3px solid #fff; box-shadow:0 0 0 3px color-mix(in srgb,var(--phc,var(--accent)) 40%,transparent);}
 .tl-year{font-family:'ZCOOL KuaiLe',sans-serif; color:var(--primary); font-size:1.15rem;}
 .tl-title{font-weight:700; font-size:1.1rem; margin:2px 0 4px;}
 .tl-text{font-size:1rem; line-height:1.8; color:#455A64;}
+.tl-phase{display:inline-block; font-size:.72rem; font-weight:700; color:#fff; padding:1px 9px; border-radius:20px; margin-left:8px; vertical-align:middle; letter-spacing:.5px;}
+.tl-legend{display:flex; flex-wrap:wrap; gap:10px; margin:0 0 18px; padding:0;}
+.tl-legend li{list-style:none; font-size:.78rem; color:#607D8B; display:flex; align-items:center; gap:5px;}
+.tl-legend .dot{width:11px; height:11px; border-radius:50%; display:inline-block;}
 
 /* 人物卡片 */
 .people-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
@@ -272,31 +276,42 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
     <div class="section" id="process">
       <div class="sec-head"><div class="sec-badge">📜</div>
         <div class="sec-title">历史进程<small>从开创到落幕</small></div></div>
+      <ul class="tl-legend"><li><span class="dot" style="background:#16A085"></span>兴起</li><li><span class="dot" style="background:#E67E22"></span>转折</li><li><span class="dot" style="background:#C9A227"></span>盛世</li><li><span class="dot" style="background:#8E44AD"></span>中衰</li><li><span class="dot" style="background:#C0392B"></span>灭亡</li></ul>
       <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-year">1206</div>
-        <div class="tl-title">成吉思汗统一蒙古</div>
-        <div class="tl-text">1206年铁木真（成吉思汗）统一蒙古；其后灭西夏、金。</div>
+      <div class="tl-item" style="--phc:#16A085">
+        <div class="tl-year">1206<span class="tl-phase" style="background:#16A085">兴起</span></div>
+        <div class="tl-title">蒙古兴起</div>
+        <div class="tl-text">成吉思汗统一草原，铁骑横扫欧亚，撼动旧秩序。</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">1271</div>
+      <div class="tl-item" style="--phc:#E67E22">
+        <div class="tl-year">1271<span class="tl-phase" style="background:#E67E22">转折</span></div>
         <div class="tl-title">忽必烈建元</div>
-        <div class="tl-text">1271年忽必烈定国号“大元”，1279年灭南宋统一全国。</div>
+        <div class="tl-text">改国号元、定都大都，行汉法、用汉臣，转向中原王朝。</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">盛世</div>
-        <div class="tl-title">行省与交通</div>
-        <div class="tl-text">行省制度、修大运河（京杭）、中外交流盛（马可·波罗来华）。</div>
+      <div class="tl-item" style="--phc:#16A085">
+        <div class="tl-year">1279<span class="tl-phase" style="background:#16A085">兴起</span></div>
+        <div class="tl-title">灭宋一统</div>
+        <div class="tl-text">崖山后元并天下，疆域极广，行省制确立。</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">末年</div>
-        <div class="tl-title">民变四起</div>
-        <div class="tl-text">民族等级、赋役沉重，末年民变四起。</div>
+      <div class="tl-item" style="--phc:#C9A227">
+        <div class="tl-year">世祖时<span class="tl-phase" style="background:#C9A227">盛世</span></div>
+        <div class="tl-title">世祖之治</div>
+        <div class="tl-text">行省制、通海运、中外往来盛（马可波罗来朝），国力鼎盛。</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">1368</div>
-        <div class="tl-title">元亡</div>
-        <div class="tl-text">1368年朱元璋北伐，元顺帝北逃，元朝灭亡。</div>
+      <div class="tl-item" style="--phc:#8E44AD">
+        <div class="tl-year">后期<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
+        <div class="tl-title">帝位频更</div>
+        <div class="tl-text">权臣党争、皇帝多暴卒，政乱民困。</div>
+      </div>
+      <div class="tl-item" style="--phc:#8E44AD">
+        <div class="tl-year">1351<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
+        <div class="tl-title">红巾起义</div>
+        <div class="tl-text">白莲教起于江淮，群雄并起，元室失控。</div>
+      </div>
+      <div class="tl-item" style="--phc:#C0392B">
+        <div class="tl-year">1368<span class="tl-phase" style="background:#C0392B">灭亡</span></div>
+        <div class="tl-title">徐达北伐</div>
+        <div class="tl-text">明军克大都，元顺帝北遁，元亡、明兴。</div>
       </div></div>
     </div>
   
