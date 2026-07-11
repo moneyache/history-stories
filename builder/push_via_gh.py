@@ -36,7 +36,8 @@ if os.path.isdir(fig_dir):
             FILES.append(os.path.join("figures", fn))
 
 # 本地已删除的 stale 孤儿页：部署时显式删除（sha=null）
-DELETES = ["caocao.html", "zhuyuanzhang.html"]
+# 当前根目录与远端均已无 caocao.html / zhuyuanzhang.html（已并入 figures/），保留空列表。
+DELETES = []
 
 
 def gh(args):
@@ -106,7 +107,7 @@ new_tree_sha = new_tree["sha"]
 print("   新树:", new_tree_sha[:10])
 
 print("⑤ 创建提交…")
-msg = "feat: 历史人物故事页内容深度升级（去奶化+历史影响+深度题）+ 规范人物页至 figures/ 目录"
+msg = "feat: 首页改人物名字墙(按朝代16组84人) + 补齐19个朝代重要人物独立子页面(链接审计归零) + 修纣王别名链接"
 cbody = {"message": msg, "tree": new_tree_sha, "parents": [parent_sha]}
 with open("/tmp/commit_body.json", "w") as f:
     json.dump(cbody, f, ensure_ascii=False)
