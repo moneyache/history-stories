@@ -154,6 +154,12 @@ a{color:inherit;text-decoration:none;}
 .tl-legend{display:flex; flex-wrap:wrap; gap:10px; margin:0 0 18px; padding:0;}
 .tl-legend li{list-style:none; font-size:.78rem; color:#607D8B; display:flex; align-items:center; gap:5px;}
 .tl-legend .dot{width:11px; height:11px; border-radius:50%; display:inline-block;}
+.tl-detail{margin-top:10px; border-left:3px solid var(--phc,var(--accent)); background:rgba(255,255,255,.55); border-radius:0 10px 10px 0; padding:10px 14px;}
+.td-row{display:flex; gap:10px; padding:5px 0; border-bottom:1px dashed rgba(0,0,0,.07);}
+.td-row:last-child{border-bottom:none;}
+.td-k{flex:0 0 56px; font-weight:800; color:var(--phc,var(--primary)); font-size:.92rem; text-align:justify; text-align-last:justify;}
+.td-v{flex:1; font-size:.96rem; line-height:1.75; color:#37474F;}
+@media(max-width:560px){.td-row{flex-direction:column; gap:2px;} .td-k{flex:none;}}
 
 /* 人物卡片 */
 .people-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
@@ -276,42 +282,31 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
     <div class="section" id="process">
       <div class="sec-head"><div class="sec-badge">📜</div>
         <div class="sec-title">历史进程<small>从开创到落幕</small></div></div>
-      <ul class="tl-legend"><li><span class="dot" style="background:#16A085"></span>兴起</li><li><span class="dot" style="background:#E67E22"></span>转折</li><li><span class="dot" style="background:#C9A227"></span>盛世</li><li><span class="dot" style="background:#8E44AD"></span>中衰</li><li><span class="dot" style="background:#C0392B"></span>灭亡</li></ul>
+      <ul class="tl-legend"><li><span class="dot" style="background:#16A085"></span>兴起</li><li><span class="dot" style="background:#C9A227"></span>盛世</li><li><span class="dot" style="background:#C0392B"></span>灭亡</li></ul>
       <div class="timeline">
       <div class="tl-item" style="--phc:#16A085">
         <div class="tl-year">约前1600<span class="tl-phase" style="background:#16A085">兴起</span></div>
         <div class="tl-title">商汤灭夏</div>
-        <div class="tl-text">汤败桀建商，任用伊尹辅政，商族由方国升为天下共主。</div>
+        <div class="tl-text">商族首领汤以『天命』之名伐桀，鸣条一战而定天下，建立商朝，定都亳，是可信文献与甲骨文双重印证的早期王朝。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">商汤 vs 夏桀。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">桀暴虐失众，汤任用伊尹、积蓄实力，以『吊民伐罪』相号召。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">汤先灭夏盟国，会盟诸侯，于鸣条大败夏师；作《汤诰》宣告代夏。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">商朝立，都亳，汤为开国君。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">甲骨文与青铜礼器证明商朝实存；『革命』（革天命）一词源于汤武。</span></div></div>
       </div>
-      <div class="tl-item" style="--phc:#E67E22">
-        <div class="tl-year">盘庚时<span class="tl-phase" style="background:#E67E22">转折</span></div>
+      <div class="tl-item" style="--phc:#16A085">
+        <div class="tl-year">约前1300<span class="tl-phase" style="background:#16A085">兴起</span></div>
         <div class="tl-title">盘庚迁殷</div>
-        <div class="tl-text">屡次迁都动荡，盘庚迁殷后稳定，史称<span class="hl">殷商</span>，文明得以积淀。</div>
+        <div class="tl-text">商中期屡迁其都、内乱不断，盘庚力排众议迁都于殷（今河南安阳），此后二百余年稳定，商亦称『殷』，甲骨文得以大量留存。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">盘庚（商第20王）。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">旧都水患频仍、贵族争权，迁殷可摆脱掣肘、重整秩序。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">盘庚三度诰谕臣民（今存《盘庚》三篇），强渡黄河迁都。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">此后至商亡不再迁都，政治趋稳。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">殷墟出土的十余万片甲骨文，使商史成为『信史』；商也称殷商。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#C9A227">
-        <div class="tl-year">武丁时<span class="tl-phase" style="background:#C9A227">盛世</span></div>
-        <div class="tl-title">武丁中兴</div>
-        <div class="tl-text">武丁托梦求贤得傅说，妻妇好领兵伐夷，商势极盛、甲骨卜辞最盛。</div>
-      </div>
-      <div class="tl-item" style="--phc:#8E44AD">
-        <div class="tl-year">祖甲后<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
-        <div class="tl-title">王权渐衰</div>
-        <div class="tl-text">祖甲以后王室淫侈、诸侯不朝，国势由盛转衰。</div>
-      </div>
-      <div class="tl-item" style="--phc:#8E44AD">
-        <div class="tl-year">帝辛(纣)<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
-        <div class="tl-title">纣王好征伐</div>
-        <div class="tl-text">帝辛能征善战却连年用兵东南、酷刑（炮烙）失民心，民力耗尽。</div>
-      </div>
-      <div class="tl-item" style="--phc:#8E44AD">
-        <div class="tl-year">帝辛时<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
-        <div class="tl-title">比干剖心</div>
-        <div class="tl-text">纣杀忠臣比干、囚箕子，忠良尽失，上下离心。</div>
+        <div class="tl-year">约前1250<span class="tl-phase" style="background:#C9A227">盛世</span></div>
+        <div class="tl-title">武丁盛世</div>
+        <div class="tl-text">武丁任用傅说、妇好等贤才，南征北战开疆拓土，是商朝国力顶峰，妇好墓的青铜器与钺印证了当时军事与工艺的高度。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">武丁与其妻妇好、贤相傅说。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">武丁少时历练民间，即位后广纳贤能、励精图治。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">妇好率军征羌方、土方，傅说主内政，疆域远超前代。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">商进入鼎盛，祭祀与青铜文明极盛。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">武丁时期甲骨与青铜代表了早期国家动员与神权政治的高峰。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#C0392B">
-        <div class="tl-year">前1046<span class="tl-phase" style="background:#C0392B">灭亡</span></div>
-        <div class="tl-title">武王伐纣</div>
-        <div class="tl-text">牧野之战纣兵倒戈，商亡；周武王建周，天命转移。</div>
+        <div class="tl-year">约前1046<span class="tl-phase" style="background:#C0392B">灭亡</span></div>
+        <div class="tl-title">纣王亡国</div>
+        <div class="tl-text">末帝纣（帝辛）虽文武双全却刚愎嗜杀、重刑滥罚，周武王乘其东征东夷、朝歌空虚之际伐商，牧野一战而倾国。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">商纣王（帝辛） vs 周武王姬发、周公、姜尚。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">纣囚西伯、剖比干、逐微子，众叛亲离；又倾力东征东夷，主力远在东南。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">武王率联军渡孟津，牧野誓师；商军前锋倒戈，朝歌门户洞开。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">纣登鹿台自焚，商亡，周立。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">『纣』与『桀』并称暴君；牧野之战是早期决定王朝更替的关键会战。</span></div></div>
       </div></div>
     </div>
   

@@ -154,6 +154,12 @@ a{color:inherit;text-decoration:none;}
 .tl-legend{display:flex; flex-wrap:wrap; gap:10px; margin:0 0 18px; padding:0;}
 .tl-legend li{list-style:none; font-size:.78rem; color:#607D8B; display:flex; align-items:center; gap:5px;}
 .tl-legend .dot{width:11px; height:11px; border-radius:50%; display:inline-block;}
+.tl-detail{margin-top:10px; border-left:3px solid var(--phc,var(--accent)); background:rgba(255,255,255,.55); border-radius:0 10px 10px 0; padding:10px 14px;}
+.td-row{display:flex; gap:10px; padding:5px 0; border-bottom:1px dashed rgba(0,0,0,.07);}
+.td-row:last-child{border-bottom:none;}
+.td-k{flex:0 0 56px; font-weight:800; color:var(--phc,var(--primary)); font-size:.92rem; text-align:justify; text-align-last:justify;}
+.td-v{flex:1; font-size:.96rem; line-height:1.75; color:#37474F;}
+@media(max-width:560px){.td-row{flex-direction:column; gap:2px;} .td-k{flex:none;}}
 
 /* 人物卡片 */
 .people-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
@@ -276,52 +282,31 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
     <div class="section" id="process">
       <div class="sec-head"><div class="sec-badge">📜</div>
         <div class="sec-title">历史进程<small>从开创到落幕</small></div></div>
-      <ul class="tl-legend"><li><span class="dot" style="background:#E67E22"></span>转折</li><li><span class="dot" style="background:#C9A227"></span>盛世</li><li><span class="dot" style="background:#8E44AD"></span>中衰</li><li><span class="dot" style="background:#C0392B"></span>灭亡</li></ul>
+      <ul class="tl-legend"><li><span class="dot" style="background:#E67E22"></span>转折</li><li><span class="dot" style="background:#C9A227"></span>盛世</li><li><span class="dot" style="background:#C0392B"></span>灭亡</li></ul>
       <div class="timeline">
-      <div class="tl-item" style="--phc:#E67E22">
-        <div class="tl-year">184<span class="tl-phase" style="background:#E67E22">转折</span></div>
-        <div class="tl-title">黄巾起义</div>
-        <div class="tl-text">乱起，群雄借平叛拥兵自立，汉室崩解之始。</div>
-      </div>
-      <div class="tl-item" style="--phc:#E67E22">
-        <div class="tl-year">189<span class="tl-phase" style="background:#E67E22">转折</span></div>
-        <div class="tl-title">董卓乱政</div>
-        <div class="tl-text">董卓入京废立、焚洛阳，关东联军讨之，天下大乱。</div>
-      </div>
       <div class="tl-item" style="--phc:#E67E22">
         <div class="tl-year">200<span class="tl-phase" style="background:#E67E22">转折</span></div>
         <div class="tl-title">官渡之战</div>
-        <div class="tl-text">曹操以少胜袁绍，统一北方，奠定霸业。</div>
+        <div class="tl-text">曹操以少胜多击溃袁绍，统一北方，奠定曹魏基业，是三国形成前最关键的一仗。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">曹操 vs 袁绍。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">袁绍据河北四州兵多将广，欲南并曹操；曹弱而据兖豫。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">袁绍轻敌、内部不和；曹操奇袭乌巢焚其粮，袁军溃散。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">袁绍败死，曹操尽有河北。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">北方归曹，天下三分之势初定。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#E67E22">
         <div class="tl-year">208<span class="tl-phase" style="background:#E67E22">转折</span></div>
         <div class="tl-title">赤壁之战</div>
-        <div class="tl-text">孙刘联兵败曹操，<span class="hl">三足鼎立</span>成，南北均势定。</div>
+        <div class="tl-text">孙刘联军以火攻大破曹操南下大军，曹操北还，三分天下之势由此凝固。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">孙权（周瑜）、刘备（诸葛亮、关羽、张飞） vs 曹操。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">曹操统一北方后顺江而下取荆州，欲一举平江南。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">曹军疫作、不习水战；黄盖诈降、火船乘风，须臾樯橹灰飞烟灭。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">曹操退守北方，孙权保江东、刘备取荆益。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">魏蜀吴三足鼎立正式形成，赤壁成以少胜多经典战例。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#C9A227">
-        <div class="tl-year">220s<span class="tl-phase" style="background:#C9A227">盛世</span></div>
-        <div class="tl-title">三国鼎立</div>
-        <div class="tl-text">曹魏屯田、诸葛亮治蜀、孙权拓江南，各成气象、人才辈出。</div>
-      </div>
-      <div class="tl-item" style="--phc:#8E44AD">
-        <div class="tl-year">219<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
-        <div class="tl-title">荆州之失</div>
-        <div class="tl-text">关羽失荆州、走麦城，刘备夷陵败，蜀汉由盛转衰。</div>
-      </div>
-      <div class="tl-item" style="--phc:#8E44AD">
-        <div class="tl-year">234<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
-        <div class="tl-title">诸葛病逝</div>
-        <div class="tl-text">武侯殁于五丈原，蜀弱魏强之势定，北伐无继。</div>
-      </div>
-      <div class="tl-item" style="--phc:#8E44AD">
-        <div class="tl-year">249<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
-        <div class="tl-title">高平陵之变</div>
-        <div class="tl-text">司马懿夺曹魏权，政归司马氏，为代魏铺路。</div>
+        <div class="tl-year">221<span class="tl-phase" style="background:#C9A227">盛世</span></div>
+        <div class="tl-title">三分天下</div>
+        <div class="tl-text">曹丕称帝（魏）、刘备称帝（汉/蜀）、孙权受封（吴），三国鼎立格局完全确立，英雄辈出的时代达到高潮。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">曹丕、刘备、孙权。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">汉室已亡，三方各据中原、巴蜀、江东，势均力敌。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">魏最强、吴据长江、蜀占险塞，互相攻伐又时盟时叛。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">三分维持约六十年。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">三国归晋前中国最富戏剧性的分裂期，故事流传至今。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#C0392B">
-        <div class="tl-year">263—280<span class="tl-phase" style="background:#C0392B">灭亡</span></div>
+        <div class="tl-year">263<span class="tl-phase" style="background:#C0392B">灭亡</span></div>
         <div class="tl-title">三家归晋</div>
-        <div class="tl-text">263灭蜀、265司马炎代魏、280灭吴，三国一统于晋。</div>
+        <div class="tl-text">魏灭蜀，司马氏篡魏建晋，继而灭吴，三国归一，短暂的统一来临，却埋下八王之乱的隐患。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">司马昭（魏相）、司马炎 vs 蜀后主、吴主孙皓。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">司马氏专魏政，先取弱蜀，后顺流灭吴。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">263灭蜀，265司马炎代魏建晋，280王濬楼船下益州灭吴。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">全国复归一统，晋朝立。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">统一短暂；晋分封宗王，旋即引爆内乱。</span></div></div>
       </div></div>
     </div>
   

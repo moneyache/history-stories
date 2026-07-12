@@ -154,6 +154,12 @@ a{color:inherit;text-decoration:none;}
 .tl-legend{display:flex; flex-wrap:wrap; gap:10px; margin:0 0 18px; padding:0;}
 .tl-legend li{list-style:none; font-size:.78rem; color:#607D8B; display:flex; align-items:center; gap:5px;}
 .tl-legend .dot{width:11px; height:11px; border-radius:50%; display:inline-block;}
+.tl-detail{margin-top:10px; border-left:3px solid var(--phc,var(--accent)); background:rgba(255,255,255,.55); border-radius:0 10px 10px 0; padding:10px 14px;}
+.td-row{display:flex; gap:10px; padding:5px 0; border-bottom:1px dashed rgba(0,0,0,.07);}
+.td-row:last-child{border-bottom:none;}
+.td-k{flex:0 0 56px; font-weight:800; color:var(--phc,var(--primary)); font-size:.92rem; text-align:justify; text-align-last:justify;}
+.td-v{flex:1; font-size:.96rem; line-height:1.75; color:#37474F;}
+@media(max-width:560px){.td-row{flex-direction:column; gap:2px;} .td-k{flex:none;}}
 
 /* 人物卡片 */
 .people-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
@@ -276,37 +282,31 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
     <div class="section" id="process">
       <div class="sec-head"><div class="sec-badge">📜</div>
         <div class="sec-title">历史进程<small>从开创到落幕</small></div></div>
-      <ul class="tl-legend"><li><span class="dot" style="background:#16A085"></span>兴起</li><li><span class="dot" style="background:#C9A227"></span>盛世</li><li><span class="dot" style="background:#E67E22"></span>转折</li><li><span class="dot" style="background:#8E44AD"></span>中衰</li><li><span class="dot" style="background:#C0392B"></span>灭亡</li></ul>
+      <ul class="tl-legend"><li><span class="dot" style="background:#16A085"></span>兴起</li><li><span class="dot" style="background:#C9A227"></span>盛世</li><li><span class="dot" style="background:#E67E22"></span>转折</li><li><span class="dot" style="background:#C0392B"></span>灭亡</li></ul>
       <div class="timeline">
       <div class="tl-item" style="--phc:#16A085">
         <div class="tl-year">581<span class="tl-phase" style="background:#16A085">兴起</span></div>
-        <div class="tl-title">杨坚建隋</div>
-        <div class="tl-text">杨坚代周建隋，结束数百年分裂，创全新一统格局。</div>
+        <div class="tl-title">隋文代周</div>
+        <div class="tl-text">北周外戚杨坚受禅建隋，都长安，旋灭陈一统南北，结束近三百年分裂，重建中央集权的大一统帝国。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">隋文帝杨坚 vs 北周静帝。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">杨坚女为后、子为太子，总揽朝政，顺势受禅。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">581建隋，589灭陈，天下复归一统。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">隋立，创开皇之治。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">重启大一统，制度多为唐所承。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#C9A227">
-        <div class="tl-year">开皇时<span class="tl-phase" style="background:#C9A227">盛世</span></div>
-        <div class="tl-title">开皇之治</div>
-        <div class="tl-text">均田府兵、减赋清吏，府库充盈、户口大增。</div>
+        <div class="tl-year">605<span class="tl-phase" style="background:#C9A227">盛世</span></div>
+        <div class="tl-title">开凿运河</div>
+        <div class="tl-text">隋炀帝征发数百万民夫开通济渠、邗沟、江南河，贯通南北大运河，千载利赖，却也因劳役过剧激化矛盾。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">隋炀帝杨广，征发天下民夫。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">为控御东南、转运粮帛、巡游便利。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">分段开凿，以洛阳为中心北抵涿郡、南至余杭，全长两千余公里。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">南北水系贯通，漕运大兴。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">运河日后成唐宋经济命脉；但征役酷烈，民怨沸腾。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#E67E22">
-        <div class="tl-year">605起<span class="tl-phase" style="background:#E67E22">转折</span></div>
-        <div class="tl-title">营建东都</div>
-        <div class="tl-text">炀帝营洛阳、开<span class="hl">大运河</span>，功在后世却竭尽民力。</div>
-      </div>
-      <div class="tl-item" style="--phc:#8E44AD">
-        <div class="tl-year">612起<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
-        <div class="tl-title">三征高丽</div>
-        <div class="tl-text">连年征辽兵败民反，国力骤衰、盗贼蜂起。</div>
-      </div>
-      <div class="tl-item" style="--phc:#8E44AD">
-        <div class="tl-year">隋末<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
-        <div class="tl-title">群雄并起</div>
-        <div class="tl-text">瓦岗等起义蜂起，隋室号令不出关中。</div>
+        <div class="tl-year">612<span class="tl-phase" style="background:#E67E22">转折</span></div>
+        <div class="tl-title">三征高句丽</div>
+        <div class="tl-text">炀帝连年大举征高句丽，三战三挫、死者百万，国力与民力俱竭，成为隋亡的直接导火索。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">隋炀帝 vs 高句丽（辽东）。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">炀帝好大喜功，欲威服四夷、巩固东北边。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">首次出兵113万溃于萨水；再征逢杨玄感内乱；三征仍无功。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">隋军损失惨重，府库空虚。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">徭役兵役失控，全国起义蜂起，隋速亡。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#C0392B">
         <div class="tl-year">618<span class="tl-phase" style="background:#C0392B">灭亡</span></div>
-        <div class="tl-title">江都兵变</div>
-        <div class="tl-text">宇文化及缢杀炀帝，隋亡；李渊太原起兵建唐。</div>
+        <div class="tl-title">隋炀帝亡</div>
+        <div class="tl-text">天下大乱、江都兵变，炀帝被弑，隋亡；李渊在太原起兵入长安，唐朝随之而立。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">隋炀帝杨广 vs 宇文化及（江都兵变）、李渊。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">三征高丽、营东都、巡突厥，民变遍地。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">瓦岗、窦建德、杜伏威并起；李渊太原起兵入长安。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">618宇文化及缢杀炀帝于江都，隋亡。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">隋祚仅38年，然制度（科举、运河、三省六部）泽被唐世。</span></div></div>
       </div></div>
     </div>
   

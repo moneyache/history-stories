@@ -154,6 +154,12 @@ a{color:inherit;text-decoration:none;}
 .tl-legend{display:flex; flex-wrap:wrap; gap:10px; margin:0 0 18px; padding:0;}
 .tl-legend li{list-style:none; font-size:.78rem; color:#607D8B; display:flex; align-items:center; gap:5px;}
 .tl-legend .dot{width:11px; height:11px; border-radius:50%; display:inline-block;}
+.tl-detail{margin-top:10px; border-left:3px solid var(--phc,var(--accent)); background:rgba(255,255,255,.55); border-radius:0 10px 10px 0; padding:10px 14px;}
+.td-row{display:flex; gap:10px; padding:5px 0; border-bottom:1px dashed rgba(0,0,0,.07);}
+.td-row:last-child{border-bottom:none;}
+.td-k{flex:0 0 56px; font-weight:800; color:var(--phc,var(--primary)); font-size:.92rem; text-align:justify; text-align-last:justify;}
+.td-v{flex:1; font-size:.96rem; line-height:1.75; color:#37474F;}
+@media(max-width:560px){.td-row{flex-direction:column; gap:2px;} .td-k{flex:none;}}
 
 /* 人物卡片 */
 .people-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
@@ -280,48 +286,39 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
       <div class="timeline">
       <div class="tl-item" style="--phc:#16A085">
         <div class="tl-year">1368<span class="tl-phase" style="background:#16A085">兴起</span></div>
-        <div class="tl-title">朱元璋建明</div>
-        <div class="tl-text">驱元定都南京，洪武之治、整顿吏治，国势振兴。</div>
+        <div class="tl-title">洪武立国</div>
+        <div class="tl-text">朱元璋驱元建明，都南京，废丞相、设锦衣卫、屯田移民，重建强力中央集权，也奠定了明朝高度专制的底色。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">明太祖朱元璋。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">出身布衣、亲历元末乱象，深疑权臣与豪强。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">北伐灭元、胡惟庸案废丞相、蓝玉案诛功臣、编户齐民。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">明立，专制皇权达新高。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">废丞相使皇权独揽，特务政治开先河。</span></div></div>
+      </div>
+      <div class="tl-item" style="--phc:#16A085">
+        <div class="tl-year">1402<span class="tl-phase" style="background:#16A085">兴起</span></div>
+        <div class="tl-title">靖难之役</div>
+        <div class="tl-text">燕王朱棣以『清君侧』起兵，三年攻入南京、夺侄建文之位，即永乐帝，迁都北京、下西洋、修大典，国势大张。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">明成祖朱棣 vs 建文帝朱允炆、齐泰、黄子澄。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">建文削藩逼急，燕王借『靖难』之名起兵。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">1399北平起兵，1402渡江入京，宫中火起、建文失踪；棣即位。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">永乐朝迁都北京、郑和下西洋、纂《永乐大典》。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">『天子守国门』定都北京，海上丝路达于极盛。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#C9A227">
-        <div class="tl-year">永乐时<span class="tl-phase" style="background:#C9A227">盛世</span></div>
-        <div class="tl-title">永乐盛世</div>
-        <div class="tl-text">迁都北京、郑和下西洋、修《永乐大典》，国势鼎盛。</div>
-      </div>
-      <div class="tl-item" style="--phc:#C9A227">
-        <div class="tl-year">仁宣时<span class="tl-phase" style="background:#C9A227">盛世</span></div>
-        <div class="tl-title">仁宣之治</div>
-        <div class="tl-text">守成休养、仓廪丰实，号为治平。</div>
+        <div class="tl-year">1405<span class="tl-phase" style="background:#C9A227">盛世</span></div>
+        <div class="tl-title">郑和下西洋</div>
+        <div class="tl-text">郑和七下西洋，遍历三十余国、远抵非洲东岸，是当时世界上规模最大的官方远洋航行，宣扬国威、互通贸易。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">郑和（三宝太监）奉永乐、宣德之命。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">宣扬国威、寻建文踪迹（一说）、通海外诸国。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">1405—1433七次出海，宝船数百、将士二万七千，通达西亚非洲。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">朝贡贸易鼎盛，航路尽通。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">比哥伦布早八十余年；后因『厚往薄来』耗资巨，宣德后罢航。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#E67E22">
         <div class="tl-year">1449<span class="tl-phase" style="background:#E67E22">转折</span></div>
-        <div class="tl-title">土木堡变</div>
-        <div class="tl-text">英宗亲征被俘，<span class="hl">由盛转衰</span>拐点；于谦守京挽危局。</div>
+        <div class="tl-title">土木堡之变</div>
+        <div class="tl-text">英宗亲征瓦剌，土木堡兵败被俘，精锐丧尽、京师震动，于谦率众保卫北京，明朝由攻转守。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">明英宗朱祁镇、宦官王振 vs 瓦剌也先。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">王振怂恿英宗亲征邀功，仓促出师。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">50万军溃于土木堡，英宗被俘；于谦立景泰帝、击退围城之敌。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">英宗归后夺门复辟，于谦冤死。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">明由主动经略北边转为防御，国力转折。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#8E44AD">
-        <div class="tl-year">天顺后<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
-        <div class="tl-title">景泰至嘉靖</div>
-        <div class="tl-text">英宗复辟杀于谦，武宗荒嬉、嘉靖修道，朝政渐弛。</div>
-      </div>
-      <div class="tl-item" style="--phc:#8E44AD">
-        <div class="tl-year">万历时<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
-        <div class="tl-title">万历怠政</div>
-        <div class="tl-text">神宗久不视朝、党争（东林）炽，辽东后金崛起。</div>
-      </div>
-      <div class="tl-item" style="--phc:#E67E22">
-        <div class="tl-year">1619<span class="tl-phase" style="background:#E67E22">转折</span></div>
-        <div class="tl-title">萨尔浒败</div>
-        <div class="tl-text">四路出师皆墨，满清崛起、明失战略主动。</div>
-      </div>
-      <div class="tl-item" style="--phc:#8E44AD">
-        <div class="tl-year">崇祯时<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
-        <div class="tl-title">崇祯图治</div>
-        <div class="tl-text">崇祯勤政却猜刻，内忧民变、外患清军，独木难支。</div>
+        <div class="tl-year">1550<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
+        <div class="tl-title">抗倭平倭</div>
+        <div class="tl-text">东南倭寇猖獗，戚继光练『戚家军』、俞大猷协力，台州大捷九战九捷，海患终平，军队改革成效卓著。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">戚继光、俞大猷 vs 倭寇（中日海盗）。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">明海防废弛、沿海奸民勾倭，劫掠肆虐。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">戚继光创鸳鸯阵、严训浙兵，台州、福建连捷；俞大猷协剿。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">东南倭患基本肃清。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">军事改革（阵法、兵制）典范；也折射明中后期海防危机。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#C0392B">
         <div class="tl-year">1644<span class="tl-phase" style="background:#C0392B">灭亡</span></div>
-        <div class="tl-title">闯王破京</div>
-        <div class="tl-text">李自成入京、崇祯自缢，明亡；旋清军入关。</div>
+        <div class="tl-title">明末鼎革</div>
+        <div class="tl-text">陕北民变汇成李自成大顺军，破北京、崇祯自缢煤山；吴三桂引清军入关，明亡清兴，中原易主。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">李自成（大顺） vs 崇祯帝；吴三桂引清军。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">晚明加饷『辽饷』『剿饷』『练饷』民不聊生，灾荒遍地。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">1644李自成破京、崇祯自缢；吴三桂降清、山海关击败顺军，清军入主。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">南明苟延，全国渐归清。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">汉人王朝再易手异族，清承明制开启新局。</span></div></div>
       </div></div>
     </div>
   

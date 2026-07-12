@@ -154,6 +154,12 @@ a{color:inherit;text-decoration:none;}
 .tl-legend{display:flex; flex-wrap:wrap; gap:10px; margin:0 0 18px; padding:0;}
 .tl-legend li{list-style:none; font-size:.78rem; color:#607D8B; display:flex; align-items:center; gap:5px;}
 .tl-legend .dot{width:11px; height:11px; border-radius:50%; display:inline-block;}
+.tl-detail{margin-top:10px; border-left:3px solid var(--phc,var(--accent)); background:rgba(255,255,255,.55); border-radius:0 10px 10px 0; padding:10px 14px;}
+.td-row{display:flex; gap:10px; padding:5px 0; border-bottom:1px dashed rgba(0,0,0,.07);}
+.td-row:last-child{border-bottom:none;}
+.td-k{flex:0 0 56px; font-weight:800; color:var(--phc,var(--primary)); font-size:.92rem; text-align:justify; text-align-last:justify;}
+.td-v{flex:1; font-size:.96rem; line-height:1.75; color:#37474F;}
+@media(max-width:560px){.td-row{flex-direction:column; gap:2px;} .td-k{flex:none;}}
 
 /* 人物卡片 */
 .people-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
@@ -276,62 +282,55 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
     <div class="section" id="process">
       <div class="sec-head"><div class="sec-badge">📜</div>
         <div class="sec-title">历史进程<small>从开创到落幕</small></div></div>
-      <ul class="tl-legend"><li><span class="dot" style="background:#16A085"></span>兴起</li><li><span class="dot" style="background:#C9A227"></span>盛世</li><li><span class="dot" style="background:#E67E22"></span>转折</li><li><span class="dot" style="background:#8E44AD"></span>中衰</li><li><span class="dot" style="background:#C0392B"></span>灭亡</li></ul>
+      <ul class="tl-legend"><li><span class="dot" style="background:#16A085"></span>兴起</li><li><span class="dot" style="background:#C9A227"></span>盛世</li><li><span class="dot" style="background:#E67E22"></span>转折</li><li><span class="dot" style="background:#C0392B"></span>灭亡</li></ul>
       <div class="timeline">
       <div class="tl-item" style="--phc:#16A085">
         <div class="tl-year">前202<span class="tl-phase" style="background:#16A085">兴起</span></div>
         <div class="tl-title">刘邦建汉</div>
-        <div class="tl-text">楚汉相争胜项羽，称帝定都长安，汉立，汲取秦亡教训行休养生息。</div>
+        <div class="tl-text">楚汉相争四年，刘邦垓下围项羽、迫其乌江自刎，即帝位定都长安，国号汉，吸取秦亡教训行郡国并行与休养生息。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">汉高祖刘邦 vs 西楚霸王项羽。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">秦末乱中，项羽强而刘邦稳；刘邦善用人、据关中、行宽政。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">鸿门宴脱险、暗度陈仓、成皋相持，终垓下四面楚歌。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">前202年刘邦称帝，汉立，定都长安（西汉）。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">楚汉之争奠定『汉』之国号，『汉族』由此得名。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#C9A227">
-        <div class="tl-year">文景时<span class="tl-phase" style="background:#C9A227">盛世</span></div>
+        <div class="tl-year">前180<span class="tl-phase" style="background:#C9A227">盛世</span></div>
         <div class="tl-title">文景之治</div>
-        <div class="tl-text">轻徭薄赋、与民休息，国库积粟如山，盛世奠基。</div>
+        <div class="tl-text">文帝、景帝轻徭薄赋、约法省刑、躬修节俭，国库钱粮堆积、户口蕃息，为汉武盛世积下雄厚底子。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">汉文帝刘恒、汉景帝刘启。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">汉初承秦末大战、民生凋敝，亟需与民休息。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">减田租至三十税一、废肉刑、平七国之乱后削藩。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">『京师之钱累巨万，太仓之粟陈陈相因』。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">『无为而治』的黄老之术成就首个治世，成为后世『仁政』样板。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#C9A227">
-        <div class="tl-year">武帝时<span class="tl-phase" style="background:#C9A227">盛世</span></div>
+        <div class="tl-year">前141<span class="tl-phase" style="background:#C9A227">盛世</span></div>
         <div class="tl-title">汉武雄风</div>
-        <div class="tl-text">北击匈奴、通西域、独尊儒术，汉推向鼎盛，疆域远超秦。</div>
+        <div class="tl-text">汉武帝北击匈奴、通西域、置刺史、独尊儒术，把汉朝推向极盛，疆域与国势远超秦汉之际，奠定『大汉』气象。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">汉武帝刘彻，将卫青、霍去病，使张骞。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">文景积富后，汉已具备主动经略北方的实力与雄心。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">三次大举击匈奴（漠北决战封狼居胥）、张骞凿空西域、置河西四郡、盐铁官营。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">匈奴远遁、西域内附，儒术立为官学。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">疆域首纳河西与西域，丝绸之路开通；『大一统』意识形态成型。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#E67E22">
-        <div class="tl-year">武帝晚<span class="tl-phase" style="background:#E67E22">转折</span></div>
-        <div class="tl-title">巫蛊之祸</div>
-        <div class="tl-text">武帝晚年巫蛊案冤杀太子、牵连数万，盛世转阴。</div>
+        <div class="tl-year">前154<span class="tl-phase" style="background:#E67E22">转折</span></div>
+        <div class="tl-title">七国之乱</div>
+        <div class="tl-text">景帝采晁错『削藩』，吴楚等七国以『诛晁错、清君侧』起兵，周亚夫三月平定，中央集权由此巩固。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">吴王刘濞等七国 vs 汉景帝、周亚夫、晁错。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">郡国并行下诸侯坐大，景帝欲削藩收权，矛盾激化。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">七国联兵西向，景帝杀晁错仍不止；周亚夫出奇兵断粮道、破叛军。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">乱平，诸王权削、诸侯国名存实亡。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">郡国并行隐患解除，中央集权实质性加强。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#E67E22">
-        <div class="tl-year">公元9<span class="tl-phase" style="background:#E67E22">转折</span></div>
+        <div class="tl-year">9<span class="tl-phase" style="background:#E67E22">转折</span></div>
         <div class="tl-title">王莽篡汉</div>
-        <div class="tl-text">西汉末外戚王莽借禅让建新，复古改制脱离现实，激化矛盾。</div>
-      </div>
-      <div class="tl-item" style="--phc:#8E44AD">
-        <div class="tl-year">新末<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
-        <div class="tl-title">绿林赤眉</div>
-        <div class="tl-text">新朝乱政引发大起义，天下分崩、群雄并起。</div>
+        <div class="tl-text">西汉末外戚王莽借『禅让』代汉建『新』，托古改制、王田私属脱离现实，激化社会矛盾，天下大乱。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">王莽（元帝皇后之侄） vs 西汉宗室与豪强。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">西汉末土地兼并、流民遍地，王莽以『周公再世』形象受拥。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">居摄、篡位、改币制、行王田制，举措繁苛朝令夕改。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">新政尽败，绿林赤眉并起，新朝短命。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">说明脱离实际的理想化改革反致大乱；也证明『禅让』在汉已难服众。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#16A085">
         <div class="tl-year">25<span class="tl-phase" style="background:#16A085">兴起</span></div>
         <div class="tl-title">光武中兴</div>
-        <div class="tl-text">刘秀复汉（东汉），柔道治国、释奴婢修水利，史称中兴。</div>
-      </div>
-      <div class="tl-item" style="--phc:#C9A227">
-        <div class="tl-year">明章时<span class="tl-phase" style="background:#C9A227">盛世</span></div>
-        <div class="tl-title">明章之治</div>
-        <div class="tl-text">明帝章帝守成，班超经营西域，汉威再扬。</div>
-      </div>
-      <div class="tl-item" style="--phc:#8E44AD">
-        <div class="tl-year">东汉后<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
-        <div class="tl-title">外戚宦官</div>
-        <div class="tl-text">东汉后期外戚宦官轮替专权，党锢之祸清流丧，朝政朽坏。</div>
+        <div class="tl-text">刘秀起兵重建汉室（东汉），以『柔道』治国、释奴婢修水利、表彰气节，史称『光武中兴』，汉祚再续近两百年。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">汉光武帝刘秀（景帝后裔）。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">新莽败亡、天下无主，刘秀以复兴汉室为帜聚拢人心。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">昆阳大捷、略定河北、削平群雄，都洛阳。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">东汉立，与民休息、整顿吏治。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">『中兴』典范；但东汉豪强地主与宦官外戚之患由此滋长。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#E67E22">
         <div class="tl-year">184<span class="tl-phase" style="background:#E67E22">转折</span></div>
         <div class="tl-title">黄巾起义</div>
-        <div class="tl-text">张角黄巾起事，中央失控、军阀割据，汉室名存实亡。</div>
+        <div class="tl-text">张角以太平道『苍天已死，黄天当立』号召，三十六方同日而起，中央军权下放州牧，从此军阀割据、汉室名存实亡。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">张角三兄弟（太平道） vs 东汉朝廷、地方豪强。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">东汉后期外戚宦官交替专权、灾荒连年、流民如潮。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">甲子年起事，官军镇压，皇甫嵩破黄巾；朝廷许州郡自募兵。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">黄巾虽平，地方兵权坐大。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">州牧拥兵自重，曹操、袁绍等军阀崛起，汉亡之兆已现。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#C0392B">
         <div class="tl-year">220<span class="tl-phase" style="background:#C0392B">灭亡</span></div>
         <div class="tl-title">曹丕代汉</div>
-        <div class="tl-text">曹丕逼献帝禅让，两汉四百余年终，进入三国。</div>
+        <div class="tl-text">曹丕逼汉献帝禅让，建国魏，两汉四百余年终结，进入三国鼎立。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">魏文帝曹丕 vs 汉献帝刘协。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">曹操挟天子令诸侯、奠魏基，丕承其业顺势受禅。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">献帝三让，丕筑受禅台即位，都洛阳。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">东汉亡，魏蜀吴三国并立。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">『禅让』包装下的夺权成为后世改朝换代的惯用戏码。</span></div></div>
       </div></div>
     </div>
   

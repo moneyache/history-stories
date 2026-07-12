@@ -154,6 +154,12 @@ a{color:inherit;text-decoration:none;}
 .tl-legend{display:flex; flex-wrap:wrap; gap:10px; margin:0 0 18px; padding:0;}
 .tl-legend li{list-style:none; font-size:.78rem; color:#607D8B; display:flex; align-items:center; gap:5px;}
 .tl-legend .dot{width:11px; height:11px; border-radius:50%; display:inline-block;}
+.tl-detail{margin-top:10px; border-left:3px solid var(--phc,var(--accent)); background:rgba(255,255,255,.55); border-radius:0 10px 10px 0; padding:10px 14px;}
+.td-row{display:flex; gap:10px; padding:5px 0; border-bottom:1px dashed rgba(0,0,0,.07);}
+.td-row:last-child{border-bottom:none;}
+.td-k{flex:0 0 56px; font-weight:800; color:var(--phc,var(--primary)); font-size:.92rem; text-align:justify; text-align-last:justify;}
+.td-v{flex:1; font-size:.96rem; line-height:1.75; color:#37474F;}
+@media(max-width:560px){.td-row{flex-direction:column; gap:2px;} .td-k{flex:none;}}
 
 /* 人物卡片 */
 .people-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
@@ -276,52 +282,37 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
     <div class="section" id="process">
       <div class="sec-head"><div class="sec-badge">📜</div>
         <div class="sec-title">历史进程<small>从开创到落幕</small></div></div>
-      <ul class="tl-legend"><li><span class="dot" style="background:#16A085"></span>兴起</li><li><span class="dot" style="background:#C9A227"></span>盛世</li><li><span class="dot" style="background:#8E44AD"></span>中衰</li><li><span class="dot" style="background:#E67E22"></span>转折</li><li><span class="dot" style="background:#C0392B"></span>灭亡</li></ul>
+      <ul class="tl-legend"><li><span class="dot" style="background:#16A085"></span>兴起</li><li><span class="dot" style="background:#C9A227"></span>盛世</li><li><span class="dot" style="background:#E67E22"></span>转折</li><li><span class="dot" style="background:#8E44AD"></span>中衰</li><li><span class="dot" style="background:#C0392B"></span>灭亡</li></ul>
       <div class="timeline">
       <div class="tl-item" style="--phc:#16A085">
         <div class="tl-year">前356<span class="tl-phase" style="background:#16A085">兴起</span></div>
         <div class="tl-title">商鞅变法</div>
-        <div class="tl-text">秦孝公用商鞅，废井田、奖军功，秦由弱转强，奠定统一根基。</div>
-      </div>
-      <div class="tl-item" style="--phc:#16A085">
-        <div class="tl-year">前221<span class="tl-phase" style="background:#16A085">兴起</span></div>
-        <div class="tl-title">嬴政灭六国</div>
-        <div class="tl-text">前230至前221十年扫六合，称<span class="hl">始皇帝</span>，建首个中央集权帝国。</div>
+        <div class="tl-text">秦孝公任商鞅，以『奖励耕战、废井田、行县制』彻底改造秦国，国力骤强，为日后横扫六合奠定制度根基。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">商鞅（卫鞅）奉秦孝公之命。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">秦偏处西陲、被山东六国轻为『戎翟』，孝公求强。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">废井田开阡陌、奖励军功（二十等爵）、连坐告奸、徙都咸阳。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">秦『兵革大强，诸侯畏惧』，农耕与动员力冠诸侯。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">法家中央集权模板确立，秦统一的人才与制度基础由此铸成。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#C9A227">
-        <div class="tl-year">统一初<span class="tl-phase" style="background:#C9A227">盛世</span></div>
-        <div class="tl-title">书同文车同轨</div>
-        <div class="tl-text">统一文字货币度量衡、行郡县，奠定两千年<span class="hl">大一统</span>骨架。</div>
-      </div>
-      <div class="tl-item" style="--phc:#8E44AD">
-        <div class="tl-year">始皇时<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
-        <div class="tl-title">焚书坑儒</div>
-        <div class="tl-text">始皇焚诗书、坑术士，以法家严刑控民，思想遭重创。</div>
-      </div>
-      <div class="tl-item" style="--phc:#8E44AD">
-        <div class="tl-year">始皇时<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
-        <div class="tl-title">滥用民力</div>
-        <div class="tl-text">连修长城、驰道、骊山陵，民力枯竭、怨声载道。</div>
+        <div class="tl-year">前230<span class="tl-phase" style="background:#C9A227">盛世</span></div>
+        <div class="tl-title">秦灭六国</div>
+        <div class="tl-text">秦王嬴政用尉缭、李斯之策，以『远交近攻』次第翦灭韩赵魏楚燕齐，前221年一统天下，自称『始皇帝』，中国首次进入大一统帝国时代。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">秦王嬴政（秦始皇），将王翦、王贲父子等。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">战国二百余年兼并，秦经变法最强，具备统一实力与意志。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">前230灭韩起，十年间依次破赵、魏、楚、燕、齐，兵锋无挡。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">前221年齐亡，天下归一，行郡县、书同文、车同轨。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">结束分封、确立皇帝制度与郡县制，『大一统』成为此后中国政治最高理想。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#E67E22">
-        <div class="tl-year">前210<span class="tl-phase" style="background:#E67E22">转折</span></div>
-        <div class="tl-title">沙丘之变</div>
-        <div class="tl-text">始皇崩，赵高李斯矫诏立胡亥、赐死扶苏，秦室中枢生变。</div>
+        <div class="tl-year">前213<span class="tl-phase" style="background:#E67E22">转折</span></div>
+        <div class="tl-title">焚书坑儒</div>
+        <div class="tl-text">为统一思想、打击方士儒生非议，始皇焚毁民间诗书百家、坑杀术士，是文化专制的标志性事件，也埋下秦失民心的祸根。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">秦始皇、丞相李斯 vs 方士儒生。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">博士淳于越倡复古分封，李斯以为『以古非今』惑乱黔首。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">焚《诗》《书》百家语（医药卜筮种树书不禁），次年坑术士方士于咸阳。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">民间典籍大损，士人惶恐。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">文化浩劫象征秦政苛酷，后世视为暴政典型；也加速六国遗民离心。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#8E44AD">
-        <div class="tl-year">二世时<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
-        <div class="tl-title">指鹿为马</div>
-        <div class="tl-text">赵高独揽大权、铲异己，天下皆知秦必亡。</div>
-      </div>
-      <div class="tl-item" style="--phc:#C0392B">
-        <div class="tl-year">前209<span class="tl-phase" style="background:#C0392B">灭亡</span></div>
-        <div class="tl-title">大泽乡起义</div>
-        <div class="tl-text">陈胜吴广「王侯将相宁有种乎」，反秦烽火遍起。</div>
+        <div class="tl-year">前209<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
+        <div class="tl-title">陈胜吴广</div>
+        <div class="tl-text">始皇崩后苛政徭役不减，陈胜、吴广在大泽乡因雨失期、按法当斩，遂揭竿而起，点燃秦末农民战争的烈火。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">陈胜、吴广（戍卒） vs 秦二世、赵高。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">征骊山、修长城、戍边苛重；『失期当斩』逼人死地。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">篝火狐鸣、鱼腹丹书造势，斩尉起义，号『张楚』，天下响应。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">虽六月而败，却引爆六国旧贵族与刘邦项羽并起。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">中国历史上第一次大规模农民起义，『王侯将相宁有种乎』震烁千古。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#C0392B">
         <div class="tl-year">前207<span class="tl-phase" style="background:#C0392B">灭亡</span></div>
-        <div class="tl-title">巨鹿与入关</div>
-        <div class="tl-text">项羽巨鹿破秦军主力、刘邦入咸阳，子婴降，秦亡仅十五年。</div>
+        <div class="tl-title">秦朝速亡</div>
+        <div class="tl-text">巨鹿之战项羽破釜沉舟歼灭秦军主力，刘邦入咸阳、子婴出降，仅历十五年的秦帝国轰然崩塌。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">项羽（破秦军）、刘邦（入关） vs 秦王子婴、赵高。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">严刑峻法、滥用民力使天下苦秦久矣。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">巨鹿一战秦主力尽墨；赵高弑二世立子婴，子婴诛赵高；刘邦兵临灞上。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">前207子婴降，前206项羽入咸阳焚宫，秦亡。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">秦虽短命，其制度被汉全盘继承——『百代皆行秦政法』。</span></div></div>
       </div></div>
     </div>
   

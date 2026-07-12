@@ -154,6 +154,12 @@ a{color:inherit;text-decoration:none;}
 .tl-legend{display:flex; flex-wrap:wrap; gap:10px; margin:0 0 18px; padding:0;}
 .tl-legend li{list-style:none; font-size:.78rem; color:#607D8B; display:flex; align-items:center; gap:5px;}
 .tl-legend .dot{width:11px; height:11px; border-radius:50%; display:inline-block;}
+.tl-detail{margin-top:10px; border-left:3px solid var(--phc,var(--accent)); background:rgba(255,255,255,.55); border-radius:0 10px 10px 0; padding:10px 14px;}
+.td-row{display:flex; gap:10px; padding:5px 0; border-bottom:1px dashed rgba(0,0,0,.07);}
+.td-row:last-child{border-bottom:none;}
+.td-k{flex:0 0 56px; font-weight:800; color:var(--phc,var(--primary)); font-size:.92rem; text-align:justify; text-align-last:justify;}
+.td-v{flex:1; font-size:.96rem; line-height:1.75; color:#37474F;}
+@media(max-width:560px){.td-row{flex-direction:column; gap:2px;} .td-k{flex:none;}}
 
 /* 人物卡片 */
 .people-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
@@ -276,62 +282,43 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
     <div class="section" id="process">
       <div class="sec-head"><div class="sec-badge">📜</div>
         <div class="sec-title">历史进程<small>从开创到落幕</small></div></div>
-      <ul class="tl-legend"><li><span class="dot" style="background:#16A085"></span>兴起</li><li><span class="dot" style="background:#E67E22"></span>转折</li><li><span class="dot" style="background:#C9A227"></span>盛世</li><li><span class="dot" style="background:#8E44AD"></span>中衰</li><li><span class="dot" style="background:#C0392B"></span>灭亡</li></ul>
+      <ul class="tl-legend"><li><span class="dot" style="background:#16A085"></span>兴起</li><li><span class="dot" style="background:#C9A227"></span>盛世</li><li><span class="dot" style="background:#E67E22"></span>转折</li><li><span class="dot" style="background:#8E44AD"></span>中衰</li><li><span class="dot" style="background:#C0392B"></span>灭亡</li></ul>
       <div class="timeline">
       <div class="tl-item" style="--phc:#16A085">
-        <div class="tl-year">1616<span class="tl-phase" style="background:#16A085">兴起</span></div>
-        <div class="tl-title">后金立国</div>
-        <div class="tl-text">努尔哈赤建后金，1636皇太极改国号清，整军经武。</div>
-      </div>
-      <div class="tl-item" style="--phc:#E67E22">
-        <div class="tl-year">1644<span class="tl-phase" style="background:#E67E22">转折</span></div>
+        <div class="tl-year">1644<span class="tl-phase" style="background:#16A085">兴起</span></div>
         <div class="tl-title">清军入关</div>
-        <div class="tl-text">入关定鼎北京，平南明、定天下，承袭明制。</div>
+        <div class="tl-text">多尔衮率清军借吴三桂之引入主中原，击败李自成、南明，逐步统一全国，满汉蒙多元帝国确立。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">摄政王多尔衮、顺治帝 vs 李自成大顺、南明。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">明亡无主、山海关钥匙在吴三桂手，清乘虚入。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">1644入关败顺军、占北京；南下灭南明诸政权，至1683取台湾。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">清朝统一全国，都北京。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">第二次异族大一统，疆域远超前代（含满蒙藏回）。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#C9A227">
-        <div class="tl-year">康雍乾<span class="tl-phase" style="background:#C9A227">盛世</span></div>
-        <div class="tl-title">康雍乾盛</div>
-        <div class="tl-text">康熙平三藩收台、雍正整饬、乾隆极盛，疆域最广。</div>
-      </div>
-      <div class="tl-item" style="--phc:#E67E22">
-        <div class="tl-year">乾隆晚<span class="tl-phase" style="background:#E67E22">转折</span></div>
-        <div class="tl-title">和珅误国</div>
-        <div class="tl-text">晚年宠和珅、奢靡贪腐，盛世转衰，吏治败坏。</div>
-      </div>
-      <div class="tl-item" style="--phc:#8E44AD">
-        <div class="tl-year">嘉庆时<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
-        <div class="tl-title">白莲教起</div>
-        <div class="tl-text">川楚教乱绵延九年，国库耗、兵力衰，隐患外露。</div>
+        <div class="tl-year">1661<span class="tl-phase" style="background:#C9A227">盛世</span></div>
+        <div class="tl-title">康乾盛世</div>
+        <div class="tl-text">康熙、雍正、乾隆三朝励精图治，平三藩、定台湾、败准噶尔、编《四库》，疆域与人口达传统王朝顶峰。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">康熙、雍正、乾隆。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">顺康之际国家统一未稳，需巩固边疆与集权。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">平三藩、收台湾、征噶尔丹、定金川，雍正摊丁入亩、设军机处。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">版图极盛、人口破三亿。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">传统王朝的最后一个高峰，却也盛极而衰。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#E67E22">
         <div class="tl-year">1840<span class="tl-phase" style="background:#E67E22">转折</span></div>
         <div class="tl-title">鸦片战争</div>
-        <div class="tl-text">败于英、开不平等条约，<span class="hl">近代开端</span>，天朝跌落。</div>
+        <div class="tl-text">英国以鸦片贸易发难，清战败订《南京条约》，割香港、开五口、丧主权，千年变局开幕，中国被迫卷入世界体系。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">英国 vs 清道光朝廷（林则徐禁烟）。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">清禁烟运动触动英鸦片利益，英以炮舰打开市场。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">1840英舰犯粤，陷定海、逼南京；1842签《南京条约》。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">割香港、赔银、五口通商、协定关税。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">近代屈辱开端，『天朝』迷梦破碎，洋务运动由此起。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#8E44AD">
-        <div class="tl-year">咸同时<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
-        <div class="tl-title">内忧外患</div>
-        <div class="tl-text">太平天国、捻军、英法联军，清廷摇摇欲坠。</div>
+        <div class="tl-year">1851<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
+        <div class="tl-title">太平天国</div>
+        <div class="tl-text">洪秀全以拜上帝会起事，建太平天国、据江南十余年，沉重打击清廷，最终为湘军所灭，人口损失以千万计。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">洪秀全、杨秀清 vs 清廷、曾国藩湘军。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">鸦片战争后民生更困、上帝教聚众。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">金田起义、建都天京（南京），与清南北对峙；天京内讧自毁，曾国藩湘军围攻。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">1864天京陷，太平亡。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">清倚重汉族武装（湘淮军），地方督抚权重，中央集权松动。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#8E44AD">
-        <div class="tl-year">同光时<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
-        <div class="tl-title">洋务运动</div>
-        <div class="tl-text">自强求富、建工厂练新军，然只学器物难救根本。</div>
-      </div>
-      <div class="tl-item" style="--phc:#E67E22">
-        <div class="tl-year">1895<span class="tl-phase" style="background:#E67E22">转折</span></div>
+        <div class="tl-year">1894<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
         <div class="tl-title">甲午惨败</div>
-        <div class="tl-text">败于日、割台赔款，洋务破产，列强瓜分狂潮。</div>
-      </div>
-      <div class="tl-item" style="--phc:#8E44AD">
-        <div class="tl-year">1898—1900<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
-        <div class="tl-title">戊戌庚子</div>
-        <div class="tl-text">变法百日而终，1900庚子之祸、辛丑签约，危如累卵。</div>
+        <div class="tl-text">甲午海战北洋水师全军覆没，割台湾、赔巨款，洋务运动破产，列强瓜分中国狂潮骤起。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">日本 vs 清北洋舰队（李鸿章）。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">朝鲜东学党之乱引发中日角力，日本蓄谋已久。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">丰岛海战、黄海海战、威海卫陷，北洋舰沉；1895《马关条约》。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">割台澎、赔二亿两、开工厂。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">东亚格局易位，变法维新（戊戌）与革命思潮并起。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#C0392B">
-        <div class="tl-year">1912<span class="tl-phase" style="background:#C0392B">灭亡</span></div>
+        <div class="tl-year">1911<span class="tl-phase" style="background:#C0392B">灭亡</span></div>
         <div class="tl-title">辛亥革命</div>
-        <div class="tl-text">武昌起义、宣统退位，清亡、两千年帝制终。</div>
+        <div class="tl-text">武昌起义一声枪响，各省响应、清帝退位，两千余年的帝制终结，亚洲第一个共和国——中华民国建立。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">革命党（孙中山、黄兴等） vs 清廷、袁世凯。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">清季衰朽、新政骗局、保路运动激变。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">1911.10.10武昌首义，各省独立；袁世凯逼宫，1912溥仪退位。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">清亡，民国立，宣统退位。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">帝制终结，共和肇建；然军阀混战继之。</span></div></div>
       </div></div>
     </div>
   

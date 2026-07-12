@@ -154,6 +154,12 @@ a{color:inherit;text-decoration:none;}
 .tl-legend{display:flex; flex-wrap:wrap; gap:10px; margin:0 0 18px; padding:0;}
 .tl-legend li{list-style:none; font-size:.78rem; color:#607D8B; display:flex; align-items:center; gap:5px;}
 .tl-legend .dot{width:11px; height:11px; border-radius:50%; display:inline-block;}
+.tl-detail{margin-top:10px; border-left:3px solid var(--phc,var(--accent)); background:rgba(255,255,255,.55); border-radius:0 10px 10px 0; padding:10px 14px;}
+.td-row{display:flex; gap:10px; padding:5px 0; border-bottom:1px dashed rgba(0,0,0,.07);}
+.td-row:last-child{border-bottom:none;}
+.td-k{flex:0 0 56px; font-weight:800; color:var(--phc,var(--primary)); font-size:.92rem; text-align:justify; text-align-last:justify;}
+.td-v{flex:1; font-size:.96rem; line-height:1.75; color:#37474F;}
+@media(max-width:560px){.td-row{flex-direction:column; gap:2px;} .td-k{flex:none;}}
 
 /* 人物卡片 */
 .people-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
@@ -276,67 +282,67 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
     <div class="section" id="process">
       <div class="sec-head"><div class="sec-badge">📜</div>
         <div class="sec-title">历史进程<small>从开创到落幕</small></div></div>
-      <ul class="tl-legend"><li><span class="dot" style="background:#16A085"></span>兴起</li><li><span class="dot" style="background:#E67E22"></span>转折</li><li><span class="dot" style="background:#C9A227"></span>盛世</li><li><span class="dot" style="background:#8E44AD"></span>中衰</li><li><span class="dot" style="background:#C0392B"></span>灭亡</li></ul>
+      <ul class="tl-legend"><li><span class="dot" style="background:#16A085"></span>兴起</li><li><span class="dot" style="background:#C9A227"></span>盛世</li><li><span class="dot" style="background:#E67E22"></span>转折</li><li><span class="dot" style="background:#8E44AD"></span>中衰</li><li><span class="dot" style="background:#C0392B"></span>灭亡</li></ul>
       <div class="timeline">
       <div class="tl-item" style="--phc:#16A085">
         <div class="tl-year">618<span class="tl-phase" style="background:#16A085">兴起</span></div>
-        <div class="tl-title">李渊晋阳</div>
-        <div class="tl-text">李渊起兵入长安建唐，平定群雄，立国。</div>
+        <div class="tl-title">李渊建唐</div>
+        <div class="tl-text">隋末天下大乱，太原留守李渊起兵入长安，立国号唐；其子李世民南征北战，扫平群雄，奠定统一基业。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">唐高祖李渊，子李世民、李建成。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">隋炀帝失政、群雄并起，李渊据太原险要蓄势。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">晋阳起兵、克长安立恭帝，次子世民东征西讨平薛举、刘武周、王世充、窦建德。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">624年基本统一，唐立。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">结束隋末乱局，开启中国古代最辉煌的王朝。</span></div></div>
       </div>
-      <div class="tl-item" style="--phc:#E67E22">
-        <div class="tl-year">626<span class="tl-phase" style="background:#E67E22">转折</span></div>
-        <div class="tl-title">玄武门变</div>
-        <div class="tl-text">李世民诛太子建成、弟元吉，即位为太宗，开启盛世。</div>
+      <div class="tl-item" style="--phc:#16A085">
+        <div class="tl-year">626<span class="tl-phase" style="background:#16A085">兴起</span></div>
+        <div class="tl-title">玄武门之变</div>
+        <div class="tl-text">太子建成与秦王世民争位，世民先发制人杀兄建成、弟元吉于玄武门，随即即位为太宗，开启『贞观之治』。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">秦王李世民 vs 太子李建成、齐王李元吉。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">世民功高震主，建成联元吉排挤之，兄弟相疑日深。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">世民伏兵玄武门，射杀建成、元吉；迫父李渊立己为太子、旋即位。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">太宗即位，纳谏任贤、开创盛世。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">以非常手段夺位却成明君，『贞观之治』成治世典范。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#C9A227">
-        <div class="tl-year">贞观时<span class="tl-phase" style="background:#C9A227">盛世</span></div>
+        <div class="tl-year">627<span class="tl-phase" style="background:#C9A227">盛世</span></div>
         <div class="tl-title">贞观之治</div>
-        <div class="tl-text">太宗纳谏任贤、轻徭薄赋，海内升平、四夷宾服。</div>
-      </div>
-      <div class="tl-item" style="--phc:#C9A227">
-        <div class="tl-year">高宗武后<span class="tl-phase" style="background:#C9A227">盛世</span></div>
-        <div class="tl-title">永徽至开元</div>
-        <div class="tl-text">高宗守成、武后拓展，至玄宗<span class="hl">开元盛世</span>达顶峰，长安为世界中心。</div>
+        <div class="tl-text">太宗虚心纳谏（魏徵）、轻徭薄赋、完善三省六部与科举，政治清明、四夷宾服，被后世誉为治世标杆。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">唐太宗李世民，名臣房玄龄、杜如晦、魏徵、长孙无忌。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">太宗以隋亡为鉴，『水能载舟亦能覆舟』。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">君臣论治、减赋恤民、修订律令、拓西域安北边。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">『路不拾遗、外户不闭』，国力蒸蒸日上。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">贞观成为『明君贤相』政治的代名词，制度多为后世取法。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#E67E22">
         <div class="tl-year">690<span class="tl-phase" style="background:#E67E22">转折</span></div>
         <div class="tl-title">武周代唐</div>
-        <div class="tl-text">武则天称帝改周，虽女主亦善治，然李唐国统中断。</div>
+        <div class="tl-text">武则天废唐自立、改国号周，成为中国史上唯一女皇帝；虽破性别之限，李唐国统一度中断。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">武则天（高宗后、皇太后）。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">高宗多病、武后参政渐握大权，借『圣母临人』称帝。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">废中宗、睿宗，690登基称圣神皇帝，迁都神都洛阳。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">武周代唐十五年，晚年归政李显。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">打破女性不得临朝的成例；承上启下，国势未衰。</span></div></div>
       </div>
-      <div class="tl-item" style="--phc:#E67E22">
-        <div class="tl-year">天宝初<span class="tl-phase" style="background:#E67E22">转折</span></div>
-        <div class="tl-title">玄宗怠政</div>
-        <div class="tl-text">天宝后宠杨贵妃、任李林甫杨国忠，朝政腐败、边镇坐大。</div>
+      <div class="tl-item" style="--phc:#C9A227">
+        <div class="tl-year">713<span class="tl-phase" style="background:#C9A227">盛世</span></div>
+        <div class="tl-title">开元盛世</div>
+        <div class="tl-text">玄宗前期任姚崇、宋璟，整顿吏治、发展经济，长安成为世界中心，唐诗、科举、对外交流臻于极盛，是唐朝的顶峰。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">唐玄宗李隆基，贤相姚崇、宋璟。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">玄宗诛太平公主夺权后励精图治，革除弊政。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">选贤任能、检田括户、大兴文教，丝路驼铃、胡风盛行。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">『忆昔开元全盛日，小邑犹藏万家室』，国力人口双峰。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">盛唐气象的顶点，也是由盛转衰前最后的黄金时代。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#E67E22">
         <div class="tl-year">755<span class="tl-phase" style="background:#E67E22">转折</span></div>
         <div class="tl-title">安史之乱</div>
-        <div class="tl-text">安禄山起兵，<span class="hl">由盛转衰</span>拐点，两京陷落、生灵涂炭。</div>
+        <div class="tl-text">安禄山以『讨杨国忠』起兵，八年战乱两京三失、生灵涂炭，是唐朝由盛转衰的决定性拐点。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">安禄山与部将史思明。安禄山身兼平卢、范阳、河东三镇节度使，手握河北重兵；史思明为其心腹，后接续叛乱。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">玄宗晚年沉溺享乐，先后宠信李林甫、杨国忠。李林甫杜绝边将入相、纵容蕃将掌兵；杨国忠与安禄山争权，屡言其必反，反逼安禄山起事。加之府兵制败坏、外重内轻，藩镇积蓄已久。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">755年安禄山于范阳起兵，兵锋极盛，连陷河北、洛阳。次年破潼关、入长安，玄宗仓皇逃蜀，马嵬坡兵变赐死杨贵妃，太子李亨灵武即位（肃宗）。叛军内讧：757年安禄山被其子安庆绪所杀；史思明降唐复叛，759年杀安庆绪自立。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">郭子仪、李光弼率军苦战，借回纥兵收复两京；762年史思明之子史朝义败亡，763年叛乱彻底平定，历时八年。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">黄河中下游残破，人口从约5300万骤减至不足1700万。中央集权崩坏：河北三镇割据自立、父死子继；宦官掌神策军得以废立皇帝。唐朝由盛转衰，再未能恢复元气。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#8E44AD">
-        <div class="tl-year">乱后<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
+        <div class="tl-year">763<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
         <div class="tl-title">藩镇割据</div>
-        <div class="tl-text">河北三镇不听朝命，地方尾大不掉，中央集权瓦解。</div>
+        <div class="tl-text">安史之乱后，河北三镇（幽州、成德、魏博）名义归唐、实则世袭自立，中央号令不出京畿，藩镇之患贯穿唐中后期。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">河朔三镇节度使 vs 唐中央。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">平叛时为安抚降将，授以节钺，事权遂不可收。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">三镇『自置将吏、自征税赋、父子相承』，偶有不驯即兵变逐帅。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">中央财赋仰赖江南，军力受制藩镇。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">统一国家名存实亡，地方离心成唐亡主因之一。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#8E44AD">
-        <div class="tl-year">中晚唐<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
+        <div class="tl-year">820<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
         <div class="tl-title">宦官专权</div>
-        <div class="tl-text">宦官掌禁军、废立皇帝，唐室名存实亡。</div>
+        <div class="tl-text">宦官掌神策军、得以拥立或废杀皇帝，宪宗以下数帝皆死于宦者之手，唐室名存实亡，朝政日非。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">神策军宦官（如俱文珍、仇士良） vs 皇帝与朝官。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">肃代以来以宦官监军、掌禁兵，权力坐大。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">宪宗被弑、敬宗被弑，立君废君皆出宦手；『甘露之变』朝官反扑失败。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">皇权沦为宦官傀儡。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">内朝失控与外藩割据内外交困，唐势难返。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#8E44AD">
-        <div class="tl-year">中晚唐<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
-        <div class="tl-title">牛李党争</div>
-        <div class="tl-text">牛僧孺李德裕朋党相攻，朝政空耗、国事日非。</div>
-      </div>
-      <div class="tl-item" style="--phc:#E67E22">
-        <div class="tl-year">875<span class="tl-phase" style="background:#E67E22">转折</span></div>
+        <div class="tl-year">881<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
         <div class="tl-title">黄巢起义</div>
-        <div class="tl-text">黄巢起事、881破长安，唐廷彻底失控，号令不出京城。</div>
+        <div class="tl-text">盐贩黄巢率饥民大起义，辗转南北、一度攻破长安称帝，唐廷彻底失序，藩镇借机坐大，王朝油尽灯枯。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">黄巢（盐帮首领） vs 唐僖宗朝廷。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">晚唐赋敛沉重、灾荒连年、科场不公，民变四起。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">王仙芝起，黄巢继之，转战十二省、避实击虚，880入长安建大齐。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">唐借沙陀李克用兵镇压，884黄巢败死。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">中央权威扫地，宣武朱温等藩镇挟功崛起。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#C0392B">
         <div class="tl-year">907<span class="tl-phase" style="background:#C0392B">灭亡</span></div>
         <div class="tl-title">朱温篡唐</div>
-        <div class="tl-text">朱温废唐建梁，进入五代十国，唐亡。</div>
+        <div class="tl-text">宣武节度使朱温废唐哀帝、建后梁，唐朝灭亡，中原进入五代十国的分裂时期。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">朱温（宣武节度使，后梁太祖） vs 唐哀帝。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">黄巢乱后朱温据汴梁、挟天子以令诸侯。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">903尽诛宦官，904迁都洛阳弑昭宗，907逼哀帝禅让。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">唐亡，后梁立，五代开端。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">三百年的大唐落幕，分裂再现，直至北宋重归一统。</span></div></div>
       </div></div>
     </div>
   

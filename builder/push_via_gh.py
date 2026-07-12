@@ -107,7 +107,7 @@ new_tree_sha = new_tree["sha"]
 print("   新树:", new_tree_sha[:10])
 
 print("⑤ 创建提交…")
-msg = "feat: 首页改人物名字墙(按朝代16组84人) + 补齐19个朝代重要人物独立子页面(链接审计归零) + 修纣王别名链接"
+msg = "feat: 历史进程时间轴扩写——16朝代从5条扩至5-14条事件链，按兴起→盛世→转折→中衰→灭亡配色分段，新增阶段徽章与图例；并含22位国民级人物独立页"
 cbody = {"message": msg, "tree": new_tree_sha, "parents": [parent_sha]}
 with open("/tmp/commit_body.json", "w") as f:
     json.dump(cbody, f, ensure_ascii=False)

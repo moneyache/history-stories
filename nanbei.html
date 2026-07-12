@@ -154,6 +154,12 @@ a{color:inherit;text-decoration:none;}
 .tl-legend{display:flex; flex-wrap:wrap; gap:10px; margin:0 0 18px; padding:0;}
 .tl-legend li{list-style:none; font-size:.78rem; color:#607D8B; display:flex; align-items:center; gap:5px;}
 .tl-legend .dot{width:11px; height:11px; border-radius:50%; display:inline-block;}
+.tl-detail{margin-top:10px; border-left:3px solid var(--phc,var(--accent)); background:rgba(255,255,255,.55); border-radius:0 10px 10px 0; padding:10px 14px;}
+.td-row{display:flex; gap:10px; padding:5px 0; border-bottom:1px dashed rgba(0,0,0,.07);}
+.td-row:last-child{border-bottom:none;}
+.td-k{flex:0 0 56px; font-weight:800; color:var(--phc,var(--primary)); font-size:.92rem; text-align:justify; text-align-last:justify;}
+.td-v{flex:1; font-size:.96rem; line-height:1.75; color:#37474F;}
+@media(max-width:560px){.td-row{flex-direction:column; gap:2px;} .td-k{flex:none;}}
 
 /* 人物卡片 */
 .people-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
@@ -276,52 +282,31 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
     <div class="section" id="process">
       <div class="sec-head"><div class="sec-badge">📜</div>
         <div class="sec-title">历史进程<small>从开创到落幕</small></div></div>
-      <ul class="tl-legend"><li><span class="dot" style="background:#16A085"></span>兴起</li><li><span class="dot" style="background:#E67E22"></span>转折</li><li><span class="dot" style="background:#8E44AD"></span>中衰</li><li><span class="dot" style="background:#C0392B"></span>灭亡</li></ul>
+      <ul class="tl-legend"><li><span class="dot" style="background:#E67E22"></span>转折</li><li><span class="dot" style="background:#16A085"></span>兴起</li><li><span class="dot" style="background:#C9A227"></span>盛世</li><li><span class="dot" style="background:#8E44AD"></span>中衰</li></ul>
       <div class="timeline">
-      <div class="tl-item" style="--phc:#16A085">
-        <div class="tl-year">386<span class="tl-phase" style="background:#16A085">兴起</span></div>
-        <div class="tl-title">北魏立国</div>
-        <div class="tl-text">拓跋珪建魏，统一北方，结束十六国混战。</div>
-      </div>
       <div class="tl-item" style="--phc:#E67E22">
-        <div class="tl-year">494<span class="tl-phase" style="background:#E67E22">转折</span></div>
-        <div class="tl-title">孝文汉化</div>
-        <div class="tl-text">迁都洛阳、禁胡服胡语、改姓元，加速<span class="hl">民族融合</span>。</div>
-      </div>
-      <div class="tl-item" style="--phc:#8E44AD">
-        <div class="tl-year">523<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
-        <div class="tl-title">六镇之乱</div>
-        <div class="tl-text">镇兵起事，北魏分裂为东魏西魏，北方再裂。</div>
-      </div>
-      <div class="tl-item" style="--phc:#8E44AD">
-        <div class="tl-year">534后<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
-        <div class="tl-title">北齐北周</div>
-        <div class="tl-text">东魏→北齐、西魏→北周，隔河对峙、相互攻伐。</div>
+        <div class="tl-year">383<span class="tl-phase" style="background:#E67E22">转折</span></div>
+        <div class="tl-title">淝水之战</div>
+        <div class="tl-text">东晋以八万北府兵大破前秦苻坚八十余万大军，保住江南半壁，是史上以少胜多的奇迹，也奠定南北长期对峙。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">东晋谢安、谢玄（北府兵） vs 前秦苻坚。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">苻坚统一北方后志在灭晋，号称投鞭断流。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">晋军请秦军稍退以决战，秦军一退不可复止；朱序阵中喊『秦军败矣』，全军溃散。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">前秦瓦解，北方重新分裂，东晋转危为安。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">『风声鹤唳』『草木皆兵』典出于此；南北均势延续。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#16A085">
-        <div class="tl-year">420起<span class="tl-phase" style="background:#16A085">兴起</span></div>
-        <div class="tl-title">宋齐梁陈</div>
-        <div class="tl-text">南朝四代偏安江南，文化科技繁盛（云冈龙门、唐诗前身）。</div>
+        <div class="tl-year">439<span class="tl-phase" style="background:#16A085">兴起</span></div>
+        <div class="tl-title">北魏统一</div>
+        <div class="tl-text">鲜卑拓跋氏建立的北魏统一北方，与南朝隔江相望，北朝自此开端，并为后来的隋唐制度奠基。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">北魏太武帝拓跋焘。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">十六国混战后，拓跋部由代国壮大入主中原。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">灭夏、北燕、北凉，439年结束北方分裂。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">南北对峙的『南北朝』格局确立。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">北朝承接汉制又融胡俗，府兵、均田由此滥觞。</span></div></div>
+      </div>
+      <div class="tl-item" style="--phc:#C9A227">
+        <div class="tl-year">494<span class="tl-phase" style="background:#C9A227">盛世</span></div>
+        <div class="tl-title">孝文改革</div>
+        <div class="tl-text">北魏孝文帝迁都洛阳、禁胡服胡语、改汉姓通婚，全面推行汉化，是北方民族大融合的关键一步。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">北魏孝文帝元宏（拓跋宏）。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">为巩固对中原的统治、吸收先进文明。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">迁都洛阳、改姓元、禁鲜卑语、行均田、定门第。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">胡汉融合加速，北朝制度近汉。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">民族融合推动日后隋唐的胡汉混一格局。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#8E44AD">
         <div class="tl-year">548<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
         <div class="tl-title">侯景之乱</div>
-        <div class="tl-text">侯景陷建康，江南残破、门阀衰败，南朝由盛转衰。</div>
-      </div>
-      <div class="tl-item" style="--phc:#E67E22">
-        <div class="tl-year">577<span class="tl-phase" style="background:#E67E22">转折</span></div>
-        <div class="tl-title">周武灭齐</div>
-        <div class="tl-text">北周武帝灭北齐，统一北方，为隋一统奠基。</div>
-      </div>
-      <div class="tl-item" style="--phc:#8E44AD">
-        <div class="tl-year">陈末<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
-        <div class="tl-title">陈后主荒</div>
-        <div class="tl-text">陈叔宝沉湎声色、不修战备，隋军压境。</div>
-      </div>
-      <div class="tl-item" style="--phc:#C0392B">
-        <div class="tl-year">589<span class="tl-phase" style="background:#C0392B">灭亡</span></div>
-        <div class="tl-title">隋灭陈</div>
-        <div class="tl-text">隋军渡江灭陈，分裂数百年重归一统。</div>
+        <div class="tl-text">东魏降将侯景叛梁，围台城、饿死梁武帝，江南惨遭劫掠，南朝由盛转衰，陈霸先后来代梁建陈。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">侯景 vs 梁武帝萧衍。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">侯景降梁后不被信任，惧被交还东魏而反。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">548陷建康台城，武帝饿死；江南『千里绝烟、白骨成聚』。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">梁室残破，陈霸先立陈。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">南朝元气大伤，终为隋所并。</span></div></div>
       </div></div>
     </div>
   

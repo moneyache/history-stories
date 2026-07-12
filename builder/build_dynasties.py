@@ -164,6 +164,12 @@ a{color:inherit;text-decoration:none;}
 .tl-legend{display:flex; flex-wrap:wrap; gap:10px; margin:0 0 18px; padding:0;}
 .tl-legend li{list-style:none; font-size:.78rem; color:#607D8B; display:flex; align-items:center; gap:5px;}
 .tl-legend .dot{width:11px; height:11px; border-radius:50%; display:inline-block;}
+.tl-detail{margin-top:10px; border-left:3px solid var(--phc,var(--accent)); background:rgba(255,255,255,.55); border-radius:0 10px 10px 0; padding:10px 14px;}
+.td-row{display:flex; gap:10px; padding:5px 0; border-bottom:1px dashed rgba(0,0,0,.07);}
+.td-row:last-child{border-bottom:none;}
+.td-k{flex:0 0 56px; font-weight:800; color:var(--phc,var(--primary)); font-size:.92rem; text-align:justify; text-align-last:justify;}
+.td-v{flex:1; font-size:.96rem; line-height:1.75; color:#37474F;}
+@media(max-width:560px){.td-row{flex-direction:column; gap:2px;} .td-k{flex:none;}}
 
 /* 人物卡片 */
 .people-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
@@ -573,11 +579,25 @@ def render_dynasty(d, idx, total):
         else:
             style = ""
             badge = ""
+        detail_html = ""
+        det = p.get("detail")
+        if det:
+            rows = []
+            keys = [("who", "发动者"), ("why", "起因"), ("course", "经过"),
+                    ("result", "平复"), ("impact", "影响")]
+            for k, label in keys:
+                if det.get(k):
+                    rows.append(
+                        f'<div class="td-row"><span class="td-k">{label}</span>'
+                        f'<span class="td-v">{hl_text(det[k])}</span></div>')
+            if rows:
+                detail_html = f'<div class="tl-detail">{"".join(rows)}</div>'
         tl += f'''
       <div class="tl-item"{style}>
         <div class="tl-year">{esc(p['year'])}{badge}</div>
         <div class="tl-title">{esc(p['title'])}</div>
         <div class="tl-text">{hl_text(p['text'])}</div>
+        {detail_html}
       </div>'''
     legend = ""
     if present:

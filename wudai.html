@@ -154,6 +154,12 @@ a{color:inherit;text-decoration:none;}
 .tl-legend{display:flex; flex-wrap:wrap; gap:10px; margin:0 0 18px; padding:0;}
 .tl-legend li{list-style:none; font-size:.78rem; color:#607D8B; display:flex; align-items:center; gap:5px;}
 .tl-legend .dot{width:11px; height:11px; border-radius:50%; display:inline-block;}
+.tl-detail{margin-top:10px; border-left:3px solid var(--phc,var(--accent)); background:rgba(255,255,255,.55); border-radius:0 10px 10px 0; padding:10px 14px;}
+.td-row{display:flex; gap:10px; padding:5px 0; border-bottom:1px dashed rgba(0,0,0,.07);}
+.td-row:last-child{border-bottom:none;}
+.td-k{flex:0 0 56px; font-weight:800; color:var(--phc,var(--primary)); font-size:.92rem; text-align:justify; text-align-last:justify;}
+.td-v{flex:1; font-size:.96rem; line-height:1.75; color:#37474F;}
+@media(max-width:560px){.td-row{flex-direction:column; gap:2px;} .td-k{flex:none;}}
 
 /* 人物卡片 */
 .people-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
@@ -276,42 +282,25 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
     <div class="section" id="process">
       <div class="sec-head"><div class="sec-badge">📜</div>
         <div class="sec-title">历史进程<small>从开创到落幕</small></div></div>
-      <ul class="tl-legend"><li><span class="dot" style="background:#16A085"></span>兴起</li><li><span class="dot" style="background:#8E44AD"></span>中衰</li><li><span class="dot" style="background:#E67E22"></span>转折</li><li><span class="dot" style="background:#C9A227"></span>盛世</li><li><span class="dot" style="background:#C0392B"></span>灭亡</li></ul>
+      <ul class="tl-legend"><li><span class="dot" style="background:#16A085"></span>兴起</li><li><span class="dot" style="background:#E67E22"></span>转折</li><li><span class="dot" style="background:#C9A227"></span>盛世</li></ul>
       <div class="timeline">
       <div class="tl-item" style="--phc:#16A085">
         <div class="tl-year">907<span class="tl-phase" style="background:#16A085">兴起</span></div>
         <div class="tl-title">朱温建梁</div>
-        <div class="tl-text">朱温篡唐建后梁，五代十国始，中原走马灯换朝。</div>
-      </div>
-      <div class="tl-item" style="--phc:#8E44AD">
-        <div class="tl-year">梁晋间<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
-        <div class="tl-title">梁晋争雄</div>
-        <div class="tl-text">与河东李克用父子连年血战，兵祸连绵。</div>
-      </div>
-      <div class="tl-item" style="--phc:#8E44AD">
-        <div class="tl-year">923<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
-        <div class="tl-title">庄宗宠伶</div>
-        <div class="tl-text">李存勖灭梁，旋宠伶人身死兵变，典型<span class="hl">打天下易、守天下难</span>。</div>
+        <div class="tl-text">朱温代唐建后梁，中原进入五代（梁唐晋汉周）相继、十国并立的乱世，武人当国、朝立夕改。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">后梁太祖朱温。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">唐亡后藩镇竞相称帝，中原无共主。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">梁唐晋汉周五代递嬗，南方前后蜀、吴越、南唐等十国割据。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">分裂约七十三年。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">武人政治弊端尽显，统一呼声渐起。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#E67E22">
         <div class="tl-year">936<span class="tl-phase" style="background:#E67E22">转折</span></div>
-        <div class="tl-title">石敬瑭割地</div>
-        <div class="tl-text">借契丹兵夺位，割<span class="hl">燕云十六州</span>称儿皇帝，遗患数百年。</div>
-      </div>
-      <div class="tl-item" style="--phc:#8E44AD">
-        <div class="tl-year">947后<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
-        <div class="tl-title">后汉短命</div>
-        <div class="tl-text">刘知远立四年而亡，郭威建后周，乱局待整。</div>
+        <div class="tl-title">割让燕云</div>
+        <div class="tl-text">河东节度使石敬瑭借契丹兵夺位，割燕云十六州予辽，自称『儿皇帝』，中原自此无险可守，遗患四百年。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">后晋高祖石敬瑭 vs 契丹（辽）太宗。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">石敬瑭与后唐末帝争位，兵力不敌，求契丹援。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">许『以父礼事契丹』、岁输缯帛、割燕云十六州，契丹助其灭唐。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">后晋立，然燕云沦于契丹。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">北方屏障尽失，北宋两朝力图收复而不得，影响宋辽对峙格局。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#C9A227">
         <div class="tl-year">954<span class="tl-phase" style="background:#C9A227">盛世</span></div>
-        <div class="tl-title">周世宗治</div>
-        <div class="tl-text">柴荣整军富国、南征北伐，为统一奠基，惜英年早逝。</div>
-      </div>
-      <div class="tl-item" style="--phc:#C0392B">
-        <div class="tl-year">960<span class="tl-phase" style="background:#C0392B">灭亡</span></div>
-        <div class="tl-title">陈桥兵变</div>
-        <div class="tl-text">赵匡胤黄袍加身建宋，五代终、一统启。</div>
+        <div class="tl-title">周世宗改革</div>
+        <div class="tl-text">后周世宗柴荣整军经武、革弊政、开漕运、伐南唐取淮南，为结束分裂、统一天下积蓄了关键实力。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">后周世宗柴荣。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">五代藩镇骄横、法度废弛，世宗立志统一。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">整肃军纪（高平之战后）、均田租、修刑律、通淮南运河。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">南征北伐屡捷，版图渐一。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">柴荣早逝，其基业由赵匡胤继承，终成北宋一统。</span></div></div>
       </div></div>
     </div>
   

@@ -154,6 +154,12 @@ a{color:inherit;text-decoration:none;}
 .tl-legend{display:flex; flex-wrap:wrap; gap:10px; margin:0 0 18px; padding:0;}
 .tl-legend li{list-style:none; font-size:.78rem; color:#607D8B; display:flex; align-items:center; gap:5px;}
 .tl-legend .dot{width:11px; height:11px; border-radius:50%; display:inline-block;}
+.tl-detail{margin-top:10px; border-left:3px solid var(--phc,var(--accent)); background:rgba(255,255,255,.55); border-radius:0 10px 10px 0; padding:10px 14px;}
+.td-row{display:flex; gap:10px; padding:5px 0; border-bottom:1px dashed rgba(0,0,0,.07);}
+.td-row:last-child{border-bottom:none;}
+.td-k{flex:0 0 56px; font-weight:800; color:var(--phc,var(--primary)); font-size:.92rem; text-align:justify; text-align-last:justify;}
+.td-v{flex:1; font-size:.96rem; line-height:1.75; color:#37474F;}
+@media(max-width:560px){.td-row{flex-direction:column; gap:2px;} .td-k{flex:none;}}
 
 /* 人物卡片 */
 .people-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
@@ -276,57 +282,31 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
     <div class="section" id="process">
       <div class="sec-head"><div class="sec-badge">📜</div>
         <div class="sec-title">历史进程<small>从开创到落幕</small></div></div>
-      <ul class="tl-legend"><li><span class="dot" style="background:#16A085"></span>兴起</li><li><span class="dot" style="background:#C9A227"></span>盛世</li><li><span class="dot" style="background:#E67E22"></span>转折</li><li><span class="dot" style="background:#8E44AD"></span>中衰</li><li><span class="dot" style="background:#C0392B"></span>灭亡</li></ul>
+      <ul class="tl-legend"><li><span class="dot" style="background:#16A085"></span>兴起</li><li><span class="dot" style="background:#E67E22"></span>转折</li><li><span class="dot" style="background:#C0392B"></span>灭亡</li></ul>
       <div class="timeline">
       <div class="tl-item" style="--phc:#16A085">
         <div class="tl-year">前1046<span class="tl-phase" style="background:#16A085">兴起</span></div>
-        <div class="tl-title">武王克商</div>
-        <div class="tl-text">牧野之战灭商，周公东征、封建诸侯，立<span class="hl">分封制</span>与礼乐秩序。</div>
+        <div class="tl-title">武王伐纣</div>
+        <div class="tl-text">周武王联合诸侯于牧野大败商军，纣王自焚，周朝建立，定都镐京（宗周），开启历时约八百年的周王朝。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">周武王姬发，辅臣周公旦、召公奭、太公望（姜尚）。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">商纣失德、诸侯离心；周在文王时已『三分天下有其二』。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">武王观兵孟津、会盟诸侯；二年誓师渡河，牧野之战商军倒戈。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">纣死商亡，武王封纣子武庚守商祀，都镐京。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">确立『天命』『礼乐』政治哲学，分封制与宗法制雏形出现。</span></div></div>
       </div>
-      <div class="tl-item" style="--phc:#C9A227">
-        <div class="tl-year">成康时<span class="tl-phase" style="background:#C9A227">盛世</span></div>
-        <div class="tl-title">成康之治</div>
-        <div class="tl-text">成王康王刑措不用、天下安宁，西周迎来盛世。</div>
-      </div>
-      <div class="tl-item" style="--phc:#E67E22">
-        <div class="tl-year">昭王时<span class="tl-phase" style="background:#E67E22">转折</span></div>
-        <div class="tl-title">昭王南征</div>
-        <div class="tl-text">昭王南征荆楚溺汉水而亡，周室首次遭重创。</div>
+      <div class="tl-item" style="--phc:#16A085">
+        <div class="tl-year">前1042<span class="tl-phase" style="background:#16A085">兴起</span></div>
+        <div class="tl-title">周公东征</div>
+        <div class="tl-text">武王早逝、成王幼，周公摄政平定时殷残余与三监之乱，营建洛邑（成周），制礼作乐，奠定周八百年根基。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">周公旦（武王之弟） vs 管叔、蔡叔、霍叔『三监』及武庚。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">管蔡疑周公夺权，勾结武庚叛乱，东方动荡。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">周公东征三年，诛武庚、杀管叔、放蔡叔，迁殷遗民于洛邑。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">封建亲戚、以藩屏周，营成周以为东都。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">『制礼作乐』确立周礼，后世儒家的制度蓝本；周公成『圣人』典范。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#E67E22">
         <div class="tl-year">前841<span class="tl-phase" style="background:#E67E22">转折</span></div>
         <div class="tl-title">国人暴动</div>
-        <div class="tl-text">厉王专利引发国人暴动，召公共和行政，<span class="hl">共和</span>元年为信史开端。</div>
-      </div>
-      <div class="tl-item" style="--phc:#E67E22">
-        <div class="tl-year">前771<span class="tl-phase" style="background:#E67E22">转折</span></div>
-        <div class="tl-title">犬戎破镐京</div>
-        <div class="tl-text">幽王烽火戏诸侯，犬戎破镐京杀幽王；平王东迁洛邑，<span class="hl">西周亡、东周始</span>。</div>
-      </div>
-      <div class="tl-item" style="--phc:#8E44AD">
-        <div class="tl-year">春秋<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
-        <div class="tl-title">春秋争霸</div>
-        <div class="tl-text">平王东迁后王室衰微，齐桓晋文等<span class="hl">春秋五霸</span>尊王攘夷，礼崩乐坏。</div>
-      </div>
-      <div class="tl-item" style="--phc:#8E44AD">
-        <div class="tl-year">春秋末<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
-        <div class="tl-title">弭兵之会</div>
-        <div class="tl-text">晋楚长期拉锯、诸侯兼并加速，周天子名存实亡。</div>
-      </div>
-      <div class="tl-item" style="--phc:#8E44AD">
-        <div class="tl-year">前403<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
-        <div class="tl-title">三家分晋</div>
-        <div class="tl-text">韩赵魏分晋、田氏代齐，战国序幕拉开，七雄兼并更烈。</div>
-      </div>
-      <div class="tl-item" style="--phc:#8E44AD">
-        <div class="tl-year">前356<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
-        <div class="tl-title">商鞅变法</div>
-        <div class="tl-text">秦用商鞅奖耕战、行县制，国力骤强，东方诸国震恐。</div>
+        <div class="tl-text">周厉王弭谤专利、压制舆论，首都『国人』（自由民）暴动逐王，由召公、周公共同执政，史称『共和』，是中国有确切纪年之始。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">周厉王 vs 镐京国人。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">厉王垄断山泽之利、派卫巫监谤者，『道路以目』民怨沸腾。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">前841年国人围王宫，厉王奔彘；召公、周公二相行政，号『共和』。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">厉王死不返，共和行政十四年。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">『共和元年』（前841）是中国历史有连续确切纪年的开端。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#C0392B">
-        <div class="tl-year">前256<span class="tl-phase" style="background:#C0392B">灭亡</span></div>
-        <div class="tl-title">秦灭周统</div>
-        <div class="tl-text">前256秦灭东周、前221扫六合，八百年周祚终、天下一统。</div>
+        <div class="tl-year">前771<span class="tl-phase" style="background:#C0392B">灭亡</span></div>
+        <div class="tl-title">犬戎灭西周</div>
+        <div class="tl-text">周幽王宠褒姒、烽火戏诸侯、废太子引发申侯联合犬戎破镐京，幽王被杀，西周亡；平王东迁洛邑，史称东周。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">周幽王 vs 申侯（废太子外祖父）与犬戎。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">幽王废申后及太子宜臼，立褒姒子，申侯怒而引犬戎。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">犬戎攻入镐京，杀幽王于骊山，掠财物而去；诸侯立宜臼（平王）。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">前770年平王东迁洛邑，西周终，东周始。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">王室东迁后权威扫地，进入春秋诸侯争霸时代。</span></div></div>
       </div></div>
     </div>
   

@@ -154,6 +154,12 @@ a{color:inherit;text-decoration:none;}
 .tl-legend{display:flex; flex-wrap:wrap; gap:10px; margin:0 0 18px; padding:0;}
 .tl-legend li{list-style:none; font-size:.78rem; color:#607D8B; display:flex; align-items:center; gap:5px;}
 .tl-legend .dot{width:11px; height:11px; border-radius:50%; display:inline-block;}
+.tl-detail{margin-top:10px; border-left:3px solid var(--phc,var(--accent)); background:rgba(255,255,255,.55); border-radius:0 10px 10px 0; padding:10px 14px;}
+.td-row{display:flex; gap:10px; padding:5px 0; border-bottom:1px dashed rgba(0,0,0,.07);}
+.td-row:last-child{border-bottom:none;}
+.td-k{flex:0 0 56px; font-weight:800; color:var(--phc,var(--primary)); font-size:.92rem; text-align:justify; text-align-last:justify;}
+.td-v{flex:1; font-size:.96rem; line-height:1.75; color:#37474F;}
+@media(max-width:560px){.td-row{flex-direction:column; gap:2px;} .td-k{flex:none;}}
 
 /* 人物卡片 */
 .people-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
@@ -276,62 +282,37 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
     <div class="section" id="process">
       <div class="sec-head"><div class="sec-badge">📜</div>
         <div class="sec-title">历史进程<small>从开创到落幕</small></div></div>
-      <ul class="tl-legend"><li><span class="dot" style="background:#16A085"></span>兴起</li><li><span class="dot" style="background:#C9A227"></span>盛世</li><li><span class="dot" style="background:#8E44AD"></span>中衰</li><li><span class="dot" style="background:#E67E22"></span>转折</li><li><span class="dot" style="background:#C0392B"></span>灭亡</li></ul>
+      <ul class="tl-legend"><li><span class="dot" style="background:#16A085"></span>兴起</li><li><span class="dot" style="background:#C9A227"></span>盛世</li><li><span class="dot" style="background:#E67E22"></span>转折</li><li><span class="dot" style="background:#C0392B"></span>灭亡</li><li><span class="dot" style="background:#8E44AD"></span>中衰</li></ul>
       <div class="timeline">
       <div class="tl-item" style="--phc:#16A085">
         <div class="tl-year">960<span class="tl-phase" style="background:#16A085">兴起</span></div>
         <div class="tl-title">陈桥兵变</div>
-        <div class="tl-text">赵匡胤建宋，逐步削平割据，重归一统。</div>
+        <div class="tl-text">后周殿前都点检赵匡胤在陈桥驿被部下黄袍加身，回京受禅建宋，以『杯酒释兵权』收藩镇之权，重文轻武。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">宋太祖赵匡胤 vs 后周恭帝（幼主）。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">世宗早逝、主少国疑，赵匡胤掌禁军、威望素著。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">960率军北征，陈桥驿夜被拥立；回京逼禅，都开封。旋宴请诸将『杯酒释兵权』。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">北宋立，中央集权空前强化。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">『强干弱枝』防割据，却也埋下宋军战斗力偏弱的根。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#C9A227">
-        <div class="tl-year">建隆时<span class="tl-phase" style="background:#C9A227">盛世</span></div>
-        <div class="tl-title">杯酒释兵权</div>
-        <div class="tl-text">收禁军、重文抑武，太祖太宗拓展疆土，文治兴。</div>
-      </div>
-      <div class="tl-item" style="--phc:#C9A227">
-        <div class="tl-year">咸平时<span class="tl-phase" style="background:#C9A227">盛世</span></div>
-        <div class="tl-title">咸平之治</div>
-        <div class="tl-text">真宗初岁丰人和，文化科技勃兴（活字印刷、火药）。</div>
-      </div>
-      <div class="tl-item" style="--phc:#8E44AD">
-        <div class="tl-year">1005<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
+        <div class="tl-year">1004<span class="tl-phase" style="background:#C9A227">盛世</span></div>
         <div class="tl-title">澶渊之盟</div>
-        <div class="tl-text">与辽和议输岁币换和平，文弱之象渐显。</div>
+        <div class="tl-text">真宗亲征、澶州挫辽，宋辽约为兄弟之国、岁币换和平，此后百余年无大战，经济文化得以繁荣。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">宋真宗赵恒、宰相寇准 vs 辽圣宗、萧太后。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">辽萧太后挟胜势南下，直逼澶州，汴京震动。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">寇准力劝真宗渡河亲征，士气大振；辽将挞览中弩，双方议和。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">宋岁输辽银十万两、绢二十万匹，约为兄弟。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">开创『以财换安』的和平模式，宋得以专注内政文教。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#E67E22">
         <div class="tl-year">1069<span class="tl-phase" style="background:#E67E22">转折</span></div>
         <div class="tl-title">王安石变法</div>
-        <div class="tl-text">熙宁新政图强，却党争不休、新法反复，效果有限。</div>
-      </div>
-      <div class="tl-item" style="--phc:#E67E22">
-        <div class="tl-year">1127<span class="tl-phase" style="background:#E67E22">转折</span></div>
-        <div class="tl-title">靖康之变</div>
-        <div class="tl-text">金破汴京、掳二帝，北宋亡，中原沦陷。</div>
-      </div>
-      <div class="tl-item" style="--phc:#16A085">
-        <div class="tl-year">1127<span class="tl-phase" style="background:#16A085">兴起</span></div>
-        <div class="tl-title">赵构南渡</div>
-        <div class="tl-text">康王即位建康、后都临安，南宋始，偏安江南。</div>
-      </div>
-      <div class="tl-item" style="--phc:#8E44AD">
-        <div class="tl-year">1140s<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
-        <div class="tl-title">岳飞抗金</div>
-        <div class="tl-text">岳家军屡捷，却<span class="hl">莫须有</span>冤死、绍兴和议，恢复无望。</div>
-      </div>
-      <div class="tl-item" style="--phc:#8E44AD">
-        <div class="tl-year">南宋中<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
-        <div class="tl-title">权臣迭起</div>
-        <div class="tl-text">韩侂胄开禧北伐败、史弥远贾似道专权，朝政日坏。</div>
-      </div>
-      <div class="tl-item" style="--phc:#E67E22">
-        <div class="tl-year">1234后<span class="tl-phase" style="background:#E67E22">转折</span></div>
-        <div class="tl-title">蒙元崛起</div>
-        <div class="tl-text">元灭金、久围襄阳，宋之危局难挽。</div>
+        <div class="tl-text">神宗用王安石行青苗、募役、方田均税等新法，图富国强兵，却因用人不当、扰民与党争而几起几罢。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">王安石（参知政事）奉宋神宗。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">宋承平既久，『积贫积弱』：冗官冗兵、岁币沉重、对西夏屡败。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">推行青苗、均输、市易、保甲诸法，意在理财强兵。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">新法利弊相缠，旧党（司马光）激烈反对，神宗崩后尽废。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">变法失败加深新旧党争，却留下改革试图解决『三冗』的宝贵经验。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#C0392B">
-        <div class="tl-year">1279<span class="tl-phase" style="background:#C0392B">灭亡</span></div>
-        <div class="tl-title">崖山蹈海</div>
-        <div class="tl-text">陆秀夫负幼帝投海，宋亡、一统于元。</div>
+        <div class="tl-year">1127<span class="tl-phase" style="background:#C0392B">灭亡</span></div>
+        <div class="tl-title">靖康之变</div>
+        <div class="tl-text">金军两度南下，破开封、俘徽钦二帝北去，北宋灭亡，史称『靖康之耻』，中原沦丧、宋室南渡。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">金太宗、完颜宗望/宗翰 vs 宋徽宗、钦宗。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">宋联金灭辽（海上之盟）暴露虚弱，金随即移师攻宋。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">1126金首次围汴，逼巨额赔款退兵；1127再破城，俘二帝及宗室、珍宝北还。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">北宋亡，徽钦被掳，康王赵构南奔称帝。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">中原第一次 fully 沦于异族，宋室偏安江南，岳飞抗金由此而起。</span></div></div>
+      </div>
+      <div class="tl-item" style="--phc:#8E44AD">
+        <div class="tl-year">1140<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
+        <div class="tl-title">岳飞抗金</div>
+        <div class="tl-text">岳飞率岳家军北伐连捷、郾城大破金兀术铁浮图，却因高宗秦桧主和，十二道金牌召还、以『莫须有』冤死，绍兴和议成。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">岳飞 vs 金兀术；宋高宗、秦桧主和。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">高宗畏战、恐徽钦回銮夺位，秦桧主和固权。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">1140郾城、颍昌连胜，进军朱仙镇；高宗连发十二金牌召还，1142冤杀于风波亭。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">宋金以淮水为界，称臣纳币。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">『精忠报国』成民族气节象征；主和误国成千古憾事。</span></div></div>
       </div></div>
     </div>
   

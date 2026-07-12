@@ -154,6 +154,12 @@ a{color:inherit;text-decoration:none;}
 .tl-legend{display:flex; flex-wrap:wrap; gap:10px; margin:0 0 18px; padding:0;}
 .tl-legend li{list-style:none; font-size:.78rem; color:#607D8B; display:flex; align-items:center; gap:5px;}
 .tl-legend .dot{width:11px; height:11px; border-radius:50%; display:inline-block;}
+.tl-detail{margin-top:10px; border-left:3px solid var(--phc,var(--accent)); background:rgba(255,255,255,.55); border-radius:0 10px 10px 0; padding:10px 14px;}
+.td-row{display:flex; gap:10px; padding:5px 0; border-bottom:1px dashed rgba(0,0,0,.07);}
+.td-row:last-child{border-bottom:none;}
+.td-k{flex:0 0 56px; font-weight:800; color:var(--phc,var(--primary)); font-size:.92rem; text-align:justify; text-align-last:justify;}
+.td-v{flex:1; font-size:.96rem; line-height:1.75; color:#37474F;}
+@media(max-width:560px){.td-row{flex-direction:column; gap:2px;} .td-k{flex:none;}}
 
 /* 人物卡片 */
 .people-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
@@ -276,42 +282,31 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
     <div class="section" id="process">
       <div class="sec-head"><div class="sec-badge">📜</div>
         <div class="sec-title">历史进程<small>从开创到落幕</small></div></div>
-      <ul class="tl-legend"><li><span class="dot" style="background:#16A085"></span>兴起</li><li><span class="dot" style="background:#E67E22"></span>转折</li><li><span class="dot" style="background:#C9A227"></span>盛世</li><li><span class="dot" style="background:#8E44AD"></span>中衰</li><li><span class="dot" style="background:#C0392B"></span>灭亡</li></ul>
+      <ul class="tl-legend"><li><span class="dot" style="background:#16A085"></span>兴起</li><li><span class="dot" style="background:#C9A227"></span>盛世</li><li><span class="dot" style="background:#8E44AD"></span>中衰</li><li><span class="dot" style="background:#C0392B"></span>灭亡</li></ul>
       <div class="timeline">
       <div class="tl-item" style="--phc:#16A085">
         <div class="tl-year">1206<span class="tl-phase" style="background:#16A085">兴起</span></div>
-        <div class="tl-title">蒙古兴起</div>
-        <div class="tl-text">成吉思汗统一草原，铁骑横扫欧亚，撼动旧秩序。</div>
-      </div>
-      <div class="tl-item" style="--phc:#E67E22">
-        <div class="tl-year">1271<span class="tl-phase" style="background:#E67E22">转折</span></div>
-        <div class="tl-title">忽必烈建元</div>
-        <div class="tl-text">改国号元、定都大都，行汉法、用汉臣，转向中原王朝。</div>
-      </div>
-      <div class="tl-item" style="--phc:#16A085">
-        <div class="tl-year">1279<span class="tl-phase" style="background:#16A085">兴起</span></div>
-        <div class="tl-title">灭宋一统</div>
-        <div class="tl-text">崖山后元并天下，疆域极广，行省制确立。</div>
+        <div class="tl-title">蒙古崛起</div>
+        <div class="tl-text">铁木真统一蒙古诸部、被尊『成吉思汗』，发动震撼欧亚的征服战争，为元帝国的建立铺平道路。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">成吉思汗铁木真。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">草原部落混战，铁木真以才略与怯薛军统一漠北。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">灭西夏、败金、西征花剌子模，建横跨欧亚的蒙古汗国。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">蒙古成为当时最强大的军事力量。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">打通东西方通道，也为后来元统一中国蓄势。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#C9A227">
-        <div class="tl-year">世祖时<span class="tl-phase" style="background:#C9A227">盛世</span></div>
-        <div class="tl-title">世祖之治</div>
-        <div class="tl-text">行省制、通海运、中外往来盛（马可波罗来朝），国力鼎盛。</div>
-      </div>
-      <div class="tl-item" style="--phc:#8E44AD">
-        <div class="tl-year">后期<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
-        <div class="tl-title">帝位频更</div>
-        <div class="tl-text">权臣党争、皇帝多暴卒，政乱民困。</div>
+        <div class="tl-year">1271<span class="tl-phase" style="background:#C9A227">盛世</span></div>
+        <div class="tl-title">忽必烈建元</div>
+        <div class="tl-text">忽必烈定国号『大元』、都大都（今北京），1279年灭南宋，首次由少数民族完成全国统一。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">元世祖忽必烈 vs 南宋。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">忽必烈行汉法、取中原，欲成正统王朝。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">1260继位，1271建元，1273克襄阳，1276临安降，1279崖山灭宋。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">全国一统，行省制确立。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">首次南北统一于异族王朝，疆域空前；行省制沿用至今。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#8E44AD">
         <div class="tl-year">1351<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
-        <div class="tl-title">红巾起义</div>
-        <div class="tl-text">白莲教起于江淮，群雄并起，元室失控。</div>
+        <div class="tl-title">红巾军起</div>
+        <div class="tl-text">元末河患赋重、民族压迫，韩山童刘福通以白莲教倡『明王出世』起义，红巾遍天下，元朝统治崩解。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">韩山童、刘福通（红巾军） vs 元顺帝。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">贾鲁治河征役、饥馑连年，民变一触即发。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">颍州起义、芝麻李占徐州，朱元璋隶郭子兴部后独树一帜。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">元室分崩，群雄逐鹿。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">朱元璋脱颖而出，终建明朝。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#C0392B">
         <div class="tl-year">1368<span class="tl-phase" style="background:#C0392B">灭亡</span></div>
-        <div class="tl-title">徐达北伐</div>
-        <div class="tl-text">明军克大都，元顺帝北遁，元亡、明兴。</div>
+        <div class="tl-title">元朝北遁</div>
+        <div class="tl-text">朱元璋北伐攻占大都，元顺帝北逃漠北，元朝在全国统治结束，退回草原称『北元』。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">明太祖朱元璋 vs 元顺帝妥懽帖睦尔。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">元政腐败、财政破产、红巾扫荡，大都孤危。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">1367徐达北伐，1368克大都，顺帝弃城走上都。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">元亡（北元续于漠北），明立。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">汉人政权复归，元制（行省、行省丞相）多被明改造继承。</span></div></div>
       </div></div>
     </div>
   

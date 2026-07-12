@@ -154,6 +154,12 @@ a{color:inherit;text-decoration:none;}
 .tl-legend{display:flex; flex-wrap:wrap; gap:10px; margin:0 0 18px; padding:0;}
 .tl-legend li{list-style:none; font-size:.78rem; color:#607D8B; display:flex; align-items:center; gap:5px;}
 .tl-legend .dot{width:11px; height:11px; border-radius:50%; display:inline-block;}
+.tl-detail{margin-top:10px; border-left:3px solid var(--phc,var(--accent)); background:rgba(255,255,255,.55); border-radius:0 10px 10px 0; padding:10px 14px;}
+.td-row{display:flex; gap:10px; padding:5px 0; border-bottom:1px dashed rgba(0,0,0,.07);}
+.td-row:last-child{border-bottom:none;}
+.td-k{flex:0 0 56px; font-weight:800; color:var(--phc,var(--primary)); font-size:.92rem; text-align:justify; text-align-last:justify;}
+.td-v{flex:1; font-size:.96rem; line-height:1.75; color:#37474F;}
+@media(max-width:560px){.td-row{flex-direction:column; gap:2px;} .td-k{flex:none;}}
 
 /* 人物卡片 */
 .people-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
@@ -367,32 +373,31 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
     <div class="section" id="process">
       <div class="sec-head"><div class="sec-badge">📜</div>
         <div class="sec-title">历史进程<small>从开创到落幕</small></div></div>
-      <ul class="tl-legend"><li><span class="dot" style="background:#16A085"></span>兴起</li><li><span class="dot" style="background:#C9A227"></span>盛世</li><li><span class="dot" style="background:#E67E22"></span>转折</li></ul>
+      <ul class="tl-legend"><li><span class="dot" style="background:#16A085"></span>兴起</li><li><span class="dot" style="background:#C9A227"></span>盛世</li><li><span class="dot" style="background:#C0392B"></span>灭亡</li></ul>
       <div class="timeline">
       <div class="tl-item" style="--phc:#16A085">
-        <div class="tl-year">上古<span class="tl-phase" style="background:#16A085">兴起</span></div>
-        <div class="tl-title">三皇教民</div>
-        <div class="tl-text">伏羲画八卦、神农尝百草教农耕，先民从采集渔猎走向定居农耕，文明萌芽。</div>
-      </div>
-      <div class="tl-item" style="--phc:#16A085">
-        <div class="tl-year">传说<span class="tl-phase" style="background:#16A085">兴起</span></div>
+        <div class="tl-year">约前2700<span class="tl-phase" style="background:#16A085">兴起</span></div>
         <div class="tl-title">黄帝战蚩尤</div>
-        <div class="tl-text">涿鹿之战黄帝擒杀蚩尤，各部落拥其为共主，<span class="hl">华夏</span>族雏形初成。</div>
+        <div class="tl-text">黄河流域部落林立，黄帝部族与蚩尤部族为争夺生存空间爆发涿鹿之战。这是华夏早期最重要的一场战争，奠定了中原部落联盟的雏形。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">黄帝（华夏族首领）对蚩尤（九黎部落首领，传说铜头铁额、兄弟八十一人）。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">两大部落集团为争夺黄河中下游最肥沃的生存地带与盐池资源长期冲突，蚩尤部族武器与训练占优，屡败炎帝等部。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">蚩尤起初势猛，黄帝九战九不胜；后借天候（狂风暴雨中指南车辨向）、联合炎帝余部反攻，于涿鹿之野决战。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">蚩尤战败被杀，其部众大部融入黄帝部落；黄帝被推为部落联盟共主。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">黄、炎两部融合为『炎黄子孙』，后世中国人自称炎黄后裔；中原早期国家形态由此发端。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#C9A227">
-        <div class="tl-year">传说<span class="tl-phase" style="background:#C9A227">盛世</span></div>
+        <div class="tl-year">约前2600<span class="tl-phase" style="background:#C9A227">盛世</span></div>
         <div class="tl-title">尧舜禅让</div>
-        <div class="tl-text">尧舜选贤任能、不传子孙，治水平天下，是上古理想的<span class="hl">禅让</span>治世。</div>
+        <div class="tl-text">尧、舜先后以『选贤』而非『传子』的方式交接首领之位，是上古『公天下』理想的代表，也是后世儒家津津乐道的政治典范。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">尧（陶唐氏首领）传舜（有虞氏），舜再传禹。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">尧之子丹朱不肖，尧访贤而得舜；舜亦不传子而访禹，皆因『天下非一人之天下』。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">舜历山耕、雷泽渔、黄河滨劳作，孝名远播；尧嫁二女、托九职以试之，二十八年而禅。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">舜摄位行政，禹因治水功成继之，皆以功受禅而非以血统。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">『禅让』成为儒家『圣王政治』的标杆，与后世家天下形成鲜明对照，常被用来批评世袭专制。</span></div></div>
       </div>
       <div class="tl-item" style="--phc:#C9A227">
-        <div class="tl-year">传说<span class="tl-phase" style="background:#C9A227">盛世</span></div>
+        <div class="tl-year">约前2300<span class="tl-phase" style="background:#C9A227">盛世</span></div>
         <div class="tl-title">大禹治水</div>
-        <div class="tl-text">禹三过家门不入，以疏导代堵截平定水患，威望冠于天下，受舜禅让。</div>
+        <div class="tl-text">洪水泛滥淹没田园，禹改父亲鲧『堵』为『疏』，历时十三年踏遍九州凿山通川，三过家门而不入，终平水患，声望冠于天下。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">禹（鲧之子），奉舜命治水。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">黄河连年泛滥，鲧以筑堤堵水九年无功被殛；舜改命禹以疏导代围堵。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">禹勘地形、顺水势，开龙门、通九河、疏三江，行程九州、划分水土，十三年中三过家门而不入。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">水归其道、民得安居，禹因功被舜选为继承人。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">治水催生了跨地域的动员与『九州』版图观念；禹之子启后来继位，开启家天下，夏朝由此而立。</span></div></div>
       </div>
-      <div class="tl-item" style="--phc:#E67E22">
-        <div class="tl-year">约前2070<span class="tl-phase" style="background:#E67E22">转折</span></div>
-        <div class="tl-title">大禹传启</div>
-        <div class="tl-text">禹死子启继位，<span class="hl">禅让终、世袭始</span>，公天下变为家天下，王朝时代开启。</div>
+      <div class="tl-item" style="--phc:#C0392B">
+        <div class="tl-year">约前2070<span class="tl-phase" style="background:#C0392B">灭亡</span></div>
+        <div class="tl-title">启继禹位</div>
+        <div class="tl-text">禹死后，其子启打破禅让传统，继部落联盟首领位，『家天下』取代『公天下』，中国第一个王朝——夏朝正式开端。</div>
+        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">启（禹之子） versus 伯益（禹依禅让传统指定的继承人）。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">部落贵族已习惯父子相承，启的势力压倒伯益的支持者。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">启杀伯益（一说逐之），夺位自立，又伐不服的有扈氏，确立王位父死子继。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">『禅让』终结，世袭制确立。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">王位世袭成为此后四千年中国君主制的基本法则，朝代更迭皆循此轨。</span></div></div>
       </div></div>
     </div>
   
