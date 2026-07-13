@@ -74,6 +74,45 @@
       transparent 0%, rgba(200,164,92,0.3) 30%, rgba(200,164,92,0.1) 50%, rgba(200,164,92,0.3) 70%, transparent 100%);
   }
 
+  /* ===== 学习记录入口卡 ===== */
+  .hero-learning-entry {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 28px;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, rgba(200,164,92,0.15), rgba(200,164,92,0.06));
+    border: 2px solid rgba(200,164,92,0.4);
+    border-radius: 16px;
+    text-decoration: none;
+    transition: all 0.3s;
+    animation: fadeSlideUp 1.2s ease 0.8s forwards;
+    opacity: 0;
+  }
+  .hero-learning-entry:hover {
+    background: linear-gradient(135deg, rgba(200,164,92,0.25), rgba(200,164,92,0.12));
+    border-color: #f1c40f;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(200,164,92,0.3);
+  }
+  .hle-icon { font-size: 1.8rem; }
+  .hle-text {
+    font-family: 'Ma Shan Zheng','KaiTi',cursive;
+    font-size: 1.3rem;
+    color: #c8a45c;
+    font-weight: 700;
+  }
+  .hle-sub {
+    font-family: 'Noto Sans SC',sans-serif;
+    font-size: 0.85rem;
+    color: #a09070;
+    margin-left: 4px;
+  }
+  @media (max-width: 480px) {
+    .hero-learning-entry { padding: 12px 18px; gap: 6px; }
+    .hle-text { font-size: 1.1rem; }
+    .hle-icon { font-size: 1.5rem; }
+  }
+
+
   /* Year marks */
   .timeline-years {
     display: flex; gap: 1.5rem;
@@ -415,6 +454,14 @@
     <span class="diamond"></span>
     <span class="line"></span>
   </div>
+
+
+  <!-- 学习记录入口（醒目） -->
+  <a href="learning.html" class="hero-learning-entry">
+    <span class="hle-icon">🌟</span>
+    <span class="hle-text">我的学习记录</span>
+    <span class="hle-sub">⭐ → 🌙 → ☀️</span>
+  </a>
 
   <!-- Quote -->
   <div class="quote">
