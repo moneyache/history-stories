@@ -138,6 +138,12 @@ def render(f, idx, total):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{esc(f['name'])}的故事 · {dyn_name}</title>
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#C0392B">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="上下五千年">
+<link rel="apple-touch-icon" href="../icons/icon-192.png">
 <style>{c}</style>
 </head>
 <body>
@@ -215,6 +221,7 @@ document.querySelectorAll('.quiz-q').forEach(function(qbox){{
 }});
 </script>
 <script>window.__ANS__={json.dumps([q['answer'] for q in f['quiz']])};</script>
+<script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/history-stories/sw.js');</script>
 </body>
 </html>'''
     return html

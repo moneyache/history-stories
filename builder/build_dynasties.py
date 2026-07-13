@@ -751,6 +751,12 @@ def render_dynasty(d, idx, total):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{esc(d['name'])}的历史 · 上下五千年</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#C0392B">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="上下五千年">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
 <style>{css}</style>
 </head>
 <body>
@@ -831,6 +837,7 @@ document.querySelectorAll('.quiz-q').forEach(function(qbox){{
 }});
 </script>
 <script>window.__ANS__={json.dumps([q['answer'] for q in d['quiz']])};</script>
+<script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/history-stories/sw.js');</script>
 </body>
 </html>'''
     return html
@@ -853,6 +860,12 @@ def render_hub():
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>朝代历史总览 · 上下五千年</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#C0392B">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="上下五千年">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@400;700;900&display=swap');
 *{{margin:0;padding:0;box-sizing:border-box;}}
@@ -890,6 +903,7 @@ footer{{text-align:center;padding:20px;color:#95A5A6;font-size:.85rem;}}
 </header>
 <main class="grid">{cards}</main>
 <footer>— 上下五千年 · 给小朋友看的历史 —</footer>
+<script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/history-stories/sw.js');</script>
 </body>
 </html>'''
 

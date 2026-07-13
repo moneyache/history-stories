@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>汉献帝的故事 · 汉朝</title>
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#C0392B">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="上下五千年">
+<link rel="apple-touch-icon" href="../icons/icon-192.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@400;700;900&display=swap');
 * { margin:0; padding:0; box-sizing:border-box; }
@@ -146,10 +152,20 @@ a{color:inherit;text-decoration:none;}
 .timeline{position:relative; padding-left:30px;}
 .timeline::before{content:''; position:absolute; left:9px; top:6px; bottom:6px; width:4px; border-radius:4px; background:linear-gradient(var(--primary),var(--secondary));}
 .tl-item{position:relative; margin-bottom:22px;}
-.tl-item::before{content:''; position:absolute; left:-26px; top:4px; width:18px; height:18px; border-radius:50%; background:var(--accent); border:3px solid #fff; box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 40%,transparent);}
+.tl-item::before{content:''; position:absolute; left:-26px; top:4px; width:18px; height:18px; border-radius:50%; background:var(--phc,var(--accent)); border:3px solid #fff; box-shadow:0 0 0 3px color-mix(in srgb,var(--phc,var(--accent)) 40%,transparent);}
 .tl-year{font-family:'ZCOOL KuaiLe',sans-serif; color:var(--primary); font-size:1.15rem;}
 .tl-title{font-weight:700; font-size:1.1rem; margin:2px 0 4px;}
 .tl-text{font-size:1rem; line-height:1.8; color:#455A64;}
+.tl-phase{display:inline-block; font-size:.72rem; font-weight:700; color:#fff; padding:1px 9px; border-radius:20px; margin-left:8px; vertical-align:middle; letter-spacing:.5px;}
+.tl-legend{display:flex; flex-wrap:wrap; gap:10px; margin:0 0 18px; padding:0;}
+.tl-legend li{list-style:none; font-size:.78rem; color:#607D8B; display:flex; align-items:center; gap:5px;}
+.tl-legend .dot{width:11px; height:11px; border-radius:50%; display:inline-block;}
+.tl-detail{margin-top:10px; border-left:3px solid var(--phc,var(--accent)); background:rgba(255,255,255,.55); border-radius:0 10px 10px 0; padding:10px 14px;}
+.td-row{display:flex; gap:10px; padding:5px 0; border-bottom:1px dashed rgba(0,0,0,.07);}
+.td-row:last-child{border-bottom:none;}
+.td-k{flex:0 0 56px; font-weight:800; color:var(--phc,var(--primary)); font-size:.92rem; text-align:justify; text-align-last:justify;}
+.td-v{flex:1; font-size:.96rem; line-height:1.75; color:#37474F;}
+@media(max-width:560px){.td-row{flex-direction:column; gap:2px;} .td-k{flex:none;}}
 
 /* 人物卡片 */
 .people-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
@@ -521,5 +537,6 @@ document.querySelectorAll('.quiz-q').forEach(function(qbox){
 });
 </script>
 <script>window.__ANS__=[0, 0, 0, 0];</script>
+<script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/history-stories/sw.js');</script>
 </body>
 </html>
