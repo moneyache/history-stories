@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>学习记录 · 上下五千年</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#C0392B">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="上下五千年">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+  background:#0d0a06;color:#d4c5a0;min-height:100vh;}
+/* ===== 导航 ===== */
+.auth-topbar{position:fixed;top:0;left:0;right:0;z-index:500;
+  display:flex;align-items:center;gap:12px;padding:8px 18px;
+  background:rgba(13,10,6,0.94);backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(200,164,92,0.15);}
+.auth-topbar .auth-home{font-family:"Ma Shan Zheng","KaiTi",cursive;
+  color:#c8a45c;font-size:1.1rem;text-decoration:none;transition:opacity .2s;}
+.auth-topbar .auth-home:hover{opacity:.8;}
+.auth-status{display:flex;align-items:center;gap:8px;margin-left:auto;
+  font-size:.85rem;opacity:0;transition:opacity .3s;}
+.auth-status.auth-loaded{opacity:1;}
+.auth-user{color:#c8a45c;font-weight:700;}
+.auth-login,.auth-register,.auth-logout{color:#a09070;text-decoration:none;
+  padding:4px 10px;border-radius:12px;font-size:.8rem;transition:all .2s;}
+.auth-login:hover,.auth-register:hover{color:#c8a45c;background:rgba(200,164,92,0.1);}
+.auth-logout:hover{color:#e74c3c;}
+
+/* ===== 页面容器 ===== */
+.lr-container{max-width:800px;margin:0 auto;padding:70px 16px 40px;}
+.lr-title{font-family:"ZCOOL KuaiLe","Ma Shan Zheng",cursive;
+  font-size:clamp(1.5rem,4vw,2rem);color:#c8a45c;text-align:center;margin-bottom:8px;}
+.lr-title .uname{color:#e8c84a;}
+
+/* ===== 星星展示 ===== */
+.lr-stars-box{text-align:center;margin:20px 0 8px;padding:24px 16px;
+  background:linear-gradient(135deg,rgba(200,164,92,0.08),rgba(200,164,92,0.02));
+  border-radius:20px;border:1px solid rgba(200,164,92,0.15);}
+.lr-stars-display{font-size:2.5rem;letter-spacing:6px;margin-bottom:6px;
+  line-height:1.4;}
+.lr-stars-count{font-size:1.1rem;color:#a09070;margin-bottom:4px;}
+.lr-stars-legend{font-size:.8rem;color:#6a5d4a;}
+.lr-breakdown{text-align:center;font-size:.9rem;color:#a09070;margin-bottom:20px;}
+
+/* ===== 分区标题 ===== */
+.lr-section{margin-top:32px;}
+.lr-sec-title{font-family:"Ma Shan Zheng","KaiTi",cursive;
+  font-size:1.35rem;color:#c8a45c;margin-bottom:16px;
+  border-bottom:2px solid rgba(200,164,92,0.2);padding-bottom:8px;}
+.lr-sub{font-size:1rem;color:#a09070;margin:14px 0 10px;padding-left:4px;}
+
+/* ===== 卡片网格 ===== */
+.lr-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;}
+.lr-card{padding:12px 16px;border-radius:14px;
+  display:flex;align-items:center;gap:10px;
+  transition:transform .2s,box-shadow .2s;}
+.lr-card.done{background:rgba(39,174,96,0.1);border:1px solid rgba(39,174,96,0.2);}
+.lr-card.todo{background:rgba(255,255,255,0.03);border:1px solid rgba(200,164,92,0.08);text-decoration:none;color:inherit;}
+.lr-card.todo:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(200,164,92,0.1);}
+.lr-icon{font-size:1.3rem;}
+.lr-name{flex:1;font-size:.95rem;font-weight:600;color:#d4c5a0;}
+.lr-stars{font-size:.9rem;color:#f1c40f;}
+.lr-date{font-size:.75rem;color:#6a5d4a;}
+.lr-go{font-size:.8rem;color:#c8a45c;white-space:nowrap;}
+
+/* ===== 状态提示 ===== */
+.lr-empty,.lr-loading,.lr-error,.lr-complete{text-align:center;padding:40px 20px;
+  font-size:1.1rem;color:#a09070;}
+.lr-complete{color:#27ae60;font-size:1.3rem;font-weight:700;}
+.lr-empty a,.lr-error a{color:#c8a45c;}
+
+/* ===== 响应式 ===== */
+@media(max-width:480px){
+  .lr-grid{grid-template-columns:1fr;}
+  .lr-stars-display{font-size:2rem;}
+}
+
+/* ===== 星星动画 keyframes（与 learning.js 一致） ===== */
+@keyframes starFlyUp{0%{bottom:-60px;opacity:0;transform:scale(0.3) rotate(-20deg);}30%{opacity:1;transform:scale(1.3) rotate(10deg);}70%{opacity:1;transform:scale(1) rotate(0deg);}100%{bottom:105%;opacity:0;transform:scale(0.5) rotate(20deg);}}
+</style>
+</head>
+<body>
+
+<div class="auth-topbar">
+  <a href="index.html" class="auth-home">🏠 上下五千年</a>
+  <a href="dynasties.html" class="auth-home" style="font-size:0.9rem;margin-left:4px">朝代</a>
+  <a href="learning.html" class="auth-home" style="font-size:0.9rem;margin-left:4px;color:#f1c40f">📚 学习记录</a>
+  <div class="auth-status"></div>
+</div>
+
+<div class="lr-container" id="learning-main">
+  <div class="lr-loading">加载中...</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/crypto-js@4.2.0/crypto-js.js"></script>
+<script src="auth.js"></script>
+<script src="learning.js"></script>
+<script>
+  window.__PAGE_TYPE__ = 'learning';
+  window.__ALL_DYNASTIES__ = [{"id": "sanhuang", "name": "三皇五帝", "emoji": "🌟"}, {"id": "xia", "name": "夏朝", "emoji": "🏺"}, {"id": "shang", "name": "商朝", "emoji": "🔮"}, {"id": "zhou", "name": "周朝", "emoji": "🏯"}, {"id": "qin", "name": "秦朝", "emoji": "⚡"}, {"id": "han", "name": "汉朝", "emoji": "🐉"}, {"id": "sanguo", "name": "三国", "emoji": "🗡️"}, {"id": "jin", "name": "晋朝", "emoji": "🏮"}, {"id": "nanbei", "name": "南北朝", "emoji": "🛕"}, {"id": "sui", "name": "隋朝", "emoji": "🌉"}, {"id": "tang", "name": "唐朝", "emoji": "🌸"}, {"id": "wudai", "name": "五代十国", "emoji": "🔥"}, {"id": "song", "name": "宋朝", "emoji": "🍵"}, {"id": "yuan", "name": "元朝", "emoji": "🐺"}, {"id": "ming", "name": "明朝", "emoji": "🏰"}, {"id": "qing", "name": "清朝", "emoji": "🐉👑"}];
+  window.__ALL_FIGURES__ = [{"id": "huangdi", "file": "figures/huangdi.html", "name": "黄帝", "emoji": "👑"}, {"id": "yan_di", "file": "figures/yan_di.html", "name": "炎帝（神农）", "emoji": "🌾"}, {"id": "chiyou", "file": "figures/chiyou.html", "name": "蚩尤", "emoji": "⚔️"}, {"id": "yao", "file": "figures/yao.html", "name": "尧", "emoji": "🌞"}, {"id": "shun", "file": "figures/shun.html", "name": "舜", "emoji": "🪶"}, {"id": "yu", "file": "figures/yu.html", "name": "大禹", "emoji": "🌊"}, {"id": "qi_xia", "file": "figures/qi_xia.html", "name": "启", "emoji": "👑"}, {"id": "jie", "file": "figures/jie.html", "name": "桀", "emoji": "😈"}, {"id": "tang_shang", "file": "figures/tang_shang.html", "name": "商汤", "emoji": "👑"}, {"id": "pangeng", "file": "figures/pangeng.html", "name": "盘庚", "emoji": "🏛️"}, {"id": "wuding_fuhao", "file": "figures/wuding_fuhao.html", "name": "武丁 & 妇好", "emoji": "⚔️"}, {"id": "zhou_wang", "file": "figures/zhou_wang.html", "name": "纣王", "emoji": "😈"}, {"id": "wu_wang", "file": "figures/wu_wang.html", "name": "周武王", "emoji": "👑"}, {"id": "zhougong", "file": "figures/zhougong.html", "name": "周公旦", "emoji": "📜"}, {"id": "kongzi", "file": "figures/kongzi.html", "name": "孔子", "emoji": "📚"}, {"id": "shangyang", "file": "figures/shangyang.html", "name": "商鞅", "emoji": "⚖️"}, {"id": "qin_shihuang", "file": "figures/qin_shihuang.html", "name": "秦始皇（嬴政）", "emoji": "👑"}, {"id": "lisi", "file": "figures/lisi.html", "name": "李斯", "emoji": "📜"}, {"id": "mengtian", "file": "figures/mengtian.html", "name": "蒙恬", "emoji": "🛡️"}, {"id": "chensheng", "file": "figures/chensheng.html", "name": "陈胜", "emoji": "🔥"}, {"id": "liubang", "file": "figures/liubang.html", "name": "刘邦", "emoji": "👑"}, {"id": "hanwudi", "file": "figures/hanwudi.html", "name": "汉武帝", "emoji": "🐉"}, {"id": "zhangqian", "file": "figures/zhangqian.html", "name": "张骞", "emoji": "🐫"}, {"id": "weiqing_huoqubing", "file": "figures/weiqing_huoqubing.html", "name": "卫青 · 霍去病", "emoji": "🏹"}, {"id": "cailun", "file": "figures/cailun.html", "name": "蔡伦", "emoji": "📜"}, {"id": "caocao", "file": "figures/caocao.html", "name": "曹操", "emoji": "🗡️"}, {"id": "liubei", "file": "figures/liubei.html", "name": "刘备", "emoji": "🤝"}, {"id": "sunquan", "file": "figures/sunquan.html", "name": "孙权", "emoji": "🌊"}, {"id": "zhugeliang", "file": "figures/zhugeliang.html", "name": "诸葛亮", "emoji": "🪶"}, {"id": "simayan", "file": "figures/simayan.html", "name": "司马炎", "emoji": "👑"}, {"id": "simarui", "file": "figures/simarui.html", "name": "司马睿", "emoji": "🏯"}, {"id": "wangdao", "file": "figures/wangdao.html", "name": "王导", "emoji": "📜"}, {"id": "zudi", "file": "figures/zudi.html", "name": "祖逖", "emoji": "⚔️"}, {"id": "xiaowendi", "file": "figures/xiaowendi.html", "name": "拓跋宏（孝文帝）", "emoji": "🤝"}, {"id": "zuchongzhi", "file": "figures/zuchongzhi.html", "name": "祖冲之", "emoji": "🔢"}, {"id": "jiasixie", "file": "figures/jiasixie.html", "name": "贾思勰", "emoji": "🌾"}, {"id": "liydaoyuan", "file": "figures/liydaoyuan.html", "name": "郦道元", "emoji": "🏞️"}, {"id": "suiwen", "file": "figures/suiwen.html", "name": "隋文帝杨坚", "emoji": "👑"}, {"id": "suiya", "file": "figures/suiya.html", "name": "隋炀帝杨广", "emoji": "🌉"}, {"id": "taizong", "file": "figures/taizong.html", "name": "唐太宗李世民", "emoji": "🐉"}, {"id": "wuzetian", "file": "figures/wuzetian.html", "name": "武则天", "emoji": "👑"}, {"id": "xuanzong", "file": "figures/xuanzong.html", "name": "唐玄宗李隆基", "emoji": "🎶"}, {"id": "libai_dufu", "file": "figures/libai_dufu.html", "name": "李白 · 杜甫", "emoji": "✨"}, {"id": "zhuwen", "file": "figures/zhuwen.html", "name": "朱温", "emoji": "🔥"}, {"id": "shijingtang", "file": "figures/shijingtang.html", "name": "石敬瑭", "emoji": "🏳️"}, {"id": "chaiRong", "file": "figures/chaiRong.html", "name": "柴荣", "emoji": "🛡️"}, {"id": "liyu", "file": "figures/liyu.html", "name": "李煜", "emoji": "🌙"}, {"id": "zhaokuangyin", "file": "figures/zhaokuangyin.html", "name": "赵匡胤", "emoji": "👑"}, {"id": "wanganshi", "file": "figures/wanganshi.html", "name": "王安石", "emoji": "⚖️"}, {"id": "yuefei", "file": "figures/yuefei.html", "name": "岳飞", "emoji": "🛡️"}, {"id": "sushi", "file": "figures/sushi.html", "name": "苏轼", "emoji": "🖌️"}, {"id": "shenkuo", "file": "figures/shenkuo.html", "name": "沈括", "emoji": "🔭"}, {"id": "chengjisihan", "file": "figures/chengjisihan.html", "name": "成吉思汗", "emoji": "🐺"}, {"id": "hubilie", "file": "figures/hubilie.html", "name": "忽必烈", "emoji": "🏯"}, {"id": "makeboluo", "file": "figures/makeboluo.html", "name": "马可·波罗", "emoji": "🐫"}, {"id": "guanhanqing", "file": "figures/guanhanqing.html", "name": "关汉卿", "emoji": "🎭"}, {"id": "zhuyuanzhang", "file": "figures/zhuyuanzhang.html", "name": "朱元璋", "emoji": "👑"}, {"id": "zhudi", "file": "figures/zhudi.html", "name": "朱棣", "emoji": "⛵"}, {"id": "zhengh", "file": "figures/zhengh.html", "name": "郑和", "emoji": "⛵"}, {"id": "yuqian", "file": "figures/yuqian.html", "name": "于谦", "emoji": "🛡️"}, {"id": "zhangjz", "file": "figures/zhangjz.html", "name": "张居正", "emoji": "📊"}, {"id": "kangxi", "file": "figures/kangxi.html", "name": "康熙", "emoji": "👑"}, {"id": "qianlong", "file": "figures/qianlong.html", "name": "乾隆", "emoji": "🏯"}, {"id": "linzexu", "file": "figures/linzexu.html", "name": "林则徐", "emoji": "🚭"}, {"id": "cixi", "file": "figures/cixi.html", "name": "慈禧", "emoji": "👑"}, {"id": "xiangyu", "file": "figures/xiangyu.html", "name": "项羽", "emoji": "🔥"}, {"id": "hanxin", "file": "figures/hanxin.html", "name": "韩信", "emoji": "🎯"}, {"id": "zhangliang", "file": "figures/zhangliang.html", "name": "张良", "emoji": "🌀"}, {"id": "xiaohe", "file": "figures/xiaohe.html", "name": "萧何", "emoji": "📜"}, {"id": "simaqian", "file": "figures/simaqian.html", "name": "司马迁", "emoji": "✍️"}, {"id": "wangzhaojun", "file": "figures/wangzhaojun.html", "name": "王昭君", "emoji": "🕊️"}, {"id": "guanyu", "file": "figures/guanyu.html", "name": "关羽", "emoji": "🗡️"}, {"id": "zhangfei", "file": "figures/zhangfei.html", "name": "张飞", "emoji": "🐯"}, {"id": "zhaoyun", "file": "figures/zhaoyun.html", "name": "赵云", "emoji": "🐴"}, {"id": "zhouyu", "file": "figures/zhouyu.html", "name": "周瑜", "emoji": "🪶"}, {"id": "simayi", "file": "figures/simayi.html", "name": "司马懿", "emoji": "🦊"}, {"id": "weizheng", "file": "figures/weizheng.html", "name": "魏徵", "emoji": "💡"}, {"id": "fangxuanling", "file": "figures/fangxuanling.html", "name": "房玄龄", "emoji": "🧩"}, {"id": "baozheng", "file": "figures/baozheng.html", "name": "包拯", "emoji": "⚖️"}, {"id": "simaGuang", "file": "figures/simaGuang.html", "name": "司马光", "emoji": "📚"}, {"id": "wangyangming", "file": "figures/wangyangming.html", "name": "王阳明", "emoji": "☯️"}, {"id": "qijiguang", "file": "figures/qijiguang.html", "name": "戚继光", "emoji": "🛡️"}, {"id": "zengguofan", "file": "figures/zengguofan.html", "name": "曾国藩", "emoji": "📖"}, {"id": "lihongzhang", "file": "figures/lihongzhang.html", "name": "李鸿章", "emoji": "🕊️"}, {"id": "wangxizhi", "file": "figures/wangxizhi.html", "name": "王羲之", "emoji": "🖌️"}, {"id": "xiean", "file": "figures/xiean.html", "name": "谢安", "emoji": "🍵"}, {"id": "huamulan", "file": "figures/huamulan.html", "name": "花木兰", "emoji": "🌸"}, {"id": "shaokang", "file": "figures/shaokang.html", "name": "少康", "emoji": "🛡️"}, {"id": "zhou_xuanwang", "file": "figures/zhou_xuanwang.html", "name": "周宣王", "emoji": "👑"}, {"id": "huhai_zhao_gao", "file": "figures/huhai_zhao_gao.html", "name": "胡亥 · 赵高", "emoji": "🔪"}, {"id": "liuxiu", "file": "figures/liuxiu.html", "name": "刘秀（汉光武帝）", "emoji": "⚔️"}, {"id": "banchao", "file": "figures/banchao.html", "name": "班超", "emoji": "🐪"}, {"id": "hanpingdi_ruziying", "file": "figures/hanpingdi_ruziying.html", "name": "汉平帝 · 孺子婴", "emoji": "👶"}, {"id": "han_xiandi", "file": "figures/han_xiandi.html", "name": "汉献帝", "emoji": "👑"}, {"id": "liushan", "file": "figures/liushan.html", "name": "刘禅（阿斗）", "emoji": "🐉"}, {"id": "jinhuidi", "file": "figures/jinhuidi.html", "name": "晋惠帝（司马衷）", "emoji": "🤔"}, {"id": "yuwenyong", "file": "figures/yuwenyong.html", "name": "宇文邕（北周武帝）", "emoji": "⚔️"}, {"id": "chenhouting", "file": "figures/chenhouting.html", "name": "陈后主（陈叔宝）", "emoji": "🎵"}, {"id": "tang_aidi", "file": "figures/tang_aidi.html", "name": "唐哀帝", "emoji": "👑"}, {"id": "licunxu", "file": "figures/licunxu.html", "name": "李存勖（后唐庄宗）", "emoji": "🎭"}, {"id": "songhuizong", "file": "figures/songhuizong.html", "name": "宋徽宗（赵佶）", "emoji": "🎨"}, {"id": "wentianxiang", "file": "figures/wentianxiang.html", "name": "文天祥", "emoji": "🏳️"}, {"id": "yuanshundi", "file": "figures/yuanshundi.html", "name": "元顺帝（妥懽帖睦尔）", "emoji": "🏚️"}, {"id": "chongzhen", "file": "figures/chongzhen.html", "name": "崇祯（思宗）", "emoji": "🔔"}, {"id": "yongzheng", "file": "figures/yongzheng.html", "name": "雍正（胤禛）", "emoji": "📜"}, {"id": "xuantong", "file": "figures/xuantong.html", "name": "宣统（溥仪）", "emoji": "👶"}];
+</script>
+<script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/history-stories/sw.js');</script>
+</body>
+</html>

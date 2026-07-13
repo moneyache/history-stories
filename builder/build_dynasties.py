@@ -770,6 +770,7 @@ def render_dynasty(d, idx, total):
 <body>
 <div class="topbar">
   <a class="home-btn" href="index.html">🏠 主页</a>
+  <a class="home-btn" href="learning.html" style="background:#f39c12">📚 学习</a>
   <span class="crumb">朝代历史 / <b>{esc(d['name'])}</b></span>
   <div class="auth-status"></div>
 </div>
@@ -803,6 +804,7 @@ def render_dynasty(d, idx, total):
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.2.0/crypto-js.js"></script>
 <script src="auth.js"></script>
+<script src="learning.js"></script>
 <script>
 {BATTLE_JS}
 {battle_js_calls}
@@ -827,7 +829,8 @@ document.querySelectorAll('.section').forEach(function(s){{ revObserver.observe(
 document.querySelector('.section').classList.add('visible');
 
 // ===== 小测验 =====
-var score=0, answered={{}};
+var score=0, answered={{}}, quizCompleted=false;
+var QUIZ_TOTAL={len(d['quiz'])};
 document.querySelectorAll('.quiz-q').forEach(function(qbox){{
   var qi=+qbox.id.replace('q','');
   qbox.querySelectorAll('.opt').forEach(function(btn){{
@@ -844,6 +847,11 @@ document.querySelectorAll('.quiz-q').forEach(function(qbox){{
       if(+btn.dataset.o===ans){{ score++; }} else {{ btn.classList.add('wrong'); }}
       document.getElementById('score').textContent=score;
       document.getElementById('exp'+qi).classList.add('show');
+      // 检查是否全部答完
+      if(!quizCompleted && Object.keys(answered).length===QUIZ_TOTAL){{
+        quizCompleted=true;
+        onQuizComplete('dynasty','{esc(d['id'])}','{esc(d['name'])}',3);
+      }}
     }});
   }});
 }});
@@ -914,6 +922,7 @@ footer{{text-align:center;padding:20px;color:#95A5A6;font-size:.85rem;}}
 </head>
 <body>
 <div class="topbar"><a class="home-btn" href="index.html">🏠 主页</a>
+  <a class="home-btn" href="learning.html" style="background:#f39c12">📚 学习</a>
   <span style="font-weight:700;">朝代历史 · 总览</span>
   <div class="auth-status"></div></div>
 <header class="hero">
@@ -925,6 +934,7 @@ footer{{text-align:center;padding:20px;color:#95A5A6;font-size:.85rem;}}
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.2.0/crypto-js.js"></script>
 <script src="auth.js"></script>
+<script src="learning.js"></script>
 <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/history-stories/sw.js');</script>
 </body>
 </html>'''

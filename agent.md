@@ -87,3 +87,29 @@ python3 builder/push_via_gh.py                            # 全量推送到 GitH
 DRY_RUN=1 python3 builder/push_via_gh.py                   # 预览待推送文件
 python3 builder/push_sanhuang.py                          # 只推送三皇五帝改动
 ```
+
+## 9. 认证系统
+
+| 文件 | 说明 |
+|------|------|
+| `auth.js` | 注册/登录/登出/Cookie 管理 |
+| `login.html` / `register.html` | 登录/注册页面 |
+| Supabase `hs_users` | 用户表（username + password_hash + created_at）|
+| 密码方案 | MD5(密码 + "_" + 注册日期)，日期作为 salt |
+| Cookie 登录态 | `hs_user` + `hs_token`，30 天有效 |
+
+## 10. 学习记录系统
+
+| 文件 | 说明 |
+|------|------|
+| `learning.js` | 保存学习记录（幂等）、星星换算、音效+动画 |
+| `learning.html` | 个人学习记录页面（星星/月亮/太阳展示） |
+| `builder/gen_learning.py` | 从数据源生成 learning.html |
+| Supabase `hs_learning_records` | 学习记录表（username + content_type + content_id + stars_earned + completed_at，唯一约束防重复）|
+
+**星星规则**：人物答完测验 → +1⭐；朝代答完测验 → +3⭐；10⭐ = 1🌙；10🌙 = 1☀️。
+**幂等**：同一用户 + 同一内容（content_type + content_id）只有首次完成才加星。
+**触发时机**：所有题目作答完毕时自动调用 `onQuizComplete()` → 保存 Supabase + 播放音效 + ⭐飞入动画。
+**Builder 注入点**：`build_dynasties.py` 和 `build_figures.py` 的测验 JS 末尾检测 `Object.keys(answered).length === QUIZ_TOTAL`。
+
+## 11. 常用命令
