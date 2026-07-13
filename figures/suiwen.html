@@ -54,6 +54,14 @@ a{color:inherit;text-decoration:none;}
 .topbar .crumb{font-size:.9rem;color:#7F8C8D;}
 .topbar .crumb b{color:var(--primary);}
 
+/* ===== 认证状态 ===== */
+.auth-status{display:flex;align-items:center;gap:8px;margin-left:auto;font-size:.85rem;opacity:0;transition:opacity .3s;}
+.auth-status.auth-loaded{opacity:1;}
+.auth-user{color:var(--primary);font-weight:700;}
+.auth-login,.auth-register,.auth-logout{color:#7F8C8D;text-decoration:none;padding:4px 10px;border-radius:12px;font-size:.8rem;transition:all .2s;}
+.auth-login:hover,.auth-register:hover{color:var(--primary);background:rgba(192,57,43,0.08);}
+.auth-logout:hover{color:#e74c3c;}
+
 /* ===== 章节快捷导航 ===== */
 .section-nav{
   position:sticky; top:52px; z-index:150;
@@ -259,6 +267,7 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
 <div class="topbar">
   <a class="home-btn" href="../index.html">🏠 主页</a>
   <span class="crumb">隋朝 / <b>隋文帝杨坚</b></span>
+  <div class="auth-status"></div>
 </div>
 <nav class="section-nav"><a href="#who">👤 他是谁</a><a href="#story">📖 他的故事</a><a href="#achv">🏆 他的成就</a><a href="#fun">💡 趣闻</a><a href="#quiz">📝 小测验</a></nav>
 
@@ -352,6 +361,9 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
   <p>— 隋朝 · 大人物小故事 · 给小朋友看的历史 —</p>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/crypto-js@4.2.0/crypto-js.js"></script>
+<script src="../auth.js"></script>
 <script>
 
 function initBattle(cfg){

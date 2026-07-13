@@ -58,6 +58,14 @@ a{color:inherit;text-decoration:none;}
 .topbar .crumb{font-size:.9rem;color:#7F8C8D;}
 .topbar .crumb b{color:var(--primary);}
 
+/* ===== 认证状态 ===== */
+.auth-status{display:flex;align-items:center;gap:8px;margin-left:auto;font-size:.85rem;opacity:0;transition:opacity .3s;}
+.auth-status.auth-loaded{opacity:1;}
+.auth-user{color:var(--primary);font-weight:700;}
+.auth-login,.auth-register,.auth-logout{color:#7F8C8D;text-decoration:none;padding:4px 10px;border-radius:12px;font-size:.8rem;transition:all .2s;}
+.auth-login:hover,.auth-register:hover{color:var(--primary);background:rgba(192,57,43,0.08);}
+.auth-logout:hover{color:#e74c3c;}
+
 /* ===== 章节快捷导航 ===== */
 .section-nav{
   position:sticky; top:52px; z-index:150;
@@ -763,6 +771,7 @@ def render_dynasty(d, idx, total):
 <div class="topbar">
   <a class="home-btn" href="index.html">🏠 主页</a>
   <span class="crumb">朝代历史 / <b>{esc(d['name'])}</b></span>
+  <div class="auth-status"></div>
 </div>
 <nav class="section-nav">{nav_html}</nav>
 
@@ -791,6 +800,9 @@ def render_dynasty(d, idx, total):
   <p>— 朝代历史 · 上下五千年 · 给小朋友看的历史 —</p>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/crypto-js@4.2.0/crypto-js.js"></script>
+<script src="auth.js"></script>
 <script>
 {BATTLE_JS}
 {battle_js_calls}
@@ -875,6 +887,12 @@ a{{text-decoration:none;color:inherit;}}
 .topbar{{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:12px;padding:12px 18px;
   background:rgba(255,253,247,0.92);backdrop-filter:blur(10px);box-shadow:0 2px 16px rgba(0,0,0,0.08);}}
 .home-btn{{font-family:'ZCOOL KuaiLe',sans-serif;background:#C0392B;color:#fff;padding:6px 16px;border-radius:20px;font-size:1rem;}}
+.auth-status{{display:flex;align-items:center;gap:8px;margin-left:auto;font-size:.85rem;opacity:0;transition:opacity .3s;}}
+.auth-status.auth-loaded{{opacity:1;}}
+.auth-user{{color:#C0392B;font-weight:700;}}
+.auth-login,.auth-register,.auth-logout{{color:#7F8C8D;text-decoration:none;padding:4px 10px;border-radius:12px;font-size:.8rem;transition:all .2s;}}
+.auth-login:hover,.auth-register:hover{{color:#C0392B;background:rgba(192,57,43,0.08);}}
+.auth-logout:hover{{color:#e74c3c;}}
 .hero{{text-align:center;padding:50px 20px 20px;}}
 .hero h1{{font-family:'ZCOOL KuaiLe',sans-serif;font-size:clamp(2.4rem,8vw,4.5rem);color:#C0392B;
   text-shadow:3px 3px 0 #fff;}}
@@ -896,13 +914,17 @@ footer{{text-align:center;padding:20px;color:#95A5A6;font-size:.85rem;}}
 </head>
 <body>
 <div class="topbar"><a class="home-btn" href="index.html">🏠 主页</a>
-  <span style="font-weight:700;">朝代历史 · 总览</span></div>
+  <span style="font-weight:700;">朝代历史 · 总览</span>
+  <div class="auth-status"></div></div>
 <header class="hero">
   <h1>朝代历史大观</h1>
   <p>从三皇五帝到清朝 · 点一点，穿越五千年 👇</p>
 </header>
 <main class="grid">{cards}</main>
 <footer>— 上下五千年 · 给小朋友看的历史 —</footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/crypto-js@4.2.0/crypto-js.js"></script>
+<script src="auth.js"></script>
 <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/history-stories/sw.js');</script>
 </body>
 </html>'''

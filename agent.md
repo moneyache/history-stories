@@ -29,6 +29,7 @@
 | `push_via_gh.py` | **全量推送**到 GitHub（gh api，二进制安全）。 |
 | `push_sanhuang.py` | **增量推送**仅三皇五帝相关文件（sanhuang.html + figures/* + 部分 builder）。 |
 | `push_all.py` | 早期推送脚本，已弃用（仅内联文本会损坏二进制图片），勿再用。 |
+| `gen_icons.py` | 生成 PWA 图标（192x192 + 512x512 PNG）。 |
 
 ## 4. 地图方案（关键）
 - **15 个朝代**（除 sanhuang 外）用权威历史疆域图：从 Wikimedia Commons 取图，经 `wsrv.nl` 代理下载到 `maps/<id>.jpg`，页面引用同域本地文件（部署后浏览器直连加载，不受国内墙限制）。
@@ -55,7 +56,17 @@
 - 朝代页固定含：疆域 / 历史进程时间轴 / 特点 / 重要人物 / 制度·文化·经济三栏 / 著名战役(canvas 动画) / 小测验(交互判分)。
 - **内容深度标准（2026-07-09 确立，分支 `content-depth-upgrade`）**：用户认为原文案对一个小学生「太幼稚」，已整体升级为「稍丰富有深度」档。升级铁律：① 去奶化语言（不写「香喷喷的熟食」「好首领」），保留画面感与趣味；② 每个知识点多问一层「为什么 / 机制 / 后来怎样」（如启立世袭→国家变大后选贤难管理的制度演进）；③ features 从 3 条扩到 4-5 条，每条带影响；④ **人物要丰富**：必含「中兴之主」（如少康/光武帝/周宣王/宇文邕/柴荣/张居正）与「亡国之君」（如有特点：汉平帝·孺子婴/汉献帝/桀/纣/胡亥/晋惠帝/陈后主/唐哀帝/刘禅/宋徽宗/元顺帝/崇祯/宣统）；⑤ 小测验每朝代加 2 道深度思辨题（非纯死记）。此标准同样适用于 figures/ 人物页（待批量升级）。
 
-## 7. 常用命令
+## 7. PWA 支持（2026-07-13）
+
+已全站添加 PWA 支持：
+- `manifest.json`：App名"上下五千年"、独立窗口模式(display:standalone)、主题色#C0392B
+- `sw.js`：Service Worker，cache-first缓存静态资源(图片/CSS/JS)、network-first更新HTML
+- `icons/`：192x192 + 512x512 PNG 图标（山水印章风格，红日+褐山+蓝水）
+- 所有页面（index.html + 16朝代页 + dynasties.html + 106个人物页）已注入：`<link rel="manifest">` / `<meta name="theme-color">` / Apple PWA 标签 / SW 注册脚本
+
+**手机端使用**：用浏览器打开线上地址 → Safari/Chrome "分享→添加到主屏幕" → 独立App图标打开，无地址栏，支持离线缓存。
+
+## 8. 常用命令
 ```bash
 cd ~/github-workspace/儿子历史故事学习
 python3 builder/build_dynasties.py                        # 全量重建 16 朝代

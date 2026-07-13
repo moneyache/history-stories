@@ -150,6 +150,7 @@ def render(f, idx, total):
 <div class="topbar">
   <a class="home-btn" href="../index.html">🏠 主页</a>
   <span class="crumb">{dyn_name} / <b>{esc(f['name'])}</b></span>
+  <div class="auth-status"></div>
 </div>
 <nav class="section-nav">{nav_html}</nav>
 
@@ -177,6 +178,9 @@ def render(f, idx, total):
   <p>— {dyn_name} · 大人物小故事 · 给小朋友看的历史 —</p>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/crypto-js@4.2.0/crypto-js.js"></script>
+<script src="../auth.js"></script>
 <script>
 {BATTLE_JS}
 {battle_js_calls}

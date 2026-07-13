@@ -350,9 +350,31 @@
   .nw-chip .e { font-size:1.15rem; }
   @media (max-width:480px){ .nw-chip{ font-size:0.9rem; padding:0.45rem 0.85rem; } }
 
+/* ===== 认证状态（深色主题） ===== */
+.auth-topbar{position:fixed;top:0;left:0;right:0;z-index:500;
+  display:flex;align-items:center;gap:12px;padding:8px 18px;
+  background:rgba(13,10,6,0.94);backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(200,164,92,0.15);}
+.auth-topbar .auth-home{font-family:'Ma Shan Zheng','KaiTi',cursive;
+  color:var(--gold);font-size:1.1rem;text-decoration:none;transition:opacity .2s;}
+.auth-topbar .auth-home:hover{opacity:.8;}
+.auth-status{display:flex;align-items:center;gap:8px;margin-left:auto;
+  font-size:.85rem;opacity:0;transition:opacity .3s;}
+.auth-status.auth-loaded{opacity:1;}
+.auth-user{color:var(--gold);font-weight:700;}
+.auth-login,.auth-register,.auth-logout{color:var(--text-dim);text-decoration:none;
+  padding:4px 10px;border-radius:12px;font-size:.8rem;transition:all .2s;}
+.auth-login:hover,.auth-register:hover{color:var(--gold);background:rgba(200,164,92,0.1);}
+.auth-logout:hover{color:#e74c3c;}
+
 </style>
 </head>
 <body>
+<div class="auth-topbar">
+  <a href="index.html" class="auth-home">🏠 上下五千年</a>
+  <a href="dynasties.html" class="auth-home" style="font-size:0.9rem;margin-left:4px">朝代</a>
+  <div class="auth-status"></div>
+</div>
 
 <!-- Background canvas for subtle ink effects -->
 <canvas class="bg-particles" id="bgCanvas"></canvas>
@@ -2984,6 +3006,9 @@ window.addEventListener('scroll', () => {
   });
 });
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/crypto-js@4.2.0/crypto-js.js"></script>
+<script src="auth.js"></script>
 <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('\/history-stories\/sw.js');</script>
 </body>
 </html>
