@@ -66,7 +66,18 @@
 
 **手机端使用**：用浏览器打开线上地址 → Safari/Chrome "分享→添加到主屏幕" → 独立App图标打开，无地址栏，支持离线缓存。
 
-## 8. 常用命令
+## 8. 认证系统（2026-07-13 新增）
+
+- **后端**：Supabase 项目 `sucecjwfpslxnisvyetq`，表 `hs_users`（id / username / password_hash / created_at）
+- **密码**：MD5(明文密码 + "_" + created_at 日期部分)，日期盐在注册时由客户端生成
+- **登录态**：Cookie `hs_user`（用户名）+ `hs_token`（MD5(用户名 + password_hash + 固定密钥)），30 天有效
+- **前端文件**：`auth.js`（核心模块）、`login.html`、`register.html`
+- **注入方式**：builder 模板 + index.html 手动注入，页面顶部显示 `auth-status` 容器
+- **RLS**：公开 SELECT（查用户登录）+ INSERT（注册），无 UPDATE/DELETE 策略
+- **Supabase SDK**：通过 CDN 加载 `@supabase/supabase-js@2` + `crypto-js@4.2.0`
+- 密钥文件：`~/keys/self-supabase-keys`（含 anonkey / rolekey / projectId 等）
+
+## 9. 常用命令
 ```bash
 cd ~/github-workspace/儿子历史故事学习
 python3 builder/build_dynasties.py                        # 全量重建 16 朝代
