@@ -16,6 +16,7 @@ DYNASTIES = [
         {
           "year": "约前2700",
           "title": "黄帝战蚩尤",
+          "scene": "assets/scene_sanhuang_0.webp",
           "phase": "rise",
           "text": "黄河流域部落林立，黄帝部族与蚩尤部族为争夺生存空间爆发涿鹿之战。这是华夏早期最重要的一场战争，奠定了中原部落联盟的雏形。",
           "detail": {
@@ -52,6 +53,7 @@ DYNASTIES = [
         {
           "year": "约前2300",
           "title": "大禹治水",
+          "scene": "assets/scene_sanhuang_2.webp",
           "phase": "peak",
           "text": "洪水泛滥淹没田园，禹改父亲鲧『堵』为『疏』，历时十三年踏遍九州凿山通川，三过家门而不入，终平水患，声望冠于天下。",
           "detail": {
@@ -322,6 +324,7 @@ DYNASTIES = [
         {
           "year": "约前1600",
           "title": "商汤灭夏",
+          "scene": "assets/scene_shang_0.webp",
           "phase": "rise",
           "text": "商族首领汤以『天命』之名伐桀，鸣条一战而定天下，建立商朝，定都亳，是可信文献与甲骨文双重印证的早期王朝。",
           "detail": {
@@ -447,6 +450,7 @@ DYNASTIES = [
         {
           "year": "前1046",
           "title": "武王伐纣",
+          "scene": "assets/scene_zhou_0.webp",
           "phase": "rise",
           "text": "周武王联合诸侯于牧野大败商军，纣王自焚，周朝建立，定都镐京（宗周），开启历时约八百年的周王朝。",
           "detail": {
@@ -593,6 +597,7 @@ DYNASTIES = [
         {
           "year": "前230",
           "title": "秦灭六国",
+          "scene": "assets/scene_qin_1.webp",
           "phase": "peak",
           "text": "秦王嬴政用尉缭、李斯之策，以『远交近攻』次第翦灭韩赵魏楚燕齐，前221年一统天下，自称『始皇帝』，中国首次进入大一统帝国时代。",
           "detail": {
@@ -759,6 +764,7 @@ DYNASTIES = [
         {
           "year": "前141",
           "title": "汉武雄风",
+          "scene": "assets/scene_han_2.webp",
           "phase": "peak",
           "text": "汉武帝北击匈奴、通西域、置刺史、独尊儒术，把汉朝推向极盛，疆域与国势远超秦汉之际，奠定『大汉』气象。",
           "detail": {
@@ -953,6 +959,7 @@ DYNASTIES = [
         {
           "year": "200",
           "title": "官渡之战",
+          "scene": "assets/scene_sanguo_0.webp",
           "phase": "turn",
           "text": "曹操以少胜多击溃袁绍，统一北方，奠定曹魏基业，是三国形成前最关键的一仗。",
           "detail": {
@@ -985,6 +992,7 @@ DYNASTIES = [
             "p2": "曹操统一北方后顺江而下拿下荆州，想一把平掉江南。谁料曹军又闹瘟疫又不熟水战，黄盖诈降、火船乘风一烧，须臾之间樯橹灰飞烟灭！",
             "p3": "曹操退回北方，孙权保住江东、刘备拿下荆益🔥 影响：魏蜀吴三足鼎立正式形成，赤壁成了以少胜多的经典战例。",
           },
+          "scene": "assets/scene_sanguo_1.webp",
         },
         {
           "year": "221",
@@ -1222,6 +1230,7 @@ DYNASTIES = [
         {
           "year": "383",
           "title": "淝水之战",
+          "scene": "assets/scene_nanbei_0.webp",
           "phase": "turn",
           "text": "东晋以八万北府兵大破前秦苻坚八十余万大军，保住江南半壁，是史上以少胜多的奇迹，也奠定南北长期对峙。",
           "detail": {
@@ -1372,6 +1381,7 @@ DYNASTIES = [
         {
           "year": "605",
           "title": "开凿运河",
+          "scene": "assets/scene_sui_1.webp",
           "phase": "peak",
           "text": "隋炀帝征发数百万民夫开通济渠、邗沟、江南河，贯通南北大运河，千载利赖，却也因劳役过剧激化矛盾。",
           "detail": {
@@ -1563,6 +1573,7 @@ DYNASTIES = [
         {
           "year": "755",
           "title": "安史之乱",
+          "scene": "assets/scene_tang_5.webp",
           "phase": "turn",
           "text": "安禄山以『讨杨国忠』起兵，八年战乱两京三失、生灵涂炭，是唐朝由盛转衰的决定性拐点。",
           "detail": {
@@ -1824,6 +1835,7 @@ DYNASTIES = [
         {
           "year": "960",
           "title": "陈桥兵变",
+          "scene": "assets/scene_song_0.webp",
           "phase": "rise",
           "text": "后周殿前都点检赵匡胤在陈桥驿被部下黄袍加身，回京受禅建宋，以『杯酒释兵权』收藩镇之权，重文轻武。",
           "detail": {
@@ -1896,6 +1908,7 @@ DYNASTIES = [
         {
           "year": "1140",
           "title": "岳飞抗金",
+          "scene": "assets/scene_song_4.webp",
           "phase": "decline",
           "text": "岳飞率岳家军北伐连捷、郾城大破金兀术铁浮图，却因高宗秦桧主和，十二道金牌召还、以『莫须有』冤死，绍兴和议成。",
           "detail": {
@@ -1981,6 +1994,7 @@ DYNASTIES = [
         {
           "year": "1206",
           "title": "蒙古崛起",
+          "scene": "assets/scene_yuan_0.webp",
           "phase": "rise",
           "text": "铁木真统一蒙古诸部、被尊『成吉思汗』，发动震撼欧亚的征服战争，为元帝国的建立铺平道路。",
           "detail": {
@@ -2125,6 +2139,7 @@ DYNASTIES = [
         {
           "year": "1402",
           "title": "靖难之役",
+          "scene": "assets/scene_ming_1.webp",
           "phase": "rise",
           "text": "燕王朱棣以『清君侧』起兵，三年攻入南京、夺侄建文之位，即永乐帝，迁都北京、下西洋、修大典，国势大张。",
           "detail": {
@@ -2143,6 +2158,7 @@ DYNASTIES = [
         {
           "year": "1405",
           "title": "郑和下西洋",
+          "scene": "assets/scene_ming_2.webp",
           "phase": "peak",
           "text": "郑和七下西洋，遍历三十余国、远抵非洲东岸，是当时世界上规模最大的官方远洋航行，宣扬国威、互通贸易。",
           "detail": {
@@ -2279,6 +2295,7 @@ DYNASTIES = [
         {
           "year": "1644",
           "title": "清军入关",
+          "scene": "assets/scene_qing_0.webp",
           "phase": "rise",
           "text": "多尔衮率清军借吴三桂之引入主中原，击败李自成、南明，逐步统一全国，满汉蒙多元帝国确立。",
           "detail": {
@@ -2315,6 +2332,7 @@ DYNASTIES = [
         {
           "year": "1840",
           "title": "鸦片战争",
+          "scene": "assets/scene_qing_2.webp",
           "phase": "turn",
           "text": "英国以鸦片贸易发难，清战败订《南京条约》，割香港、开五口、丧主权，千年变局开幕，中国被迫卷入世界体系。",
           "detail": {
@@ -2369,6 +2387,7 @@ DYNASTIES = [
         {
           "year": "1911",
           "title": "辛亥革命",
+          "scene": "assets/scene_qing_5.webp",
           "phase": "end",
           "text": "武昌起义一声枪响，各省响应、清帝退位，两千余年的帝制终结，亚洲第一个共和国——中华民国建立。",
           "detail": {

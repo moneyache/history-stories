@@ -98,6 +98,12 @@ a{color:inherit;text-decoration:none;}
   animation:bob 3s ease-in-out infinite;
   filter:drop-shadow(0 8px 18px rgba(0,0,0,0.18));
 }
+.hero-portrait{
+  width:clamp(160px,42vw,260px); height:auto; z-index:1;
+  border:5px solid #141414; border-radius:22px; background:#fff;
+  box-shadow:8px 8px 0 rgba(0,0,0,.16);
+  animation:bob 4s ease-in-out infinite;
+}
 @keyframes bob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-14px) rotate(3deg)}}
 .hero-title{
   font-family:'ZCOOL KuaiLe',sans-serif;
@@ -196,6 +202,8 @@ a{color:inherit;text-decoration:none;}
 .comic-bubble:before{content:""; position:absolute; left:-13px; top:18px; width:18px; height:18px; background:#fff; border-left:3px solid #141414; border-bottom:3px solid #141414; transform:rotate(45deg);}
 .comic-tag{display:inline-block; font-weight:800; color:#141414; margin-right:6px;}
 .comic-foot{margin-top:12px; font-size:.95rem; color:#7a4b00; background:#FFF3D6; border-radius:10px; padding:8px 12px; border:2px dashed #E0B36B;}
+.comic-scene{margin-top:12px;}
+.comic-scene img{width:100%; border:4px solid #141414; border-radius:14px; box-shadow:6px 6px 0 #141414; display:block;}
 @media(max-width:560px){ .comic-face{width:48px; height:48px; font-size:27px;} .comic-bubble{font-size:.96rem;} }
 
 /* ===== 人物页漫画化（与朝代页统一搞笑漫画风） ===== */
@@ -362,14 +370,17 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
       <div class="comic-card" style="--phc:#2ECC71">
         <div class="comic-head"><span class="comic-year">907</span><span class="comic-phase" style="background:#2ECC71">兴起</span><span class="comic-title">朱温建梁</span></div>
         <div class="comic-panels"><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>乱世开启者👉 后梁太祖朱温（就是灭唐那个）。</div></div><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>唐朝一亡，各地藩镇谁也不服谁，抢着称帝。中原走马灯似的换了梁、唐、晋、汉、周五个朝代；南方还前后蜀、吴越、南唐等十国割据🎭</div></div><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>天下分裂了大概七十三年💡 影响：武人说了算的毛病全暴露，大家开始盼统一了。</div></div></div>
+        
       </div>
       <div class="comic-card" style="--phc:#FF6B35">
         <div class="comic-head"><span class="comic-year">936</span><span class="comic-phase" style="background:#FF6B35">转折</span><span class="comic-title">割让燕云</span></div>
         <div class="comic-panels"><div class="comic-panel"><div class="comic-face">🔥</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>千古『儿皇帝』登场👉 后晋高祖石敬瑭 vs 契丹（辽）太宗。</div></div><div class="comic-panel"><div class="comic-face">🔥</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>石敬瑭跟后唐末帝抢位子，打不过就找契丹帮忙。条件超丢人：认契丹皇帝当爹（以父礼事之）、每年送绸缎、还把燕云十六州割出去！契丹帮他灭了后唐，后晋立起来🤦</div></div><div class="comic-panel"><div class="comic-face">🔥</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>后晋是立了，可燕云十六州全送契丹了💡 影响：北方屏障没了，北宋两朝拼命想收回来都要不到，直接决定了宋辽对峙的格局。</div></div></div>
+        
       </div>
       <div class="comic-card" style="--phc:#FFC400">
         <div class="comic-head"><span class="comic-year">954</span><span class="comic-phase" style="background:#FFC400">盛世</span><span class="comic-title">周世宗改革</span></div>
         <div class="comic-panels"><div class="comic-panel"><div class="comic-face">👑</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>短命明君登场👉 后周世宗柴荣！</div></div><div class="comic-panel"><div class="comic-face">👑</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>五代藩镇嚣张、规矩全废，柴荣立志要统一。高平之战后整顿军纪、均平田租、修订法律、还修通淮南运河，南征北伐连连得手，地盘一点点合拢⚔️</div></div><div class="comic-panel"><div class="comic-face">👑</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>可惜他死得早，攒下的家底被赵匡胤接了盘💡 影响：柴荣早逝，基业由赵匡胤继承，终成北宋一统。</div></div></div>
+        
       </div></div>
     </div>
   

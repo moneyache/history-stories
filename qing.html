@@ -98,6 +98,12 @@ a{color:inherit;text-decoration:none;}
   animation:bob 3s ease-in-out infinite;
   filter:drop-shadow(0 8px 18px rgba(0,0,0,0.18));
 }
+.hero-portrait{
+  width:clamp(160px,42vw,260px); height:auto; z-index:1;
+  border:5px solid #141414; border-radius:22px; background:#fff;
+  box-shadow:8px 8px 0 rgba(0,0,0,.16);
+  animation:bob 4s ease-in-out infinite;
+}
 @keyframes bob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-14px) rotate(3deg)}}
 .hero-title{
   font-family:'ZCOOL KuaiLe',sans-serif;
@@ -196,6 +202,8 @@ a{color:inherit;text-decoration:none;}
 .comic-bubble:before{content:""; position:absolute; left:-13px; top:18px; width:18px; height:18px; background:#fff; border-left:3px solid #141414; border-bottom:3px solid #141414; transform:rotate(45deg);}
 .comic-tag{display:inline-block; font-weight:800; color:#141414; margin-right:6px;}
 .comic-foot{margin-top:12px; font-size:.95rem; color:#7a4b00; background:#FFF3D6; border-radius:10px; padding:8px 12px; border:2px dashed #E0B36B;}
+.comic-scene{margin-top:12px;}
+.comic-scene img{width:100%; border:4px solid #141414; border-radius:14px; box-shadow:6px 6px 0 #141414; display:block;}
 @media(max-width:560px){ .comic-face{width:48px; height:48px; font-size:27px;} .comic-bubble{font-size:.96rem;} }
 
 /* ===== 人物页漫画化（与朝代页统一搞笑漫画风） ===== */
@@ -362,26 +370,32 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
       <div class="comic-card" style="--phc:#2ECC71">
         <div class="comic-head"><span class="comic-year">1644</span><span class="comic-phase" style="background:#2ECC71">兴起</span><span class="comic-title">清军入关</span></div>
         <div class="comic-panels"><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>入关主角👉 摄政王多尔衮+顺治帝 vs 李自成大顺、南明。</div></div><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>明朝一亡没人管，山海关的钥匙在吴三桂手里，清军趁机进来。1644年入关打败顺军、占了北京；接着南下把南明几个政权灭了，一直到1683年拿下台湾🏯</div></div><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>清朝统一全国、定都北京💡 影响：第二次由异族完成大一统，疆域比前代大得多（含满蒙藏回）。</div></div></div>
+        <div class="comic-scene"><img src="assets/scene_qing_0.webp" alt="清军入关" loading="lazy"></div>
       </div>
       <div class="comic-card" style="--phc:#FFC400">
         <div class="comic-head"><span class="comic-year">1661</span><span class="comic-phase" style="background:#FFC400">盛世</span><span class="comic-title">康乾盛世</span></div>
         <div class="comic-panels"><div class="comic-panel"><div class="comic-face">👑</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>三代天团登场👉 康熙、雍正、乾隆爷孙仨！</div></div><div class="comic-panel"><div class="comic-face">👑</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>刚入关时天下还不稳，这三位猛搞：平三藩、收台湾、打噶尔丹、定四川金川；雍正还摊丁入亩、设军机处把权力收得紧紧的👑</div></div><div class="comic-panel"><div class="comic-face">👑</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>版图达到最牛、人口破三亿💡 影响：这是传统王朝最后一个高峰，但也盛极而衰。</div></div></div>
+        
       </div>
       <div class="comic-card" style="--phc:#FF6B35">
         <div class="comic-head"><span class="comic-year">1840</span><span class="comic-phase" style="background:#FF6B35">转折</span><span class="comic-title">鸦片战争</span></div>
         <div class="comic-panels"><div class="comic-panel"><div class="comic-face">🔥</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>大反派来袭👉 英国 vs 清道光朝廷（林则徐在搞禁烟）。</div></div><div class="comic-panel"><div class="comic-face">🔥</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>清朝禁烟动了英国卖鸦片的奶酪，英国直接开炮舰来砸门。1840年英舰打广东、陷定海、逼到南京，1842年签下《南京条约》😡</div></div><div class="comic-panel"><div class="comic-face">🔥</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>割香港、赔银子、开五口通商、关税还得跟人商量💡 影响：近代屈辱的开端，『天朝』美梦碎了，洋务运动也由此开始。</div></div></div>
+        <div class="comic-scene"><img src="assets/scene_qing_2.webp" alt="鸦片战争" loading="lazy"></div>
       </div>
       <div class="comic-card" style="--phc:#4D7CFE">
         <div class="comic-head"><span class="comic-year">1851</span><span class="comic-phase" style="background:#4D7CFE">中衰</span><span class="comic-title">太平天国</span></div>
         <div class="comic-panels"><div class="comic-panel"><div class="comic-face">📉</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>农民起义天团👉 洪秀全、杨秀清 vs 清廷+曾国藩的湘军。</div></div><div class="comic-panel"><div class="comic-face">📉</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>鸦片战争后老百姓更苦，洪秀全用『上帝教』聚人，金田起义、建都天京（南京），跟清廷南北对峙。结果天京自己内讧把家底折腾光，曾国藩湘军趁机围攻🏰</div></div><div class="comic-panel"><div class="comic-face">📉</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>1864年天京陷落，太平天国完💡 影响：清朝开始重用汉族武装（湘军淮军），地方大员权力变重，中央集权松了。</div></div></div>
+        
       </div>
       <div class="comic-card" style="--phc:#4D7CFE">
         <div class="comic-head"><span class="comic-year">1894</span><span class="comic-phase" style="background:#4D7CFE">中衰</span><span class="comic-title">甲午惨败</span></div>
         <div class="comic-panels"><div class="comic-panel"><div class="comic-face">📉</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>邻居家逆袭👉 日本 vs 清北洋舰队（李鸿章背后撑）。</div></div><div class="comic-panel"><div class="comic-face">📉</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>朝鲜东学党闹事引发中日掰手腕，日本其实早憋着劲。丰岛海战、黄海海战一路打，威海卫一陷，北洋舰队全沉了；1895年签《马关条约》😞</div></div><div class="comic-panel"><div class="comic-face">📉</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>割台湾澎湖、赔两亿两、还准日本开工厂💡 影响：东亚老大换人了，变法维新（戊戌）和革命思潮一起冒头。</div></div></div>
+        
       </div>
       <div class="comic-card" style="--phc:#FF4D6D">
         <div class="comic-head"><span class="comic-year">1911</span><span class="comic-phase" style="background:#FF4D6D">灭亡</span><span class="comic-title">辛亥革命</span></div>
         <div class="comic-panels"><div class="comic-panel"><div class="comic-face">💀</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>终结者登场👉 革命党（孙中山、黄兴等）vs 清廷+袁世凯。</div></div><div class="comic-panel"><div class="comic-face">💀</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>清朝晚期衰朽、新政像骗局、保路运动把火点着。1911年10月10日武昌一声枪响首义，各省跟着独立；袁世凯逼宫，1912年溥仪退位👋</div></div><div class="comic-panel"><div class="comic-face">💀</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>清朝亡，中华民国立，宣统帝退位💡 影响：帝制终结、共和开场；不过接下来军阀混战又跟上来了。</div></div></div>
+        <div class="comic-scene"><img src="assets/scene_qing_5.webp" alt="辛亥革命" loading="lazy"></div>
       </div></div>
     </div>
   

@@ -98,6 +98,12 @@ a{color:inherit;text-decoration:none;}
   animation:bob 3s ease-in-out infinite;
   filter:drop-shadow(0 8px 18px rgba(0,0,0,0.18));
 }
+.hero-portrait{
+  width:clamp(160px,42vw,260px); height:auto; z-index:1;
+  border:5px solid #141414; border-radius:22px; background:#fff;
+  box-shadow:8px 8px 0 rgba(0,0,0,.16);
+  animation:bob 4s ease-in-out infinite;
+}
 @keyframes bob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-14px) rotate(3deg)}}
 .hero-title{
   font-family:'ZCOOL KuaiLe',sans-serif;
@@ -196,6 +202,8 @@ a{color:inherit;text-decoration:none;}
 .comic-bubble:before{content:""; position:absolute; left:-13px; top:18px; width:18px; height:18px; background:#fff; border-left:3px solid #141414; border-bottom:3px solid #141414; transform:rotate(45deg);}
 .comic-tag{display:inline-block; font-weight:800; color:#141414; margin-right:6px;}
 .comic-foot{margin-top:12px; font-size:.95rem; color:#7a4b00; background:#FFF3D6; border-radius:10px; padding:8px 12px; border:2px dashed #E0B36B;}
+.comic-scene{margin-top:12px;}
+.comic-scene img{width:100%; border:4px solid #141414; border-radius:14px; box-shadow:6px 6px 0 #141414; display:block;}
 @media(max-width:560px){ .comic-face{width:48px; height:48px; font-size:27px;} .comic-bubble{font-size:.96rem;} }
 
 /* ===== 人物页漫画化（与朝代页统一搞笑漫画风） ===== */
@@ -362,22 +370,27 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
       <div class="comic-card" style="--phc:#2ECC71">
         <div class="comic-head"><span class="comic-year">前356</span><span class="comic-phase" style="background:#2ECC71">兴起</span><span class="comic-title">商鞅变法</span></div>
         <div class="comic-panels"><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>狠人登场👉 商鞅（卫鞅）奉秦孝公之命搞改革。</div></div><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>秦偏在西边，被山东六国嫌弃叫『戎翟』（野人），孝公一心求强。商鞅上来就废井田、开阡陌，军功封爵（二十等爵）、连坐告密、还把首都搬到咸阳。</div></div><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>秦『兵革大强，诸侯都怕』，种地和动员力全服第一💡 影响：法家中央集权的模板成型，秦后来统一的人才和制度地基就在这儿打好了。</div></div></div>
+        
       </div>
       <div class="comic-card" style="--phc:#FFC400">
         <div class="comic-head"><span class="comic-year">前230</span><span class="comic-phase" style="background:#FFC400">盛世</span><span class="comic-title">秦灭六国</span></div>
         <div class="comic-panels"><div class="comic-panel"><div class="comic-face">👑</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>终极BOSS登场👉 秦王嬴政（秦始皇），大将王翦、王贲父子助攻。</div></div><div class="comic-panel"><div class="comic-face">👑</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>战国打了二百多年兼并战，秦靠变法最强，统一的心和实力都到位。前230年从灭韩开局，十年里挨个收拾赵、魏、楚、燕、齐，兵锋根本挡不住。</div></div><div class="comic-panel"><div class="comic-face">👑</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>前221年齐国投降，天下归一，搞郡县、书同文、车同轨💡 影响：分封制下线，皇帝制度和郡县制上岗；『大一统』成了之后中国政治的最高理想。</div></div></div>
+        <div class="comic-scene"><img src="assets/scene_qin_1.webp" alt="秦灭六国" loading="lazy"></div>
       </div>
       <div class="comic-card" style="--phc:#FF6B35">
         <div class="comic-head"><span class="comic-year">前213</span><span class="comic-phase" style="background:#FF6B35">转折</span><span class="comic-title">焚书坑儒</span></div>
         <div class="comic-panels"><div class="comic-panel"><div class="comic-face">🔥</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>反派登场👉 秦始皇、丞相李斯 vs 方士儒生。</div></div><div class="comic-panel"><div class="comic-face">🔥</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>博士淳于越主张复古分封，李斯觉得这是『拿古代喷现在』、忽悠老百姓。于是烧了《诗》《书》和百家书（医药、占卜、种树的书不烧），第二年还在咸阳把术士方士活埋了一波。</div></div><div class="comic-panel"><div class="comic-face">🔥</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>民间典籍损失惨重，读书人吓破胆💡 影响：这场文化浩劫是秦政苛酷的象征，后世当暴政典型；也把六国遗民推得更远了。</div></div></div>
+        
       </div>
       <div class="comic-card" style="--phc:#4D7CFE">
         <div class="comic-head"><span class="comic-year">前209</span><span class="comic-phase" style="background:#4D7CFE">中衰</span><span class="comic-title">陈胜吴广</span></div>
         <div class="comic-panels"><div class="comic-panel"><div class="comic-face">📉</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>草根逆袭登场👉 陈胜、吴广（两个普通戍卒）vs 秦二世、赵高。</div></div><div class="comic-panel"><div class="comic-face">📉</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>修骊山、筑长城、戍边又苦又重，『迟到就得砍头』把人逼上绝路。他俩搞篝火狐叫、鱼肚藏帛书造气氛，砍了带队的官起义，号『张楚』，天下瞬间响应。</div></div><div class="comic-panel"><div class="comic-face">📉</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>虽然只撑了六个月就败，却引爆了六国旧贵族，刘邦项羽也跟着起💡 影响：这是中国历史上第一次大规模农民起义；『王侯将相宁有种乎』一句话燃了千年。</div></div></div>
+        
       </div>
       <div class="comic-card" style="--phc:#FF4D6D">
         <div class="comic-head"><span class="comic-year">前207</span><span class="comic-phase" style="background:#FF4D6D">灭亡</span><span class="comic-title">秦朝速亡</span></div>
         <div class="comic-panels"><div class="comic-panel"><div class="comic-face">💀</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>双杀登场👉 项羽（破秦军）、刘邦（入关）vs 秦王子婴、赵高。</div></div><div class="comic-panel"><div class="comic-face">💀</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>严刑峻法、使劲榨民力，天下苦秦久矣。巨鹿一战秦主力全没；赵高还弑了二世立子婴，子婴反手宰了赵高；刘邦兵临灞上。</div></div><div class="comic-panel"><div class="comic-face">💀</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>前207子婴投降，前206项羽进咸阳烧了宫，秦亡💡 影响：秦虽短命，制度被汉全盘继承——『百代皆行秦政法』，后人都抄它的作业。</div></div></div>
+        
       </div></div>
     </div>
   

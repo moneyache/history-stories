@@ -98,6 +98,12 @@ a{color:inherit;text-decoration:none;}
   animation:bob 3s ease-in-out infinite;
   filter:drop-shadow(0 8px 18px rgba(0,0,0,0.18));
 }
+.hero-portrait{
+  width:clamp(160px,42vw,260px); height:auto; z-index:1;
+  border:5px solid #141414; border-radius:22px; background:#fff;
+  box-shadow:8px 8px 0 rgba(0,0,0,.16);
+  animation:bob 4s ease-in-out infinite;
+}
 @keyframes bob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-14px) rotate(3deg)}}
 .hero-title{
   font-family:'ZCOOL KuaiLe',sans-serif;
@@ -196,6 +202,8 @@ a{color:inherit;text-decoration:none;}
 .comic-bubble:before{content:""; position:absolute; left:-13px; top:18px; width:18px; height:18px; background:#fff; border-left:3px solid #141414; border-bottom:3px solid #141414; transform:rotate(45deg);}
 .comic-tag{display:inline-block; font-weight:800; color:#141414; margin-right:6px;}
 .comic-foot{margin-top:12px; font-size:.95rem; color:#7a4b00; background:#FFF3D6; border-radius:10px; padding:8px 12px; border:2px dashed #E0B36B;}
+.comic-scene{margin-top:12px;}
+.comic-scene img{width:100%; border:4px solid #141414; border-radius:14px; box-shadow:6px 6px 0 #141414; display:block;}
 @media(max-width:560px){ .comic-face{width:48px; height:48px; font-size:27px;} .comic-bubble{font-size:.96rem;} }
 
 /* ===== 人物页漫画化（与朝代页统一搞笑漫画风） ===== */
@@ -362,26 +370,32 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
       <div class="comic-card" style="--phc:#2ECC71">
         <div class="comic-head"><span class="comic-year">1368</span><span class="comic-phase" style="background:#2ECC71">兴起</span><span class="comic-title">洪武立国</span></div>
         <div class="comic-panels"><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>草根皇帝登场👉 明太祖朱元璋！从放牛娃、和尚一路逆袭成皇帝。</div></div><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>他出身布衣、亲眼看元末乱成啥样，格外怕大权臣和土豪。北伐灭了元，又搞胡惟庸案废除丞相、蓝玉案杀掉一票功臣，还把老百姓编户管得服服帖帖👀</div></div><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>明朝建立，皇帝权力冲到历史新高度💡 影响：废掉丞相让皇权一人独揽，特务政治（锦衣卫那套）开了头。</div></div></div>
+        
       </div>
       <div class="comic-card" style="--phc:#2ECC71">
         <div class="comic-head"><span class="comic-year">1402</span><span class="comic-phase" style="background:#2ECC71">兴起</span><span class="comic-title">靖难之役</span></div>
         <div class="comic-panels"><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>叔侄对线👉 燕王朱棣 vs 建文帝朱允炆（还有齐泰、黄子澄）。</div></div><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>建文皇帝急着削藩，把叔叔们逼急了。朱棣借『靖难』（平定祸难）的名头在北平起兵，1399年开打，1402年打过长江进京城，宫里一把火建文下落成谜，朱棣自己坐了龙椅👑</div></div><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>永乐朝搬都北京、派郑和下西洋、编《永乐大典》💡 影响：『天子守国门』定都北京，海上丝路热闹到顶点。</div></div></div>
+        <div class="comic-scene"><img src="assets/scene_ming_1.webp" alt="靖难之役" loading="lazy"></div>
       </div>
       <div class="comic-card" style="--phc:#FFC400">
         <div class="comic-head"><span class="comic-year">1405</span><span class="comic-phase" style="background:#FFC400">盛世</span><span class="comic-title">郑和下西洋</span></div>
         <div class="comic-panels"><div class="comic-panel"><div class="comic-face">👑</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>航海大佬登场👉 郑和（三宝太监），奉永乐、宣德两位皇帝的命令出海。</div></div><div class="comic-panel"><div class="comic-face">👑</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>为了显国威（也有人说找建文下落），1405到1433年整整七下西洋！宝船几百艘、将士两万七千，最远跑到西亚和非洲🌊</div></div><div class="comic-panel"><div class="comic-face">👑</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>朝贡贸易火到不行，航路全通💡 影响：比哥伦布早八十多年；可惜后来『厚往薄来』太烧钱，宣德之后就停航了。</div></div></div>
+        <div class="comic-scene"><img src="assets/scene_ming_2.webp" alt="郑和下西洋" loading="lazy"></div>
       </div>
       <div class="comic-card" style="--phc:#FF6B35">
         <div class="comic-head"><span class="comic-year">1449</span><span class="comic-phase" style="background:#FF6B35">转折</span><span class="comic-title">土木堡之变</span></div>
         <div class="comic-panels"><div class="comic-panel"><div class="comic-face">🔥</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>翻车现场👉 明英宗朱祁镇+太监王振 vs 瓦剌的也先。</div></div><div class="comic-panel"><div class="comic-face">🔥</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>王振这太监为了邀功，怂恿英宗御驾亲征，结果仓促出兵。五十万大军在土木堡被打崩，皇帝自己都被抓了😱 还好于谦站出来立了景泰帝，把围城的敌人打退。</div></div><div class="comic-panel"><div class="comic-face">🔥</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>英宗后来回来搞『夺门之变』复辟，于谦却被冤杀💡 影响：明朝从主动打北边变成被动防守，国力转折点到了。</div></div></div>
+        
       </div>
       <div class="comic-card" style="--phc:#4D7CFE">
         <div class="comic-head"><span class="comic-year">1550</span><span class="comic-phase" style="background:#4D7CFE">中衰</span><span class="comic-title">抗倭平倭</span></div>
         <div class="comic-panels"><div class="comic-panel"><div class="comic-face">📉</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>抗倭双子星登场👉 戚继光、俞大猷 vs 倭寇（中日混编海盗）。</div></div><div class="comic-panel"><div class="comic-face">📉</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>明朝海防松垮垮，沿海一些坏人还勾结倭寇到处抢。戚继光发明『鸳鸯阵』、狠练浙江兵，在台州、福建连着大胜；俞大猷也一起剿🗡️</div></div><div class="comic-panel"><div class="comic-face">📉</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>东南的倭寇基本被扫光💡 影响：他的阵法、兵制成了军事改革范本；也照出明中后期海防有多危机。</div></div></div>
+        
       </div>
       <div class="comic-card" style="--phc:#FF4D6D">
         <div class="comic-head"><span class="comic-year">1644</span><span class="comic-phase" style="background:#FF4D6D">灭亡</span><span class="comic-title">明末鼎革</span></div>
         <div class="comic-panels"><div class="comic-panel"><div class="comic-face">💀</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>末世大乱斗👉 李自成（大顺军）vs 崇祯帝；关键NPC吴三桂引清军入关。</div></div><div class="comic-panel"><div class="comic-face">💀</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>晚明加了『辽饷』『剿饷』『练饷』三笔税，老百姓活不下去、灾荒满天。1644年李自成打进北京，崇祯在树上上吊了💀 吴三桂投降清朝，在山海关把顺军打跑，清军顺势入主中原。</div></div><div class="comic-panel"><div class="comic-face">💀</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>南明苟延残喘，全国慢慢归清💡 影响：汉人王朝又一次被异族接手，清朝继承明朝制度开了新局。</div></div></div>
+        
       </div></div>
     </div>
   

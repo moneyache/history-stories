@@ -98,6 +98,12 @@ a{color:inherit;text-decoration:none;}
   animation:bob 3s ease-in-out infinite;
   filter:drop-shadow(0 8px 18px rgba(0,0,0,0.18));
 }
+.hero-portrait{
+  width:clamp(160px,42vw,260px); height:auto; z-index:1;
+  border:5px solid #141414; border-radius:22px; background:#fff;
+  box-shadow:8px 8px 0 rgba(0,0,0,.16);
+  animation:bob 4s ease-in-out infinite;
+}
 @keyframes bob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-14px) rotate(3deg)}}
 .hero-title{
   font-family:'ZCOOL KuaiLe',sans-serif;
@@ -196,6 +202,8 @@ a{color:inherit;text-decoration:none;}
 .comic-bubble:before{content:""; position:absolute; left:-13px; top:18px; width:18px; height:18px; background:#fff; border-left:3px solid #141414; border-bottom:3px solid #141414; transform:rotate(45deg);}
 .comic-tag{display:inline-block; font-weight:800; color:#141414; margin-right:6px;}
 .comic-foot{margin-top:12px; font-size:.95rem; color:#7a4b00; background:#FFF3D6; border-radius:10px; padding:8px 12px; border:2px dashed #E0B36B;}
+.comic-scene{margin-top:12px;}
+.comic-scene img{width:100%; border:4px solid #141414; border-radius:14px; box-shadow:6px 6px 0 #141414; display:block;}
 @media(max-width:560px){ .comic-face{width:48px; height:48px; font-size:27px;} .comic-bubble{font-size:.96rem;} }
 
 /* ===== 人物页漫画化（与朝代页统一搞笑漫画风） ===== */
@@ -362,42 +370,52 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
       <div class="comic-card" style="--phc:#2ECC71">
         <div class="comic-head"><span class="comic-year">618</span><span class="comic-phase" style="background:#2ECC71">兴起</span><span class="comic-title">李渊建唐</span></div>
         <div class="comic-panels"><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>主角登场👉 唐高祖李渊，带着俩儿子李世民、李建成闪亮出场！</div></div><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>隋炀帝把天下玩崩了，到处造反。李渊占着太原这块风水宝地悄悄攒实力。后来晋阳起兵、杀进长安，二儿子李世民更是开了挂一样，把薛举、刘武周、王世充、窦建德全收拾了！</div></div><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>624年基本统一，唐朝正式上线🎉 影响：隋末大乱局结束，中国最牛的王朝之一开场啦！</div></div></div>
+        
       </div>
       <div class="comic-card" style="--phc:#2ECC71">
         <div class="comic-head"><span class="comic-year">626</span><span class="comic-phase" style="background:#2ECC71">兴起</span><span class="comic-title">玄武门之变</span></div>
         <div class="comic-panels"><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>对线双方👉 秦王李世民 vs 太子大哥李建成、弟弟李元吉。</div></div><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>李世民功劳太大，大哥觉得他抢风头，兄弟仨越闹越僵。李世民一不做二不休，在玄武门设伏，咻咻两箭把大哥二弟射了！还逼老爸李渊让他当太子。</div></div><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>李世民马上登基成唐太宗，开启『贞观之治』💡 影响：虽然夺位有点狠，但他后来成了千古明君，这段兄弟相残反而成了传奇。</div></div></div>
+        
       </div>
       <div class="comic-card" style="--phc:#FFC400">
         <div class="comic-head"><span class="comic-year">627</span><span class="comic-phase" style="background:#FFC400">盛世</span><span class="comic-title">贞观之治</span></div>
         <div class="comic-panels"><div class="comic-panel"><div class="comic-face">👑</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>天团登场👉 唐太宗李世民 + 名臣房玄龄、杜如晦、魏徵、长孙无忌。</div></div><div class="comic-panel"><div class="comic-face">👑</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>太宗吸取隋朝翻车教训，说『水能载舟也能翻船』（老百姓才是大哥）。君臣一起搞事情：减税、修法、打工人福利拉满，还把西域稳住了。</div></div><div class="comic-panel"><div class="comic-face">👑</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>结果路不拾遗、家门都不用锁🔓 影响：『贞观』成了好皇帝的代名词，后面的朝代都抄它的作业。</div></div></div>
+        
       </div>
       <div class="comic-card" style="--phc:#FF6B35">
         <div class="comic-head"><span class="comic-year">690</span><span class="comic-phase" style="background:#FF6B35">转折</span><span class="comic-title">武周代唐</span></div>
         <div class="comic-panels"><div class="comic-panel"><div class="comic-face">🔥</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>大女主登场👉 武则天（唐高宗的皇后、后来的太后）。</div></div><div class="comic-panel"><div class="comic-face">🔥</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>高宗身体不好，武则天慢慢掌权，最后直接自己当皇帝，改国号周！废了中宗、睿宗，690年登基迁都洛阳。</div></div><div class="comic-panel"><div class="comic-face">🔥</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>武周代唐15年，晚年把皇位还给李家💡 影响：中国唯一女皇帝诞生！打破『女人不能当政』的老规矩。</div></div></div>
+        
       </div>
       <div class="comic-card" style="--phc:#FFC400">
         <div class="comic-head"><span class="comic-year">713</span><span class="comic-phase" style="background:#FFC400">盛世</span><span class="comic-title">开元盛世</span></div>
         <div class="comic-panels"><div class="comic-panel"><div class="comic-face">👑</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>男主回归👉 唐玄宗李隆基 + 贤相姚崇、宋璟。</div></div><div class="comic-panel"><div class="comic-face">👑</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>玄宗干掉太平公主夺权后超级努力，选贤任能、查户口、搞文教，丝路热闹得不行，胡人风气超流行。</div></div><div class="comic-panel"><div class="comic-face">👑</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>『开元全盛日，小县城都住着上万户』📈 影响：盛唐的顶峰！也是由盛转衰前最后的黄金时代。</div></div></div>
+        
       </div>
       <div class="comic-card" style="--phc:#FF6B35">
         <div class="comic-head"><span class="comic-year">755</span><span class="comic-phase" style="background:#FF6B35">转折</span><span class="comic-title">安史之乱</span></div>
         <div class="comic-panels"><div class="comic-panel"><div class="comic-face">🔥</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>反派登场👉 安禄山 + 心腹史思明。安禄山一个人兼三个军区老大，河北兵权全在他手；史思明是他的好哥们，后来接力造反。</div></div><div class="comic-panel"><div class="comic-face">🔥</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>玄宗晚年光顾着玩，先宠李林甫、后宠杨国忠。李林甫不让边将当宰相、专让外族人带兵；杨国忠跟安禄山抢权，天天说『他要反』，结果真把安禄山逼反了！加上中央军越来越拉胯、地方军太强。755年安禄山在范阳起兵，一路狂飙拿下河北、洛阳。次年攻破潼关进长安，玄宗吓得跑去四川，马嵬坡兵变把杨贵妃赐死，太子李亨跑去灵武自己当皇帝（肃宗）。叛军自己还内讧：757年安禄山被亲儿子安庆绪杀了；史思明假投降又反，759年杀安庆绪自己上。</div></div><div class="comic-panel"><div class="comic-face">🔥</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>郭子仪、李光弼拼死打仗，借回纥兵收复两京；762年史思明儿子史朝义败亡，763年彻底平定，打了整整8年💥 影响：黄河中下游打成一片废墟，人口从约5300万暴降到不到1700万！中央彻底虚了：河北三镇自己当土皇帝、宦官掌兵能随便换皇帝。唐朝由盛转衰，再没缓过来。</div></div></div>
+        <div class="comic-scene"><img src="assets/scene_tang_5.webp" alt="安史之乱" loading="lazy"></div>
       </div>
       <div class="comic-card" style="--phc:#4D7CFE">
         <div class="comic-head"><span class="comic-year">763</span><span class="comic-phase" style="background:#4D7CFE">中衰</span><span class="comic-title">藩镇割据</span></div>
         <div class="comic-panels"><div class="comic-panel"><div class="comic-face">📉</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>双方👉 河北三镇节度使 vs 唐朝中央。</div></div><div class="comic-panel"><div class="comic-face">📉</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>平叛时为安抚投降的将领，干脆封他们当节度使，结果权力收不回来了。三镇自己任命官员、自己收税、爹传儿子，不爽就兵变赶走老大。</div></div><div class="comic-panel"><div class="comic-face">📉</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>中央的钱全靠江南，兵权被藩镇拿捏💡 影响：统一名存实亡，地方闹独立是唐朝灭亡的主因之一。</div></div></div>
+        
       </div>
       <div class="comic-card" style="--phc:#4D7CFE">
         <div class="comic-head"><span class="comic-year">820</span><span class="comic-phase" style="background:#4D7CFE">中衰</span><span class="comic-title">宦官专权</span></div>
         <div class="comic-panels"><div class="comic-panel"><div class="comic-face">📉</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>反派👉 神策军宦官（俱文珍、仇士良这帮人）vs 皇帝和朝官。</div></div><div class="comic-panel"><div class="comic-face">📉</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>从肃宗、代宗起就让宦官带兵、监军，权力越来越大。宪宗、敬宗都被宦官杀了，立谁当皇帝全是宦说的算；『甘露之变』朝官想翻盘惨败。</div></div><div class="comic-panel"><div class="comic-face">📉</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>皇帝变成宦官的提线木偶🎭 影响：里面宦官失控、外面藩镇独立，唐朝彻底没救了。</div></div></div>
+        
       </div>
       <div class="comic-card" style="--phc:#4D7CFE">
         <div class="comic-head"><span class="comic-year">881</span><span class="comic-phase" style="background:#4D7CFE">中衰</span><span class="comic-title">黄巢起义</span></div>
         <div class="comic-panels"><div class="comic-panel"><div class="comic-face">📉</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>草根逆袭👉 盐贩子黄巢 vs 唐僖宗朝廷。</div></div><div class="comic-panel"><div class="comic-face">📉</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>晚唐税收重、灾荒多、考试还不公平，老百姓实在活不下去。王仙芝先反，黄巢跟上，转战12个省、专挑软柿子捏，880年打进长安自己当皇帝建大齐。</div></div><div class="comic-panel"><div class="comic-face">📉</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>唐朝借沙陀人李克用的兵才镇压，884年黄巢战败死💡 影响：中央威信碎一地，朱温等藩镇趁乱崛起。</div></div></div>
+        
       </div>
       <div class="comic-card" style="--phc:#FF4D6D">
         <div class="comic-head"><span class="comic-year">907</span><span class="comic-phase" style="background:#FF4D6D">灭亡</span><span class="comic-title">朱温篡唐</span></div>
         <div class="comic-panels"><div class="comic-panel"><div class="comic-face">💀</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>终极大反派👉 朱温（宣武节度使，后梁太祖）vs 唐哀帝。</div></div><div class="comic-panel"><div class="comic-face">💀</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>黄巢之乱后朱温占着汴梁，挟天子令诸侯。903年把宦官全杀光，904年迁都洛阳杀了唐昭宗，907年逼哀帝让位。</div></div><div class="comic-panel"><div class="comic-face">💀</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>唐朝灭亡，后梁上线，五代开始💀 影响：三百年的大唐落幕，天下又分裂，直到北宋才重新统一。</div></div></div>
+        
       </div></div>
     </div>
   

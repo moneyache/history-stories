@@ -174,7 +174,7 @@ def render(f, idx, total):
 
 <header class="hero">
   <div class="blob"></div><div class="blob b2"></div>
-  <div class="hero-emoji">{f['emoji']}</div>
+  {('<img class="hero-portrait" src="' + f["portrait"] + '" alt="' + esc(f["name"]) + '" loading="lazy">') if f.get("portrait") else ('<div class="hero-emoji">' + f["emoji"] + '</div>')}
   <h1 class="hero-title">{esc(f['name'])}</h1>
   <div class="hero-era">🕰️ {esc(f['era'])}</div>
   <div class="hero-sub">{esc(f['role'])}</div>

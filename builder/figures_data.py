@@ -7,6 +7,7 @@ FIGURES = [
 
 {
     "id": "huangdi",
+    "portrait": "../assets/fig_huangdi.webp",
     "file": "figures/huangdi.html",
     "name": "黄帝",
     "emoji": "👑",
@@ -320,6 +321,7 @@ FIGURES = [
 
 {
     "id": "kongzi",
+    "portrait": "../assets/fig_kongzi.webp",
     "file": "figures/kongzi.html",
     "name": "孔子",
     "emoji": "📚",
@@ -366,6 +368,7 @@ FIGURES = [
 
 {
     "id": "qin_shihuang",
+    "portrait": "../assets/fig_qin_shihuang.webp",
     "file": "figures/qin_shihuang.html",
     "name": "秦始皇（嬴政）",
     "emoji": "👑",
@@ -458,6 +461,7 @@ FIGURES = [
 
 {
     "id": "liubang",
+    "portrait": "../assets/fig_liubang.webp",
     "file": "figures/liubang.html",
     "name": "刘邦",
     "emoji": "👑",
@@ -481,6 +485,7 @@ FIGURES = [
 
 {
     "id": "hanwudi",
+    "portrait": "../assets/fig_hanwudi.webp",
     "file": "figures/hanwudi.html",
     "name": "汉武帝",
     "emoji": "🐉",
@@ -504,6 +509,7 @@ FIGURES = [
 
 {
     "id": "zhangqian",
+    "portrait": "../assets/fig_zhangqian.webp",
     "file": "figures/zhangqian.html",
     "name": "张骞",
     "emoji": "🐫",
@@ -573,6 +579,7 @@ FIGURES = [
 
 {
     "id": "caocao",
+    "portrait": "../assets/fig_caocao.webp",
     "file": "figures/caocao.html",
     "name": "曹操",
     "emoji": "🗡️",
@@ -645,6 +652,7 @@ FIGURES = [
     "file": "figures/zhugeliang.html",
     "name": "诸葛亮",
     "emoji": "🪶",
+    "portrait": "../assets/fig_zhugeliang.webp",
     "era": "公元 181 — 234 年",
     "role": "蜀汉丞相",
     "theme": {"primary": "#27AE60", "secondary": "#2980B9", "accent": "#C0392B"},
@@ -895,6 +903,7 @@ FIGURES = [
 
 {
     "id": "taizong",
+    "portrait": "../assets/fig_taizong.webp",
     "file": "figures/taizong.html",
     "name": "唐太宗李世民",
     "emoji": "🐉",
@@ -918,6 +927,7 @@ FIGURES = [
 
 {
     "id": "wuzetian",
+    "portrait": "../assets/fig_wuzetian.webp",
     "file": "figures/wuzetian.html",
     "name": "武则天",
     "emoji": "👑",
@@ -964,6 +974,7 @@ FIGURES = [
 
 {
     "id": "libai_dufu",
+    "portrait": "../assets/fig_libai_dufu.webp",
     "file": "figures/libai_dufu.html",
     "name": "李白 · 杜甫",
     "emoji": "✨",
@@ -1056,6 +1067,7 @@ FIGURES = [
 
 {
     "id": "liyu",
+    "portrait": "../assets/fig_liyu.webp",
     "file": "figures/liyu.html",
     "name": "李煜",
     "emoji": "🌙",
@@ -1079,6 +1091,7 @@ FIGURES = [
 
 {
     "id": "zhaokuangyin",
+    "portrait": "../assets/fig_zhaokuangyin.webp",
     "file": "figures/zhaokuangyin.html",
     "name": "赵匡胤",
     "emoji": "👑",
@@ -1125,6 +1138,7 @@ FIGURES = [
 
 {
     "id": "yuefei",
+    "portrait": "../assets/fig_yuefei.webp",
     "file": "figures/yuefei.html",
     "name": "岳飞",
     "emoji": "🛡️",
@@ -1149,6 +1163,7 @@ FIGURES = [
 
 {
     "id": "sushi",
+    "portrait": "../assets/fig_sushi.webp",
     "file": "figures/sushi.html",
     "name": "苏轼",
     "emoji": "🖌️",
@@ -1195,6 +1210,7 @@ FIGURES = [
 
 {
     "id": "chengjisihan",
+    "portrait": "../assets/fig_chengjisihan.webp",
     "file": "figures/chengjisihan.html",
     "name": "成吉思汗",
     "emoji": "🐺",
@@ -1218,6 +1234,7 @@ FIGURES = [
 
 {
     "id": "hubilie",
+    "portrait": "../assets/fig_hubilie.webp",
     "file": "figures/hubilie.html",
     "name": "忽必烈",
     "emoji": "🏯",
@@ -1287,6 +1304,7 @@ FIGURES = [
 
 {
     "id": "zhuyuanzhang",
+    "portrait": "../assets/fig_zhuyuanzhang.webp",
     "file": "figures/zhuyuanzhang.html",
     "name": "朱元璋",
     "emoji": "👑",
@@ -1333,6 +1351,7 @@ FIGURES = [
 
 {
     "id": "zhengh",
+    "portrait": "../assets/fig_zhengh.webp",
     "file": "figures/zhengh.html",
     "name": "郑和",
     "emoji": "⛵",
@@ -1402,6 +1421,7 @@ FIGURES = [
 
 {
     "id": "kangxi",
+    "portrait": "../assets/fig_kangxi.webp",
     "file": "figures/kangxi.html",
     "name": "康熙",
     "emoji": "👑",
@@ -1425,6 +1445,7 @@ FIGURES = [
 
 {
     "id": "qianlong",
+    "portrait": "../assets/fig_qianlong.webp",
     "file": "figures/qianlong.html",
     "name": "乾隆",
     "emoji": "🏯",
@@ -1448,6 +1469,7 @@ FIGURES = [
 
 {
     "id": "linzexu",
+    "portrait": "../assets/fig_linzexu.webp",
     "file": "figures/linzexu.html",
     "name": "林则徐",
     "emoji": "🚭",
@@ -1471,6 +1493,7 @@ FIGURES = [
 
 {
     "id": "cixi",
+    "portrait": "../assets/fig_cixi.webp",
     "file": "figures/cixi.html",
     "name": "慈禧",
     "emoji": "👑",
@@ -1495,6 +1518,7 @@ FIGURES = [
 # === NEW_FIG_INSERT ===
   {
     "id": "xiangyu",
+    "portrait": "../assets/fig_xiangyu.webp",
   "theme": {"primary": "#1A1A1A", "secondary": "#4A4A4A", "accent": "#D4AF37"},
   "file": "figures/xiangyu.html",
     "name": "项羽",
@@ -1772,6 +1796,7 @@ FIGURES = [
   },
   {
     "id": "simaqian",
+    "portrait": "../assets/fig_simaqian.webp",
   "theme": {"primary": "#C0392B", "secondary": "#E74C3C", "accent": "#F1C40F"},
   "file": "figures/simaqian.html",
     "name": "司马迁",
@@ -1903,6 +1928,7 @@ FIGURES = [
   },
   {
     "id": "guanyu",
+    "portrait": "../assets/fig_guanyu.webp",
   "theme": {"primary": "#27AE60", "secondary": "#2980B9", "accent": "#C0392B"},
   "file": "figures/guanyu.html",
     "name": "关羽",
@@ -2390,6 +2416,7 @@ FIGURES = [
   },
   {
     "id": "baozheng",
+    "portrait": "../assets/fig_baozheng.webp",
   "theme": {"primary": "#2980B9", "secondary": "#5DADE2", "accent": "#7FB3A0"},
   "file": "figures/baozheng.html",
     "name": "包拯",
@@ -2594,6 +2621,7 @@ FIGURES = [
   },
   {
     "id": "qijiguang",
+    "portrait": "../assets/fig_qijiguang.webp",
   "theme": {"primary": "#C0392B", "secondary": "#E74C3C", "accent": "#F1C40F"},
   "file": "figures/qijiguang.html",
     "name": "戚继光",
@@ -2803,6 +2831,7 @@ FIGURES = [
   },
   {
     "id": "wangxizhi",
+    "portrait": "../assets/fig_wangxizhi.webp",
   "theme": {"primary": "#16A085", "secondary": "#1ABC9C", "accent": "#E0B048"},
   "file": "figures/wangxizhi.html",
     "name": "王羲之",
@@ -2941,6 +2970,7 @@ FIGURES = [
   },
   {
     "id": "huamulan",
+    "portrait": "../assets/fig_huamulan.webp",
   "theme": {"primary": "#D35400", "secondary": "#16A085", "accent": "#E67E22"},
   "file": "figures/huamulan.html",
     "name": "花木兰",

@@ -98,6 +98,12 @@ a{color:inherit;text-decoration:none;}
   animation:bob 3s ease-in-out infinite;
   filter:drop-shadow(0 8px 18px rgba(0,0,0,0.18));
 }
+.hero-portrait{
+  width:clamp(160px,42vw,260px); height:auto; z-index:1;
+  border:5px solid #141414; border-radius:22px; background:#fff;
+  box-shadow:8px 8px 0 rgba(0,0,0,.16);
+  animation:bob 4s ease-in-out infinite;
+}
 @keyframes bob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-14px) rotate(3deg)}}
 .hero-title{
   font-family:'ZCOOL KuaiLe',sans-serif;
@@ -196,6 +202,8 @@ a{color:inherit;text-decoration:none;}
 .comic-bubble:before{content:""; position:absolute; left:-13px; top:18px; width:18px; height:18px; background:#fff; border-left:3px solid #141414; border-bottom:3px solid #141414; transform:rotate(45deg);}
 .comic-tag{display:inline-block; font-weight:800; color:#141414; margin-right:6px;}
 .comic-foot{margin-top:12px; font-size:.95rem; color:#7a4b00; background:#FFF3D6; border-radius:10px; padding:8px 12px; border:2px dashed #E0B36B;}
+.comic-scene{margin-top:12px;}
+.comic-scene img{width:100%; border:4px solid #141414; border-radius:14px; box-shadow:6px 6px 0 #141414; display:block;}
 @media(max-width:560px){ .comic-face{width:48px; height:48px; font-size:27px;} .comic-bubble{font-size:.96rem;} }
 
 /* ===== 人物页漫画化（与朝代页统一搞笑漫画风） ===== */
@@ -362,18 +370,22 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
       <div class="comic-card" style="--phc:#2ECC71">
         <div class="comic-head"><span class="comic-year">约前1600</span><span class="comic-phase" style="background:#2ECC71">兴起</span><span class="comic-title">商汤灭夏</span></div>
         <div class="comic-panels"><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>主角登场👉 商汤 vs 夏桀。</div></div><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>桀暴虐到没人跟他混，汤重用大佬伊尹、悄悄练级，还打着『替天行道、解救百姓』的旗号。汤先灭掉夏的盟国、把诸侯拉来开大会，在鸣条把夏军揍趴，还写了篇《汤诰》宣告：换人了！</div></div><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>商朝上线，定都亳，汤当开国老板💡 影响：甲骨文和青铜礼器证明商朝是真实存在的；而且『革命』（革掉天命）这个词就来自汤和后来的周武。</div></div></div>
+        <div class="comic-scene"><img src="assets/scene_shang_0.webp" alt="商汤灭夏" loading="lazy"></div>
       </div>
       <div class="comic-card" style="--phc:#2ECC71">
         <div class="comic-head"><span class="comic-year">约前1300</span><span class="comic-phase" style="background:#2ECC71">兴起</span><span class="comic-title">盘庚迁殷</span></div>
         <div class="comic-panels"><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>硬核搬家达人登场👉 盘庚（商朝第20任王）。</div></div><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>老都城老发水灾、贵族们还抢权抢个没完，盘庚一拍板：搬去殷！他连发三篇『告全国人民书』（《盘庚》三篇），硬是带着大家渡过黄河迁都。</div></div><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>从此一直到商朝灭亡都没再搬家，政局稳了下来💡 影响：殷墟挖出十几万片甲骨文，让商朝史变成『信史』（有实锤的历史）；商也因此叫殷商。</div></div></div>
+        
       </div>
       <div class="comic-card" style="--phc:#FFC400">
         <div class="comic-head"><span class="comic-year">约前1250</span><span class="comic-phase" style="background:#FFC400">盛世</span><span class="comic-title">武丁盛世</span></div>
         <div class="comic-panels"><div class="comic-panel"><div class="comic-face">👑</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>天团登场👉 武丁 + 老婆妇好 + 贤相傅说。</div></div><div class="comic-panel"><div class="comic-face">👑</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>武丁小时候混过民间、懂百姓苦，上位后疯狂招贤纳才。妇好带兵去打羌方、土方，傅说管内政，地盘比前代大了一圈。</div></div><div class="comic-panel"><div class="comic-face">👑</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>商朝进入顶配盛世，祭祀和青铜文明都拉满💡 影响：武丁时期的甲骨文和青铜器，代表了早期国家『动员能力』和『神权政治』的最高峰。</div></div></div>
+        
       </div>
       <div class="comic-card" style="--phc:#FF4D6D">
         <div class="comic-head"><span class="comic-year">约前1046</span><span class="comic-phase" style="background:#FF4D6D">灭亡</span><span class="comic-title">纣王亡国</span></div>
         <div class="comic-panels"><div class="comic-panel"><div class="comic-face">💀</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>对线双方👉 商纣王（帝辛）vs 周武王姬发、周公、姜尚。</div></div><div class="comic-panel"><div class="comic-face">💀</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>纣王把西伯关起来、挖了比干的心、赶走微子，人人都烦他；还把主力全调去东边打东夷，老家门口空了。武王带联军过孟津、在牧野誓师，结果商军前锋直接倒戈，朝歌大门敞开。</div></div><div class="comic-panel"><div class="comic-face">💀</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>纣王跑到鹿台自焚，商亡、周立💡 影响：『纣』跟『桀』绑成暴君CP；牧野之战是早期决定『谁当老大』的关键一战。</div></div></div>
+        
       </div></div>
     </div>
   
