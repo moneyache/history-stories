@@ -175,6 +175,65 @@ a{color:inherit;text-decoration:none;}
 .td-v{flex:1; font-size:.96rem; line-height:1.75; color:#37474F;}
 @media(max-width:560px){.td-row{flex-direction:column; gap:2px;} .td-k{flex:none;}}
 
+/* ===== 漫画分镜（糖果亮色搞笑风） ===== */
+.comic-strip{display:flex; flex-direction:column; gap:18px;}
+.comic-card{
+  background-color:#fff;
+  background-image:radial-gradient(rgba(0,0,0,0.06) 1.6px, transparent 1.6px);
+  background-size:14px 14px;
+  border:4px solid #141414; border-radius:18px; padding:14px 16px;
+  box-shadow:6px 6px 0 #141414;
+  border-left:9px solid var(--phc,#141414);
+}
+.comic-head{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:6px;}
+.comic-year{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.35rem; color:#141414;}
+.comic-phase{font-size:.82rem; font-weight:800; color:#141414; padding:3px 13px; border-radius:20px; border:2.5px solid #141414; background:var(--phc,#fff);}
+.comic-title{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.6rem; color:#141414;}
+.comic-panels{display:flex; flex-direction:column; gap:12px;}
+.comic-panel{display:flex; gap:12px; align-items:flex-start;}
+.comic-face{flex:0 0 auto; width:56px; height:56px; border-radius:50%; background:var(--phc,#FFE7C2); border:3px solid #141414; display:flex; align-items:center; justify-content:center; font-size:32px; box-shadow:3px 3px 0 rgba(0,0,0,0.18);}
+.comic-bubble{flex:1; position:relative; background:#fff; border:3px solid #141414; border-radius:16px; padding:11px 14px; font-size:1.02rem; line-height:1.75; color:#232323;}
+.comic-bubble:before{content:""; position:absolute; left:-13px; top:18px; width:18px; height:18px; background:#fff; border-left:3px solid #141414; border-bottom:3px solid #141414; transform:rotate(45deg);}
+.comic-tag{display:inline-block; font-weight:800; color:#141414; margin-right:6px;}
+.comic-foot{margin-top:12px; font-size:.95rem; color:#7a4b00; background:#FFF3D6; border-radius:10px; padding:8px 12px; border:2px dashed #E0B36B;}
+@media(max-width:560px){ .comic-face{width:48px; height:48px; font-size:27px;} .comic-bubble{font-size:.96rem;} }
+
+/* ===== 人物页漫画化（与朝代页统一搞笑漫画风） ===== */
+/* 他是谁：角色漫画卡 */
+.fig-who{
+  display:flex; gap:16px; align-items:center;
+  background-color:#fff;
+  background-image:radial-gradient(rgba(0,0,0,0.06) 1.6px, transparent 1.6px);
+  background-size:14px 14px;
+  border:4px solid #141414; border-radius:18px; padding:16px 18px;
+  box-shadow:6px 6px 0 #141414;
+}
+.fig-who .fw-emoji{flex:0 0 auto; width:72px; height:72px; border-radius:50%;
+  background:color-mix(in srgb,var(--accent) 22%,#fff); border:3px solid #141414;
+  display:flex; align-items:center; justify-content:center; font-size:42px;
+  box-shadow:3px 3px 0 rgba(0,0,0,0.18);}
+.fig-who .fw-body{flex:1; min-width:0;}
+.fig-who .fw-role{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.3rem; color:#141414; line-height:1.3;}
+.fig-who .fw-desc{font-size:1.02rem; line-height:1.8; color:#232323; margin-top:8px;}
+@media(max-width:560px){ .fig-who{flex-direction:column; text-align:center;} .fig-who .fw-emoji{width:60px; height:60px; font-size:34px;} }
+
+/* 成就徽章网格 */
+.ach-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:14px;}
+.ach-card{background:#fff; border:3px solid #141414; border-radius:14px; padding:14px 16px;
+  box-shadow:4px 4px 0 #141414; font-size:1rem; line-height:1.7; color:#232323;
+  display:flex; gap:10px; align-items:flex-start;
+  background-image:radial-gradient(rgba(0,0,0,0.05) 1.4px, transparent 1.4px);
+  background-size:12px 12px;}
+.ach-card .ac-emoji{font-size:1.7rem; flex:0 0 auto; line-height:1.4;}
+
+/* 趣闻吐槽气泡 */
+.fun-bubble{position:relative; background:#FFF8E1; border:3px solid #141414;
+  border-radius:16px; padding:18px 18px 14px; font-size:1.05rem; line-height:1.85;
+  color:#5b3e00; box-shadow:4px 4px 0 #141414; margin-top:6px;}
+.fun-bubble:before{content:"💡"; position:absolute; top:-18px; left:18px; font-size:1.8rem;
+  background:#FFF8E1; border:3px solid #141414; border-radius:50%; width:34px; height:34px;
+  display:flex; align-items:center; justify-content:center; box-shadow:2px 2px 0 rgba(0,0,0,0.18);}
+
 /* 人物卡片 */
 .people-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
 .person{
@@ -297,26 +356,20 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
   
     <div class="section" id="process">
       <div class="sec-head"><div class="sec-badge">📜</div>
-        <div class="sec-title">历史进程<small>从开创到落幕</small></div></div>
-      <ul class="tl-legend"><li><span class="dot" style="background:#16A085"></span>兴起</li><li><span class="dot" style="background:#E67E22"></span>转折</li><li><span class="dot" style="background:#C9A227"></span>盛世</li></ul>
-      <div class="timeline">
-      <div class="tl-item" style="--phc:#16A085">
-        <div class="tl-year">907<span class="tl-phase" style="background:#16A085">兴起</span></div>
-        <div class="tl-title">朱温建梁</div>
-        <div class="tl-text">朱温代唐建后梁，中原进入五代（梁唐晋汉周）相继、十国并立的乱世，武人当国、朝立夕改。</div>
-        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">后梁太祖朱温。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">唐亡后藩镇竞相称帝，中原无共主。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">梁唐晋汉周五代递嬗，南方前后蜀、吴越、南唐等十国割据。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">分裂约七十三年。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">武人政治弊端尽显，统一呼声渐起。</span></div></div>
+        <div class="sec-title">历史进程<small>从开创到落幕 · 漫画版</small></div></div>
+      <ul class="tl-legend"><li><span class="dot" style="background:#2ECC71"></span>兴起</li><li><span class="dot" style="background:#FF6B35"></span>转折</li><li><span class="dot" style="background:#FFC400"></span>盛世</li></ul>
+      <div class="comic-strip">
+      <div class="comic-card" style="--phc:#2ECC71">
+        <div class="comic-head"><span class="comic-year">907</span><span class="comic-phase" style="background:#2ECC71">兴起</span><span class="comic-title">朱温建梁</span></div>
+        <div class="comic-panels"><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>主角登场👉 后梁太祖朱温。</div></div><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>唐亡后藩镇竞相称帝，中原无共主。　梁唐晋汉周五代递嬗，南方前后蜀、吴越、南唐等十国割据。</div></div><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>分裂约七十三年。　💡 影响：武人政治弊端尽显，统一呼声渐起。</div></div></div>
       </div>
-      <div class="tl-item" style="--phc:#E67E22">
-        <div class="tl-year">936<span class="tl-phase" style="background:#E67E22">转折</span></div>
-        <div class="tl-title">割让燕云</div>
-        <div class="tl-text">河东节度使石敬瑭借契丹兵夺位，割燕云十六州予辽，自称『儿皇帝』，中原自此无险可守，遗患四百年。</div>
-        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">后晋高祖石敬瑭 vs 契丹（辽）太宗。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">石敬瑭与后唐末帝争位，兵力不敌，求契丹援。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">许『以父礼事契丹』、岁输缯帛、割燕云十六州，契丹助其灭唐。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">后晋立，然燕云沦于契丹。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">北方屏障尽失，北宋两朝力图收复而不得，影响宋辽对峙格局。</span></div></div>
+      <div class="comic-card" style="--phc:#FF6B35">
+        <div class="comic-head"><span class="comic-year">936</span><span class="comic-phase" style="background:#FF6B35">转折</span><span class="comic-title">割让燕云</span></div>
+        <div class="comic-panels"><div class="comic-panel"><div class="comic-face">🔥</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>主角登场👉 后晋高祖石敬瑭 vs 契丹（辽）太宗。</div></div><div class="comic-panel"><div class="comic-face">🔥</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>石敬瑭与后唐末帝争位，兵力不敌，求契丹援。　许『以父礼事契丹』、岁输缯帛、割燕云十六州，契丹助其灭唐。</div></div><div class="comic-panel"><div class="comic-face">🔥</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>后晋立，然燕云沦于契丹。　💡 影响：北方屏障尽失，北宋两朝力图收复而不得，影响宋辽对峙格局。</div></div></div>
       </div>
-      <div class="tl-item" style="--phc:#C9A227">
-        <div class="tl-year">954<span class="tl-phase" style="background:#C9A227">盛世</span></div>
-        <div class="tl-title">周世宗改革</div>
-        <div class="tl-text">后周世宗柴荣整军经武、革弊政、开漕运、伐南唐取淮南，为结束分裂、统一天下积蓄了关键实力。</div>
-        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">后周世宗柴荣。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">五代藩镇骄横、法度废弛，世宗立志统一。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">整肃军纪（高平之战后）、均田租、修刑律、通淮南运河。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">南征北伐屡捷，版图渐一。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">柴荣早逝，其基业由赵匡胤继承，终成北宋一统。</span></div></div>
+      <div class="comic-card" style="--phc:#FFC400">
+        <div class="comic-head"><span class="comic-year">954</span><span class="comic-phase" style="background:#FFC400">盛世</span><span class="comic-title">周世宗改革</span></div>
+        <div class="comic-panels"><div class="comic-panel"><div class="comic-face">👑</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>主角登场👉 后周世宗柴荣。</div></div><div class="comic-panel"><div class="comic-face">👑</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>五代藩镇骄横、法度废弛，世宗立志统一。　整肃军纪（高平之战后）、均田租、修刑律、通淮南运河。</div></div><div class="comic-panel"><div class="comic-face">👑</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>南征北伐屡捷，版图渐一。　💡 影响：柴荣早逝，其基业由赵匡胤继承，终成北宋一统。</div></div></div>
       </div></div>
     </div>
   

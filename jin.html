@@ -175,6 +175,65 @@ a{color:inherit;text-decoration:none;}
 .td-v{flex:1; font-size:.96rem; line-height:1.75; color:#37474F;}
 @media(max-width:560px){.td-row{flex-direction:column; gap:2px;} .td-k{flex:none;}}
 
+/* ===== 漫画分镜（糖果亮色搞笑风） ===== */
+.comic-strip{display:flex; flex-direction:column; gap:18px;}
+.comic-card{
+  background-color:#fff;
+  background-image:radial-gradient(rgba(0,0,0,0.06) 1.6px, transparent 1.6px);
+  background-size:14px 14px;
+  border:4px solid #141414; border-radius:18px; padding:14px 16px;
+  box-shadow:6px 6px 0 #141414;
+  border-left:9px solid var(--phc,#141414);
+}
+.comic-head{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:6px;}
+.comic-year{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.35rem; color:#141414;}
+.comic-phase{font-size:.82rem; font-weight:800; color:#141414; padding:3px 13px; border-radius:20px; border:2.5px solid #141414; background:var(--phc,#fff);}
+.comic-title{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.6rem; color:#141414;}
+.comic-panels{display:flex; flex-direction:column; gap:12px;}
+.comic-panel{display:flex; gap:12px; align-items:flex-start;}
+.comic-face{flex:0 0 auto; width:56px; height:56px; border-radius:50%; background:var(--phc,#FFE7C2); border:3px solid #141414; display:flex; align-items:center; justify-content:center; font-size:32px; box-shadow:3px 3px 0 rgba(0,0,0,0.18);}
+.comic-bubble{flex:1; position:relative; background:#fff; border:3px solid #141414; border-radius:16px; padding:11px 14px; font-size:1.02rem; line-height:1.75; color:#232323;}
+.comic-bubble:before{content:""; position:absolute; left:-13px; top:18px; width:18px; height:18px; background:#fff; border-left:3px solid #141414; border-bottom:3px solid #141414; transform:rotate(45deg);}
+.comic-tag{display:inline-block; font-weight:800; color:#141414; margin-right:6px;}
+.comic-foot{margin-top:12px; font-size:.95rem; color:#7a4b00; background:#FFF3D6; border-radius:10px; padding:8px 12px; border:2px dashed #E0B36B;}
+@media(max-width:560px){ .comic-face{width:48px; height:48px; font-size:27px;} .comic-bubble{font-size:.96rem;} }
+
+/* ===== 人物页漫画化（与朝代页统一搞笑漫画风） ===== */
+/* 他是谁：角色漫画卡 */
+.fig-who{
+  display:flex; gap:16px; align-items:center;
+  background-color:#fff;
+  background-image:radial-gradient(rgba(0,0,0,0.06) 1.6px, transparent 1.6px);
+  background-size:14px 14px;
+  border:4px solid #141414; border-radius:18px; padding:16px 18px;
+  box-shadow:6px 6px 0 #141414;
+}
+.fig-who .fw-emoji{flex:0 0 auto; width:72px; height:72px; border-radius:50%;
+  background:color-mix(in srgb,var(--accent) 22%,#fff); border:3px solid #141414;
+  display:flex; align-items:center; justify-content:center; font-size:42px;
+  box-shadow:3px 3px 0 rgba(0,0,0,0.18);}
+.fig-who .fw-body{flex:1; min-width:0;}
+.fig-who .fw-role{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.3rem; color:#141414; line-height:1.3;}
+.fig-who .fw-desc{font-size:1.02rem; line-height:1.8; color:#232323; margin-top:8px;}
+@media(max-width:560px){ .fig-who{flex-direction:column; text-align:center;} .fig-who .fw-emoji{width:60px; height:60px; font-size:34px;} }
+
+/* 成就徽章网格 */
+.ach-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:14px;}
+.ach-card{background:#fff; border:3px solid #141414; border-radius:14px; padding:14px 16px;
+  box-shadow:4px 4px 0 #141414; font-size:1rem; line-height:1.7; color:#232323;
+  display:flex; gap:10px; align-items:flex-start;
+  background-image:radial-gradient(rgba(0,0,0,0.05) 1.4px, transparent 1.4px);
+  background-size:12px 12px;}
+.ach-card .ac-emoji{font-size:1.7rem; flex:0 0 auto; line-height:1.4;}
+
+/* 趣闻吐槽气泡 */
+.fun-bubble{position:relative; background:#FFF8E1; border:3px solid #141414;
+  border-radius:16px; padding:18px 18px 14px; font-size:1.05rem; line-height:1.85;
+  color:#5b3e00; box-shadow:4px 4px 0 #141414; margin-top:6px;}
+.fun-bubble:before{content:"💡"; position:absolute; top:-18px; left:18px; font-size:1.8rem;
+  background:#FFF8E1; border:3px solid #141414; border-radius:50%; width:34px; height:34px;
+  display:flex; align-items:center; justify-content:center; box-shadow:2px 2px 0 rgba(0,0,0,0.18);}
+
 /* 人物卡片 */
 .people-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
 .person{
@@ -297,26 +356,20 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
   
     <div class="section" id="process">
       <div class="sec-head"><div class="sec-badge">📜</div>
-        <div class="sec-title">历史进程<small>从开创到落幕</small></div></div>
-      <ul class="tl-legend"><li><span class="dot" style="background:#16A085"></span>兴起</li><li><span class="dot" style="background:#E67E22"></span>转折</li><li><span class="dot" style="background:#C0392B"></span>灭亡</li></ul>
-      <div class="timeline">
-      <div class="tl-item" style="--phc:#16A085">
-        <div class="tl-year">266<span class="tl-phase" style="background:#16A085">兴起</span></div>
-        <div class="tl-title">司马代魏</div>
-        <div class="tl-text">司马炎逼魏元帝禅让，建西晋，都洛阳；旋灭吴一统，却大封宗王，为日后内乱埋下祸根。</div>
-        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">晋武帝司马炎 vs 魏元帝曹奂。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">司马懿父子三代专魏，炎承祖业受禅。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">265受魏禅，280灭吴，太康年间暂现繁荣。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">西晋一统，然宗王权重。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">大封同姓王，直接导致随后的八王之乱。</span></div></div>
+        <div class="sec-title">历史进程<small>从开创到落幕 · 漫画版</small></div></div>
+      <ul class="tl-legend"><li><span class="dot" style="background:#2ECC71"></span>兴起</li><li><span class="dot" style="background:#FF6B35"></span>转折</li><li><span class="dot" style="background:#FF4D6D"></span>灭亡</li></ul>
+      <div class="comic-strip">
+      <div class="comic-card" style="--phc:#2ECC71">
+        <div class="comic-head"><span class="comic-year">266</span><span class="comic-phase" style="background:#2ECC71">兴起</span><span class="comic-title">司马代魏</span></div>
+        <div class="comic-panels"><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>主角登场👉 晋武帝司马炎 vs 魏元帝曹奂。</div></div><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>司马懿父子三代专魏，炎承祖业受禅。　265受魏禅，280灭吴，太康年间暂现繁荣。</div></div><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>西晋一统，然宗王权重。　💡 影响：大封同姓王，直接导致随后的八王之乱。</div></div></div>
       </div>
-      <div class="tl-item" style="--phc:#E67E22">
-        <div class="tl-year">291<span class="tl-phase" style="background:#E67E22">转折</span></div>
-        <div class="tl-title">八王之乱</div>
-        <div class="tl-text">晋武帝死后，汝南王等八位宗室为争夺中央权力相互攻杀十六年，国力耗尽、民死如麻，是西晋速亡的直接原因。</div>
-        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">汝南王亮、楚王玮、赵王伦、齐王冏等八王。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">惠帝愚暗、贾后干政，宗王手握重兵、各怀野心。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">贾后杀杨骏、废太子，诸王借『清君侧』轮流入京执政，自相屠灭。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">十六年混战，精锐丧尽、府库一空。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">中原空虚，内迁胡族乘机起事，西晋随之崩解。</span></div></div>
+      <div class="comic-card" style="--phc:#FF6B35">
+        <div class="comic-head"><span class="comic-year">291</span><span class="comic-phase" style="background:#FF6B35">转折</span><span class="comic-title">八王之乱</span></div>
+        <div class="comic-panels"><div class="comic-panel"><div class="comic-face">🔥</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>主角登场👉 汝南王亮、楚王玮、赵王伦、齐王冏等八王。</div></div><div class="comic-panel"><div class="comic-face">🔥</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>惠帝愚暗、贾后干政，宗王手握重兵、各怀野心。　贾后杀杨骏、废太子，诸王借『清君侧』轮流入京执政，自相屠灭。</div></div><div class="comic-panel"><div class="comic-face">🔥</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>十六年混战，精锐丧尽、府库一空。　💡 影响：中原空虚，内迁胡族乘机起事，西晋随之崩解。</div></div></div>
       </div>
-      <div class="tl-item" style="--phc:#C0392B">
-        <div class="tl-year">311<span class="tl-phase" style="background:#C0392B">灭亡</span></div>
-        <div class="tl-title">永嘉之乱</div>
-        <div class="tl-text">匈奴汉国攻陷洛阳、掳怀帝，长安继破，西晋亡；北方士民大规模南渡，史称『衣冠南渡』，开启东晋十六国。</div>
-        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">匈奴汉国（刘曜、石勒） vs 西晋。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">八王之乱后中枢崩溃，内迁匈奴、羯、鲜卑趁机坐大。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">311洛阳陷、怀帝被掳（永嘉之祸），316长安破、愍帝被俘，西晋亡。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">晋室南渡建康，北方陷入五胡十六国混战。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">『永嘉南渡』使中原政权与文化重心首次大规模南移，南北对峙开端。</span></div></div>
+      <div class="comic-card" style="--phc:#FF4D6D">
+        <div class="comic-head"><span class="comic-year">311</span><span class="comic-phase" style="background:#FF4D6D">灭亡</span><span class="comic-title">永嘉之乱</span></div>
+        <div class="comic-panels"><div class="comic-panel"><div class="comic-face">💀</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>主角登场👉 匈奴汉国（刘曜、石勒） vs 西晋。</div></div><div class="comic-panel"><div class="comic-face">💀</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>八王之乱后中枢崩溃，内迁匈奴、羯、鲜卑趁机坐大。　311洛阳陷、怀帝被掳（永嘉之祸），316长安破、愍帝被俘，西晋亡。</div></div><div class="comic-panel"><div class="comic-face">💀</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>晋室南渡建康，北方陷入五胡十六国混战。　💡 影响：『永嘉南渡』使中原政权与文化重心首次大规模南移，南北对峙开端。</div></div></div>
       </div></div>
     </div>
   

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>胡亥 · 赵高的故事 · 秦朝</title>
 <link rel="manifest" href="../manifest.json">
-<meta name="theme-color" content="#C0392B">
+<meta name="theme-color" content="#FF4D6D">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="上下五千年">
@@ -175,6 +175,65 @@ a{color:inherit;text-decoration:none;}
 .td-v{flex:1; font-size:.96rem; line-height:1.75; color:#37474F;}
 @media(max-width:560px){.td-row{flex-direction:column; gap:2px;} .td-k{flex:none;}}
 
+/* ===== 漫画分镜（糖果亮色搞笑风） ===== */
+.comic-strip{display:flex; flex-direction:column; gap:18px;}
+.comic-card{
+  background-color:#fff;
+  background-image:radial-gradient(rgba(0,0,0,0.06) 1.6px, transparent 1.6px);
+  background-size:14px 14px;
+  border:4px solid #141414; border-radius:18px; padding:14px 16px;
+  box-shadow:6px 6px 0 #141414;
+  border-left:9px solid var(--phc,#141414);
+}
+.comic-head{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:6px;}
+.comic-year{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.35rem; color:#141414;}
+.comic-phase{font-size:.82rem; font-weight:800; color:#141414; padding:3px 13px; border-radius:20px; border:2.5px solid #141414; background:var(--phc,#fff);}
+.comic-title{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.6rem; color:#141414;}
+.comic-panels{display:flex; flex-direction:column; gap:12px;}
+.comic-panel{display:flex; gap:12px; align-items:flex-start;}
+.comic-face{flex:0 0 auto; width:56px; height:56px; border-radius:50%; background:var(--phc,#FFE7C2); border:3px solid #141414; display:flex; align-items:center; justify-content:center; font-size:32px; box-shadow:3px 3px 0 rgba(0,0,0,0.18);}
+.comic-bubble{flex:1; position:relative; background:#fff; border:3px solid #141414; border-radius:16px; padding:11px 14px; font-size:1.02rem; line-height:1.75; color:#232323;}
+.comic-bubble:before{content:""; position:absolute; left:-13px; top:18px; width:18px; height:18px; background:#fff; border-left:3px solid #141414; border-bottom:3px solid #141414; transform:rotate(45deg);}
+.comic-tag{display:inline-block; font-weight:800; color:#141414; margin-right:6px;}
+.comic-foot{margin-top:12px; font-size:.95rem; color:#7a4b00; background:#FFF3D6; border-radius:10px; padding:8px 12px; border:2px dashed #E0B36B;}
+@media(max-width:560px){ .comic-face{width:48px; height:48px; font-size:27px;} .comic-bubble{font-size:.96rem;} }
+
+/* ===== 人物页漫画化（与朝代页统一搞笑漫画风） ===== */
+/* 他是谁：角色漫画卡 */
+.fig-who{
+  display:flex; gap:16px; align-items:center;
+  background-color:#fff;
+  background-image:radial-gradient(rgba(0,0,0,0.06) 1.6px, transparent 1.6px);
+  background-size:14px 14px;
+  border:4px solid #141414; border-radius:18px; padding:16px 18px;
+  box-shadow:6px 6px 0 #141414;
+}
+.fig-who .fw-emoji{flex:0 0 auto; width:72px; height:72px; border-radius:50%;
+  background:color-mix(in srgb,var(--accent) 22%,#fff); border:3px solid #141414;
+  display:flex; align-items:center; justify-content:center; font-size:42px;
+  box-shadow:3px 3px 0 rgba(0,0,0,0.18);}
+.fig-who .fw-body{flex:1; min-width:0;}
+.fig-who .fw-role{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.3rem; color:#141414; line-height:1.3;}
+.fig-who .fw-desc{font-size:1.02rem; line-height:1.8; color:#232323; margin-top:8px;}
+@media(max-width:560px){ .fig-who{flex-direction:column; text-align:center;} .fig-who .fw-emoji{width:60px; height:60px; font-size:34px;} }
+
+/* 成就徽章网格 */
+.ach-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:14px;}
+.ach-card{background:#fff; border:3px solid #141414; border-radius:14px; padding:14px 16px;
+  box-shadow:4px 4px 0 #141414; font-size:1rem; line-height:1.7; color:#232323;
+  display:flex; gap:10px; align-items:flex-start;
+  background-image:radial-gradient(rgba(0,0,0,0.05) 1.4px, transparent 1.4px);
+  background-size:12px 12px;}
+.ach-card .ac-emoji{font-size:1.7rem; flex:0 0 auto; line-height:1.4;}
+
+/* 趣闻吐槽气泡 */
+.fun-bubble{position:relative; background:#FFF8E1; border:3px solid #141414;
+  border-radius:16px; padding:18px 18px 14px; font-size:1.05rem; line-height:1.85;
+  color:#5b3e00; box-shadow:4px 4px 0 #141414; margin-top:6px;}
+.fun-bubble:before{content:"💡"; position:absolute; top:-18px; left:18px; font-size:1.8rem;
+  background:#FFF8E1; border:3px solid #141414; border-radius:50%; width:34px; height:34px;
+  display:flex; align-items:center; justify-content:center; box-shadow:2px 2px 0 rgba(0,0,0,0.18);}
+
 /* 人物卡片 */
 .people-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
 .person{
@@ -286,45 +345,79 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
     <div class="section" id="who">
       <div class="sec-head"><div class="sec-badge">👤</div>
         <div class="sec-title">他是谁<small>先认识一下这位大人物</small></div></div>
-      <div class="sec-body"><p>秦始皇死后，小儿子<span class="hl">胡亥</span>在宦官<span class="hl">赵高</span>和丞相李斯的帮助下当了皇帝，史称「秦二世」。胡亥昏庸，赵高专权，两人把秦朝迅速玩崩：修骊山、杀兄弟姐妹、滥施酷法，终于逼出陈胜吴广起义。赵高还「指鹿为马」测试谁听他的，最后干脆逼死胡亥、立子婴。秦朝短短十五年就亡了，这哥俩「功不可没」。</p></div>
+      <div class="fig-who">
+        <div class="fw-emoji">🔪</div>
+        <div class="fw-body">
+          <div class="fw-role">把秦朝推向灭亡的两人 · 🕰️ 公元前 210 – 前 207 年</div>
+          <div class="fw-desc">秦始皇死后，小儿子<span class="hl">胡亥</span>在宦官<span class="hl">赵高</span>和丞相李斯的帮助下当了皇帝，史称「秦二世」。胡亥昏庸，赵高专权，两人把秦朝迅速玩崩：修骊山、杀兄弟姐妹、滥施酷法，终于逼出陈胜吴广起义。赵高还「指鹿为马」测试谁听他的，最后干脆逼死胡亥、立子婴。秦朝短短十五年就亡了，这哥俩「功不可没」。</div>
+        </div>
+      </div>
     </div>
   
     <div class="section" id="story">
       <div class="sec-head"><div class="sec-badge">📖</div>
         <div class="sec-title">他的故事<small>一生中发生的大事</small></div></div>
-      <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-year">夺位</div>
-        <div class="tl-title">沙丘之变</div>
-        <div class="tl-text">秦始皇死在巡游路上，赵高扣下遗诏，改立胡亥，赐死长子扶苏，秦朝走向失控。</div>
+      <div class="comic-strip">
+      <div class="comic-card" style="--phc:var(--accent)">
+        <div class="comic-head">
+          <span class="comic-year">夺位</span>
+          <span class="comic-title">沙丘之变</span>
+        </div>
+        <div class="comic-panels">
+          <div class="comic-panel">
+            <div class="comic-face">📖</div>
+            <div class="comic-bubble"><span class="comic-tag">故事 ▶</span>秦始皇死在巡游路上，赵高扣下遗诏，改立胡亥，赐死长子扶苏，秦朝走向失控。</div>
+          </div>
+        </div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">残暴</div>
-        <div class="tl-title">二世而虐</div>
-        <div class="tl-text">胡亥听赵高的话，杀光兄弟姐妹、加重徭役，百姓活不下去。</div>
+      <div class="comic-card" style="--phc:var(--accent)">
+        <div class="comic-head">
+          <span class="comic-year">残暴</span>
+          <span class="comic-title">二世而虐</span>
+        </div>
+        <div class="comic-panels">
+          <div class="comic-panel">
+            <div class="comic-face">📖</div>
+            <div class="comic-bubble"><span class="comic-tag">故事 ▶</span>胡亥听赵高的话，杀光兄弟姐妹、加重徭役，百姓活不下去。</div>
+          </div>
+        </div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">专权</div>
-        <div class="tl-title">指鹿为马</div>
-        <div class="tl-text">赵高牵一头鹿说它是马，大臣不敢反驳。他用这招清除异己，独揽大权。</div>
+      <div class="comic-card" style="--phc:var(--accent)">
+        <div class="comic-head">
+          <span class="comic-year">专权</span>
+          <span class="comic-title">指鹿为马</span>
+        </div>
+        <div class="comic-panels">
+          <div class="comic-panel">
+            <div class="comic-face">📖</div>
+            <div class="comic-bubble"><span class="comic-tag">故事 ▶</span>赵高牵一头鹿说它是马，大臣不敢反驳。他用这招清除异己，独揽大权。</div>
+          </div>
+        </div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">灭亡</div>
-        <div class="tl-title">帝国崩塌</div>
-        <div class="tl-text">起义四起，赵高逼死胡亥，立子婴；不久刘邦入咸阳，秦亡。</div>
+      <div class="comic-card" style="--phc:var(--accent)">
+        <div class="comic-head">
+          <span class="comic-year">灭亡</span>
+          <span class="comic-title">帝国崩塌</span>
+        </div>
+        <div class="comic-panels">
+          <div class="comic-panel">
+            <div class="comic-face">📖</div>
+            <div class="comic-bubble"><span class="comic-tag">故事 ▶</span>起义四起，赵高逼死胡亥，立子婴；不久刘邦入咸阳，秦亡。</div>
+          </div>
+        </div>
       </div></div>
     </div>
   
     <div class="section" id="achv">
       <div class="sec-head"><div class="sec-badge">🏆</div>
         <div class="sec-title">他的成就<small>他给后人留下了什么</small></div></div>
-      <ul class="feat-list"><li><span class="dot">🏆</span><span>反面典型：证明<span class="hl">得天下难，守天下更难</span>，苛政与昏君会迅速耗尽民心</span></li><li><span class="dot">🏆</span><span>赵高的「指鹿为马」成为「颠倒黑白、结党营私」的千古警句</span></li><li><span class="dot">🏆</span><span>胡亥的教训：把权力交给坏人、自己享乐，国家必亡</span></li></ul>
+      <div class="ach-grid"><div class="ach-card"><span class="ac-emoji">🏆</span><span>反面典型：证明<span class="hl">得天下难，守天下更难</span>，苛政与昏君会迅速耗尽民心</span></div><div class="ach-card"><span class="ac-emoji">⭐</span><span>赵高的「指鹿为马」成为「颠倒黑白、结党营私」的千古警句</span></div><div class="ach-card"><span class="ac-emoji">👑</span><span>胡亥的教训：把权力交给坏人、自己享乐，国家必亡</span></div></div>
     </div>
   
     <div class="section" id="fun">
       <div class="sec-head"><div class="sec-badge">💡</div>
         <div class="sec-title">趣闻小故事<small>一个好玩的小插曲</small></div></div>
-      <div class="sec-body"><p>「指鹿为马」听起来像笑话，其实是恐怖片：赵高用一头鹿试出谁敢说真话。它告诉我们，<span class="hl">当所有人都不敢说真话，这个组织就危险了</span>。秦朝法律本来就很严，胡亥赵高还变本加厉，终于把百姓逼反——压迫越狠，反弹越猛。</p></div>
+      <div class="fun-bubble">「指鹿为马」听起来像笑话，其实是恐怖片：赵高用一头鹿试出谁敢说真话。它告诉我们，<span class="hl">当所有人都不敢说真话，这个组织就危险了</span>。秦朝法律本来就很严，胡亥赵高还变本加厉，终于把百姓逼反——压迫越狠，反弹越猛。</div>
     </div>
   
   

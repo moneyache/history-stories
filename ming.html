@@ -175,6 +175,65 @@ a{color:inherit;text-decoration:none;}
 .td-v{flex:1; font-size:.96rem; line-height:1.75; color:#37474F;}
 @media(max-width:560px){.td-row{flex-direction:column; gap:2px;} .td-k{flex:none;}}
 
+/* ===== 漫画分镜（糖果亮色搞笑风） ===== */
+.comic-strip{display:flex; flex-direction:column; gap:18px;}
+.comic-card{
+  background-color:#fff;
+  background-image:radial-gradient(rgba(0,0,0,0.06) 1.6px, transparent 1.6px);
+  background-size:14px 14px;
+  border:4px solid #141414; border-radius:18px; padding:14px 16px;
+  box-shadow:6px 6px 0 #141414;
+  border-left:9px solid var(--phc,#141414);
+}
+.comic-head{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:6px;}
+.comic-year{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.35rem; color:#141414;}
+.comic-phase{font-size:.82rem; font-weight:800; color:#141414; padding:3px 13px; border-radius:20px; border:2.5px solid #141414; background:var(--phc,#fff);}
+.comic-title{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.6rem; color:#141414;}
+.comic-panels{display:flex; flex-direction:column; gap:12px;}
+.comic-panel{display:flex; gap:12px; align-items:flex-start;}
+.comic-face{flex:0 0 auto; width:56px; height:56px; border-radius:50%; background:var(--phc,#FFE7C2); border:3px solid #141414; display:flex; align-items:center; justify-content:center; font-size:32px; box-shadow:3px 3px 0 rgba(0,0,0,0.18);}
+.comic-bubble{flex:1; position:relative; background:#fff; border:3px solid #141414; border-radius:16px; padding:11px 14px; font-size:1.02rem; line-height:1.75; color:#232323;}
+.comic-bubble:before{content:""; position:absolute; left:-13px; top:18px; width:18px; height:18px; background:#fff; border-left:3px solid #141414; border-bottom:3px solid #141414; transform:rotate(45deg);}
+.comic-tag{display:inline-block; font-weight:800; color:#141414; margin-right:6px;}
+.comic-foot{margin-top:12px; font-size:.95rem; color:#7a4b00; background:#FFF3D6; border-radius:10px; padding:8px 12px; border:2px dashed #E0B36B;}
+@media(max-width:560px){ .comic-face{width:48px; height:48px; font-size:27px;} .comic-bubble{font-size:.96rem;} }
+
+/* ===== 人物页漫画化（与朝代页统一搞笑漫画风） ===== */
+/* 他是谁：角色漫画卡 */
+.fig-who{
+  display:flex; gap:16px; align-items:center;
+  background-color:#fff;
+  background-image:radial-gradient(rgba(0,0,0,0.06) 1.6px, transparent 1.6px);
+  background-size:14px 14px;
+  border:4px solid #141414; border-radius:18px; padding:16px 18px;
+  box-shadow:6px 6px 0 #141414;
+}
+.fig-who .fw-emoji{flex:0 0 auto; width:72px; height:72px; border-radius:50%;
+  background:color-mix(in srgb,var(--accent) 22%,#fff); border:3px solid #141414;
+  display:flex; align-items:center; justify-content:center; font-size:42px;
+  box-shadow:3px 3px 0 rgba(0,0,0,0.18);}
+.fig-who .fw-body{flex:1; min-width:0;}
+.fig-who .fw-role{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.3rem; color:#141414; line-height:1.3;}
+.fig-who .fw-desc{font-size:1.02rem; line-height:1.8; color:#232323; margin-top:8px;}
+@media(max-width:560px){ .fig-who{flex-direction:column; text-align:center;} .fig-who .fw-emoji{width:60px; height:60px; font-size:34px;} }
+
+/* 成就徽章网格 */
+.ach-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:14px;}
+.ach-card{background:#fff; border:3px solid #141414; border-radius:14px; padding:14px 16px;
+  box-shadow:4px 4px 0 #141414; font-size:1rem; line-height:1.7; color:#232323;
+  display:flex; gap:10px; align-items:flex-start;
+  background-image:radial-gradient(rgba(0,0,0,0.05) 1.4px, transparent 1.4px);
+  background-size:12px 12px;}
+.ach-card .ac-emoji{font-size:1.7rem; flex:0 0 auto; line-height:1.4;}
+
+/* 趣闻吐槽气泡 */
+.fun-bubble{position:relative; background:#FFF8E1; border:3px solid #141414;
+  border-radius:16px; padding:18px 18px 14px; font-size:1.05rem; line-height:1.85;
+  color:#5b3e00; box-shadow:4px 4px 0 #141414; margin-top:6px;}
+.fun-bubble:before{content:"💡"; position:absolute; top:-18px; left:18px; font-size:1.8rem;
+  background:#FFF8E1; border:3px solid #141414; border-radius:50%; width:34px; height:34px;
+  display:flex; align-items:center; justify-content:center; box-shadow:2px 2px 0 rgba(0,0,0,0.18);}
+
 /* 人物卡片 */
 .people-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
 .person{
@@ -297,44 +356,32 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
   
     <div class="section" id="process">
       <div class="sec-head"><div class="sec-badge">📜</div>
-        <div class="sec-title">历史进程<small>从开创到落幕</small></div></div>
-      <ul class="tl-legend"><li><span class="dot" style="background:#16A085"></span>兴起</li><li><span class="dot" style="background:#C9A227"></span>盛世</li><li><span class="dot" style="background:#E67E22"></span>转折</li><li><span class="dot" style="background:#8E44AD"></span>中衰</li><li><span class="dot" style="background:#C0392B"></span>灭亡</li></ul>
-      <div class="timeline">
-      <div class="tl-item" style="--phc:#16A085">
-        <div class="tl-year">1368<span class="tl-phase" style="background:#16A085">兴起</span></div>
-        <div class="tl-title">洪武立国</div>
-        <div class="tl-text">朱元璋驱元建明，都南京，废丞相、设锦衣卫、屯田移民，重建强力中央集权，也奠定了明朝高度专制的底色。</div>
-        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">明太祖朱元璋。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">出身布衣、亲历元末乱象，深疑权臣与豪强。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">北伐灭元、胡惟庸案废丞相、蓝玉案诛功臣、编户齐民。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">明立，专制皇权达新高。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">废丞相使皇权独揽，特务政治开先河。</span></div></div>
+        <div class="sec-title">历史进程<small>从开创到落幕 · 漫画版</small></div></div>
+      <ul class="tl-legend"><li><span class="dot" style="background:#2ECC71"></span>兴起</li><li><span class="dot" style="background:#FFC400"></span>盛世</li><li><span class="dot" style="background:#FF6B35"></span>转折</li><li><span class="dot" style="background:#4D7CFE"></span>中衰</li><li><span class="dot" style="background:#FF4D6D"></span>灭亡</li></ul>
+      <div class="comic-strip">
+      <div class="comic-card" style="--phc:#2ECC71">
+        <div class="comic-head"><span class="comic-year">1368</span><span class="comic-phase" style="background:#2ECC71">兴起</span><span class="comic-title">洪武立国</span></div>
+        <div class="comic-panels"><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>主角登场👉 明太祖朱元璋。</div></div><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>出身布衣、亲历元末乱象，深疑权臣与豪强。　北伐灭元、胡惟庸案废丞相、蓝玉案诛功臣、编户齐民。</div></div><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>明立，专制皇权达新高。　💡 影响：废丞相使皇权独揽，特务政治开先河。</div></div></div>
       </div>
-      <div class="tl-item" style="--phc:#16A085">
-        <div class="tl-year">1402<span class="tl-phase" style="background:#16A085">兴起</span></div>
-        <div class="tl-title">靖难之役</div>
-        <div class="tl-text">燕王朱棣以『清君侧』起兵，三年攻入南京、夺侄建文之位，即永乐帝，迁都北京、下西洋、修大典，国势大张。</div>
-        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">明成祖朱棣 vs 建文帝朱允炆、齐泰、黄子澄。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">建文削藩逼急，燕王借『靖难』之名起兵。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">1399北平起兵，1402渡江入京，宫中火起、建文失踪；棣即位。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">永乐朝迁都北京、郑和下西洋、纂《永乐大典》。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">『天子守国门』定都北京，海上丝路达于极盛。</span></div></div>
+      <div class="comic-card" style="--phc:#2ECC71">
+        <div class="comic-head"><span class="comic-year">1402</span><span class="comic-phase" style="background:#2ECC71">兴起</span><span class="comic-title">靖难之役</span></div>
+        <div class="comic-panels"><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>主角登场👉 明成祖朱棣 vs 建文帝朱允炆、齐泰、黄子澄。</div></div><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>建文削藩逼急，燕王借『靖难』之名起兵。　1399北平起兵，1402渡江入京，宫中火起、建文失踪；棣即位。</div></div><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>永乐朝迁都北京、郑和下西洋、纂《永乐大典》。　💡 影响：『天子守国门』定都北京，海上丝路达于极盛。</div></div></div>
       </div>
-      <div class="tl-item" style="--phc:#C9A227">
-        <div class="tl-year">1405<span class="tl-phase" style="background:#C9A227">盛世</span></div>
-        <div class="tl-title">郑和下西洋</div>
-        <div class="tl-text">郑和七下西洋，遍历三十余国、远抵非洲东岸，是当时世界上规模最大的官方远洋航行，宣扬国威、互通贸易。</div>
-        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">郑和（三宝太监）奉永乐、宣德之命。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">宣扬国威、寻建文踪迹（一说）、通海外诸国。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">1405—1433七次出海，宝船数百、将士二万七千，通达西亚非洲。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">朝贡贸易鼎盛，航路尽通。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">比哥伦布早八十余年；后因『厚往薄来』耗资巨，宣德后罢航。</span></div></div>
+      <div class="comic-card" style="--phc:#FFC400">
+        <div class="comic-head"><span class="comic-year">1405</span><span class="comic-phase" style="background:#FFC400">盛世</span><span class="comic-title">郑和下西洋</span></div>
+        <div class="comic-panels"><div class="comic-panel"><div class="comic-face">👑</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>主角登场👉 郑和（三宝太监）奉永乐、宣德之命。</div></div><div class="comic-panel"><div class="comic-face">👑</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>宣扬国威、寻建文踪迹（一说）、通海外诸国。　1405—1433七次出海，宝船数百、将士二万七千，通达西亚非洲。</div></div><div class="comic-panel"><div class="comic-face">👑</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>朝贡贸易鼎盛，航路尽通。　💡 影响：比哥伦布早八十余年；后因『厚往薄来』耗资巨，宣德后罢航。</div></div></div>
       </div>
-      <div class="tl-item" style="--phc:#E67E22">
-        <div class="tl-year">1449<span class="tl-phase" style="background:#E67E22">转折</span></div>
-        <div class="tl-title">土木堡之变</div>
-        <div class="tl-text">英宗亲征瓦剌，土木堡兵败被俘，精锐丧尽、京师震动，于谦率众保卫北京，明朝由攻转守。</div>
-        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">明英宗朱祁镇、宦官王振 vs 瓦剌也先。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">王振怂恿英宗亲征邀功，仓促出师。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">50万军溃于土木堡，英宗被俘；于谦立景泰帝、击退围城之敌。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">英宗归后夺门复辟，于谦冤死。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">明由主动经略北边转为防御，国力转折。</span></div></div>
+      <div class="comic-card" style="--phc:#FF6B35">
+        <div class="comic-head"><span class="comic-year">1449</span><span class="comic-phase" style="background:#FF6B35">转折</span><span class="comic-title">土木堡之变</span></div>
+        <div class="comic-panels"><div class="comic-panel"><div class="comic-face">🔥</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>主角登场👉 明英宗朱祁镇、宦官王振 vs 瓦剌也先。</div></div><div class="comic-panel"><div class="comic-face">🔥</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>王振怂恿英宗亲征邀功，仓促出师。　50万军溃于土木堡，英宗被俘；于谦立景泰帝、击退围城之敌。</div></div><div class="comic-panel"><div class="comic-face">🔥</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>英宗归后夺门复辟，于谦冤死。　💡 影响：明由主动经略北边转为防御，国力转折。</div></div></div>
       </div>
-      <div class="tl-item" style="--phc:#8E44AD">
-        <div class="tl-year">1550<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
-        <div class="tl-title">抗倭平倭</div>
-        <div class="tl-text">东南倭寇猖獗，戚继光练『戚家军』、俞大猷协力，台州大捷九战九捷，海患终平，军队改革成效卓著。</div>
-        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">戚继光、俞大猷 vs 倭寇（中日海盗）。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">明海防废弛、沿海奸民勾倭，劫掠肆虐。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">戚继光创鸳鸯阵、严训浙兵，台州、福建连捷；俞大猷协剿。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">东南倭患基本肃清。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">军事改革（阵法、兵制）典范；也折射明中后期海防危机。</span></div></div>
+      <div class="comic-card" style="--phc:#4D7CFE">
+        <div class="comic-head"><span class="comic-year">1550</span><span class="comic-phase" style="background:#4D7CFE">中衰</span><span class="comic-title">抗倭平倭</span></div>
+        <div class="comic-panels"><div class="comic-panel"><div class="comic-face">📉</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>主角登场👉 戚继光、俞大猷 vs 倭寇（中日海盗）。</div></div><div class="comic-panel"><div class="comic-face">📉</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>明海防废弛、沿海奸民勾倭，劫掠肆虐。　戚继光创鸳鸯阵、严训浙兵，台州、福建连捷；俞大猷协剿。</div></div><div class="comic-panel"><div class="comic-face">📉</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>东南倭患基本肃清。　💡 影响：军事改革（阵法、兵制）典范；也折射明中后期海防危机。</div></div></div>
       </div>
-      <div class="tl-item" style="--phc:#C0392B">
-        <div class="tl-year">1644<span class="tl-phase" style="background:#C0392B">灭亡</span></div>
-        <div class="tl-title">明末鼎革</div>
-        <div class="tl-text">陕北民变汇成李自成大顺军，破北京、崇祯自缢煤山；吴三桂引清军入关，明亡清兴，中原易主。</div>
-        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">李自成（大顺） vs 崇祯帝；吴三桂引清军。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">晚明加饷『辽饷』『剿饷』『练饷』民不聊生，灾荒遍地。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">1644李自成破京、崇祯自缢；吴三桂降清、山海关击败顺军，清军入主。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">南明苟延，全国渐归清。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">汉人王朝再易手异族，清承明制开启新局。</span></div></div>
+      <div class="comic-card" style="--phc:#FF4D6D">
+        <div class="comic-head"><span class="comic-year">1644</span><span class="comic-phase" style="background:#FF4D6D">灭亡</span><span class="comic-title">明末鼎革</span></div>
+        <div class="comic-panels"><div class="comic-panel"><div class="comic-face">💀</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>主角登场👉 李自成（大顺） vs 崇祯帝；吴三桂引清军。</div></div><div class="comic-panel"><div class="comic-face">💀</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>晚明加饷『辽饷』『剿饷』『练饷』民不聊生，灾荒遍地。　1644李自成破京、崇祯自缢；吴三桂降清、山海关击败顺军，清军入主。</div></div><div class="comic-panel"><div class="comic-face">💀</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>南明苟延，全国渐归清。　💡 影响：汉人王朝再易手异族，清承明制开启新局。</div></div></div>
       </div></div>
     </div>
   

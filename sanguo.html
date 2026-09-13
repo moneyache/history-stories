@@ -175,6 +175,65 @@ a{color:inherit;text-decoration:none;}
 .td-v{flex:1; font-size:.96rem; line-height:1.75; color:#37474F;}
 @media(max-width:560px){.td-row{flex-direction:column; gap:2px;} .td-k{flex:none;}}
 
+/* ===== 漫画分镜（糖果亮色搞笑风） ===== */
+.comic-strip{display:flex; flex-direction:column; gap:18px;}
+.comic-card{
+  background-color:#fff;
+  background-image:radial-gradient(rgba(0,0,0,0.06) 1.6px, transparent 1.6px);
+  background-size:14px 14px;
+  border:4px solid #141414; border-radius:18px; padding:14px 16px;
+  box-shadow:6px 6px 0 #141414;
+  border-left:9px solid var(--phc,#141414);
+}
+.comic-head{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:6px;}
+.comic-year{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.35rem; color:#141414;}
+.comic-phase{font-size:.82rem; font-weight:800; color:#141414; padding:3px 13px; border-radius:20px; border:2.5px solid #141414; background:var(--phc,#fff);}
+.comic-title{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.6rem; color:#141414;}
+.comic-panels{display:flex; flex-direction:column; gap:12px;}
+.comic-panel{display:flex; gap:12px; align-items:flex-start;}
+.comic-face{flex:0 0 auto; width:56px; height:56px; border-radius:50%; background:var(--phc,#FFE7C2); border:3px solid #141414; display:flex; align-items:center; justify-content:center; font-size:32px; box-shadow:3px 3px 0 rgba(0,0,0,0.18);}
+.comic-bubble{flex:1; position:relative; background:#fff; border:3px solid #141414; border-radius:16px; padding:11px 14px; font-size:1.02rem; line-height:1.75; color:#232323;}
+.comic-bubble:before{content:""; position:absolute; left:-13px; top:18px; width:18px; height:18px; background:#fff; border-left:3px solid #141414; border-bottom:3px solid #141414; transform:rotate(45deg);}
+.comic-tag{display:inline-block; font-weight:800; color:#141414; margin-right:6px;}
+.comic-foot{margin-top:12px; font-size:.95rem; color:#7a4b00; background:#FFF3D6; border-radius:10px; padding:8px 12px; border:2px dashed #E0B36B;}
+@media(max-width:560px){ .comic-face{width:48px; height:48px; font-size:27px;} .comic-bubble{font-size:.96rem;} }
+
+/* ===== 人物页漫画化（与朝代页统一搞笑漫画风） ===== */
+/* 他是谁：角色漫画卡 */
+.fig-who{
+  display:flex; gap:16px; align-items:center;
+  background-color:#fff;
+  background-image:radial-gradient(rgba(0,0,0,0.06) 1.6px, transparent 1.6px);
+  background-size:14px 14px;
+  border:4px solid #141414; border-radius:18px; padding:16px 18px;
+  box-shadow:6px 6px 0 #141414;
+}
+.fig-who .fw-emoji{flex:0 0 auto; width:72px; height:72px; border-radius:50%;
+  background:color-mix(in srgb,var(--accent) 22%,#fff); border:3px solid #141414;
+  display:flex; align-items:center; justify-content:center; font-size:42px;
+  box-shadow:3px 3px 0 rgba(0,0,0,0.18);}
+.fig-who .fw-body{flex:1; min-width:0;}
+.fig-who .fw-role{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.3rem; color:#141414; line-height:1.3;}
+.fig-who .fw-desc{font-size:1.02rem; line-height:1.8; color:#232323; margin-top:8px;}
+@media(max-width:560px){ .fig-who{flex-direction:column; text-align:center;} .fig-who .fw-emoji{width:60px; height:60px; font-size:34px;} }
+
+/* 成就徽章网格 */
+.ach-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:14px;}
+.ach-card{background:#fff; border:3px solid #141414; border-radius:14px; padding:14px 16px;
+  box-shadow:4px 4px 0 #141414; font-size:1rem; line-height:1.7; color:#232323;
+  display:flex; gap:10px; align-items:flex-start;
+  background-image:radial-gradient(rgba(0,0,0,0.05) 1.4px, transparent 1.4px);
+  background-size:12px 12px;}
+.ach-card .ac-emoji{font-size:1.7rem; flex:0 0 auto; line-height:1.4;}
+
+/* 趣闻吐槽气泡 */
+.fun-bubble{position:relative; background:#FFF8E1; border:3px solid #141414;
+  border-radius:16px; padding:18px 18px 14px; font-size:1.05rem; line-height:1.85;
+  color:#5b3e00; box-shadow:4px 4px 0 #141414; margin-top:6px;}
+.fun-bubble:before{content:"💡"; position:absolute; top:-18px; left:18px; font-size:1.8rem;
+  background:#FFF8E1; border:3px solid #141414; border-radius:50%; width:34px; height:34px;
+  display:flex; align-items:center; justify-content:center; box-shadow:2px 2px 0 rgba(0,0,0,0.18);}
+
 /* 人物卡片 */
 .people-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
 .person{
@@ -297,32 +356,24 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
   
     <div class="section" id="process">
       <div class="sec-head"><div class="sec-badge">📜</div>
-        <div class="sec-title">历史进程<small>从开创到落幕</small></div></div>
-      <ul class="tl-legend"><li><span class="dot" style="background:#E67E22"></span>转折</li><li><span class="dot" style="background:#C9A227"></span>盛世</li><li><span class="dot" style="background:#C0392B"></span>灭亡</li></ul>
-      <div class="timeline">
-      <div class="tl-item" style="--phc:#E67E22">
-        <div class="tl-year">200<span class="tl-phase" style="background:#E67E22">转折</span></div>
-        <div class="tl-title">官渡之战</div>
-        <div class="tl-text">曹操以少胜多击溃袁绍，统一北方，奠定曹魏基业，是三国形成前最关键的一仗。</div>
-        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">曹操 vs 袁绍。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">袁绍据河北四州兵多将广，欲南并曹操；曹弱而据兖豫。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">袁绍轻敌、内部不和；曹操奇袭乌巢焚其粮，袁军溃散。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">袁绍败死，曹操尽有河北。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">北方归曹，天下三分之势初定。</span></div></div>
+        <div class="sec-title">历史进程<small>从开创到落幕 · 漫画版</small></div></div>
+      <ul class="tl-legend"><li><span class="dot" style="background:#FF6B35"></span>转折</li><li><span class="dot" style="background:#FFC400"></span>盛世</li><li><span class="dot" style="background:#FF4D6D"></span>灭亡</li></ul>
+      <div class="comic-strip">
+      <div class="comic-card" style="--phc:#FF6B35">
+        <div class="comic-head"><span class="comic-year">200</span><span class="comic-phase" style="background:#FF6B35">转折</span><span class="comic-title">官渡之战</span></div>
+        <div class="comic-panels"><div class="comic-panel"><div class="comic-face">🔥</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>主角登场👉 曹操 vs 袁绍。</div></div><div class="comic-panel"><div class="comic-face">🔥</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>袁绍据河北四州兵多将广，欲南并曹操；曹弱而据兖豫。　袁绍轻敌、内部不和；曹操奇袭乌巢焚其粮，袁军溃散。</div></div><div class="comic-panel"><div class="comic-face">🔥</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>袁绍败死，曹操尽有河北。　💡 影响：北方归曹，天下三分之势初定。</div></div></div>
       </div>
-      <div class="tl-item" style="--phc:#E67E22">
-        <div class="tl-year">208<span class="tl-phase" style="background:#E67E22">转折</span></div>
-        <div class="tl-title">赤壁之战</div>
-        <div class="tl-text">孙刘联军以火攻大破曹操南下大军，曹操北还，三分天下之势由此凝固。</div>
-        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">孙权（周瑜）、刘备（诸葛亮、关羽、张飞） vs 曹操。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">曹操统一北方后顺江而下取荆州，欲一举平江南。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">曹军疫作、不习水战；黄盖诈降、火船乘风，须臾樯橹灰飞烟灭。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">曹操退守北方，孙权保江东、刘备取荆益。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">魏蜀吴三足鼎立正式形成，赤壁成以少胜多经典战例。</span></div></div>
+      <div class="comic-card" style="--phc:#FF6B35">
+        <div class="comic-head"><span class="comic-year">208</span><span class="comic-phase" style="background:#FF6B35">转折</span><span class="comic-title">赤壁之战</span></div>
+        <div class="comic-panels"><div class="comic-panel"><div class="comic-face">🔥</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>主角登场👉 孙权（周瑜）、刘备（诸葛亮、关羽、张飞） vs 曹操。</div></div><div class="comic-panel"><div class="comic-face">🔥</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>曹操统一北方后顺江而下取荆州，欲一举平江南。　曹军疫作、不习水战；黄盖诈降、火船乘风，须臾樯橹灰飞烟灭。</div></div><div class="comic-panel"><div class="comic-face">🔥</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>曹操退守北方，孙权保江东、刘备取荆益。　💡 影响：魏蜀吴三足鼎立正式形成，赤壁成以少胜多经典战例。</div></div></div>
       </div>
-      <div class="tl-item" style="--phc:#C9A227">
-        <div class="tl-year">221<span class="tl-phase" style="background:#C9A227">盛世</span></div>
-        <div class="tl-title">三分天下</div>
-        <div class="tl-text">曹丕称帝（魏）、刘备称帝（汉/蜀）、孙权受封（吴），三国鼎立格局完全确立，英雄辈出的时代达到高潮。</div>
-        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">曹丕、刘备、孙权。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">汉室已亡，三方各据中原、巴蜀、江东，势均力敌。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">魏最强、吴据长江、蜀占险塞，互相攻伐又时盟时叛。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">三分维持约六十年。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">三国归晋前中国最富戏剧性的分裂期，故事流传至今。</span></div></div>
+      <div class="comic-card" style="--phc:#FFC400">
+        <div class="comic-head"><span class="comic-year">221</span><span class="comic-phase" style="background:#FFC400">盛世</span><span class="comic-title">三分天下</span></div>
+        <div class="comic-panels"><div class="comic-panel"><div class="comic-face">👑</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>主角登场👉 曹丕、刘备、孙权。</div></div><div class="comic-panel"><div class="comic-face">👑</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>汉室已亡，三方各据中原、巴蜀、江东，势均力敌。　魏最强、吴据长江、蜀占险塞，互相攻伐又时盟时叛。</div></div><div class="comic-panel"><div class="comic-face">👑</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>三分维持约六十年。　💡 影响：三国归晋前中国最富戏剧性的分裂期，故事流传至今。</div></div></div>
       </div>
-      <div class="tl-item" style="--phc:#C0392B">
-        <div class="tl-year">263<span class="tl-phase" style="background:#C0392B">灭亡</span></div>
-        <div class="tl-title">三家归晋</div>
-        <div class="tl-text">魏灭蜀，司马氏篡魏建晋，继而灭吴，三国归一，短暂的统一来临，却埋下八王之乱的隐患。</div>
-        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">司马昭（魏相）、司马炎 vs 蜀后主、吴主孙皓。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">司马氏专魏政，先取弱蜀，后顺流灭吴。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">263灭蜀，265司马炎代魏建晋，280王濬楼船下益州灭吴。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">全国复归一统，晋朝立。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">统一短暂；晋分封宗王，旋即引爆内乱。</span></div></div>
+      <div class="comic-card" style="--phc:#FF4D6D">
+        <div class="comic-head"><span class="comic-year">263</span><span class="comic-phase" style="background:#FF4D6D">灭亡</span><span class="comic-title">三家归晋</span></div>
+        <div class="comic-panels"><div class="comic-panel"><div class="comic-face">💀</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>主角登场👉 司马昭（魏相）、司马炎 vs 蜀后主、吴主孙皓。</div></div><div class="comic-panel"><div class="comic-face">💀</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>司马氏专魏政，先取弱蜀，后顺流灭吴。　263灭蜀，265司马炎代魏建晋，280王濬楼船下益州灭吴。</div></div><div class="comic-panel"><div class="comic-face">💀</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>全国复归一统，晋朝立。　💡 影响：统一短暂；晋分封宗王，旋即引爆内乱。</div></div></div>
       </div></div>
     </div>
   

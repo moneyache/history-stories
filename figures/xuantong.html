@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>宣统（溥仪）的故事 · 清朝</title>
 <link rel="manifest" href="../manifest.json">
-<meta name="theme-color" content="#C0392B">
+<meta name="theme-color" content="#FF4D6D">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="上下五千年">
@@ -175,6 +175,65 @@ a{color:inherit;text-decoration:none;}
 .td-v{flex:1; font-size:.96rem; line-height:1.75; color:#37474F;}
 @media(max-width:560px){.td-row{flex-direction:column; gap:2px;} .td-k{flex:none;}}
 
+/* ===== 漫画分镜（糖果亮色搞笑风） ===== */
+.comic-strip{display:flex; flex-direction:column; gap:18px;}
+.comic-card{
+  background-color:#fff;
+  background-image:radial-gradient(rgba(0,0,0,0.06) 1.6px, transparent 1.6px);
+  background-size:14px 14px;
+  border:4px solid #141414; border-radius:18px; padding:14px 16px;
+  box-shadow:6px 6px 0 #141414;
+  border-left:9px solid var(--phc,#141414);
+}
+.comic-head{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:6px;}
+.comic-year{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.35rem; color:#141414;}
+.comic-phase{font-size:.82rem; font-weight:800; color:#141414; padding:3px 13px; border-radius:20px; border:2.5px solid #141414; background:var(--phc,#fff);}
+.comic-title{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.6rem; color:#141414;}
+.comic-panels{display:flex; flex-direction:column; gap:12px;}
+.comic-panel{display:flex; gap:12px; align-items:flex-start;}
+.comic-face{flex:0 0 auto; width:56px; height:56px; border-radius:50%; background:var(--phc,#FFE7C2); border:3px solid #141414; display:flex; align-items:center; justify-content:center; font-size:32px; box-shadow:3px 3px 0 rgba(0,0,0,0.18);}
+.comic-bubble{flex:1; position:relative; background:#fff; border:3px solid #141414; border-radius:16px; padding:11px 14px; font-size:1.02rem; line-height:1.75; color:#232323;}
+.comic-bubble:before{content:""; position:absolute; left:-13px; top:18px; width:18px; height:18px; background:#fff; border-left:3px solid #141414; border-bottom:3px solid #141414; transform:rotate(45deg);}
+.comic-tag{display:inline-block; font-weight:800; color:#141414; margin-right:6px;}
+.comic-foot{margin-top:12px; font-size:.95rem; color:#7a4b00; background:#FFF3D6; border-radius:10px; padding:8px 12px; border:2px dashed #E0B36B;}
+@media(max-width:560px){ .comic-face{width:48px; height:48px; font-size:27px;} .comic-bubble{font-size:.96rem;} }
+
+/* ===== 人物页漫画化（与朝代页统一搞笑漫画风） ===== */
+/* 他是谁：角色漫画卡 */
+.fig-who{
+  display:flex; gap:16px; align-items:center;
+  background-color:#fff;
+  background-image:radial-gradient(rgba(0,0,0,0.06) 1.6px, transparent 1.6px);
+  background-size:14px 14px;
+  border:4px solid #141414; border-radius:18px; padding:16px 18px;
+  box-shadow:6px 6px 0 #141414;
+}
+.fig-who .fw-emoji{flex:0 0 auto; width:72px; height:72px; border-radius:50%;
+  background:color-mix(in srgb,var(--accent) 22%,#fff); border:3px solid #141414;
+  display:flex; align-items:center; justify-content:center; font-size:42px;
+  box-shadow:3px 3px 0 rgba(0,0,0,0.18);}
+.fig-who .fw-body{flex:1; min-width:0;}
+.fig-who .fw-role{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.3rem; color:#141414; line-height:1.3;}
+.fig-who .fw-desc{font-size:1.02rem; line-height:1.8; color:#232323; margin-top:8px;}
+@media(max-width:560px){ .fig-who{flex-direction:column; text-align:center;} .fig-who .fw-emoji{width:60px; height:60px; font-size:34px;} }
+
+/* 成就徽章网格 */
+.ach-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:14px;}
+.ach-card{background:#fff; border:3px solid #141414; border-radius:14px; padding:14px 16px;
+  box-shadow:4px 4px 0 #141414; font-size:1rem; line-height:1.7; color:#232323;
+  display:flex; gap:10px; align-items:flex-start;
+  background-image:radial-gradient(rgba(0,0,0,0.05) 1.4px, transparent 1.4px);
+  background-size:12px 12px;}
+.ach-card .ac-emoji{font-size:1.7rem; flex:0 0 auto; line-height:1.4;}
+
+/* 趣闻吐槽气泡 */
+.fun-bubble{position:relative; background:#FFF8E1; border:3px solid #141414;
+  border-radius:16px; padding:18px 18px 14px; font-size:1.05rem; line-height:1.85;
+  color:#5b3e00; box-shadow:4px 4px 0 #141414; margin-top:6px;}
+.fun-bubble:before{content:"💡"; position:absolute; top:-18px; left:18px; font-size:1.8rem;
+  background:#FFF8E1; border:3px solid #141414; border-radius:50%; width:34px; height:34px;
+  display:flex; align-items:center; justify-content:center; box-shadow:2px 2px 0 rgba(0,0,0,0.18);}
+
 /* 人物卡片 */
 .people-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
 .person{
@@ -286,45 +345,79 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
     <div class="section" id="who">
       <div class="sec-head"><div class="sec-badge">👤</div>
         <div class="sec-title">他是谁<small>先认识一下这位大人物</small></div></div>
-      <div class="sec-body"><p>宣统帝溥仪是清朝也是中国最后一位皇帝。他3岁登基，6岁那年（1912年）辛亥革命后被迫退位，清朝灭亡，两千多年的帝制就此结束。后来他还被赶出紫禁城、甚至短暂当过伪满洲国的傀儡「皇帝」，一生大起大落，是帝制时代的「句号」。</p></div>
+      <div class="fig-who">
+        <div class="fw-emoji">👶</div>
+        <div class="fw-body">
+          <div class="fw-role">清朝亡国之君 · 🕰️ 公元 1906 – 1967 年</div>
+          <div class="fw-desc">宣统帝溥仪是清朝也是中国最后一位皇帝。他3岁登基，6岁那年（1912年）辛亥革命后被迫退位，清朝灭亡，两千多年的帝制就此结束。后来他还被赶出紫禁城、甚至短暂当过伪满洲国的傀儡「皇帝」，一生大起大落，是帝制时代的「句号」。</div>
+        </div>
+      </div>
     </div>
   
     <div class="section" id="story">
       <div class="sec-head"><div class="sec-badge">📖</div>
         <div class="sec-title">他的故事<small>一生中发生的大事</small></div></div>
-      <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-year">登基</div>
-        <div class="tl-title">三岁为帝</div>
-        <div class="tl-text">1908年慈禧选定3岁溥仪继位，由其父摄政。</div>
+      <div class="comic-strip">
+      <div class="comic-card" style="--phc:var(--accent)">
+        <div class="comic-head">
+          <span class="comic-year">登基</span>
+          <span class="comic-title">三岁为帝</span>
+        </div>
+        <div class="comic-panels">
+          <div class="comic-panel">
+            <div class="comic-face">📖</div>
+            <div class="comic-bubble"><span class="comic-tag">故事 ▶</span>1908年慈禧选定3岁溥仪继位，由其父摄政。</div>
+          </div>
+        </div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">退位</div>
-        <div class="tl-title">民国肇建</div>
-        <div class="tl-text">1912年辛亥革命后宣统退位，清亡，帝制结束。</div>
+      <div class="comic-card" style="--phc:var(--accent)">
+        <div class="comic-head">
+          <span class="comic-year">退位</span>
+          <span class="comic-title">民国肇建</span>
+        </div>
+        <div class="comic-panels">
+          <div class="comic-panel">
+            <div class="comic-face">📖</div>
+            <div class="comic-bubble"><span class="comic-tag">故事 ▶</span>1912年辛亥革命后宣统退位，清亡，帝制结束。</div>
+          </div>
+        </div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">离宫</div>
-        <div class="tl-title">被逐出宫</div>
-        <div class="tl-text">1924年被冯玉祥赶出紫禁城，流浪天津。</div>
+      <div class="comic-card" style="--phc:var(--accent)">
+        <div class="comic-head">
+          <span class="comic-year">离宫</span>
+          <span class="comic-title">被逐出宫</span>
+        </div>
+        <div class="comic-panels">
+          <div class="comic-panel">
+            <div class="comic-face">📖</div>
+            <div class="comic-bubble"><span class="comic-tag">故事 ▶</span>1924年被冯玉祥赶出紫禁城，流浪天津。</div>
+          </div>
+        </div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">落幕</div>
-        <div class="tl-title">末代句号</div>
-        <div class="tl-text">后任伪满傀儡，战后成战犯，终获特赦，平凡终老。</div>
+      <div class="comic-card" style="--phc:var(--accent)">
+        <div class="comic-head">
+          <span class="comic-year">落幕</span>
+          <span class="comic-title">末代句号</span>
+        </div>
+        <div class="comic-panels">
+          <div class="comic-panel">
+            <div class="comic-face">📖</div>
+            <div class="comic-bubble"><span class="comic-tag">故事 ▶</span>后任伪满傀儡，战后成战犯，终获特赦，平凡终老。</div>
+          </div>
+        </div>
       </div></div>
     </div>
   
     <div class="section" id="achv">
       <div class="sec-head"><div class="sec-badge">🏆</div>
         <div class="sec-title">他的成就<small>他给后人留下了什么</small></div></div>
-      <ul class="feat-list"><li><span class="dot">🏆</span><span>中国历史上最后一位皇帝，亲手为两千年帝制画上句号</span></li><li><span class="dot">🏆</span><span>他的一生折射近代中国最剧烈的动荡与转折</span></li><li><span class="dot">🏆</span><span>提醒：时代变了，<span class="hl">再尊贵的名号也敌不过历史洪流</span></span></li></ul>
+      <div class="ach-grid"><div class="ach-card"><span class="ac-emoji">🏆</span><span>中国历史上最后一位皇帝，亲手为两千年帝制画上句号</span></div><div class="ach-card"><span class="ac-emoji">⭐</span><span>他的一生折射近代中国最剧烈的动荡与转折</span></div><div class="ach-card"><span class="ac-emoji">👑</span><span>提醒：时代变了，<span class="hl">再尊贵的名号也敌不过历史洪流</span></span></div></div>
     </div>
   
     <div class="section" id="fun">
       <div class="sec-head"><div class="sec-badge">💡</div>
         <div class="sec-title">趣闻小故事<small>一个好玩的小插曲</small></div></div>
-      <div class="sec-body"><p>溥仪的一生像坐过山车：三岁当皇帝，六岁被赶下台，后来还当过日本人的傀儡，最后成了普通公民。他可能是史上唯一「从皇帝变成平民」的人。这故事很魔幻，但也实在：<span class="hl">个人的命运，永远拴在时代的列车上</span>。帝制这辆老车到站了，谁也拦不住。</p></div>
+      <div class="fun-bubble">溥仪的一生像坐过山车：三岁当皇帝，六岁被赶下台，后来还当过日本人的傀儡，最后成了普通公民。他可能是史上唯一「从皇帝变成平民」的人。这故事很魔幻，但也实在：<span class="hl">个人的命运，永远拴在时代的列车上</span>。帝制这辆老车到站了，谁也拦不住。</div>
     </div>
   
   

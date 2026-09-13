@@ -179,6 +179,65 @@ a{color:inherit;text-decoration:none;}
 .td-v{flex:1; font-size:.96rem; line-height:1.75; color:#37474F;}
 @media(max-width:560px){.td-row{flex-direction:column; gap:2px;} .td-k{flex:none;}}
 
+/* ===== 漫画分镜（糖果亮色搞笑风） ===== */
+.comic-strip{display:flex; flex-direction:column; gap:18px;}
+.comic-card{
+  background-color:#fff;
+  background-image:radial-gradient(rgba(0,0,0,0.06) 1.6px, transparent 1.6px);
+  background-size:14px 14px;
+  border:4px solid #141414; border-radius:18px; padding:14px 16px;
+  box-shadow:6px 6px 0 #141414;
+  border-left:9px solid var(--phc,#141414);
+}
+.comic-head{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:6px;}
+.comic-year{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.35rem; color:#141414;}
+.comic-phase{font-size:.82rem; font-weight:800; color:#141414; padding:3px 13px; border-radius:20px; border:2.5px solid #141414; background:var(--phc,#fff);}
+.comic-title{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.6rem; color:#141414;}
+.comic-panels{display:flex; flex-direction:column; gap:12px;}
+.comic-panel{display:flex; gap:12px; align-items:flex-start;}
+.comic-face{flex:0 0 auto; width:56px; height:56px; border-radius:50%; background:var(--phc,#FFE7C2); border:3px solid #141414; display:flex; align-items:center; justify-content:center; font-size:32px; box-shadow:3px 3px 0 rgba(0,0,0,0.18);}
+.comic-bubble{flex:1; position:relative; background:#fff; border:3px solid #141414; border-radius:16px; padding:11px 14px; font-size:1.02rem; line-height:1.75; color:#232323;}
+.comic-bubble:before{content:""; position:absolute; left:-13px; top:18px; width:18px; height:18px; background:#fff; border-left:3px solid #141414; border-bottom:3px solid #141414; transform:rotate(45deg);}
+.comic-tag{display:inline-block; font-weight:800; color:#141414; margin-right:6px;}
+.comic-foot{margin-top:12px; font-size:.95rem; color:#7a4b00; background:#FFF3D6; border-radius:10px; padding:8px 12px; border:2px dashed #E0B36B;}
+@media(max-width:560px){ .comic-face{width:48px; height:48px; font-size:27px;} .comic-bubble{font-size:.96rem;} }
+
+/* ===== 人物页漫画化（与朝代页统一搞笑漫画风） ===== */
+/* 他是谁：角色漫画卡 */
+.fig-who{
+  display:flex; gap:16px; align-items:center;
+  background-color:#fff;
+  background-image:radial-gradient(rgba(0,0,0,0.06) 1.6px, transparent 1.6px);
+  background-size:14px 14px;
+  border:4px solid #141414; border-radius:18px; padding:16px 18px;
+  box-shadow:6px 6px 0 #141414;
+}
+.fig-who .fw-emoji{flex:0 0 auto; width:72px; height:72px; border-radius:50%;
+  background:color-mix(in srgb,var(--accent) 22%,#fff); border:3px solid #141414;
+  display:flex; align-items:center; justify-content:center; font-size:42px;
+  box-shadow:3px 3px 0 rgba(0,0,0,0.18);}
+.fig-who .fw-body{flex:1; min-width:0;}
+.fig-who .fw-role{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.3rem; color:#141414; line-height:1.3;}
+.fig-who .fw-desc{font-size:1.02rem; line-height:1.8; color:#232323; margin-top:8px;}
+@media(max-width:560px){ .fig-who{flex-direction:column; text-align:center;} .fig-who .fw-emoji{width:60px; height:60px; font-size:34px;} }
+
+/* 成就徽章网格 */
+.ach-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:14px;}
+.ach-card{background:#fff; border:3px solid #141414; border-radius:14px; padding:14px 16px;
+  box-shadow:4px 4px 0 #141414; font-size:1rem; line-height:1.7; color:#232323;
+  display:flex; gap:10px; align-items:flex-start;
+  background-image:radial-gradient(rgba(0,0,0,0.05) 1.4px, transparent 1.4px);
+  background-size:12px 12px;}
+.ach-card .ac-emoji{font-size:1.7rem; flex:0 0 auto; line-height:1.4;}
+
+/* 趣闻吐槽气泡 */
+.fun-bubble{position:relative; background:#FFF8E1; border:3px solid #141414;
+  border-radius:16px; padding:18px 18px 14px; font-size:1.05rem; line-height:1.85;
+  color:#5b3e00; box-shadow:4px 4px 0 #141414; margin-top:6px;}
+.fun-bubble:before{content:"💡"; position:absolute; top:-18px; left:18px; font-size:1.8rem;
+  background:#FFF8E1; border:3px solid #141414; border-radius:50%; width:34px; height:34px;
+  display:flex; align-items:center; justify-content:center; box-shadow:2px 2px 0 rgba(0,0,0,0.18);}
+
 /* 人物卡片 */
 .people-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
 .person{
@@ -565,47 +624,65 @@ def render_dynasty(d, idx, total):
       </div>
     </div>'''
 
-    # 历史进程（按阶段配色：兴起→盛世→转折→中衰→灭亡）
+    # 历史进程 → 漫画分镜（搞笑漫画风）
     PHASES = [
-        ("rise",    "兴起", "#16A085"),
-        ("peak",    "盛世", "#C9A227"),
-        ("turn",    "转折", "#E67E22"),
-        ("decline", "中衰", "#8E44AD"),
-        ("end",     "灭亡", "#C0392B"),
+        ("rise",    "兴起", "#2ECC71"),
+        ("peak",    "盛世", "#FFC400"),
+        ("turn",    "转折", "#FF6B35"),
+        ("decline", "中衰", "#4D7CFE"),
+        ("end",     "灭亡", "#FF4D6D"),
     ]
     phase_map = {k: (label, color) for k, label, color in PHASES}
+    PHASE_EMOJI = {"rise": "🌱", "peak": "👑", "turn": "🔥", "decline": "📉", "end": "💀"}
     present = []
-    tl = ""
+    comic = ""
     for p in d["process"]:
         ph = p.get("phase")
         if ph and ph in phase_map:
             label, color = phase_map[ph]
             style = f' style="--phc:{color}"'
-            badge = f'<span class="tl-phase" style="background:{color}">{label}</span>'
+            badge = f'<span class="comic-phase" style="background:{color}">{label}</span>'
             if ph not in present:
                 present.append(ph)
         else:
             style = ""
             badge = ""
-        detail_html = ""
-        det = p.get("detail")
-        if det:
-            rows = []
-            keys = [("who", "发动者"), ("why", "起因"), ("course", "经过"),
-                    ("result", "平复"), ("impact", "影响")]
-            for k, label in keys:
-                if det.get(k):
-                    rows.append(
-                        f'<div class="td-row"><span class="td-k">{label}</span>'
-                        f'<span class="td-v">{hl_text(det[k])}</span></div>')
-            if rows:
-                detail_html = f'<div class="tl-detail">{"".join(rows)}</div>'
-        tl += f'''
-      <div class="tl-item"{style}>
-        <div class="tl-year">{esc(p['year'])}{badge}</div>
-        <div class="tl-title">{esc(p['title'])}</div>
-        <div class="tl-text">{hl_text(p['text'])}</div>
-        {detail_html}
+        emoji = PHASE_EMOJI.get(ph, "📜")
+        # 优先用 fun（小孩口吻搞笑旁白）；没有则退回 detail 史实
+        fun = p.get("fun")
+        if fun:
+            who = fun.get("p1", "")
+            mid = fun.get("p2", "")
+            tail = fun.get("p3", "")
+        else:
+            det = p.get("detail") or {}
+            who = det.get("who", "")
+            why = det.get("why", "")
+            course = det.get("course", "")
+            result = det.get("result", "")
+            impact = det.get("impact", "")
+            # 自动小孩口吻框架（无手工 fun 时）：保真不歪曲，仅加口语外壳
+            who = ("主角登场👉 " + who) if who else ""
+            mid = why + ("　" if why and course else "") + course
+            tail = result + ("　💡 影响：" + impact if impact else "")
+        p1 = (f'<div class="comic-panel"><div class="comic-face">{emoji}</div>'
+              f'<div class="comic-bubble"><span class="comic-tag">登场 ▶</span>'
+              f'{hl_text(who)}</div></div>') if who else ""
+        p2 = (f'<div class="comic-panel"><div class="comic-face">{emoji}</div>'
+              f'<div class="comic-bubble"><span class="comic-tag">开整 ▶</span>'
+              f'{hl_text(mid)}</div></div>') if mid else ""
+        p3 = (f'<div class="comic-panel"><div class="comic-face">{emoji}</div>'
+              f'<div class="comic-bubble"><span class="comic-tag">收场 ▶</span>'
+              f'{hl_text(tail)}</div></div>') if tail else ""
+        panels = p1 + p2 + p3
+        if not panels:
+            panels = (f'<div class="comic-panel"><div class="comic-face">{emoji}</div>'
+                      f'<div class="comic-bubble"><span class="comic-tag">一句话 ▶</span>'
+                      f'{hl_text(p["text"])}</div></div>')
+        comic += f'''
+      <div class="comic-card"{style}>
+        <div class="comic-head"><span class="comic-year">{esc(p['year'])}</span>{badge}<span class="comic-title">{esc(p['title'])}</span></div>
+        <div class="comic-panels">{panels}</div>
       </div>'''
     legend = ""
     if present:
@@ -616,9 +693,9 @@ def render_dynasty(d, idx, total):
     process = f'''
     <div class="section" id="process">
       <div class="sec-head"><div class="sec-badge">📜</div>
-        <div class="sec-title">历史进程<small>从开创到落幕</small></div></div>
+        <div class="sec-title">历史进程<small>从开创到落幕 · 漫画版</small></div></div>
       {legend}
-      <div class="timeline">{tl}</div>
+      <div class="comic-strip">{comic}</div>
     </div>'''
 
     # 特点

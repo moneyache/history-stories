@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>司马光的故事 · 宋朝</title>
 <link rel="manifest" href="../manifest.json">
-<meta name="theme-color" content="#C0392B">
+<meta name="theme-color" content="#FF4D6D">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="上下五千年">
@@ -175,6 +175,65 @@ a{color:inherit;text-decoration:none;}
 .td-v{flex:1; font-size:.96rem; line-height:1.75; color:#37474F;}
 @media(max-width:560px){.td-row{flex-direction:column; gap:2px;} .td-k{flex:none;}}
 
+/* ===== 漫画分镜（糖果亮色搞笑风） ===== */
+.comic-strip{display:flex; flex-direction:column; gap:18px;}
+.comic-card{
+  background-color:#fff;
+  background-image:radial-gradient(rgba(0,0,0,0.06) 1.6px, transparent 1.6px);
+  background-size:14px 14px;
+  border:4px solid #141414; border-radius:18px; padding:14px 16px;
+  box-shadow:6px 6px 0 #141414;
+  border-left:9px solid var(--phc,#141414);
+}
+.comic-head{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:6px;}
+.comic-year{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.35rem; color:#141414;}
+.comic-phase{font-size:.82rem; font-weight:800; color:#141414; padding:3px 13px; border-radius:20px; border:2.5px solid #141414; background:var(--phc,#fff);}
+.comic-title{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.6rem; color:#141414;}
+.comic-panels{display:flex; flex-direction:column; gap:12px;}
+.comic-panel{display:flex; gap:12px; align-items:flex-start;}
+.comic-face{flex:0 0 auto; width:56px; height:56px; border-radius:50%; background:var(--phc,#FFE7C2); border:3px solid #141414; display:flex; align-items:center; justify-content:center; font-size:32px; box-shadow:3px 3px 0 rgba(0,0,0,0.18);}
+.comic-bubble{flex:1; position:relative; background:#fff; border:3px solid #141414; border-radius:16px; padding:11px 14px; font-size:1.02rem; line-height:1.75; color:#232323;}
+.comic-bubble:before{content:""; position:absolute; left:-13px; top:18px; width:18px; height:18px; background:#fff; border-left:3px solid #141414; border-bottom:3px solid #141414; transform:rotate(45deg);}
+.comic-tag{display:inline-block; font-weight:800; color:#141414; margin-right:6px;}
+.comic-foot{margin-top:12px; font-size:.95rem; color:#7a4b00; background:#FFF3D6; border-radius:10px; padding:8px 12px; border:2px dashed #E0B36B;}
+@media(max-width:560px){ .comic-face{width:48px; height:48px; font-size:27px;} .comic-bubble{font-size:.96rem;} }
+
+/* ===== 人物页漫画化（与朝代页统一搞笑漫画风） ===== */
+/* 他是谁：角色漫画卡 */
+.fig-who{
+  display:flex; gap:16px; align-items:center;
+  background-color:#fff;
+  background-image:radial-gradient(rgba(0,0,0,0.06) 1.6px, transparent 1.6px);
+  background-size:14px 14px;
+  border:4px solid #141414; border-radius:18px; padding:16px 18px;
+  box-shadow:6px 6px 0 #141414;
+}
+.fig-who .fw-emoji{flex:0 0 auto; width:72px; height:72px; border-radius:50%;
+  background:color-mix(in srgb,var(--accent) 22%,#fff); border:3px solid #141414;
+  display:flex; align-items:center; justify-content:center; font-size:42px;
+  box-shadow:3px 3px 0 rgba(0,0,0,0.18);}
+.fig-who .fw-body{flex:1; min-width:0;}
+.fig-who .fw-role{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.3rem; color:#141414; line-height:1.3;}
+.fig-who .fw-desc{font-size:1.02rem; line-height:1.8; color:#232323; margin-top:8px;}
+@media(max-width:560px){ .fig-who{flex-direction:column; text-align:center;} .fig-who .fw-emoji{width:60px; height:60px; font-size:34px;} }
+
+/* 成就徽章网格 */
+.ach-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:14px;}
+.ach-card{background:#fff; border:3px solid #141414; border-radius:14px; padding:14px 16px;
+  box-shadow:4px 4px 0 #141414; font-size:1rem; line-height:1.7; color:#232323;
+  display:flex; gap:10px; align-items:flex-start;
+  background-image:radial-gradient(rgba(0,0,0,0.05) 1.4px, transparent 1.4px);
+  background-size:12px 12px;}
+.ach-card .ac-emoji{font-size:1.7rem; flex:0 0 auto; line-height:1.4;}
+
+/* 趣闻吐槽气泡 */
+.fun-bubble{position:relative; background:#FFF8E1; border:3px solid #141414;
+  border-radius:16px; padding:18px 18px 14px; font-size:1.05rem; line-height:1.85;
+  color:#5b3e00; box-shadow:4px 4px 0 #141414; margin-top:6px;}
+.fun-bubble:before{content:"💡"; position:absolute; top:-18px; left:18px; font-size:1.8rem;
+  background:#FFF8E1; border:3px solid #141414; border-radius:50%; width:34px; height:34px;
+  display:flex; align-items:center; justify-content:center; box-shadow:2px 2px 0 rgba(0,0,0,0.18);}
+
 /* 人物卡片 */
 .people-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
 .person{
@@ -286,45 +345,79 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
     <div class="section" id="who">
       <div class="sec-head"><div class="sec-badge">👤</div>
         <div class="sec-title">他是谁<small>先认识一下这位大人物</small></div></div>
-      <div class="sec-body"><p>司马光字君实，北宋史学家、政治家。他小时候『砸缸救友』的故事家喻户晓。成年后主编《资治通鉴》——一部编年体巨著，写从战国到五代一千三百多年，宋神宗赐名『鉴于往事，有资于治道』。他反对王安石变法，立场偏保守，但人格端方、一生俭朴，是士大夫的标杆。</p></div>
+      <div class="fig-who">
+        <div class="fw-emoji">📚</div>
+        <div class="fw-body">
+          <div class="fw-role">北宋史学家 · 政治家 · 🕰️ 公元 1019 – 1086 年</div>
+          <div class="fw-desc">司马光字君实，北宋史学家、政治家。他小时候『砸缸救友』的故事家喻户晓。成年后主编《资治通鉴》——一部编年体巨著，写从战国到五代一千三百多年，宋神宗赐名『鉴于往事，有资于治道』。他反对王安石变法，立场偏保守，但人格端方、一生俭朴，是士大夫的标杆。</div>
+        </div>
+      </div>
     </div>
   
     <div class="section" id="story">
       <div class="sec-head"><div class="sec-badge">📖</div>
         <div class="sec-title">他的故事<small>一生中发生的大事</small></div></div>
-      <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-year">童年</div>
-        <div class="tl-title">砸缸救友</div>
-        <div class="tl-text">小伙伴落水，他砸破水缸救人，少年即显急智。</div>
+      <div class="comic-strip">
+      <div class="comic-card" style="--phc:var(--accent)">
+        <div class="comic-head">
+          <span class="comic-year">童年</span>
+          <span class="comic-title">砸缸救友</span>
+        </div>
+        <div class="comic-panels">
+          <div class="comic-panel">
+            <div class="comic-face">📖</div>
+            <div class="comic-bubble"><span class="comic-tag">故事 ▶</span>小伙伴落水，他砸破水缸救人，少年即显急智。</div>
+          </div>
+        </div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">修史</div>
-        <div class="tl-title">十九年巨著</div>
-        <div class="tl-text">领衔编《资治通鉴》，耗时十九年，成编年体通史巅峰。</div>
+      <div class="comic-card" style="--phc:var(--accent)">
+        <div class="comic-head">
+          <span class="comic-year">修史</span>
+          <span class="comic-title">十九年巨著</span>
+        </div>
+        <div class="comic-panels">
+          <div class="comic-panel">
+            <div class="comic-face">📖</div>
+            <div class="comic-bubble"><span class="comic-tag">故事 ▶</span>领衔编《资治通鉴》，耗时十九年，成编年体通史巅峰。</div>
+          </div>
+        </div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">政争</div>
-        <div class="tl-title">反对新法</div>
-        <div class="tl-text">与王安石政见相左，认为变法扰民，离朝退居洛阳。</div>
+      <div class="comic-card" style="--phc:var(--accent)">
+        <div class="comic-head">
+          <span class="comic-year">政争</span>
+          <span class="comic-title">反对新法</span>
+        </div>
+        <div class="comic-panels">
+          <div class="comic-panel">
+            <div class="comic-face">📖</div>
+            <div class="comic-bubble"><span class="comic-tag">故事 ▶</span>与王安石政见相左，认为变法扰民，离朝退居洛阳。</div>
+          </div>
+        </div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">晚景</div>
-        <div class="tl-title">旧党领袖</div>
-        <div class="tl-text">哲宗即位太皇太后摄政，他回朝废新法，不久病逝。</div>
+      <div class="comic-card" style="--phc:var(--accent)">
+        <div class="comic-head">
+          <span class="comic-year">晚景</span>
+          <span class="comic-title">旧党领袖</span>
+        </div>
+        <div class="comic-panels">
+          <div class="comic-panel">
+            <div class="comic-face">📖</div>
+            <div class="comic-bubble"><span class="comic-tag">故事 ▶</span>哲宗即位太皇太后摄政，他回朝废新法，不久病逝。</div>
+          </div>
+        </div>
       </div></div>
     </div>
   
     <div class="section" id="achv">
       <div class="sec-head"><div class="sec-badge">🏆</div>
         <div class="sec-title">他的成就<small>他给后人留下了什么</small></div></div>
-      <ul class="feat-list"><li><span class="dot">🏆</span><span>主编《资治通鉴》，与《史记》并称两大史典。</span></li><li><span class="dot">🏆</span><span>砸缸故事成为机智与勇敢的童年典范。</span></li><li><span class="dot">🏆</span><span>端方正直、俭朴自律，士大夫楷模。</span></li></ul>
+      <div class="ach-grid"><div class="ach-card"><span class="ac-emoji">🏆</span><span>主编《资治通鉴》，与《史记》并称两大史典。</span></div><div class="ach-card"><span class="ac-emoji">⭐</span><span>砸缸故事成为机智与勇敢的童年典范。</span></div><div class="ach-card"><span class="ac-emoji">👑</span><span>端方正直、俭朴自律，士大夫楷模。</span></div></div>
     </div>
   
     <div class="section" id="fun">
       <div class="sec-head"><div class="sec-badge">💡</div>
         <div class="sec-title">趣闻小故事<small>一个好玩的小插曲</small></div></div>
-      <div class="sec-body"><p>他和王安石本是朋友，却因变法闹翻——『司马光砸缸』和『王安石变法』是同一时代的正反两面。</p></div>
+      <div class="fun-bubble">他和王安石本是朋友，却因变法闹翻——『司马光砸缸』和『王安石变法』是同一时代的正反两面。</div>
     </div>
   
   

@@ -175,6 +175,65 @@ a{color:inherit;text-decoration:none;}
 .td-v{flex:1; font-size:.96rem; line-height:1.75; color:#37474F;}
 @media(max-width:560px){.td-row{flex-direction:column; gap:2px;} .td-k{flex:none;}}
 
+/* ===== 漫画分镜（糖果亮色搞笑风） ===== */
+.comic-strip{display:flex; flex-direction:column; gap:18px;}
+.comic-card{
+  background-color:#fff;
+  background-image:radial-gradient(rgba(0,0,0,0.06) 1.6px, transparent 1.6px);
+  background-size:14px 14px;
+  border:4px solid #141414; border-radius:18px; padding:14px 16px;
+  box-shadow:6px 6px 0 #141414;
+  border-left:9px solid var(--phc,#141414);
+}
+.comic-head{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:6px;}
+.comic-year{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.35rem; color:#141414;}
+.comic-phase{font-size:.82rem; font-weight:800; color:#141414; padding:3px 13px; border-radius:20px; border:2.5px solid #141414; background:var(--phc,#fff);}
+.comic-title{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.6rem; color:#141414;}
+.comic-panels{display:flex; flex-direction:column; gap:12px;}
+.comic-panel{display:flex; gap:12px; align-items:flex-start;}
+.comic-face{flex:0 0 auto; width:56px; height:56px; border-radius:50%; background:var(--phc,#FFE7C2); border:3px solid #141414; display:flex; align-items:center; justify-content:center; font-size:32px; box-shadow:3px 3px 0 rgba(0,0,0,0.18);}
+.comic-bubble{flex:1; position:relative; background:#fff; border:3px solid #141414; border-radius:16px; padding:11px 14px; font-size:1.02rem; line-height:1.75; color:#232323;}
+.comic-bubble:before{content:""; position:absolute; left:-13px; top:18px; width:18px; height:18px; background:#fff; border-left:3px solid #141414; border-bottom:3px solid #141414; transform:rotate(45deg);}
+.comic-tag{display:inline-block; font-weight:800; color:#141414; margin-right:6px;}
+.comic-foot{margin-top:12px; font-size:.95rem; color:#7a4b00; background:#FFF3D6; border-radius:10px; padding:8px 12px; border:2px dashed #E0B36B;}
+@media(max-width:560px){ .comic-face{width:48px; height:48px; font-size:27px;} .comic-bubble{font-size:.96rem;} }
+
+/* ===== 人物页漫画化（与朝代页统一搞笑漫画风） ===== */
+/* 他是谁：角色漫画卡 */
+.fig-who{
+  display:flex; gap:16px; align-items:center;
+  background-color:#fff;
+  background-image:radial-gradient(rgba(0,0,0,0.06) 1.6px, transparent 1.6px);
+  background-size:14px 14px;
+  border:4px solid #141414; border-radius:18px; padding:16px 18px;
+  box-shadow:6px 6px 0 #141414;
+}
+.fig-who .fw-emoji{flex:0 0 auto; width:72px; height:72px; border-radius:50%;
+  background:color-mix(in srgb,var(--accent) 22%,#fff); border:3px solid #141414;
+  display:flex; align-items:center; justify-content:center; font-size:42px;
+  box-shadow:3px 3px 0 rgba(0,0,0,0.18);}
+.fig-who .fw-body{flex:1; min-width:0;}
+.fig-who .fw-role{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.3rem; color:#141414; line-height:1.3;}
+.fig-who .fw-desc{font-size:1.02rem; line-height:1.8; color:#232323; margin-top:8px;}
+@media(max-width:560px){ .fig-who{flex-direction:column; text-align:center;} .fig-who .fw-emoji{width:60px; height:60px; font-size:34px;} }
+
+/* 成就徽章网格 */
+.ach-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:14px;}
+.ach-card{background:#fff; border:3px solid #141414; border-radius:14px; padding:14px 16px;
+  box-shadow:4px 4px 0 #141414; font-size:1rem; line-height:1.7; color:#232323;
+  display:flex; gap:10px; align-items:flex-start;
+  background-image:radial-gradient(rgba(0,0,0,0.05) 1.4px, transparent 1.4px);
+  background-size:12px 12px;}
+.ach-card .ac-emoji{font-size:1.7rem; flex:0 0 auto; line-height:1.4;}
+
+/* 趣闻吐槽气泡 */
+.fun-bubble{position:relative; background:#FFF8E1; border:3px solid #141414;
+  border-radius:16px; padding:18px 18px 14px; font-size:1.05rem; line-height:1.85;
+  color:#5b3e00; box-shadow:4px 4px 0 #141414; margin-top:6px;}
+.fun-bubble:before{content:"💡"; position:absolute; top:-18px; left:18px; font-size:1.8rem;
+  background:#FFF8E1; border:3px solid #141414; border-radius:50%; width:34px; height:34px;
+  display:flex; align-items:center; justify-content:center; box-shadow:2px 2px 0 rgba(0,0,0,0.18);}
+
 /* 人物卡片 */
 .people-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
 .person{
@@ -297,38 +356,28 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
   
     <div class="section" id="process">
       <div class="sec-head"><div class="sec-badge">📜</div>
-        <div class="sec-title">历史进程<small>从开创到落幕</small></div></div>
-      <ul class="tl-legend"><li><span class="dot" style="background:#16A085"></span>兴起</li><li><span class="dot" style="background:#C9A227"></span>盛世</li><li><span class="dot" style="background:#E67E22"></span>转折</li><li><span class="dot" style="background:#C0392B"></span>灭亡</li><li><span class="dot" style="background:#8E44AD"></span>中衰</li></ul>
-      <div class="timeline">
-      <div class="tl-item" style="--phc:#16A085">
-        <div class="tl-year">960<span class="tl-phase" style="background:#16A085">兴起</span></div>
-        <div class="tl-title">陈桥兵变</div>
-        <div class="tl-text">后周殿前都点检赵匡胤在陈桥驿被部下黄袍加身，回京受禅建宋，以『杯酒释兵权』收藩镇之权，重文轻武。</div>
-        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">宋太祖赵匡胤 vs 后周恭帝（幼主）。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">世宗早逝、主少国疑，赵匡胤掌禁军、威望素著。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">960率军北征，陈桥驿夜被拥立；回京逼禅，都开封。旋宴请诸将『杯酒释兵权』。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">北宋立，中央集权空前强化。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">『强干弱枝』防割据，却也埋下宋军战斗力偏弱的根。</span></div></div>
+        <div class="sec-title">历史进程<small>从开创到落幕 · 漫画版</small></div></div>
+      <ul class="tl-legend"><li><span class="dot" style="background:#2ECC71"></span>兴起</li><li><span class="dot" style="background:#FFC400"></span>盛世</li><li><span class="dot" style="background:#FF6B35"></span>转折</li><li><span class="dot" style="background:#FF4D6D"></span>灭亡</li><li><span class="dot" style="background:#4D7CFE"></span>中衰</li></ul>
+      <div class="comic-strip">
+      <div class="comic-card" style="--phc:#2ECC71">
+        <div class="comic-head"><span class="comic-year">960</span><span class="comic-phase" style="background:#2ECC71">兴起</span><span class="comic-title">陈桥兵变</span></div>
+        <div class="comic-panels"><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>主角登场👉 宋太祖赵匡胤 vs 后周恭帝（幼主）。</div></div><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>世宗早逝、主少国疑，赵匡胤掌禁军、威望素著。　960率军北征，陈桥驿夜被拥立；回京逼禅，都开封。旋宴请诸将『杯酒释兵权』。</div></div><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>北宋立，中央集权空前强化。　💡 影响：『强干弱枝』防割据，却也埋下宋军战斗力偏弱的根。</div></div></div>
       </div>
-      <div class="tl-item" style="--phc:#C9A227">
-        <div class="tl-year">1004<span class="tl-phase" style="background:#C9A227">盛世</span></div>
-        <div class="tl-title">澶渊之盟</div>
-        <div class="tl-text">真宗亲征、澶州挫辽，宋辽约为兄弟之国、岁币换和平，此后百余年无大战，经济文化得以繁荣。</div>
-        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">宋真宗赵恒、宰相寇准 vs 辽圣宗、萧太后。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">辽萧太后挟胜势南下，直逼澶州，汴京震动。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">寇准力劝真宗渡河亲征，士气大振；辽将挞览中弩，双方议和。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">宋岁输辽银十万两、绢二十万匹，约为兄弟。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">开创『以财换安』的和平模式，宋得以专注内政文教。</span></div></div>
+      <div class="comic-card" style="--phc:#FFC400">
+        <div class="comic-head"><span class="comic-year">1004</span><span class="comic-phase" style="background:#FFC400">盛世</span><span class="comic-title">澶渊之盟</span></div>
+        <div class="comic-panels"><div class="comic-panel"><div class="comic-face">👑</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>主角登场👉 宋真宗赵恒、宰相寇准 vs 辽圣宗、萧太后。</div></div><div class="comic-panel"><div class="comic-face">👑</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>辽萧太后挟胜势南下，直逼澶州，汴京震动。　寇准力劝真宗渡河亲征，士气大振；辽将挞览中弩，双方议和。</div></div><div class="comic-panel"><div class="comic-face">👑</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>宋岁输辽银十万两、绢二十万匹，约为兄弟。　💡 影响：开创『以财换安』的和平模式，宋得以专注内政文教。</div></div></div>
       </div>
-      <div class="tl-item" style="--phc:#E67E22">
-        <div class="tl-year">1069<span class="tl-phase" style="background:#E67E22">转折</span></div>
-        <div class="tl-title">王安石变法</div>
-        <div class="tl-text">神宗用王安石行青苗、募役、方田均税等新法，图富国强兵，却因用人不当、扰民与党争而几起几罢。</div>
-        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">王安石（参知政事）奉宋神宗。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">宋承平既久，『积贫积弱』：冗官冗兵、岁币沉重、对西夏屡败。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">推行青苗、均输、市易、保甲诸法，意在理财强兵。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">新法利弊相缠，旧党（司马光）激烈反对，神宗崩后尽废。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">变法失败加深新旧党争，却留下改革试图解决『三冗』的宝贵经验。</span></div></div>
+      <div class="comic-card" style="--phc:#FF6B35">
+        <div class="comic-head"><span class="comic-year">1069</span><span class="comic-phase" style="background:#FF6B35">转折</span><span class="comic-title">王安石变法</span></div>
+        <div class="comic-panels"><div class="comic-panel"><div class="comic-face">🔥</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>主角登场👉 王安石（参知政事）奉宋神宗。</div></div><div class="comic-panel"><div class="comic-face">🔥</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>宋承平既久，『积贫积弱』：冗官冗兵、岁币沉重、对西夏屡败。　推行青苗、均输、市易、保甲诸法，意在理财强兵。</div></div><div class="comic-panel"><div class="comic-face">🔥</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>新法利弊相缠，旧党（司马光）激烈反对，神宗崩后尽废。　💡 影响：变法失败加深新旧党争，却留下改革试图解决『三冗』的宝贵经验。</div></div></div>
       </div>
-      <div class="tl-item" style="--phc:#C0392B">
-        <div class="tl-year">1127<span class="tl-phase" style="background:#C0392B">灭亡</span></div>
-        <div class="tl-title">靖康之变</div>
-        <div class="tl-text">金军两度南下，破开封、俘徽钦二帝北去，北宋灭亡，史称『靖康之耻』，中原沦丧、宋室南渡。</div>
-        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">金太宗、完颜宗望/宗翰 vs 宋徽宗、钦宗。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">宋联金灭辽（海上之盟）暴露虚弱，金随即移师攻宋。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">1126金首次围汴，逼巨额赔款退兵；1127再破城，俘二帝及宗室、珍宝北还。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">北宋亡，徽钦被掳，康王赵构南奔称帝。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">中原第一次 fully 沦于异族，宋室偏安江南，岳飞抗金由此而起。</span></div></div>
+      <div class="comic-card" style="--phc:#FF4D6D">
+        <div class="comic-head"><span class="comic-year">1127</span><span class="comic-phase" style="background:#FF4D6D">灭亡</span><span class="comic-title">靖康之变</span></div>
+        <div class="comic-panels"><div class="comic-panel"><div class="comic-face">💀</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>主角登场👉 金太宗、完颜宗望/宗翰 vs 宋徽宗、钦宗。</div></div><div class="comic-panel"><div class="comic-face">💀</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>宋联金灭辽（海上之盟）暴露虚弱，金随即移师攻宋。　1126金首次围汴，逼巨额赔款退兵；1127再破城，俘二帝及宗室、珍宝北还。</div></div><div class="comic-panel"><div class="comic-face">💀</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>北宋亡，徽钦被掳，康王赵构南奔称帝。　💡 影响：中原第一次 fully 沦于异族，宋室偏安江南，岳飞抗金由此而起。</div></div></div>
       </div>
-      <div class="tl-item" style="--phc:#8E44AD">
-        <div class="tl-year">1140<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
-        <div class="tl-title">岳飞抗金</div>
-        <div class="tl-text">岳飞率岳家军北伐连捷、郾城大破金兀术铁浮图，却因高宗秦桧主和，十二道金牌召还、以『莫须有』冤死，绍兴和议成。</div>
-        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">岳飞 vs 金兀术；宋高宗、秦桧主和。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">高宗畏战、恐徽钦回銮夺位，秦桧主和固权。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">1140郾城、颍昌连胜，进军朱仙镇；高宗连发十二金牌召还，1142冤杀于风波亭。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">宋金以淮水为界，称臣纳币。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">『精忠报国』成民族气节象征；主和误国成千古憾事。</span></div></div>
+      <div class="comic-card" style="--phc:#4D7CFE">
+        <div class="comic-head"><span class="comic-year">1140</span><span class="comic-phase" style="background:#4D7CFE">中衰</span><span class="comic-title">岳飞抗金</span></div>
+        <div class="comic-panels"><div class="comic-panel"><div class="comic-face">📉</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>主角登场👉 岳飞 vs 金兀术；宋高宗、秦桧主和。</div></div><div class="comic-panel"><div class="comic-face">📉</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>高宗畏战、恐徽钦回銮夺位，秦桧主和固权。　1140郾城、颍昌连胜，进军朱仙镇；高宗连发十二金牌召还，1142冤杀于风波亭。</div></div><div class="comic-panel"><div class="comic-face">📉</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>宋金以淮水为界，称臣纳币。　💡 影响：『精忠报国』成民族气节象征；主和误国成千古憾事。</div></div></div>
       </div></div>
     </div>
   

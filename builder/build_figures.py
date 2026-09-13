@@ -36,43 +36,60 @@ def render(f, idx, total):
     ]
     nav_html = "".join(f'<a href="#{a}">{t}</a>' for a, t in nav_items)
 
-    # 他是谁
+    # 他是谁（漫画角色卡）
     who = f'''
     <div class="section" id="who">
       <div class="sec-head"><div class="sec-badge">👤</div>
         <div class="sec-title">他是谁<small>先认识一下这位大人物</small></div></div>
-      <div class="sec-body"><p>{hl_text(f['who'])}</p></div>
+      <div class="fig-who">
+        <div class="fw-emoji">{f['emoji']}</div>
+        <div class="fw-body">
+          <div class="fw-role">{esc(f['role'])} · 🕰️ {esc(f['era'])}</div>
+          <div class="fw-desc">{hl_text(f['who'])}</div>
+        </div>
+      </div>
     </div>'''
 
-    # 他的故事（时间轴）
+    # 他的故事（漫画分镜）
     tl = "".join(f'''
-      <div class="tl-item">
-        <div class="tl-year">{esc(p['year'])}</div>
-        <div class="tl-title">{esc(p['title'])}</div>
-        <div class="tl-text">{hl_text(p['text'])}</div>
+      <div class="comic-card" style="--phc:var(--accent)">
+        <div class="comic-head">
+          <span class="comic-year">{esc(p['year'])}</span>
+          <span class="comic-title">{esc(p['title'])}</span>
+        </div>
+        <div class="comic-panels">
+          <div class="comic-panel">
+            <div class="comic-face">📖</div>
+            <div class="comic-bubble"><span class="comic-tag">故事 ▶</span>{hl_text(p['text'])}</div>
+          </div>
+        </div>
       </div>''' for p in f["story"])
     story = f'''
     <div class="section" id="story">
       <div class="sec-head"><div class="sec-badge">📖</div>
         <div class="sec-title">他的故事<small>一生中发生的大事</small></div></div>
-      <div class="timeline">{tl}</div>
+      <div class="comic-strip">{tl}</div>
     </div>'''
 
-    # 他的成就
-    ach = "".join(f'<li><span class="dot">🏆</span><span>{hl_text(a)}</span></li>' for a in f["achievements"])
+    # 他的成就（徽章网格）
+    ach_emoji = ["🏆", "⭐", "👑", "💡", "⚔️", "📜", "🌟", "🛡️", "🔥", "🎯"]
+    ach = "".join(
+        f'<div class="ach-card"><span class="ac-emoji">{ach_emoji[i % len(ach_emoji)]}</span>'
+        f'<span>{hl_text(a)}</span></div>'
+        for i, a in enumerate(f["achievements"]))
     achv = f'''
     <div class="section" id="achv">
       <div class="sec-head"><div class="sec-badge">🏆</div>
         <div class="sec-title">他的成就<small>他给后人留下了什么</small></div></div>
-      <ul class="feat-list">{ach}</ul>
+      <div class="ach-grid">{ach}</div>
     </div>'''
 
-    # 趣闻
+    # 趣闻（吐槽气泡）
     fun = f'''
     <div class="section" id="fun">
       <div class="sec-head"><div class="sec-badge">💡</div>
         <div class="sec-title">趣闻小故事<small>一个好玩的小插曲</small></div></div>
-      <div class="sec-body"><p>{hl_text(f['fun'])}</p></div>
+      <div class="fun-bubble">{hl_text(f['fun'])}</div>
     </div>'''
 
     # 战役（可选）
@@ -139,7 +156,7 @@ def render(f, idx, total):
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{esc(f['name'])}的故事 · {dyn_name}</title>
 <link rel="manifest" href="../manifest.json">
-<meta name="theme-color" content="#C0392B">
+<meta name="theme-color" content="#FF4D6D">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="上下五千年">

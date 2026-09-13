@@ -175,6 +175,65 @@ a{color:inherit;text-decoration:none;}
 .td-v{flex:1; font-size:.96rem; line-height:1.75; color:#37474F;}
 @media(max-width:560px){.td-row{flex-direction:column; gap:2px;} .td-k{flex:none;}}
 
+/* ===== 漫画分镜（糖果亮色搞笑风） ===== */
+.comic-strip{display:flex; flex-direction:column; gap:18px;}
+.comic-card{
+  background-color:#fff;
+  background-image:radial-gradient(rgba(0,0,0,0.06) 1.6px, transparent 1.6px);
+  background-size:14px 14px;
+  border:4px solid #141414; border-radius:18px; padding:14px 16px;
+  box-shadow:6px 6px 0 #141414;
+  border-left:9px solid var(--phc,#141414);
+}
+.comic-head{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:6px;}
+.comic-year{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.35rem; color:#141414;}
+.comic-phase{font-size:.82rem; font-weight:800; color:#141414; padding:3px 13px; border-radius:20px; border:2.5px solid #141414; background:var(--phc,#fff);}
+.comic-title{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.6rem; color:#141414;}
+.comic-panels{display:flex; flex-direction:column; gap:12px;}
+.comic-panel{display:flex; gap:12px; align-items:flex-start;}
+.comic-face{flex:0 0 auto; width:56px; height:56px; border-radius:50%; background:var(--phc,#FFE7C2); border:3px solid #141414; display:flex; align-items:center; justify-content:center; font-size:32px; box-shadow:3px 3px 0 rgba(0,0,0,0.18);}
+.comic-bubble{flex:1; position:relative; background:#fff; border:3px solid #141414; border-radius:16px; padding:11px 14px; font-size:1.02rem; line-height:1.75; color:#232323;}
+.comic-bubble:before{content:""; position:absolute; left:-13px; top:18px; width:18px; height:18px; background:#fff; border-left:3px solid #141414; border-bottom:3px solid #141414; transform:rotate(45deg);}
+.comic-tag{display:inline-block; font-weight:800; color:#141414; margin-right:6px;}
+.comic-foot{margin-top:12px; font-size:.95rem; color:#7a4b00; background:#FFF3D6; border-radius:10px; padding:8px 12px; border:2px dashed #E0B36B;}
+@media(max-width:560px){ .comic-face{width:48px; height:48px; font-size:27px;} .comic-bubble{font-size:.96rem;} }
+
+/* ===== 人物页漫画化（与朝代页统一搞笑漫画风） ===== */
+/* 他是谁：角色漫画卡 */
+.fig-who{
+  display:flex; gap:16px; align-items:center;
+  background-color:#fff;
+  background-image:radial-gradient(rgba(0,0,0,0.06) 1.6px, transparent 1.6px);
+  background-size:14px 14px;
+  border:4px solid #141414; border-radius:18px; padding:16px 18px;
+  box-shadow:6px 6px 0 #141414;
+}
+.fig-who .fw-emoji{flex:0 0 auto; width:72px; height:72px; border-radius:50%;
+  background:color-mix(in srgb,var(--accent) 22%,#fff); border:3px solid #141414;
+  display:flex; align-items:center; justify-content:center; font-size:42px;
+  box-shadow:3px 3px 0 rgba(0,0,0,0.18);}
+.fig-who .fw-body{flex:1; min-width:0;}
+.fig-who .fw-role{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.3rem; color:#141414; line-height:1.3;}
+.fig-who .fw-desc{font-size:1.02rem; line-height:1.8; color:#232323; margin-top:8px;}
+@media(max-width:560px){ .fig-who{flex-direction:column; text-align:center;} .fig-who .fw-emoji{width:60px; height:60px; font-size:34px;} }
+
+/* 成就徽章网格 */
+.ach-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:14px;}
+.ach-card{background:#fff; border:3px solid #141414; border-radius:14px; padding:14px 16px;
+  box-shadow:4px 4px 0 #141414; font-size:1rem; line-height:1.7; color:#232323;
+  display:flex; gap:10px; align-items:flex-start;
+  background-image:radial-gradient(rgba(0,0,0,0.05) 1.4px, transparent 1.4px);
+  background-size:12px 12px;}
+.ach-card .ac-emoji{font-size:1.7rem; flex:0 0 auto; line-height:1.4;}
+
+/* 趣闻吐槽气泡 */
+.fun-bubble{position:relative; background:#FFF8E1; border:3px solid #141414;
+  border-radius:16px; padding:18px 18px 14px; font-size:1.05rem; line-height:1.85;
+  color:#5b3e00; box-shadow:4px 4px 0 #141414; margin-top:6px;}
+.fun-bubble:before{content:"💡"; position:absolute; top:-18px; left:18px; font-size:1.8rem;
+  background:#FFF8E1; border:3px solid #141414; border-radius:50%; width:34px; height:34px;
+  display:flex; align-items:center; justify-content:center; box-shadow:2px 2px 0 rgba(0,0,0,0.18);}
+
 /* 人物卡片 */
 .people-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
 .person{
@@ -297,32 +356,24 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
   
     <div class="section" id="process">
       <div class="sec-head"><div class="sec-badge">📜</div>
-        <div class="sec-title">历史进程<small>从开创到落幕</small></div></div>
-      <ul class="tl-legend"><li><span class="dot" style="background:#16A085"></span>兴起</li><li><span class="dot" style="background:#E67E22"></span>转折</li><li><span class="dot" style="background:#C0392B"></span>灭亡</li></ul>
-      <div class="timeline">
-      <div class="tl-item" style="--phc:#16A085">
-        <div class="tl-year">前1046<span class="tl-phase" style="background:#16A085">兴起</span></div>
-        <div class="tl-title">武王伐纣</div>
-        <div class="tl-text">周武王联合诸侯于牧野大败商军，纣王自焚，周朝建立，定都镐京（宗周），开启历时约八百年的周王朝。</div>
-        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">周武王姬发，辅臣周公旦、召公奭、太公望（姜尚）。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">商纣失德、诸侯离心；周在文王时已『三分天下有其二』。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">武王观兵孟津、会盟诸侯；二年誓师渡河，牧野之战商军倒戈。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">纣死商亡，武王封纣子武庚守商祀，都镐京。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">确立『天命』『礼乐』政治哲学，分封制与宗法制雏形出现。</span></div></div>
+        <div class="sec-title">历史进程<small>从开创到落幕 · 漫画版</small></div></div>
+      <ul class="tl-legend"><li><span class="dot" style="background:#2ECC71"></span>兴起</li><li><span class="dot" style="background:#FF6B35"></span>转折</li><li><span class="dot" style="background:#FF4D6D"></span>灭亡</li></ul>
+      <div class="comic-strip">
+      <div class="comic-card" style="--phc:#2ECC71">
+        <div class="comic-head"><span class="comic-year">前1046</span><span class="comic-phase" style="background:#2ECC71">兴起</span><span class="comic-title">武王伐纣</span></div>
+        <div class="comic-panels"><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>主角登场👉 周武王姬发，辅臣周公旦、召公奭、太公望（姜尚）。</div></div><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>商纣失德、诸侯离心；周在文王时已『三分天下有其二』。　武王观兵孟津、会盟诸侯；二年誓师渡河，牧野之战商军倒戈。</div></div><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>纣死商亡，武王封纣子武庚守商祀，都镐京。　💡 影响：确立『天命』『礼乐』政治哲学，分封制与宗法制雏形出现。</div></div></div>
       </div>
-      <div class="tl-item" style="--phc:#16A085">
-        <div class="tl-year">前1042<span class="tl-phase" style="background:#16A085">兴起</span></div>
-        <div class="tl-title">周公东征</div>
-        <div class="tl-text">武王早逝、成王幼，周公摄政平定时殷残余与三监之乱，营建洛邑（成周），制礼作乐，奠定周八百年根基。</div>
-        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">周公旦（武王之弟） vs 管叔、蔡叔、霍叔『三监』及武庚。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">管蔡疑周公夺权，勾结武庚叛乱，东方动荡。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">周公东征三年，诛武庚、杀管叔、放蔡叔，迁殷遗民于洛邑。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">封建亲戚、以藩屏周，营成周以为东都。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">『制礼作乐』确立周礼，后世儒家的制度蓝本；周公成『圣人』典范。</span></div></div>
+      <div class="comic-card" style="--phc:#2ECC71">
+        <div class="comic-head"><span class="comic-year">前1042</span><span class="comic-phase" style="background:#2ECC71">兴起</span><span class="comic-title">周公东征</span></div>
+        <div class="comic-panels"><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>主角登场👉 周公旦（武王之弟） vs 管叔、蔡叔、霍叔『三监』及武庚。</div></div><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>管蔡疑周公夺权，勾结武庚叛乱，东方动荡。　周公东征三年，诛武庚、杀管叔、放蔡叔，迁殷遗民于洛邑。</div></div><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>封建亲戚、以藩屏周，营成周以为东都。　💡 影响：『制礼作乐』确立周礼，后世儒家的制度蓝本；周公成『圣人』典范。</div></div></div>
       </div>
-      <div class="tl-item" style="--phc:#E67E22">
-        <div class="tl-year">前841<span class="tl-phase" style="background:#E67E22">转折</span></div>
-        <div class="tl-title">国人暴动</div>
-        <div class="tl-text">周厉王弭谤专利、压制舆论，首都『国人』（自由民）暴动逐王，由召公、周公共同执政，史称『共和』，是中国有确切纪年之始。</div>
-        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">周厉王 vs 镐京国人。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">厉王垄断山泽之利、派卫巫监谤者，『道路以目』民怨沸腾。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">前841年国人围王宫，厉王奔彘；召公、周公二相行政，号『共和』。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">厉王死不返，共和行政十四年。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">『共和元年』（前841）是中国历史有连续确切纪年的开端。</span></div></div>
+      <div class="comic-card" style="--phc:#FF6B35">
+        <div class="comic-head"><span class="comic-year">前841</span><span class="comic-phase" style="background:#FF6B35">转折</span><span class="comic-title">国人暴动</span></div>
+        <div class="comic-panels"><div class="comic-panel"><div class="comic-face">🔥</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>主角登场👉 周厉王 vs 镐京国人。</div></div><div class="comic-panel"><div class="comic-face">🔥</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>厉王垄断山泽之利、派卫巫监谤者，『道路以目』民怨沸腾。　前841年国人围王宫，厉王奔彘；召公、周公二相行政，号『共和』。</div></div><div class="comic-panel"><div class="comic-face">🔥</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>厉王死不返，共和行政十四年。　💡 影响：『共和元年』（前841）是中国历史有连续确切纪年的开端。</div></div></div>
       </div>
-      <div class="tl-item" style="--phc:#C0392B">
-        <div class="tl-year">前771<span class="tl-phase" style="background:#C0392B">灭亡</span></div>
-        <div class="tl-title">犬戎灭西周</div>
-        <div class="tl-text">周幽王宠褒姒、烽火戏诸侯、废太子引发申侯联合犬戎破镐京，幽王被杀，西周亡；平王东迁洛邑，史称东周。</div>
-        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">周幽王 vs 申侯（废太子外祖父）与犬戎。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">幽王废申后及太子宜臼，立褒姒子，申侯怒而引犬戎。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">犬戎攻入镐京，杀幽王于骊山，掠财物而去；诸侯立宜臼（平王）。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">前770年平王东迁洛邑，西周终，东周始。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">王室东迁后权威扫地，进入春秋诸侯争霸时代。</span></div></div>
+      <div class="comic-card" style="--phc:#FF4D6D">
+        <div class="comic-head"><span class="comic-year">前771</span><span class="comic-phase" style="background:#FF4D6D">灭亡</span><span class="comic-title">犬戎灭西周</span></div>
+        <div class="comic-panels"><div class="comic-panel"><div class="comic-face">💀</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>主角登场👉 周幽王 vs 申侯（废太子外祖父）与犬戎。</div></div><div class="comic-panel"><div class="comic-face">💀</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>幽王废申后及太子宜臼，立褒姒子，申侯怒而引犬戎。　犬戎攻入镐京，杀幽王于骊山，掠财物而去；诸侯立宜臼（平王）。</div></div><div class="comic-panel"><div class="comic-face">💀</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>前770年平王东迁洛邑，西周终，东周始。　💡 影响：王室东迁后权威扫地，进入春秋诸侯争霸时代。</div></div></div>
       </div></div>
     </div>
   

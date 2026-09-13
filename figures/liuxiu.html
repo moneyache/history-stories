@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>刘秀（汉光武帝）的故事 · 汉朝</title>
 <link rel="manifest" href="../manifest.json">
-<meta name="theme-color" content="#C0392B">
+<meta name="theme-color" content="#FF4D6D">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="上下五千年">
@@ -175,6 +175,65 @@ a{color:inherit;text-decoration:none;}
 .td-v{flex:1; font-size:.96rem; line-height:1.75; color:#37474F;}
 @media(max-width:560px){.td-row{flex-direction:column; gap:2px;} .td-k{flex:none;}}
 
+/* ===== 漫画分镜（糖果亮色搞笑风） ===== */
+.comic-strip{display:flex; flex-direction:column; gap:18px;}
+.comic-card{
+  background-color:#fff;
+  background-image:radial-gradient(rgba(0,0,0,0.06) 1.6px, transparent 1.6px);
+  background-size:14px 14px;
+  border:4px solid #141414; border-radius:18px; padding:14px 16px;
+  box-shadow:6px 6px 0 #141414;
+  border-left:9px solid var(--phc,#141414);
+}
+.comic-head{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:6px;}
+.comic-year{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.35rem; color:#141414;}
+.comic-phase{font-size:.82rem; font-weight:800; color:#141414; padding:3px 13px; border-radius:20px; border:2.5px solid #141414; background:var(--phc,#fff);}
+.comic-title{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.6rem; color:#141414;}
+.comic-panels{display:flex; flex-direction:column; gap:12px;}
+.comic-panel{display:flex; gap:12px; align-items:flex-start;}
+.comic-face{flex:0 0 auto; width:56px; height:56px; border-radius:50%; background:var(--phc,#FFE7C2); border:3px solid #141414; display:flex; align-items:center; justify-content:center; font-size:32px; box-shadow:3px 3px 0 rgba(0,0,0,0.18);}
+.comic-bubble{flex:1; position:relative; background:#fff; border:3px solid #141414; border-radius:16px; padding:11px 14px; font-size:1.02rem; line-height:1.75; color:#232323;}
+.comic-bubble:before{content:""; position:absolute; left:-13px; top:18px; width:18px; height:18px; background:#fff; border-left:3px solid #141414; border-bottom:3px solid #141414; transform:rotate(45deg);}
+.comic-tag{display:inline-block; font-weight:800; color:#141414; margin-right:6px;}
+.comic-foot{margin-top:12px; font-size:.95rem; color:#7a4b00; background:#FFF3D6; border-radius:10px; padding:8px 12px; border:2px dashed #E0B36B;}
+@media(max-width:560px){ .comic-face{width:48px; height:48px; font-size:27px;} .comic-bubble{font-size:.96rem;} }
+
+/* ===== 人物页漫画化（与朝代页统一搞笑漫画风） ===== */
+/* 他是谁：角色漫画卡 */
+.fig-who{
+  display:flex; gap:16px; align-items:center;
+  background-color:#fff;
+  background-image:radial-gradient(rgba(0,0,0,0.06) 1.6px, transparent 1.6px);
+  background-size:14px 14px;
+  border:4px solid #141414; border-radius:18px; padding:16px 18px;
+  box-shadow:6px 6px 0 #141414;
+}
+.fig-who .fw-emoji{flex:0 0 auto; width:72px; height:72px; border-radius:50%;
+  background:color-mix(in srgb,var(--accent) 22%,#fff); border:3px solid #141414;
+  display:flex; align-items:center; justify-content:center; font-size:42px;
+  box-shadow:3px 3px 0 rgba(0,0,0,0.18);}
+.fig-who .fw-body{flex:1; min-width:0;}
+.fig-who .fw-role{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.3rem; color:#141414; line-height:1.3;}
+.fig-who .fw-desc{font-size:1.02rem; line-height:1.8; color:#232323; margin-top:8px;}
+@media(max-width:560px){ .fig-who{flex-direction:column; text-align:center;} .fig-who .fw-emoji{width:60px; height:60px; font-size:34px;} }
+
+/* 成就徽章网格 */
+.ach-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:14px;}
+.ach-card{background:#fff; border:3px solid #141414; border-radius:14px; padding:14px 16px;
+  box-shadow:4px 4px 0 #141414; font-size:1rem; line-height:1.7; color:#232323;
+  display:flex; gap:10px; align-items:flex-start;
+  background-image:radial-gradient(rgba(0,0,0,0.05) 1.4px, transparent 1.4px);
+  background-size:12px 12px;}
+.ach-card .ac-emoji{font-size:1.7rem; flex:0 0 auto; line-height:1.4;}
+
+/* 趣闻吐槽气泡 */
+.fun-bubble{position:relative; background:#FFF8E1; border:3px solid #141414;
+  border-radius:16px; padding:18px 18px 14px; font-size:1.05rem; line-height:1.85;
+  color:#5b3e00; box-shadow:4px 4px 0 #141414; margin-top:6px;}
+.fun-bubble:before{content:"💡"; position:absolute; top:-18px; left:18px; font-size:1.8rem;
+  background:#FFF8E1; border:3px solid #141414; border-radius:50%; width:34px; height:34px;
+  display:flex; align-items:center; justify-content:center; box-shadow:2px 2px 0 rgba(0,0,0,0.18);}
+
 /* 人物卡片 */
 .people-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
 .person{
@@ -286,45 +345,79 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
     <div class="section" id="who">
       <div class="sec-head"><div class="sec-badge">👤</div>
         <div class="sec-title">他是谁<small>先认识一下这位大人物</small></div></div>
-      <div class="sec-body"><p>刘秀是汉高祖刘邦的九世孙，却从小种地放牛。王莽篡汉后天下大乱，刘秀和哥哥起兵，在<span class="hl">昆阳之战</span>以少胜多成名。他沉稳隐忍，先拥立更始帝、再独自经营河北，最终扫平群雄、重建汉朝，定都洛阳，史称「东汉」或「后汉」。他轻徭薄赋、整顿吏治，让战乱后的天下恢复太平，人称「光武中兴」。</p></div>
+      <div class="fig-who">
+        <div class="fw-emoji">⚔️</div>
+        <div class="fw-body">
+          <div class="fw-role">东汉开国皇帝·中兴之主 · 🕰️ 公元前 5 – 公元 57 年</div>
+          <div class="fw-desc">刘秀是汉高祖刘邦的九世孙，却从小种地放牛。王莽篡汉后天下大乱，刘秀和哥哥起兵，在<span class="hl">昆阳之战</span>以少胜多成名。他沉稳隐忍，先拥立更始帝、再独自经营河北，最终扫平群雄、重建汉朝，定都洛阳，史称「东汉」或「后汉」。他轻徭薄赋、整顿吏治，让战乱后的天下恢复太平，人称「光武中兴」。</div>
+        </div>
+      </div>
     </div>
   
     <div class="section" id="story">
       <div class="sec-head"><div class="sec-badge">📖</div>
         <div class="sec-title">他的故事<small>一生中发生的大事</small></div></div>
-      <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-year">起兵</div>
-        <div class="tl-title">舂陵举义</div>
-        <div class="tl-text">王莽乱政，刘秀随兄刘縯在舂陵起兵，加入绿林军反莽。</div>
+      <div class="comic-strip">
+      <div class="comic-card" style="--phc:var(--accent)">
+        <div class="comic-head">
+          <span class="comic-year">起兵</span>
+          <span class="comic-title">舂陵举义</span>
+        </div>
+        <div class="comic-panels">
+          <div class="comic-panel">
+            <div class="comic-face">📖</div>
+            <div class="comic-bubble"><span class="comic-tag">故事 ▶</span>王莽乱政，刘秀随兄刘縯在舂陵起兵，加入绿林军反莽。</div>
+          </div>
+        </div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">成名</div>
-        <div class="tl-title">昆阳大捷</div>
-        <div class="tl-text">刘秀率数千人死守昆阳，联合援军大破王莽四十万大军，名动天下。</div>
+      <div class="comic-card" style="--phc:var(--accent)">
+        <div class="comic-head">
+          <span class="comic-year">成名</span>
+          <span class="comic-title">昆阳大捷</span>
+        </div>
+        <div class="comic-panels">
+          <div class="comic-panel">
+            <div class="comic-face">📖</div>
+            <div class="comic-bubble"><span class="comic-tag">故事 ▶</span>刘秀率数千人死守昆阳，联合援军大破王莽四十万大军，名动天下。</div>
+          </div>
+        </div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">独立</div>
-        <div class="tl-title">经营河北</div>
-        <div class="tl-text">兄长被害后他隐忍不发，到河北招抚豪强、扩充实力，渐渐自成一家。</div>
+      <div class="comic-card" style="--phc:var(--accent)">
+        <div class="comic-head">
+          <span class="comic-year">独立</span>
+          <span class="comic-title">经营河北</span>
+        </div>
+        <div class="comic-panels">
+          <div class="comic-panel">
+            <div class="comic-face">📖</div>
+            <div class="comic-bubble"><span class="comic-tag">故事 ▶</span>兄长被害后他隐忍不发，到河北招抚豪强、扩充实力，渐渐自成一家。</div>
+          </div>
+        </div>
       </div>
-      <div class="tl-item">
-        <div class="tl-year">登基</div>
-        <div class="tl-title">光武中兴</div>
-        <div class="tl-text">公元25年称帝，后灭群雄、定都洛阳，开创东汉，与民休息、中兴汉室。</div>
+      <div class="comic-card" style="--phc:var(--accent)">
+        <div class="comic-head">
+          <span class="comic-year">登基</span>
+          <span class="comic-title">光武中兴</span>
+        </div>
+        <div class="comic-panels">
+          <div class="comic-panel">
+            <div class="comic-face">📖</div>
+            <div class="comic-bubble"><span class="comic-tag">故事 ▶</span>公元25年称帝，后灭群雄、定都洛阳，开创东汉，与民休息、中兴汉室。</div>
+          </div>
+        </div>
       </div></div>
     </div>
   
     <div class="section" id="achv">
       <div class="sec-head"><div class="sec-badge">🏆</div>
         <div class="sec-title">他的成就<small>他给后人留下了什么</small></div></div>
-      <ul class="feat-list"><li><span class="dot">🏆</span><span>推翻新莽、统一天下，重建汉朝（东汉），是少数「从农夫到皇帝」的明君</span></li><li><span class="dot">🏆</span><span>开创「光武中兴」：释放奴婢、减轻赋税、整顿官场，让百姓休养生息</span></li><li><span class="dot">🏆</span><span>他证明了<span class="hl">会打仗更要会治国</span>，打下江山后懂得放权与怀柔</span></li></ul>
+      <div class="ach-grid"><div class="ach-card"><span class="ac-emoji">🏆</span><span>推翻新莽、统一天下，重建汉朝（东汉），是少数「从农夫到皇帝」的明君</span></div><div class="ach-card"><span class="ac-emoji">⭐</span><span>开创「光武中兴」：释放奴婢、减轻赋税、整顿官场，让百姓休养生息</span></div><div class="ach-card"><span class="ac-emoji">👑</span><span>他证明了<span class="hl">会打仗更要会治国</span>，打下江山后懂得放权与怀柔</span></div></div>
     </div>
   
     <div class="section" id="fun">
       <div class="sec-head"><div class="sec-badge">💡</div>
         <div class="sec-title">趣闻小故事<small>一个好玩的小插曲</small></div></div>
-      <div class="sec-body"><p>刘秀年轻时说过愿望：「仕宦当作执金吾，娶妻当得阴丽华」——想当大官、娶美女。后来两样都实现了，还顺手当了皇帝。他最厉害的不是打仗（昆阳是奇迹），而是<span class="hl">会用人、能容人</span>：对手投降他常常重用，所以人才都愿意跟他。</p></div>
+      <div class="fun-bubble">刘秀年轻时说过愿望：「仕宦当作执金吾，娶妻当得阴丽华」——想当大官、娶美女。后来两样都实现了，还顺手当了皇帝。他最厉害的不是打仗（昆阳是奇迹），而是<span class="hl">会用人、能容人</span>：对手投降他常常重用，所以人才都愿意跟他。</div>
     </div>
   
     <div class="section" id="battle">

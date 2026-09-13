@@ -175,6 +175,65 @@ a{color:inherit;text-decoration:none;}
 .td-v{flex:1; font-size:.96rem; line-height:1.75; color:#37474F;}
 @media(max-width:560px){.td-row{flex-direction:column; gap:2px;} .td-k{flex:none;}}
 
+/* ===== 漫画分镜（糖果亮色搞笑风） ===== */
+.comic-strip{display:flex; flex-direction:column; gap:18px;}
+.comic-card{
+  background-color:#fff;
+  background-image:radial-gradient(rgba(0,0,0,0.06) 1.6px, transparent 1.6px);
+  background-size:14px 14px;
+  border:4px solid #141414; border-radius:18px; padding:14px 16px;
+  box-shadow:6px 6px 0 #141414;
+  border-left:9px solid var(--phc,#141414);
+}
+.comic-head{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:6px;}
+.comic-year{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.35rem; color:#141414;}
+.comic-phase{font-size:.82rem; font-weight:800; color:#141414; padding:3px 13px; border-radius:20px; border:2.5px solid #141414; background:var(--phc,#fff);}
+.comic-title{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.6rem; color:#141414;}
+.comic-panels{display:flex; flex-direction:column; gap:12px;}
+.comic-panel{display:flex; gap:12px; align-items:flex-start;}
+.comic-face{flex:0 0 auto; width:56px; height:56px; border-radius:50%; background:var(--phc,#FFE7C2); border:3px solid #141414; display:flex; align-items:center; justify-content:center; font-size:32px; box-shadow:3px 3px 0 rgba(0,0,0,0.18);}
+.comic-bubble{flex:1; position:relative; background:#fff; border:3px solid #141414; border-radius:16px; padding:11px 14px; font-size:1.02rem; line-height:1.75; color:#232323;}
+.comic-bubble:before{content:""; position:absolute; left:-13px; top:18px; width:18px; height:18px; background:#fff; border-left:3px solid #141414; border-bottom:3px solid #141414; transform:rotate(45deg);}
+.comic-tag{display:inline-block; font-weight:800; color:#141414; margin-right:6px;}
+.comic-foot{margin-top:12px; font-size:.95rem; color:#7a4b00; background:#FFF3D6; border-radius:10px; padding:8px 12px; border:2px dashed #E0B36B;}
+@media(max-width:560px){ .comic-face{width:48px; height:48px; font-size:27px;} .comic-bubble{font-size:.96rem;} }
+
+/* ===== 人物页漫画化（与朝代页统一搞笑漫画风） ===== */
+/* 他是谁：角色漫画卡 */
+.fig-who{
+  display:flex; gap:16px; align-items:center;
+  background-color:#fff;
+  background-image:radial-gradient(rgba(0,0,0,0.06) 1.6px, transparent 1.6px);
+  background-size:14px 14px;
+  border:4px solid #141414; border-radius:18px; padding:16px 18px;
+  box-shadow:6px 6px 0 #141414;
+}
+.fig-who .fw-emoji{flex:0 0 auto; width:72px; height:72px; border-radius:50%;
+  background:color-mix(in srgb,var(--accent) 22%,#fff); border:3px solid #141414;
+  display:flex; align-items:center; justify-content:center; font-size:42px;
+  box-shadow:3px 3px 0 rgba(0,0,0,0.18);}
+.fig-who .fw-body{flex:1; min-width:0;}
+.fig-who .fw-role{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.3rem; color:#141414; line-height:1.3;}
+.fig-who .fw-desc{font-size:1.02rem; line-height:1.8; color:#232323; margin-top:8px;}
+@media(max-width:560px){ .fig-who{flex-direction:column; text-align:center;} .fig-who .fw-emoji{width:60px; height:60px; font-size:34px;} }
+
+/* 成就徽章网格 */
+.ach-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:14px;}
+.ach-card{background:#fff; border:3px solid #141414; border-radius:14px; padding:14px 16px;
+  box-shadow:4px 4px 0 #141414; font-size:1rem; line-height:1.7; color:#232323;
+  display:flex; gap:10px; align-items:flex-start;
+  background-image:radial-gradient(rgba(0,0,0,0.05) 1.4px, transparent 1.4px);
+  background-size:12px 12px;}
+.ach-card .ac-emoji{font-size:1.7rem; flex:0 0 auto; line-height:1.4;}
+
+/* 趣闻吐槽气泡 */
+.fun-bubble{position:relative; background:#FFF8E1; border:3px solid #141414;
+  border-radius:16px; padding:18px 18px 14px; font-size:1.05rem; line-height:1.85;
+  color:#5b3e00; box-shadow:4px 4px 0 #141414; margin-top:6px;}
+.fun-bubble:before{content:"💡"; position:absolute; top:-18px; left:18px; font-size:1.8rem;
+  background:#FFF8E1; border:3px solid #141414; border-radius:50%; width:34px; height:34px;
+  display:flex; align-items:center; justify-content:center; box-shadow:2px 2px 0 rgba(0,0,0,0.18);}
+
 /* 人物卡片 */
 .people-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px;}
 .person{
@@ -297,38 +356,28 @@ footer .poem{font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.2rem; color:var(
   
     <div class="section" id="process">
       <div class="sec-head"><div class="sec-badge">📜</div>
-        <div class="sec-title">历史进程<small>从开创到落幕</small></div></div>
-      <ul class="tl-legend"><li><span class="dot" style="background:#16A085"></span>兴起</li><li><span class="dot" style="background:#C9A227"></span>盛世</li><li><span class="dot" style="background:#E67E22"></span>转折</li><li><span class="dot" style="background:#8E44AD"></span>中衰</li><li><span class="dot" style="background:#C0392B"></span>灭亡</li></ul>
-      <div class="timeline">
-      <div class="tl-item" style="--phc:#16A085">
-        <div class="tl-year">前356<span class="tl-phase" style="background:#16A085">兴起</span></div>
-        <div class="tl-title">商鞅变法</div>
-        <div class="tl-text">秦孝公任商鞅，以『奖励耕战、废井田、行县制』彻底改造秦国，国力骤强，为日后横扫六合奠定制度根基。</div>
-        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">商鞅（卫鞅）奉秦孝公之命。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">秦偏处西陲、被山东六国轻为『戎翟』，孝公求强。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">废井田开阡陌、奖励军功（二十等爵）、连坐告奸、徙都咸阳。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">秦『兵革大强，诸侯畏惧』，农耕与动员力冠诸侯。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">法家中央集权模板确立，秦统一的人才与制度基础由此铸成。</span></div></div>
+        <div class="sec-title">历史进程<small>从开创到落幕 · 漫画版</small></div></div>
+      <ul class="tl-legend"><li><span class="dot" style="background:#2ECC71"></span>兴起</li><li><span class="dot" style="background:#FFC400"></span>盛世</li><li><span class="dot" style="background:#FF6B35"></span>转折</li><li><span class="dot" style="background:#4D7CFE"></span>中衰</li><li><span class="dot" style="background:#FF4D6D"></span>灭亡</li></ul>
+      <div class="comic-strip">
+      <div class="comic-card" style="--phc:#2ECC71">
+        <div class="comic-head"><span class="comic-year">前356</span><span class="comic-phase" style="background:#2ECC71">兴起</span><span class="comic-title">商鞅变法</span></div>
+        <div class="comic-panels"><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>主角登场👉 商鞅（卫鞅）奉秦孝公之命。</div></div><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>秦偏处西陲、被山东六国轻为『戎翟』，孝公求强。　废井田开阡陌、奖励军功（二十等爵）、连坐告奸、徙都咸阳。</div></div><div class="comic-panel"><div class="comic-face">🌱</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>秦『兵革大强，诸侯畏惧』，农耕与动员力冠诸侯。　💡 影响：法家中央集权模板确立，秦统一的人才与制度基础由此铸成。</div></div></div>
       </div>
-      <div class="tl-item" style="--phc:#C9A227">
-        <div class="tl-year">前230<span class="tl-phase" style="background:#C9A227">盛世</span></div>
-        <div class="tl-title">秦灭六国</div>
-        <div class="tl-text">秦王嬴政用尉缭、李斯之策，以『远交近攻』次第翦灭韩赵魏楚燕齐，前221年一统天下，自称『始皇帝』，中国首次进入大一统帝国时代。</div>
-        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">秦王嬴政（秦始皇），将王翦、王贲父子等。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">战国二百余年兼并，秦经变法最强，具备统一实力与意志。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">前230灭韩起，十年间依次破赵、魏、楚、燕、齐，兵锋无挡。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">前221年齐亡，天下归一，行郡县、书同文、车同轨。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">结束分封、确立皇帝制度与郡县制，『大一统』成为此后中国政治最高理想。</span></div></div>
+      <div class="comic-card" style="--phc:#FFC400">
+        <div class="comic-head"><span class="comic-year">前230</span><span class="comic-phase" style="background:#FFC400">盛世</span><span class="comic-title">秦灭六国</span></div>
+        <div class="comic-panels"><div class="comic-panel"><div class="comic-face">👑</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>主角登场👉 秦王嬴政（秦始皇），将王翦、王贲父子等。</div></div><div class="comic-panel"><div class="comic-face">👑</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>战国二百余年兼并，秦经变法最强，具备统一实力与意志。　前230灭韩起，十年间依次破赵、魏、楚、燕、齐，兵锋无挡。</div></div><div class="comic-panel"><div class="comic-face">👑</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>前221年齐亡，天下归一，行郡县、书同文、车同轨。　💡 影响：结束分封、确立皇帝制度与郡县制，『大一统』成为此后中国政治最高理想。</div></div></div>
       </div>
-      <div class="tl-item" style="--phc:#E67E22">
-        <div class="tl-year">前213<span class="tl-phase" style="background:#E67E22">转折</span></div>
-        <div class="tl-title">焚书坑儒</div>
-        <div class="tl-text">为统一思想、打击方士儒生非议，始皇焚毁民间诗书百家、坑杀术士，是文化专制的标志性事件，也埋下秦失民心的祸根。</div>
-        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">秦始皇、丞相李斯 vs 方士儒生。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">博士淳于越倡复古分封，李斯以为『以古非今』惑乱黔首。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">焚《诗》《书》百家语（医药卜筮种树书不禁），次年坑术士方士于咸阳。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">民间典籍大损，士人惶恐。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">文化浩劫象征秦政苛酷，后世视为暴政典型；也加速六国遗民离心。</span></div></div>
+      <div class="comic-card" style="--phc:#FF6B35">
+        <div class="comic-head"><span class="comic-year">前213</span><span class="comic-phase" style="background:#FF6B35">转折</span><span class="comic-title">焚书坑儒</span></div>
+        <div class="comic-panels"><div class="comic-panel"><div class="comic-face">🔥</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>主角登场👉 秦始皇、丞相李斯 vs 方士儒生。</div></div><div class="comic-panel"><div class="comic-face">🔥</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>博士淳于越倡复古分封，李斯以为『以古非今』惑乱黔首。　焚《诗》《书》百家语（医药卜筮种树书不禁），次年坑术士方士于咸阳。</div></div><div class="comic-panel"><div class="comic-face">🔥</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>民间典籍大损，士人惶恐。　💡 影响：文化浩劫象征秦政苛酷，后世视为暴政典型；也加速六国遗民离心。</div></div></div>
       </div>
-      <div class="tl-item" style="--phc:#8E44AD">
-        <div class="tl-year">前209<span class="tl-phase" style="background:#8E44AD">中衰</span></div>
-        <div class="tl-title">陈胜吴广</div>
-        <div class="tl-text">始皇崩后苛政徭役不减，陈胜、吴广在大泽乡因雨失期、按法当斩，遂揭竿而起，点燃秦末农民战争的烈火。</div>
-        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">陈胜、吴广（戍卒） vs 秦二世、赵高。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">征骊山、修长城、戍边苛重；『失期当斩』逼人死地。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">篝火狐鸣、鱼腹丹书造势，斩尉起义，号『张楚』，天下响应。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">虽六月而败，却引爆六国旧贵族与刘邦项羽并起。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">中国历史上第一次大规模农民起义，『王侯将相宁有种乎』震烁千古。</span></div></div>
+      <div class="comic-card" style="--phc:#4D7CFE">
+        <div class="comic-head"><span class="comic-year">前209</span><span class="comic-phase" style="background:#4D7CFE">中衰</span><span class="comic-title">陈胜吴广</span></div>
+        <div class="comic-panels"><div class="comic-panel"><div class="comic-face">📉</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>主角登场👉 陈胜、吴广（戍卒） vs 秦二世、赵高。</div></div><div class="comic-panel"><div class="comic-face">📉</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>征骊山、修长城、戍边苛重；『失期当斩』逼人死地。　篝火狐鸣、鱼腹丹书造势，斩尉起义，号『张楚』，天下响应。</div></div><div class="comic-panel"><div class="comic-face">📉</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>虽六月而败，却引爆六国旧贵族与刘邦项羽并起。　💡 影响：中国历史上第一次大规模农民起义，『王侯将相宁有种乎』震烁千古。</div></div></div>
       </div>
-      <div class="tl-item" style="--phc:#C0392B">
-        <div class="tl-year">前207<span class="tl-phase" style="background:#C0392B">灭亡</span></div>
-        <div class="tl-title">秦朝速亡</div>
-        <div class="tl-text">巨鹿之战项羽破釜沉舟歼灭秦军主力，刘邦入咸阳、子婴出降，仅历十五年的秦帝国轰然崩塌。</div>
-        <div class="tl-detail"><div class="td-row"><span class="td-k">发动者</span><span class="td-v">项羽（破秦军）、刘邦（入关） vs 秦王子婴、赵高。</span></div><div class="td-row"><span class="td-k">起因</span><span class="td-v">严刑峻法、滥用民力使天下苦秦久矣。</span></div><div class="td-row"><span class="td-k">经过</span><span class="td-v">巨鹿一战秦主力尽墨；赵高弑二世立子婴，子婴诛赵高；刘邦兵临灞上。</span></div><div class="td-row"><span class="td-k">平复</span><span class="td-v">前207子婴降，前206项羽入咸阳焚宫，秦亡。</span></div><div class="td-row"><span class="td-k">影响</span><span class="td-v">秦虽短命，其制度被汉全盘继承——『百代皆行秦政法』。</span></div></div>
+      <div class="comic-card" style="--phc:#FF4D6D">
+        <div class="comic-head"><span class="comic-year">前207</span><span class="comic-phase" style="background:#FF4D6D">灭亡</span><span class="comic-title">秦朝速亡</span></div>
+        <div class="comic-panels"><div class="comic-panel"><div class="comic-face">💀</div><div class="comic-bubble"><span class="comic-tag">登场 ▶</span>主角登场👉 项羽（破秦军）、刘邦（入关） vs 秦王子婴、赵高。</div></div><div class="comic-panel"><div class="comic-face">💀</div><div class="comic-bubble"><span class="comic-tag">开整 ▶</span>严刑峻法、滥用民力使天下苦秦久矣。　巨鹿一战秦主力尽墨；赵高弑二世立子婴，子婴诛赵高；刘邦兵临灞上。</div></div><div class="comic-panel"><div class="comic-face">💀</div><div class="comic-bubble"><span class="comic-tag">收场 ▶</span>前207子婴降，前206项羽入咸阳焚宫，秦亡。　💡 影响：秦虽短命，其制度被汉全盘继承——『百代皆行秦政法』。</div></div></div>
       </div></div>
     </div>
   
